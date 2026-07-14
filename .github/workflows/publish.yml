@@ -1,4 +1,4 @@
-# NuGet: configure NUGET_API_KEY as repo secret (ou Trusted Publishing quando disponível)
+# NuGet: secret NUGET_API_KEY no repo. Só publica se o SDK mudou.
 name: Publish NuGet
 
 on:
@@ -12,30 +12,57 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Emitfy
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Should publish?
+        id: decide
+        run: |
+          set +e
+          node scripts/should-publish.mjs
+          code=$?
+          set -e
+          if [ "$code" -eq 10 ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$code" -ne 0 ]; then
+            exit "$code"
+          fi
+          echo "publish=true" >> "$GITHUB_OUTPUT"
+
       - name: Setup .NET
+        if: steps.decide.outputs.publish == 'true'
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
       - name: Pack
+        if: steps.decide.outputs.publish == 'true'
+        working-directory: Emitfy
         run: dotnet pack -c Release -o ../artifacts
 
       - name: Push
+        if: steps.decide.outputs.publish == 'true'
+        working-directory: Emitfy
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           if [ -z "$NUGET_API_KEY" ]; then
-            echo "NUGET_API_KEY secret missing — skip push"
+            echo "NUGET_API_KEY secret missing"
             exit 1
           fi
           dotnet nuget push ../artifacts/*.nupkg \
             --api-key "$NUGET_API_KEY" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
+
+      - name: Skipped
+        if: steps.decide.outputs.publish != 'true'
+        run: echo "Nenhuma alteração no SDK .NET — publish ignorado."
