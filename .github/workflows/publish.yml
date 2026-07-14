@@ -1,4 +1,5 @@
-# NuGet: secret NUGET_API_KEY no repo. Só publica se o SDK mudou.
+# NuGet Trusted Publishing (OIDC): org emitfy, repo emitfy-dotnet, workflow publish.yml
+# Só publica se o SDK mudou. Sem NUGET_API_KEY de longa duração.
 name: Publish NuGet
 
 on:
@@ -8,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
@@ -48,18 +50,20 @@ jobs:
         working-directory: Emitfy
         run: dotnet pack -c Release -o ../artifacts
 
+      - name: NuGet login (OIDC)
+        if: steps.decide.outputs.publish == 'true'
+        uses: NuGet/login@v1
+        id: login
+        with:
+          # Username do nuget.org (org emitfy ou seu user com acesso à org)
+          user: ${{ secrets.NUGET_USER || 'emitfy' }}
+
       - name: Push
         if: steps.decide.outputs.publish == 'true'
         working-directory: Emitfy
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          if [ -z "$NUGET_API_KEY" ]; then
-            echo "NUGET_API_KEY secret missing"
-            exit 1
-          fi
           dotnet nuget push ../artifacts/*.nupkg \
-            --api-key "$NUGET_API_KEY" \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
 
