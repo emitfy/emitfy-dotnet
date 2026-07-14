@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>Emitfy</PackageId>
+    <Version>0.2.1</Version>
+    <Authors>Emitfy</Authors>
+    <Description>Official Emitfy API SDK for .NET</Description>
+    <PackageProjectUrl>https://api.emitfy.com/docs/sdks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/emitfy/emitfy-dotnet</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+</Project>
