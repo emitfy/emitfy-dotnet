@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>Emitfy</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Emitfy</Authors>
     <Description>Official Emitfy API SDK for .NET (OpenAPI-typed)</Description>
     <PackageProjectUrl>https://api.emitfy.com/docs/sdks</PackageProjectUrl>
