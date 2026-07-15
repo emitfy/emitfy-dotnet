@@ -34,6 +34,4 @@ await api.WebhooksCreateAsync(new WebhookCreate(
 ));
 ```
 
-Regenerate in the Emitfy monorepo: `pnpm run sdk:generate`.
-
 Docs: https://api.emitfy.com/docs/sdks
