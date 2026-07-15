@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageId>Emitfy</PackageId>
-    <Version>0.2.2</Version>
+    <Version>0.3.0</Version>
     <Authors>Emitfy</Authors>
-    <Description>Official Emitfy API SDK for .NET</Description>
+    <Description>Official Emitfy API SDK for .NET (OpenAPI-typed)</Description>
     <PackageProjectUrl>https://api.emitfy.com/docs/sdks</PackageProjectUrl>
     <RepositoryUrl>https://github.com/emitfy/emitfy-dotnet</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -15,5 +15,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="8.5.2" />
   </ItemGroup>
+  <PropertyGroup>
+    <!-- Código gerado pelo OpenAPI Generator (nullable / const boolean) -->
+    <NoWarn>$(NoWarn);CS8625;CS8714;CS8618</NoWarn>
+  </PropertyGroup>
 </Project>

@@ -25,6 +25,8 @@ public sealed class EmitfyClient
     private readonly HttpClient _http;
     private readonly string _baseUrl;
     private readonly int _maxRetries;
+    private readonly string _apiKey;
+    private readonly string _apiSecret;
 
     public WebhooksResource Webhooks { get; }
     public CompaniesResource Companies { get; }
@@ -36,17 +38,35 @@ public sealed class EmitfyClient
             throw new EmitfyException("apiKey and apiSecret are required.", null, null, 0);
         }
 
+        _apiKey = apiKey.Trim();
+        _apiSecret = apiSecret.Trim();
         _baseUrl = (baseUrl ?? "https://api.emitfy.com/v1").TrimEnd('/');
         _maxRetries = maxRetries;
         _http = httpClient ?? new HttpClient();
         _http.DefaultRequestHeaders.Remove("X-Api-Key");
         _http.DefaultRequestHeaders.Remove("X-Api-Secret");
-        _http.DefaultRequestHeaders.TryAddWithoutValidation("X-Api-Key", apiKey.Trim());
-        _http.DefaultRequestHeaders.TryAddWithoutValidation("X-Api-Secret", apiSecret.Trim());
+        _http.DefaultRequestHeaders.TryAddWithoutValidation("X-Api-Key", _apiKey);
+        _http.DefaultRequestHeaders.TryAddWithoutValidation("X-Api-Secret", _apiSecret);
         _http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         Webhooks = new WebhooksResource(this);
         Companies = new CompaniesResource(this);
     }
+
+    /// <summary>Configuração do client OpenAPI tipado (<c>Emitfy.Generated.*</c>).</summary>
+    public Emitfy.Generated.Client.Configuration OpenApiConfiguration()
+    {
+        var config = new Emitfy.Generated.Client.Configuration
+        {
+            BasePath = _baseUrl
+        };
+        config.AddApiKey("X-Api-Key", _apiKey);
+        config.AddApiKey("X-Api-Secret", _apiSecret);
+        return config;
+    }
+
+    /// <summary>API tipada de webhooks gerada do OpenAPI.</summary>
+    public Emitfy.Generated.Api.WebhooksApi WebhooksApi() =>
+        new Emitfy.Generated.Api.WebhooksApi(OpenApiConfiguration());
 
     public CompanyContext Company(string companyId)
     {
