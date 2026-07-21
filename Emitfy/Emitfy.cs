@@ -222,7 +222,6 @@ public sealed class CompanyContext
     public CompanyResource Cte { get; }
     public CompanyResource Customers { get; }
     public CompanyResource Products { get; }
-    public CompanyResource Sales { get; }
     public CompanyResource Invoices { get; }
     public CompanyResource ReceivedNfes { get; }
 
@@ -237,7 +236,6 @@ public sealed class CompanyContext
         Cte = new CompanyResource(client, $"{prefix}/cte");
         Customers = new CompanyResource(client, $"{prefix}/customers");
         Products = new CompanyResource(client, $"{prefix}/products");
-        Sales = new CompanyResource(client, $"{prefix}/sales");
         Invoices = new CompanyResource(client, $"{prefix}/invoices");
         ReceivedNfes = new CompanyResource(client, $"{prefix}/received-nfes");
     }
