@@ -26,33 +26,45 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// NfeGet200Response
     /// </summary>
-    [DataContract(Name = "WebhookCreate_events")]
-    public partial class WebhookCreateEvents
+    [DataContract(Name = "nfeGet_200_response")]
+    public partial class NfeGet200Response
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
+        /// Defines Success
         /// </summary>
-        /// <param name="invoice">invoice.</param>
-        /// <param name="cte">cte.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default)
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SuccessEnum
         {
-            this.Invoice = invoice;
-            this.Cte = cte;
+            /// <summary>
+            /// Enum True for value: true
+            /// </summary>
+            True = 1
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Success
+        /// </summary>
+        [DataMember(Name = "success", EmitDefaultValue = true)]
+        public SuccessEnum? Success { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NfeGet200Response" /> class.
+        /// </summary>
+        /// <param name="success">success.</param>
+        /// <param name="data">data.</param>
+        public NfeGet200Response(SuccessEnum? success = default, NfeGet200ResponseData data = default)
+        {
+            this.Success = success;
+            this.Data = data;
         }
 
         /// <summary>
-        /// Gets or Sets Invoice
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cte
-        /// </summary>
-        [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = false)]
+        public NfeGet200ResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +73,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreateEvents {\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Cte: ").Append(Cte).Append("\n");
+            sb.Append("class NfeGet200Response {\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -26,33 +26,32 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// NfeGet200ResponseData
     /// </summary>
-    [DataContract(Name = "WebhookCreate_events")]
-    public partial class WebhookCreateEvents
+    [DataContract(Name = "nfeGet_200_response_data")]
+    public partial class NfeGet200ResponseData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
+        /// Initializes a new instance of the <see cref="NfeGet200ResponseData" /> class.
         /// </summary>
-        /// <param name="invoice">invoice.</param>
-        /// <param name="cte">cte.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default)
+        /// <param name="transport">transport.</param>
+        public NfeGet200ResponseData(TransportDetail transport = default)
         {
-            this.Invoice = invoice;
-            this.Cte = cte;
+            this.Transport = transport;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets Invoice
+        /// Gets or Sets Transport
         /// </summary>
-        [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
+        [DataMember(Name = "transport", EmitDefaultValue = false)]
+        public TransportDetail Transport { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cte
+        /// Gets or Sets additional properties
         /// </summary>
-        [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +60,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreateEvents {\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Cte: ").Append(Cte).Append("\n");
+            sb.Append("class NfeGet200ResponseData {\n");
+            sb.Append("  Transport: ").Append(Transport).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

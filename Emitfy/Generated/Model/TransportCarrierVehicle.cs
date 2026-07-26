@@ -26,33 +26,51 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// TransportCarrierVehicle
     /// </summary>
-    [DataContract(Name = "WebhookCreate_events")]
-    public partial class WebhookCreateEvents
+    [DataContract(Name = "TransportCarrier_vehicle")]
+    public partial class TransportCarrierVehicle
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
+        /// Initializes a new instance of the <see cref="TransportCarrierVehicle" /> class.
         /// </summary>
-        /// <param name="invoice">invoice.</param>
-        /// <param name="cte">cte.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default)
+        [JsonConstructorAttribute]
+        protected TransportCarrierVehicle() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportCarrierVehicle" /> class.
+        /// </summary>
+        /// <param name="plate">plate (required).</param>
+        /// <param name="state">state.</param>
+        /// <param name="rntc">rntc.</param>
+        public TransportCarrierVehicle(string plate = default, string state = default, string rntc = default)
         {
-            this.Invoice = invoice;
-            this.Cte = cte;
+            // to ensure "plate" is required (not null)
+            if (plate == null)
+            {
+                throw new ArgumentNullException("plate is a required property for TransportCarrierVehicle and cannot be null");
+            }
+            this.Plate = plate;
+            this.State = state;
+            this.Rntc = rntc;
         }
 
         /// <summary>
-        /// Gets or Sets Invoice
+        /// Gets or Sets Plate
         /// </summary>
-        [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
+        [DataMember(Name = "plate", IsRequired = true, EmitDefaultValue = true)]
+        public string Plate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cte
+        /// Gets or Sets State
         /// </summary>
-        [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public string State { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Rntc
+        /// </summary>
+        [DataMember(Name = "rntc", EmitDefaultValue = false)]
+        public string Rntc { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +79,10 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreateEvents {\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Cte: ").Append(Cte).Append("\n");
+            sb.Append("class TransportCarrierVehicle {\n");
+            sb.Append("  Plate: ").Append(Plate).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  Rntc: ").Append(Rntc).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

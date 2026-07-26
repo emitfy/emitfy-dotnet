@@ -26,33 +26,33 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// Dados de transporte da nota — null quando não informados na emissão
     /// </summary>
-    [DataContract(Name = "WebhookCreate_events")]
-    public partial class WebhookCreateEvents
+    [DataContract(Name = "TransportDetail")]
+    public partial class TransportDetail
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
+        /// Initializes a new instance of the <see cref="TransportDetail" /> class.
         /// </summary>
-        /// <param name="invoice">invoice.</param>
-        /// <param name="cte">cte.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default)
+        /// <param name="freightModality">freightModality.</param>
+        /// <param name="carrier">carrier.</param>
+        public TransportDetail(string freightModality = default, TransportCarrier carrier = default)
         {
-            this.Invoice = invoice;
-            this.Cte = cte;
+            this.FreightModality = freightModality;
+            this.Carrier = carrier;
         }
 
         /// <summary>
-        /// Gets or Sets Invoice
+        /// Gets or Sets FreightModality
         /// </summary>
-        [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
+        [DataMember(Name = "freightModality", EmitDefaultValue = false)]
+        public string FreightModality { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cte
+        /// Gets or Sets Carrier
         /// </summary>
-        [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        [DataMember(Name = "carrier", EmitDefaultValue = false)]
+        public TransportCarrier Carrier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +61,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreateEvents {\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Cte: ").Append(Cte).Append("\n");
+            sb.Append("class TransportDetail {\n");
+            sb.Append("  FreightModality: ").Append(FreightModality).Append("\n");
+            sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

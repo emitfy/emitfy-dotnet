@@ -26,33 +26,41 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// TransportCarrierAddress
     /// </summary>
-    [DataContract(Name = "WebhookCreate_events")]
-    public partial class WebhookCreateEvents
+    [DataContract(Name = "TransportCarrier_address")]
+    public partial class TransportCarrierAddress
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
+        /// Initializes a new instance of the <see cref="TransportCarrierAddress" /> class.
         /// </summary>
-        /// <param name="invoice">invoice.</param>
-        /// <param name="cte">cte.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default)
+        /// <param name="street">street.</param>
+        /// <param name="city">city.</param>
+        /// <param name="state">state.</param>
+        public TransportCarrierAddress(string street = default, string city = default, string state = default)
         {
-            this.Invoice = invoice;
-            this.Cte = cte;
+            this.Street = street;
+            this.City = city;
+            this.State = state;
         }
 
         /// <summary>
-        /// Gets or Sets Invoice
+        /// Gets or Sets Street
         /// </summary>
-        [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
+        [DataMember(Name = "street", EmitDefaultValue = false)]
+        public string Street { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cte
+        /// Gets or Sets City
         /// </summary>
-        [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        [DataMember(Name = "city", EmitDefaultValue = false)]
+        public string City { get; set; }
+
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public string State { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +69,10 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreateEvents {\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Cte: ").Append(Cte).Append("\n");
+            sb.Append("class TransportCarrierAddress {\n");
+            sb.Append("  Street: ").Append(Street).Append("\n");
+            sb.Append("  City: ").Append(City).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
