@@ -34,5 +34,5 @@ await api.WebhooksCreateAsync(new WebhookCreate(
 ));
 ```
 
-Docs: https://api.emitfy.com/docs/sdks  
+Docs: https://docs.emitfy.com/sdks  
 OpenAPI: https://api.emitfy.com/openapi.yaml
