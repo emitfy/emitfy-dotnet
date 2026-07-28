@@ -19,7 +19,14 @@ var emitfy = new EmitfyClient(
 );
 
 var company = emitfy.Company(Environment.GetEnvironmentVariable("EMITFY_COMPANY_ID")!);
-await company.Nfse.CreateAsync(new { serviceDescription = "Serviço", amount = 100 });
+await company.Nfse.CreateAsync(new {
+  name = "Consultoria",
+  category = "consulting",
+  serviceDescription = "Consultoria em tecnologia",
+  cityServiceCode = "02800",
+  amount = 100,
+  borrower = new { name = "Cliente LTDA", taxId = "12.345.678/0001-90" }
+});
 ```
 
 ## Typed OpenAPI layer

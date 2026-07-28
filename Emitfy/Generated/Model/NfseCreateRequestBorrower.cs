@@ -26,64 +26,67 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreate
+    /// NfseCreateRequestBorrower
     /// </summary>
-    [DataContract(Name = "WebhookCreate")]
-    public partial class WebhookCreate
+    [DataContract(Name = "NfseCreateRequest_borrower")]
+    public partial class NfseCreateRequestBorrower
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreate" /> class.
+        /// Initializes a new instance of the <see cref="NfseCreateRequestBorrower" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected WebhookCreate() { }
+        protected NfseCreateRequestBorrower() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookCreate" /> class.
+        /// Initializes a new instance of the <see cref="NfseCreateRequestBorrower" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="url">url (required).</param>
-        /// <param name="headers">headers.</param>
-        /// <param name="events">events (required).</param>
-        public WebhookCreate(string name = default, string url = default, List<WebhookCreateHeadersInner> headers = default, WebhookCreateEvents events = default)
+        /// <param name="taxId">taxId.</param>
+        /// <param name="name">name (required).</param>
+        /// <param name="email">email.</param>
+        /// <param name="phone">phone.</param>
+        /// <param name="address">address.</param>
+        public NfseCreateRequestBorrower(string taxId = default, string name = default, string email = default, string phone = default, Dictionary<string, Object> address = default)
         {
-            // to ensure "url" is required (not null)
-            if (url == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new ArgumentNullException("url is a required property for WebhookCreate and cannot be null");
+                throw new ArgumentNullException("name is a required property for NfseCreateRequestBorrower and cannot be null");
             }
-            this.Url = url;
-            // to ensure "events" is required (not null)
-            if (events == null)
-            {
-                throw new ArgumentNullException("events is a required property for WebhookCreate and cannot be null");
-            }
-            this.Events = events;
             this.Name = name;
-            this.Headers = headers;
+            this.TaxId = taxId;
+            this.Email = email;
+            this.Phone = phone;
+            this.Address = address;
         }
+
+        /// <summary>
+        /// Gets or Sets TaxId
+        /// </summary>
+        [DataMember(Name = "taxId", EmitDefaultValue = false)]
+        public string TaxId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// Gets or Sets Email
         /// </summary>
-        [DataMember(Name = "url", IsRequired = true, EmitDefaultValue = true)]
-        public string Url { get; set; }
+        [DataMember(Name = "email", EmitDefaultValue = false)]
+        public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Headers
+        /// Gets or Sets Phone
         /// </summary>
-        [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public List<WebhookCreateHeadersInner> Headers { get; set; }
+        [DataMember(Name = "phone", EmitDefaultValue = false)]
+        public string Phone { get; set; }
 
         /// <summary>
-        /// Gets or Sets Events
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name = "events", IsRequired = true, EmitDefaultValue = true)]
-        public WebhookCreateEvents Events { get; set; }
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public Dictionary<string, Object> Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,11 +95,12 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookCreate {\n");
+            sb.Append("class NfseCreateRequestBorrower {\n");
+            sb.Append("  TaxId: ").Append(TaxId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Headers: ").Append(Headers).Append("\n");
-            sb.Append("  Events: ").Append(Events).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
