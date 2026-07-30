@@ -33,8 +33,8 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
-        /// <returns>NfeGet200Response</returns>
-        NfeGet200Response InvoicesGet(Guid companyId, string id);
+        /// <returns>InvoicesGet200Response</returns>
+        InvoicesGet200Response InvoicesGet(Guid companyId, string id);
 
         /// <summary>
         /// Get invoice
@@ -45,8 +45,8 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of NfeGet200Response</returns>
-        ApiResponse<NfeGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id);
+        /// <returns>ApiResponse of InvoicesGet200Response</returns>
+        ApiResponse<InvoicesGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// List invoices
         /// </summary>
@@ -91,8 +91,8 @@ namespace Emitfy.Generated.Api
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of NfeGet200Response</returns>
-        System.Threading.Tasks.Task<NfeGet200Response> InvoicesGetAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoicesGet200Response</returns>
+        System.Threading.Tasks.Task<InvoicesGet200Response> InvoicesGetAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get invoice
@@ -104,8 +104,8 @@ namespace Emitfy.Generated.Api
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (NfeGet200Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NfeGet200Response>> InvoicesGetWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoicesGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoicesGet200Response>> InvoicesGetWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List invoices
         /// </summary>
@@ -352,10 +352,10 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
-        /// <returns>NfeGet200Response</returns>
-        public NfeGet200Response InvoicesGet(Guid companyId, string id)
+        /// <returns>InvoicesGet200Response</returns>
+        public InvoicesGet200Response InvoicesGet(Guid companyId, string id)
         {
-            Emitfy.Generated.Client.ApiResponse<NfeGet200Response> localVarResponse = InvoicesGetWithHttpInfo(companyId, id);
+            Emitfy.Generated.Client.ApiResponse<InvoicesGet200Response> localVarResponse = InvoicesGetWithHttpInfo(companyId, id);
             return localVarResponse.Data;
         }
 
@@ -365,8 +365,8 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of NfeGet200Response</returns>
-        public Emitfy.Generated.Client.ApiResponse<NfeGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id)
+        /// <returns>ApiResponse of InvoicesGet200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoicesGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -403,7 +403,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<NfeGet200Response>("/companies/{companyId}/invoices/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<InvoicesGet200Response>("/companies/{companyId}/invoices/{id}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -421,10 +421,10 @@ namespace Emitfy.Generated.Api
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of NfeGet200Response</returns>
-        public async System.Threading.Tasks.Task<NfeGet200Response> InvoicesGetAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoicesGet200Response</returns>
+        public async System.Threading.Tasks.Task<InvoicesGet200Response> InvoicesGetAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
-            Emitfy.Generated.Client.ApiResponse<NfeGet200Response> localVarResponse = await InvoicesGetWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoicesGet200Response> localVarResponse = await InvoicesGetWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -435,8 +435,8 @@ namespace Emitfy.Generated.Api
         /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (NfeGet200Response)</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<NfeGet200Response>> InvoicesGetWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoicesGet200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoicesGet200Response>> InvoicesGetWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -476,7 +476,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<NfeGet200Response>("/companies/{companyId}/invoices/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<InvoicesGet200Response>("/companies/{companyId}/invoices/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
