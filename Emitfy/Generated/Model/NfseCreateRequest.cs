@@ -47,9 +47,9 @@ namespace Emitfy.Generated.Model
         /// <param name="sku">Default direct-api-nfse.</param>
         /// <param name="category">Default other_service.</param>
         /// <param name="guarantee">guarantee.</param>
-        /// <param name="cityServiceCode">cityServiceCode.</param>
+        /// <param name="cityServiceCode">Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API) (required).</param>
         /// <param name="serviceCode">Alias legado de cityServiceCode.</param>
-        /// <param name="serviceItemCode">serviceItemCode.</param>
+        /// <param name="serviceItemCode">Item LC 116 (required).</param>
         /// <param name="nbsCode">nbsCode.</param>
         /// <param name="cnaeCode">cnaeCode.</param>
         /// <param name="taxClassification">taxClassification.</param>
@@ -58,12 +58,12 @@ namespace Emitfy.Generated.Model
         /// <param name="natureOfOperation">natureOfOperation.</param>
         /// <param name="serviceLocation">serviceLocation.</param>
         /// <param name="municipalityOfIncidence">municipalityOfIncidence.</param>
-        /// <param name="taxes">taxes.</param>
+        /// <param name="taxes">taxes (required).</param>
         /// <param name="amount">amount (required).</param>
         /// <param name="issueDate">issueDate.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="borrower">borrower (required).</param>
-        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, string category = default, int guarantee = default, string cityServiceCode = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string cnaeCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default, string natureOfOperation = default, string serviceLocation = default, string municipalityOfIncidence = default, Dictionary<string, Object> taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default)
+        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, string category = default, int guarantee = default, string cityServiceCode = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string cnaeCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default, string natureOfOperation = default, string serviceLocation = default, string municipalityOfIncidence = default, NfseCreateRequestTaxes taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default)
         {
             // to ensure "serviceDescription" is required (not null)
             if (serviceDescription == null)
@@ -71,6 +71,24 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("serviceDescription is a required property for NfseCreateRequest and cannot be null");
             }
             this.ServiceDescription = serviceDescription;
+            // to ensure "cityServiceCode" is required (not null)
+            if (cityServiceCode == null)
+            {
+                throw new ArgumentNullException("cityServiceCode is a required property for NfseCreateRequest and cannot be null");
+            }
+            this.CityServiceCode = cityServiceCode;
+            // to ensure "serviceItemCode" is required (not null)
+            if (serviceItemCode == null)
+            {
+                throw new ArgumentNullException("serviceItemCode is a required property for NfseCreateRequest and cannot be null");
+            }
+            this.ServiceItemCode = serviceItemCode;
+            // to ensure "taxes" is required (not null)
+            if (taxes == null)
+            {
+                throw new ArgumentNullException("taxes is a required property for NfseCreateRequest and cannot be null");
+            }
+            this.Taxes = taxes;
             this.Amount = amount;
             // to ensure "borrower" is required (not null)
             if (borrower == null)
@@ -82,9 +100,7 @@ namespace Emitfy.Generated.Model
             this.Sku = sku;
             this.Category = category;
             this.Guarantee = guarantee;
-            this.CityServiceCode = cityServiceCode;
             this.ServiceCode = serviceCode;
-            this.ServiceItemCode = serviceItemCode;
             this.NbsCode = nbsCode;
             this.CnaeCode = cnaeCode;
             this.TaxClassification = taxClassification;
@@ -93,7 +109,6 @@ namespace Emitfy.Generated.Model
             this.NatureOfOperation = natureOfOperation;
             this.ServiceLocation = serviceLocation;
             this.MunicipalityOfIncidence = municipalityOfIncidence;
-            this.Taxes = taxes;
             this.IssueDate = issueDate;
             this.ExternalId = externalId;
             this.AdditionalProperties = new Dictionary<string, object>();
@@ -134,9 +149,10 @@ namespace Emitfy.Generated.Model
         public int Guarantee { get; set; }
 
         /// <summary>
-        /// Gets or Sets CityServiceCode
+        /// Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API)
         /// </summary>
-        [DataMember(Name = "cityServiceCode", EmitDefaultValue = false)]
+        /// <value>Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API)</value>
+        [DataMember(Name = "cityServiceCode", IsRequired = true, EmitDefaultValue = true)]
         public string CityServiceCode { get; set; }
 
         /// <summary>
@@ -147,9 +163,10 @@ namespace Emitfy.Generated.Model
         public string ServiceCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets ServiceItemCode
+        /// Item LC 116
         /// </summary>
-        [DataMember(Name = "serviceItemCode", EmitDefaultValue = false)]
+        /// <value>Item LC 116</value>
+        [DataMember(Name = "serviceItemCode", IsRequired = true, EmitDefaultValue = true)]
         public string ServiceItemCode { get; set; }
 
         /// <summary>
@@ -203,8 +220,8 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Gets or Sets Taxes
         /// </summary>
-        [DataMember(Name = "taxes", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Taxes { get; set; }
+        [DataMember(Name = "taxes", IsRequired = true, EmitDefaultValue = true)]
+        public NfseCreateRequestTaxes Taxes { get; set; }
 
         /// <summary>
         /// Gets or Sets Amount

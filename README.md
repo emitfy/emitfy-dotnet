@@ -24,8 +24,14 @@ await company.Nfse.CreateAsync(new {
   category = "consulting",
   serviceDescription = "Consultoria em tecnologia",
   cityServiceCode = "02800",
+  serviceItemCode = "01.05",
+  taxes = new { iss = new { rate = 2.9, isWithheld = false } },
   amount = 100,
-  borrower = new { name = "Cliente LTDA", taxId = "12.345.678/0001-90" }
+  borrower = new {
+    name = "Cliente LTDA",
+    taxId = "12.345.678/0001-90",
+    email = "financeiro@cliente.com.br"
+  }
 });
 ```
 

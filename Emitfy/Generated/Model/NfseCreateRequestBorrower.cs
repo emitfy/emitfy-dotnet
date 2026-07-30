@@ -41,7 +41,7 @@ namespace Emitfy.Generated.Model
         /// </summary>
         /// <param name="taxId">taxId.</param>
         /// <param name="name">name (required).</param>
-        /// <param name="email">email.</param>
+        /// <param name="email">email (required).</param>
         /// <param name="phone">phone.</param>
         /// <param name="address">address.</param>
         public NfseCreateRequestBorrower(string taxId = default, string name = default, string email = default, string phone = default, Dictionary<string, Object> address = default)
@@ -52,8 +52,13 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("name is a required property for NfseCreateRequestBorrower and cannot be null");
             }
             this.Name = name;
-            this.TaxId = taxId;
+            // to ensure "email" is required (not null)
+            if (email == null)
+            {
+                throw new ArgumentNullException("email is a required property for NfseCreateRequestBorrower and cannot be null");
+            }
             this.Email = email;
+            this.TaxId = taxId;
             this.Phone = phone;
             this.Address = address;
         }
@@ -73,7 +78,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Gets or Sets Email
         /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false)]
+        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = true)]
         public string Email { get; set; }
 
         /// <summary>
