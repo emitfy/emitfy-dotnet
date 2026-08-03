@@ -26,41 +26,58 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// InvoicesGet200ResponseData
+    /// Política de emissão. &#x60;scheduledFor&#x60; só quando mode&#x3D;scheduled.
     /// </summary>
-    [DataContract(Name = "invoicesGet_200_response_data")]
-    public partial class InvoicesGet200ResponseData
+    [DataContract(Name = "PublicInvoiceResource_emission")]
+    public partial class PublicInvoiceResourceEmission
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvoicesGet200ResponseData" /> class.
+        /// Defines Mode
         /// </summary>
-        /// <param name="externalId">ID externo do pedido/ordem (API ou integração).</param>
-        /// <param name="transport">transport.</param>
-        public InvoicesGet200ResponseData(string externalId = default, TransportDetail transport = default)
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ModeEnum
         {
-            this.ExternalId = externalId;
-            this.Transport = transport;
-            this.AdditionalProperties = new Dictionary<string, object>();
+            /// <summary>
+            /// Enum Draft for value: draft
+            /// </summary>
+            [EnumMember(Value = "draft")]
+            Draft = 1,
+
+            /// <summary>
+            /// Enum Immediate for value: immediate
+            /// </summary>
+            [EnumMember(Value = "immediate")]
+            Immediate = 2,
+
+            /// <summary>
+            /// Enum Scheduled for value: scheduled
+            /// </summary>
+            [EnumMember(Value = "scheduled")]
+            Scheduled = 3
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Mode
+        /// </summary>
+        [DataMember(Name = "mode", EmitDefaultValue = false)]
+        public ModeEnum? Mode { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PublicInvoiceResourceEmission" /> class.
+        /// </summary>
+        /// <param name="mode">mode.</param>
+        /// <param name="scheduledFor">scheduledFor.</param>
+        public PublicInvoiceResourceEmission(ModeEnum? mode = default, DateTime scheduledFor = default)
+        {
+            this.Mode = mode;
+            this.ScheduledFor = scheduledFor;
         }
 
         /// <summary>
-        /// ID externo do pedido/ordem (API ou integração)
+        /// Gets or Sets ScheduledFor
         /// </summary>
-        /// <value>ID externo do pedido/ordem (API ou integração)</value>
-        [DataMember(Name = "externalId", EmitDefaultValue = false)]
-        public string ExternalId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Transport
-        /// </summary>
-        [DataMember(Name = "transport", EmitDefaultValue = false)]
-        public TransportDetail Transport { get; set; }
-
-        /// <summary>
-        /// Gets or Sets additional properties
-        /// </summary>
-        [JsonExtensionData]
-        public IDictionary<string, object> AdditionalProperties { get; set; }
+        [DataMember(Name = "scheduledFor", EmitDefaultValue = false)]
+        public DateTime ScheduledFor { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,10 +86,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InvoicesGet200ResponseData {\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Transport: ").Append(Transport).Append("\n");
-            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
+            sb.Append("class PublicInvoiceResourceEmission {\n");
+            sb.Append("  Mode: ").Append(Mode).Append("\n");
+            sb.Append("  ScheduledFor: ").Append(ScheduledFor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

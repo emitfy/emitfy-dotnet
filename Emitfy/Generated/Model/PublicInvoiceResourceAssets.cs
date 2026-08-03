@@ -26,45 +26,41 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// InvoicesGet200Response
+    /// PublicInvoiceResourceAssets
     /// </summary>
-    [DataContract(Name = "invoicesGet_200_response")]
-    public partial class InvoicesGet200Response
+    [DataContract(Name = "PublicInvoiceResource_assets")]
+    public partial class PublicInvoiceResourceAssets
     {
         /// <summary>
-        /// Defines Success
+        /// Initializes a new instance of the <see cref="PublicInvoiceResourceAssets" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SuccessEnum
+        /// <param name="pdf">pdf.</param>
+        /// <param name="xml">xml.</param>
+        /// <param name="verificationUrl">verificationUrl.</param>
+        public PublicInvoiceResourceAssets(string pdf = default, string xml = default, string verificationUrl = default)
         {
-            /// <summary>
-            /// Enum True for value: true
-            /// </summary>
-            True = 1
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Success
-        /// </summary>
-        [DataMember(Name = "success", EmitDefaultValue = true)]
-        public SuccessEnum? Success { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvoicesGet200Response" /> class.
-        /// </summary>
-        /// <param name="success">success.</param>
-        /// <param name="data">data.</param>
-        public InvoicesGet200Response(SuccessEnum? success = default, PublicInvoiceResource data = default)
-        {
-            this.Success = success;
-            this.Data = data;
+            this.Pdf = pdf;
+            this.Xml = xml;
+            this.VerificationUrl = verificationUrl;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets Pdf
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = false)]
-        public PublicInvoiceResource Data { get; set; }
+        [DataMember(Name = "pdf", EmitDefaultValue = false)]
+        public string Pdf { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Xml
+        /// </summary>
+        [DataMember(Name = "xml", EmitDefaultValue = false)]
+        public string Xml { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VerificationUrl
+        /// </summary>
+        [DataMember(Name = "verificationUrl", EmitDefaultValue = false)]
+        public string VerificationUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,9 +69,10 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InvoicesGet200Response {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class PublicInvoiceResourceAssets {\n");
+            sb.Append("  Pdf: ").Append(Pdf).Append("\n");
+            sb.Append("  Xml: ").Append(Xml).Append("\n");
+            sb.Append("  VerificationUrl: ").Append(VerificationUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

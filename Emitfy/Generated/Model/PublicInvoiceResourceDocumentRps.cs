@@ -26,45 +26,33 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// InvoicesGet200Response
+    /// PublicInvoiceResourceDocumentRps
     /// </summary>
-    [DataContract(Name = "invoicesGet_200_response")]
-    public partial class InvoicesGet200Response
+    [DataContract(Name = "PublicInvoiceResource_document_rps")]
+    public partial class PublicInvoiceResourceDocumentRps
     {
         /// <summary>
-        /// Defines Success
+        /// Initializes a new instance of the <see cref="PublicInvoiceResourceDocumentRps" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SuccessEnum
+        /// <param name="number">number.</param>
+        /// <param name="series">series.</param>
+        public PublicInvoiceResourceDocumentRps(string number = default, string series = default)
         {
-            /// <summary>
-            /// Enum True for value: true
-            /// </summary>
-            True = 1
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Success
-        /// </summary>
-        [DataMember(Name = "success", EmitDefaultValue = true)]
-        public SuccessEnum? Success { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvoicesGet200Response" /> class.
-        /// </summary>
-        /// <param name="success">success.</param>
-        /// <param name="data">data.</param>
-        public InvoicesGet200Response(SuccessEnum? success = default, PublicInvoiceResource data = default)
-        {
-            this.Success = success;
-            this.Data = data;
+            this.Number = number;
+            this.Series = series;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets Number
         /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = false)]
-        public PublicInvoiceResource Data { get; set; }
+        [DataMember(Name = "number", EmitDefaultValue = false)]
+        public string Number { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Series
+        /// </summary>
+        [DataMember(Name = "series", EmitDefaultValue = false)]
+        public string Series { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,9 +61,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InvoicesGet200Response {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class PublicInvoiceResourceDocumentRps {\n");
+            sb.Append("  Number: ").Append(Number).Append("\n");
+            sb.Append("  Series: ").Append(Series).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
