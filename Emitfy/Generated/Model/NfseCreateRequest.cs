@@ -47,23 +47,27 @@ namespace Emitfy.Generated.Model
         /// <param name="sku">Default direct-api-nfse.</param>
         /// <param name="category">Default other_service.</param>
         /// <param name="guarantee">guarantee.</param>
-        /// <param name="cityServiceCode">Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API) (required).</param>
-        /// <param name="serviceCode">Alias legado de cityServiceCode.</param>
-        /// <param name="serviceItemCode">Item LC 116 (required).</param>
-        /// <param name="nbsCode">nbsCode.</param>
+        /// <param name="cityServiceCode">Código municipal do serviço (required).</param>
+        /// <param name="federalServiceCode">Item LC 116 (cTribNac) (required).</param>
+        /// <param name="nbs">Código NBS (reforma).</param>
         /// <param name="cnaeCode">cnaeCode.</param>
-        /// <param name="taxClassification">taxClassification.</param>
-        /// <param name="ibsCst">ibsCst.</param>
-        /// <param name="ibsOperationIndicator">ibsOperationIndicator.</param>
+        /// <param name="iss">iss (required).</param>
+        /// <param name="ibsCbs">ibsCbs.</param>
         /// <param name="natureOfOperation">natureOfOperation.</param>
         /// <param name="serviceLocation">serviceLocation.</param>
         /// <param name="municipalityOfIncidence">municipalityOfIncidence.</param>
-        /// <param name="taxes">taxes (required).</param>
+        /// <param name="taxes">Retenções federais opcionais (pis/cofins/csll/ir/inss). ISS canônico é iss no topo..</param>
         /// <param name="amount">amount (required).</param>
         /// <param name="issueDate">issueDate.</param>
         /// <param name="externalId">externalId.</param>
         /// <param name="borrower">borrower (required).</param>
-        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, string category = default, int guarantee = default, string cityServiceCode = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string cnaeCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default, string natureOfOperation = default, string serviceLocation = default, string municipalityOfIncidence = default, NfseCreateRequestTaxes taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default)
+        /// <param name="serviceCode">Alias legado de cityServiceCode.</param>
+        /// <param name="serviceItemCode">Alias legado de federalServiceCode.</param>
+        /// <param name="nbsCode">Alias legado de nbs.</param>
+        /// <param name="taxClassification">Alias legado de ibsCbs.taxClassCode.</param>
+        /// <param name="ibsCst">Alias legado de ibsCbs.cst.</param>
+        /// <param name="ibsOperationIndicator">Alias legado de ibsCbs.operationIndicator.</param>
+        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, string category = default, int guarantee = default, string cityServiceCode = default, string federalServiceCode = default, string nbs = default, string cnaeCode = default, NfseCreateRequestIss iss = default, NfseCreateRequestIbsCbs ibsCbs = default, string natureOfOperation = default, string serviceLocation = default, string municipalityOfIncidence = default, Dictionary<string, Object> taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default)
         {
             // to ensure "serviceDescription" is required (not null)
             if (serviceDescription == null)
@@ -77,18 +81,18 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("cityServiceCode is a required property for NfseCreateRequest and cannot be null");
             }
             this.CityServiceCode = cityServiceCode;
-            // to ensure "serviceItemCode" is required (not null)
-            if (serviceItemCode == null)
+            // to ensure "federalServiceCode" is required (not null)
+            if (federalServiceCode == null)
             {
-                throw new ArgumentNullException("serviceItemCode is a required property for NfseCreateRequest and cannot be null");
+                throw new ArgumentNullException("federalServiceCode is a required property for NfseCreateRequest and cannot be null");
             }
-            this.ServiceItemCode = serviceItemCode;
-            // to ensure "taxes" is required (not null)
-            if (taxes == null)
+            this.FederalServiceCode = federalServiceCode;
+            // to ensure "iss" is required (not null)
+            if (iss == null)
             {
-                throw new ArgumentNullException("taxes is a required property for NfseCreateRequest and cannot be null");
+                throw new ArgumentNullException("iss is a required property for NfseCreateRequest and cannot be null");
             }
-            this.Taxes = taxes;
+            this.Iss = iss;
             this.Amount = amount;
             // to ensure "borrower" is required (not null)
             if (borrower == null)
@@ -100,17 +104,21 @@ namespace Emitfy.Generated.Model
             this.Sku = sku;
             this.Category = category;
             this.Guarantee = guarantee;
-            this.ServiceCode = serviceCode;
-            this.NbsCode = nbsCode;
+            this.Nbs = nbs;
             this.CnaeCode = cnaeCode;
-            this.TaxClassification = taxClassification;
-            this.IbsCst = ibsCst;
-            this.IbsOperationIndicator = ibsOperationIndicator;
+            this.IbsCbs = ibsCbs;
             this.NatureOfOperation = natureOfOperation;
             this.ServiceLocation = serviceLocation;
             this.MunicipalityOfIncidence = municipalityOfIncidence;
+            this.Taxes = taxes;
             this.IssueDate = issueDate;
             this.ExternalId = externalId;
+            this.ServiceCode = serviceCode;
+            this.ServiceItemCode = serviceItemCode;
+            this.NbsCode = nbsCode;
+            this.TaxClassification = taxClassification;
+            this.IbsCst = ibsCst;
+            this.IbsOperationIndicator = ibsOperationIndicator;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -149,31 +157,25 @@ namespace Emitfy.Generated.Model
         public int Guarantee { get; set; }
 
         /// <summary>
-        /// Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API)
+        /// Código municipal do serviço
         /// </summary>
-        /// <value>Código municipal do serviço (obrigatório; alias legado serviceCode ainda aceito na API)</value>
+        /// <value>Código municipal do serviço</value>
         [DataMember(Name = "cityServiceCode", IsRequired = true, EmitDefaultValue = true)]
         public string CityServiceCode { get; set; }
 
         /// <summary>
-        /// Alias legado de cityServiceCode
+        /// Item LC 116 (cTribNac)
         /// </summary>
-        /// <value>Alias legado de cityServiceCode</value>
-        [DataMember(Name = "serviceCode", EmitDefaultValue = false)]
-        public string ServiceCode { get; set; }
+        /// <value>Item LC 116 (cTribNac)</value>
+        [DataMember(Name = "federalServiceCode", IsRequired = true, EmitDefaultValue = true)]
+        public string FederalServiceCode { get; set; }
 
         /// <summary>
-        /// Item LC 116
+        /// Código NBS (reforma)
         /// </summary>
-        /// <value>Item LC 116</value>
-        [DataMember(Name = "serviceItemCode", IsRequired = true, EmitDefaultValue = true)]
-        public string ServiceItemCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NbsCode
-        /// </summary>
-        [DataMember(Name = "nbsCode", EmitDefaultValue = false)]
-        public string NbsCode { get; set; }
+        /// <value>Código NBS (reforma)</value>
+        [DataMember(Name = "nbs", EmitDefaultValue = false)]
+        public string Nbs { get; set; }
 
         /// <summary>
         /// Gets or Sets CnaeCode
@@ -182,22 +184,16 @@ namespace Emitfy.Generated.Model
         public string CnaeCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets TaxClassification
+        /// Gets or Sets Iss
         /// </summary>
-        [DataMember(Name = "taxClassification", EmitDefaultValue = false)]
-        public string TaxClassification { get; set; }
+        [DataMember(Name = "iss", IsRequired = true, EmitDefaultValue = true)]
+        public NfseCreateRequestIss Iss { get; set; }
 
         /// <summary>
-        /// Gets or Sets IbsCst
+        /// Gets or Sets IbsCbs
         /// </summary>
-        [DataMember(Name = "ibsCst", EmitDefaultValue = false)]
-        public string IbsCst { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IbsOperationIndicator
-        /// </summary>
-        [DataMember(Name = "ibsOperationIndicator", EmitDefaultValue = false)]
-        public string IbsOperationIndicator { get; set; }
+        [DataMember(Name = "ibsCbs", EmitDefaultValue = false)]
+        public NfseCreateRequestIbsCbs IbsCbs { get; set; }
 
         /// <summary>
         /// Gets or Sets NatureOfOperation
@@ -218,10 +214,11 @@ namespace Emitfy.Generated.Model
         public string MunicipalityOfIncidence { get; set; }
 
         /// <summary>
-        /// Gets or Sets Taxes
+        /// Retenções federais opcionais (pis/cofins/csll/ir/inss). ISS canônico é iss no topo.
         /// </summary>
-        [DataMember(Name = "taxes", IsRequired = true, EmitDefaultValue = true)]
-        public NfseCreateRequestTaxes Taxes { get; set; }
+        /// <value>Retenções federais opcionais (pis/cofins/csll/ir/inss). ISS canônico é iss no topo.</value>
+        [DataMember(Name = "taxes", EmitDefaultValue = false)]
+        public Dictionary<string, Object> Taxes { get; set; }
 
         /// <summary>
         /// Gets or Sets Amount
@@ -248,6 +245,54 @@ namespace Emitfy.Generated.Model
         public NfseCreateRequestBorrower Borrower { get; set; }
 
         /// <summary>
+        /// Alias legado de cityServiceCode
+        /// </summary>
+        /// <value>Alias legado de cityServiceCode</value>
+        [DataMember(Name = "serviceCode", EmitDefaultValue = false)]
+        [Obsolete]
+        public string ServiceCode { get; set; }
+
+        /// <summary>
+        /// Alias legado de federalServiceCode
+        /// </summary>
+        /// <value>Alias legado de federalServiceCode</value>
+        [DataMember(Name = "serviceItemCode", EmitDefaultValue = false)]
+        [Obsolete]
+        public string ServiceItemCode { get; set; }
+
+        /// <summary>
+        /// Alias legado de nbs
+        /// </summary>
+        /// <value>Alias legado de nbs</value>
+        [DataMember(Name = "nbsCode", EmitDefaultValue = false)]
+        [Obsolete]
+        public string NbsCode { get; set; }
+
+        /// <summary>
+        /// Alias legado de ibsCbs.taxClassCode
+        /// </summary>
+        /// <value>Alias legado de ibsCbs.taxClassCode</value>
+        [DataMember(Name = "taxClassification", EmitDefaultValue = false)]
+        [Obsolete]
+        public string TaxClassification { get; set; }
+
+        /// <summary>
+        /// Alias legado de ibsCbs.cst
+        /// </summary>
+        /// <value>Alias legado de ibsCbs.cst</value>
+        [DataMember(Name = "ibsCst", EmitDefaultValue = false)]
+        [Obsolete]
+        public string IbsCst { get; set; }
+
+        /// <summary>
+        /// Alias legado de ibsCbs.operationIndicator
+        /// </summary>
+        /// <value>Alias legado de ibsCbs.operationIndicator</value>
+        [DataMember(Name = "ibsOperationIndicator", EmitDefaultValue = false)]
+        [Obsolete]
+        public string IbsOperationIndicator { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -267,13 +312,11 @@ namespace Emitfy.Generated.Model
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  Guarantee: ").Append(Guarantee).Append("\n");
             sb.Append("  CityServiceCode: ").Append(CityServiceCode).Append("\n");
-            sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
-            sb.Append("  ServiceItemCode: ").Append(ServiceItemCode).Append("\n");
-            sb.Append("  NbsCode: ").Append(NbsCode).Append("\n");
+            sb.Append("  FederalServiceCode: ").Append(FederalServiceCode).Append("\n");
+            sb.Append("  Nbs: ").Append(Nbs).Append("\n");
             sb.Append("  CnaeCode: ").Append(CnaeCode).Append("\n");
-            sb.Append("  TaxClassification: ").Append(TaxClassification).Append("\n");
-            sb.Append("  IbsCst: ").Append(IbsCst).Append("\n");
-            sb.Append("  IbsOperationIndicator: ").Append(IbsOperationIndicator).Append("\n");
+            sb.Append("  Iss: ").Append(Iss).Append("\n");
+            sb.Append("  IbsCbs: ").Append(IbsCbs).Append("\n");
             sb.Append("  NatureOfOperation: ").Append(NatureOfOperation).Append("\n");
             sb.Append("  ServiceLocation: ").Append(ServiceLocation).Append("\n");
             sb.Append("  MunicipalityOfIncidence: ").Append(MunicipalityOfIncidence).Append("\n");
@@ -282,6 +325,12 @@ namespace Emitfy.Generated.Model
             sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Borrower: ").Append(Borrower).Append("\n");
+            sb.Append("  ServiceCode: ").Append(ServiceCode).Append("\n");
+            sb.Append("  ServiceItemCode: ").Append(ServiceItemCode).Append("\n");
+            sb.Append("  NbsCode: ").Append(NbsCode).Append("\n");
+            sb.Append("  TaxClassification: ").Append(TaxClassification).Append("\n");
+            sb.Append("  IbsCst: ").Append(IbsCst).Append("\n");
+            sb.Append("  IbsOperationIndicator: ").Append(IbsOperationIndicator).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -26,38 +26,44 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequestTaxesIss
+    /// NfseCreateRequestIbsCbs
     /// </summary>
-    [DataContract(Name = "NfseCreateRequest_taxes_iss")]
-    public partial class NfseCreateRequestTaxesIss
+    [DataContract(Name = "NfseCreateRequest_ibsCbs")]
+    public partial class NfseCreateRequestIbsCbs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NfseCreateRequestTaxesIss" /> class.
+        /// Initializes a new instance of the <see cref="NfseCreateRequestIbsCbs" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected NfseCreateRequestTaxesIss() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NfseCreateRequestTaxesIss" /> class.
-        /// </summary>
-        /// <param name="rate">rate (required).</param>
-        /// <param name="isWithheld">isWithheld.</param>
-        public NfseCreateRequestTaxesIss(decimal rate = default, bool isWithheld = default)
+        /// <param name="cst">CST IBS/CBS (default 000).</param>
+        /// <param name="taxClassCode">cClassTrib (default 000001).</param>
+        /// <param name="operationIndicator">cIndOp (default 100301).</param>
+        public NfseCreateRequestIbsCbs(string cst = default, string taxClassCode = default, string operationIndicator = default)
         {
-            this.Rate = rate;
-            this.IsWithheld = isWithheld;
+            this.Cst = cst;
+            this.TaxClassCode = taxClassCode;
+            this.OperationIndicator = operationIndicator;
         }
 
         /// <summary>
-        /// Gets or Sets Rate
+        /// CST IBS/CBS (default 000)
         /// </summary>
-        [DataMember(Name = "rate", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Rate { get; set; }
+        /// <value>CST IBS/CBS (default 000)</value>
+        [DataMember(Name = "cst", EmitDefaultValue = false)]
+        public string Cst { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsWithheld
+        /// cClassTrib (default 000001)
         /// </summary>
-        [DataMember(Name = "isWithheld", EmitDefaultValue = true)]
-        public bool IsWithheld { get; set; }
+        /// <value>cClassTrib (default 000001)</value>
+        [DataMember(Name = "taxClassCode", EmitDefaultValue = false)]
+        public string TaxClassCode { get; set; }
+
+        /// <summary>
+        /// cIndOp (default 100301)
+        /// </summary>
+        /// <value>cIndOp (default 100301)</value>
+        [DataMember(Name = "operationIndicator", EmitDefaultValue = false)]
+        public string OperationIndicator { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,9 +72,10 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class NfseCreateRequestTaxesIss {\n");
-            sb.Append("  Rate: ").Append(Rate).Append("\n");
-            sb.Append("  IsWithheld: ").Append(IsWithheld).Append("\n");
+            sb.Append("class NfseCreateRequestIbsCbs {\n");
+            sb.Append("  Cst: ").Append(Cst).Append("\n");
+            sb.Append("  TaxClassCode: ").Append(TaxClassCode).Append("\n");
+            sb.Append("  OperationIndicator: ").Append(OperationIndicator).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

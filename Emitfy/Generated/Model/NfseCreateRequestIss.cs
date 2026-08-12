@@ -26,45 +26,38 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequestTaxes
+    /// NfseCreateRequestIss
     /// </summary>
-    [DataContract(Name = "NfseCreateRequest_taxes")]
-    public partial class NfseCreateRequestTaxes
+    [DataContract(Name = "NfseCreateRequest_iss")]
+    public partial class NfseCreateRequestIss
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NfseCreateRequestTaxes" /> class.
+        /// Initializes a new instance of the <see cref="NfseCreateRequestIss" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected NfseCreateRequestTaxes()
-        {
-            this.AdditionalProperties = new Dictionary<string, object>();
-        }
+        protected NfseCreateRequestIss() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="NfseCreateRequestTaxes" /> class.
+        /// Initializes a new instance of the <see cref="NfseCreateRequestIss" /> class.
         /// </summary>
-        /// <param name="iss">iss (required).</param>
-        public NfseCreateRequestTaxes(NfseCreateRequestTaxesIss iss = default)
+        /// <param name="rate">rate (required).</param>
+        /// <param name="isWithheld">isWithheld.</param>
+        public NfseCreateRequestIss(decimal rate = default, bool isWithheld = default)
         {
-            // to ensure "iss" is required (not null)
-            if (iss == null)
-            {
-                throw new ArgumentNullException("iss is a required property for NfseCreateRequestTaxes and cannot be null");
-            }
-            this.Iss = iss;
-            this.AdditionalProperties = new Dictionary<string, object>();
+            this.Rate = rate;
+            this.IsWithheld = isWithheld;
         }
 
         /// <summary>
-        /// Gets or Sets Iss
+        /// Gets or Sets Rate
         /// </summary>
-        [DataMember(Name = "iss", IsRequired = true, EmitDefaultValue = true)]
-        public NfseCreateRequestTaxesIss Iss { get; set; }
+        [DataMember(Name = "rate", IsRequired = true, EmitDefaultValue = true)]
+        public decimal Rate { get; set; }
 
         /// <summary>
-        /// Gets or Sets additional properties
+        /// Gets or Sets IsWithheld
         /// </summary>
-        [JsonExtensionData]
-        public IDictionary<string, object> AdditionalProperties { get; set; }
+        [DataMember(Name = "isWithheld", EmitDefaultValue = true)]
+        public bool IsWithheld { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,9 +66,9 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class NfseCreateRequestTaxes {\n");
-            sb.Append("  Iss: ").Append(Iss).Append("\n");
-            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
+            sb.Append("class NfseCreateRequestIss {\n");
+            sb.Append("  Rate: ").Append(Rate).Append("\n");
+            sb.Append("  IsWithheld: ").Append(IsWithheld).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
