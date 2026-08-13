@@ -26,58 +26,36 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// Política de emissão. &#x60;scheduledFor&#x60; só quando mode&#x3D;scheduled.
+    /// NfeCorrectionRequest
     /// </summary>
-    [DataContract(Name = "PublicInvoiceResource_emission")]
-    public partial class PublicInvoiceResourceEmission
+    [DataContract(Name = "NfeCorrectionRequest")]
+    public partial class NfeCorrectionRequest
     {
         /// <summary>
-        /// Defines Mode
+        /// Initializes a new instance of the <see cref="NfeCorrectionRequest" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ModeEnum
-        {
-            /// <summary>
-            /// Enum Draft for value: draft
-            /// </summary>
-            [EnumMember(Value = "draft")]
-            Draft = 1,
-
-            /// <summary>
-            /// Enum Immediate for value: immediate
-            /// </summary>
-            [EnumMember(Value = "immediate")]
-            Immediate = 2,
-
-            /// <summary>
-            /// Enum Scheduled for value: scheduled
-            /// </summary>
-            [EnumMember(Value = "scheduled")]
-            Scheduled = 3
-        }
-
-
+        [JsonConstructorAttribute]
+        protected NfeCorrectionRequest() { }
         /// <summary>
-        /// Gets or Sets Mode
+        /// Initializes a new instance of the <see cref="NfeCorrectionRequest" /> class.
         /// </summary>
-        [DataMember(Name = "mode", EmitDefaultValue = false)]
-        public ModeEnum? Mode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PublicInvoiceResourceEmission" /> class.
-        /// </summary>
-        /// <param name="mode">mode.</param>
-        /// <param name="scheduledFor">scheduledFor.</param>
-        public PublicInvoiceResourceEmission(ModeEnum? mode = default, DateTime scheduledFor = default)
+        /// <param name="correction">Texto da CC-e (NF-e autorizada). Não reprocessa rejeição. (required).</param>
+        public NfeCorrectionRequest(string correction = default)
         {
-            this.Mode = mode;
-            this.ScheduledFor = scheduledFor;
+            // to ensure "correction" is required (not null)
+            if (correction == null)
+            {
+                throw new ArgumentNullException("correction is a required property for NfeCorrectionRequest and cannot be null");
+            }
+            this.Correction = correction;
         }
 
         /// <summary>
-        /// Gets or Sets ScheduledFor
+        /// Texto da CC-e (NF-e autorizada). Não reprocessa rejeição.
         /// </summary>
-        [DataMember(Name = "scheduledFor", EmitDefaultValue = false)]
-        public DateTime ScheduledFor { get; set; }
+        /// <value>Texto da CC-e (NF-e autorizada). Não reprocessa rejeição.</value>
+        [DataMember(Name = "correction", IsRequired = true, EmitDefaultValue = true)]
+        public string Correction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,9 +64,8 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PublicInvoiceResourceEmission {\n");
-            sb.Append("  Mode: ").Append(Mode).Append("\n");
-            sb.Append("  ScheduledFor: ").Append(ScheduledFor).Append("\n");
+            sb.Append("class NfeCorrectionRequest {\n");
+            sb.Append("  Correction: ").Append(Correction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

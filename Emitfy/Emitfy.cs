@@ -179,6 +179,15 @@ public sealed class CompaniesResource
 
     public Task<JsonElement?> CreateAsync(object payload, CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Post, "/companies", payload, ct: ct);
+
+    public Task<JsonElement?> GetAsync(string companyId, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(companyId)}", ct: ct);
+
+    public Task<JsonElement?> UpdateAsync(string companyId, object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Put, $"/companies/{Uri.EscapeDataString(companyId)}", payload, ct: ct);
+
+    public Task<JsonElement?> DeleteAsync(string companyId, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Delete, $"/companies/{Uri.EscapeDataString(companyId)}", ct: ct);
 }
 
 public sealed class CompanyResource
@@ -209,6 +218,48 @@ public sealed class CompanyResource
 
     public Task<JsonElement?> PostAsync(string suffix, object? payload = null, string? idempotencyKey = null, CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Post, $"{_basePath.TrimEnd('/')}/{suffix.TrimStart('/')}", payload, idempotencyKey, ct);
+
+    public Task<JsonElement?> XmlAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"{_basePath}/{Uri.EscapeDataString(id)}/xml", ct: ct);
+
+    public Task<JsonElement?> PdfAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"{_basePath}/{Uri.EscapeDataString(id)}/pdf", ct: ct);
+}
+
+public sealed class InvoicesResource
+{
+    private readonly EmitfyClient _client;
+    private readonly string _basePath;
+
+    internal InvoicesResource(EmitfyClient client, string basePath)
+    {
+        _client = client;
+        _basePath = basePath;
+    }
+
+    public Task<JsonElement?> ListAsync(CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, _basePath, ct: ct);
+
+    public Task<JsonElement?> GetAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"{_basePath}/{Uri.EscapeDataString(id)}", ct: ct);
+
+    public Task<JsonElement?> UpdateAsync(string id, object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(new HttpMethod("PATCH"), $"{_basePath}/{Uri.EscapeDataString(id)}", payload, ct: ct);
+
+    public Task<JsonElement?> EmitAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"{_basePath}/{Uri.EscapeDataString(id)}/emit", new { }, ct: ct);
+
+    public Task<JsonElement?> CancelAsync(string id, object? payload = null, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"{_basePath}/{Uri.EscapeDataString(id)}/cancel", payload ?? new { }, ct: ct);
+
+    public Task<JsonElement?> ConsultAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"{_basePath}/{Uri.EscapeDataString(id)}/consult", ct: ct);
+
+    public Task<JsonElement?> EventsAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"{_basePath}/{Uri.EscapeDataString(id)}/events", ct: ct);
+
+    public Task<JsonElement?> SendEmailAsync(string id, object? payload = null, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"{_basePath}/{Uri.EscapeDataString(id)}/send-borrower-email", payload ?? new { }, ct: ct);
 }
 
 public sealed class CompanyContext
@@ -222,7 +273,7 @@ public sealed class CompanyContext
     public CompanyResource Cte { get; }
     public CompanyResource Customers { get; }
     public CompanyResource Products { get; }
-    public CompanyResource Invoices { get; }
+    public InvoicesResource Invoices { get; }
     public CompanyResource ReceivedNfes { get; }
 
     internal CompanyContext(EmitfyClient client, string companyId)
@@ -236,7 +287,7 @@ public sealed class CompanyContext
         Cte = new CompanyResource(client, $"{prefix}/cte");
         Customers = new CompanyResource(client, $"{prefix}/customers");
         Products = new CompanyResource(client, $"{prefix}/products");
-        Invoices = new CompanyResource(client, $"{prefix}/invoices");
+        Invoices = new InvoicesResource(client, $"{prefix}/invoices");
         ReceivedNfes = new CompanyResource(client, $"{prefix}/received-nfes");
     }
 
@@ -244,4 +295,31 @@ public sealed class CompanyContext
 
     public Task<JsonElement?> CreateCteOsAsync(object payload, string? idempotencyKey = null, CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/cte-os", payload, idempotencyKey, ct);
+
+    public Task<JsonElement?> StatusAsync(CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(_companyId)}/status", ct: ct);
+
+    public Task<JsonElement?> SetEnvironmentAsync(string environment, CancellationToken ct = default) =>
+        _client.RequestAsync(new HttpMethod("PATCH"), $"/companies/{Uri.EscapeDataString(_companyId)}/environment", new { environment }, ct: ct);
+
+    public Task<JsonElement?> CertificateStatusAsync(CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(_companyId)}/certificate", ct: ct);
+
+    public Task<JsonElement?> UploadCertificateAsync(object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/certificate", payload, ct: ct);
+
+    public Task<JsonElement?> DeleteCertificateAsync(CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Delete, $"/companies/{Uri.EscapeDataString(_companyId)}/certificate", ct: ct);
+
+    public Task<JsonElement?> CreateCorrectionLetterAsync(string id, object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/nfe/{Uri.EscapeDataString(id)}/correction", payload, ct: ct);
+
+    public Task<JsonElement?> InutilizeNfeAsync(object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/nfe/inutilizations", payload, ct: ct);
+
+    public Task<JsonElement?> TransmitNfceAsync(string id, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/nfce/{Uri.EscapeDataString(id)}/transmit", new { }, ct: ct);
+
+    public Task<JsonElement?> InutilizeNfceAsync(object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Post, $"/companies/{Uri.EscapeDataString(_companyId)}/nfce/inutilizations", payload, ct: ct);
 }

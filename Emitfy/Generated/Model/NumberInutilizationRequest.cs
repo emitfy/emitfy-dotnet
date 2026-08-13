@@ -26,64 +26,67 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// ReceivedNfesManifestRequest
+    /// NumberInutilizationRequest
     /// </summary>
-    [DataContract(Name = "receivedNfesManifest_request")]
-    public partial class ReceivedNfesManifestRequest
+    [DataContract(Name = "NumberInutilizationRequest")]
+    public partial class NumberInutilizationRequest
     {
         /// <summary>
-        /// Defines Type
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum Confirmed for value: confirmed
-            /// </summary>
-            [EnumMember(Value = "confirmed")]
-            Confirmed = 1,
-
-            /// <summary>
-            /// Enum Unknown for value: unknown
-            /// </summary>
-            [EnumMember(Value = "unknown")]
-            Unknown = 2,
-
-            /// <summary>
-            /// Enum NotPerformed for value: notPerformed
-            /// </summary>
-            [EnumMember(Value = "notPerformed")]
-            NotPerformed = 3
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public TypeEnum Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReceivedNfesManifestRequest" /> class.
+        /// Initializes a new instance of the <see cref="NumberInutilizationRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ReceivedNfesManifestRequest() { }
+        protected NumberInutilizationRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReceivedNfesManifestRequest" /> class.
+        /// Initializes a new instance of the <see cref="NumberInutilizationRequest" /> class.
         /// </summary>
-        /// <param name="type">type (required).</param>
-        /// <param name="justification">Obrigatório para notPerformed (15–255 chars).</param>
-        public ReceivedNfesManifestRequest(TypeEnum type = default, string justification = default)
+        /// <param name="series">series (required).</param>
+        /// <param name="rangeStart">rangeStart (required).</param>
+        /// <param name="rangeEnd">rangeEnd (required).</param>
+        /// <param name="justification">justification (required).</param>
+        /// <param name="year">year.</param>
+        public NumberInutilizationRequest(int series = default, int rangeStart = default, int rangeEnd = default, string justification = default, int year = default)
         {
-            this.Type = type;
+            this.Series = series;
+            this.RangeStart = rangeStart;
+            this.RangeEnd = rangeEnd;
+            // to ensure "justification" is required (not null)
+            if (justification == null)
+            {
+                throw new ArgumentNullException("justification is a required property for NumberInutilizationRequest and cannot be null");
+            }
             this.Justification = justification;
+            this.Year = year;
         }
 
         /// <summary>
-        /// Obrigatório para notPerformed (15–255 chars)
+        /// Gets or Sets Series
         /// </summary>
-        /// <value>Obrigatório para notPerformed (15–255 chars)</value>
-        [DataMember(Name = "justification", EmitDefaultValue = false)]
+        [DataMember(Name = "series", IsRequired = true, EmitDefaultValue = true)]
+        public int Series { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RangeStart
+        /// </summary>
+        [DataMember(Name = "rangeStart", IsRequired = true, EmitDefaultValue = true)]
+        public int RangeStart { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RangeEnd
+        /// </summary>
+        [DataMember(Name = "rangeEnd", IsRequired = true, EmitDefaultValue = true)]
+        public int RangeEnd { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Justification
+        /// </summary>
+        [DataMember(Name = "justification", IsRequired = true, EmitDefaultValue = true)]
         public string Justification { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Year
+        /// </summary>
+        [DataMember(Name = "year", EmitDefaultValue = false)]
+        public int Year { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,9 +95,12 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ReceivedNfesManifestRequest {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class NumberInutilizationRequest {\n");
+            sb.Append("  Series: ").Append(Series).Append("\n");
+            sb.Append("  RangeStart: ").Append(RangeStart).Append("\n");
+            sb.Append("  RangeEnd: ").Append(RangeEnd).Append("\n");
             sb.Append("  Justification: ").Append(Justification).Append("\n");
+            sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
