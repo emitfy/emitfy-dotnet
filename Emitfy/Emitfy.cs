@@ -216,6 +216,9 @@ public sealed class CompanyResource
     public Task<JsonElement?> DeleteAsync(string id, CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Delete, $"{_basePath}/{Uri.EscapeDataString(id)}", ct: ct);
 
+    public Task<JsonElement?> CancelAsync(string id, object payload, CancellationToken ct = default) =>
+        _client.RequestAsync(HttpMethod.Delete, $"{_basePath}/{Uri.EscapeDataString(id)}", payload, ct: ct);
+
     public Task<JsonElement?> PostAsync(string suffix, object? payload = null, string? idempotencyKey = null, CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Post, $"{_basePath.TrimEnd('/')}/{suffix.TrimStart('/')}", payload, idempotencyKey, ct);
 
@@ -271,6 +274,7 @@ public sealed class CompanyContext
     public CompanyResource Nfe { get; }
     public CompanyResource Nfce { get; }
     public CompanyResource Cte { get; }
+    public CompanyResource Mdfe { get; }
     public CompanyResource Customers { get; }
     public CompanyResource Products { get; }
     public InvoicesResource Invoices { get; }
@@ -285,6 +289,7 @@ public sealed class CompanyContext
         Nfe = new CompanyResource(client, $"{prefix}/nfe");
         Nfce = new CompanyResource(client, $"{prefix}/nfce");
         Cte = new CompanyResource(client, $"{prefix}/cte");
+        Mdfe = new CompanyResource(client, $"{prefix}/mdfe");
         Customers = new CompanyResource(client, $"{prefix}/customers");
         Products = new CompanyResource(client, $"{prefix}/products");
         Invoices = new InvoicesResource(client, $"{prefix}/invoices");
@@ -299,6 +304,7 @@ public sealed class CompanyContext
     public Task<JsonElement?> StatusAsync(CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(_companyId)}/status", ct: ct);
 
+    [Obsolete("Public emission is always production. This endpoint returns 410.")]
     public Task<JsonElement?> SetEnvironmentAsync(string environment, CancellationToken ct = default) =>
         _client.RequestAsync(new HttpMethod("PATCH"), $"/companies/{Uri.EscapeDataString(_companyId)}/environment", new { environment }, ct: ct);
 
