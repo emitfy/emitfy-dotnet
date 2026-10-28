@@ -304,10 +304,6 @@ public sealed class CompanyContext
     public Task<JsonElement?> StatusAsync(CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(_companyId)}/status", ct: ct);
 
-    [Obsolete("Public emission is always production. This endpoint returns 410.")]
-    public Task<JsonElement?> SetEnvironmentAsync(string environment, CancellationToken ct = default) =>
-        _client.RequestAsync(new HttpMethod("PATCH"), $"/companies/{Uri.EscapeDataString(_companyId)}/environment", new { environment }, ct: ct);
-
     public Task<JsonElement?> CertificateStatusAsync(CancellationToken ct = default) =>
         _client.RequestAsync(HttpMethod.Get, $"/companies/{Uri.EscapeDataString(_companyId)}/certificate", ct: ct);
 
