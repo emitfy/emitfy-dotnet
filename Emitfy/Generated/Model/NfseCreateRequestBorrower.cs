@@ -39,7 +39,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfseCreateRequestBorrower" /> class.
         /// </summary>
-        /// <param name="taxId">taxId.</param>
+        /// <param name="taxId">CPF ou CNPJ do tomador.</param>
         /// <param name="name">name (required).</param>
         /// <param name="email">email (required).</param>
         /// <param name="phone">phone.</param>
@@ -64,8 +64,9 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
-        /// Gets or Sets TaxId
+        /// CPF ou CNPJ do tomador
         /// </summary>
+        /// <value>CPF ou CNPJ do tomador</value>
         [DataMember(Name = "taxId", EmitDefaultValue = false)]
         public string TaxId { get; set; }
 

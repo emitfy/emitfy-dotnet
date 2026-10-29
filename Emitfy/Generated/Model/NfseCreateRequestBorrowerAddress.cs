@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequestBorrowerAddress
+    /// Endereço do tomador. Não aceita código IBGE (&#x60;cityCode&#x60;/&#x60;ibge&#x60;) — campo desconhecido retorna 422. 
     /// </summary>
     [DataContract(Name = "NfseCreateRequest_borrower_address")]
     public partial class NfseCreateRequestBorrowerAddress
@@ -41,9 +41,7 @@ namespace Emitfy.Generated.Model
         /// <param name="city">city.</param>
         /// <param name="state">state.</param>
         /// <param name="zipcode">zipcode.</param>
-        /// <param name="cityCode">cityCode.</param>
-        /// <param name="ibge">ibge.</param>
-        public NfseCreateRequestBorrowerAddress(string street = default, string number = default, string complement = default, string district = default, string city = default, string state = default, string zipcode = default, string cityCode = default, string ibge = default)
+        public NfseCreateRequestBorrowerAddress(string street = default, string number = default, string complement = default, string district = default, string city = default, string state = default, string zipcode = default)
         {
             this.Street = street;
             this.Number = number;
@@ -52,8 +50,6 @@ namespace Emitfy.Generated.Model
             this.City = city;
             this.State = state;
             this.Zipcode = zipcode;
-            this.CityCode = cityCode;
-            this.Ibge = ibge;
         }
 
         /// <summary>
@@ -99,18 +95,6 @@ namespace Emitfy.Generated.Model
         public string Zipcode { get; set; }
 
         /// <summary>
-        /// Gets or Sets CityCode
-        /// </summary>
-        [DataMember(Name = "cityCode", EmitDefaultValue = false)]
-        public string CityCode { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Ibge
-        /// </summary>
-        [DataMember(Name = "ibge", EmitDefaultValue = false)]
-        public string Ibge { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -125,8 +109,6 @@ namespace Emitfy.Generated.Model
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zipcode: ").Append(Zipcode).Append("\n");
-            sb.Append("  CityCode: ").Append(CityCode).Append("\n");
-            sb.Append("  Ibge: ").Append(Ibge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -34,7 +34,7 @@ namespace Emitfy.Generated.Api
         /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <returns></returns>
         void CustomersCreate(Guid companyId, Dictionary<string, Object> requestBody);
@@ -46,7 +46,7 @@ namespace Emitfy.Generated.Api
         /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CustomersCreateWithHttpInfo(Guid companyId, Dictionary<string, Object> requestBody);
@@ -54,7 +54,7 @@ namespace Emitfy.Generated.Api
         /// Delete customer
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void CustomersDelete(Guid companyId, string id);
@@ -66,7 +66,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CustomersDeleteWithHttpInfo(Guid companyId, string id);
@@ -74,7 +74,7 @@ namespace Emitfy.Generated.Api
         /// Get customer
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void CustomersGet(Guid companyId, string id);
@@ -86,7 +86,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CustomersGetWithHttpInfo(Guid companyId, string id);
@@ -94,12 +94,15 @@ namespace Emitfy.Generated.Api
         /// List customers
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <returns></returns>
-        void CustomersList(Guid companyId, int? page = default, int? pageSize = default, string? search = default);
+        void CustomersList(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default);
 
         /// <summary>
         /// List customers
@@ -108,17 +111,20 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CustomersListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? search = default);
+        ApiResponse<Object> CustomersListWithHttpInfo(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default);
         /// <summary>
         /// Update customer (overwrite)
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <returns></returns>
@@ -131,7 +137,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -152,7 +158,7 @@ namespace Emitfy.Generated.Api
         /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -165,7 +171,7 @@ namespace Emitfy.Generated.Api
         /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -177,7 +183,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -190,7 +196,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -202,7 +208,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -215,7 +221,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -227,13 +233,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CustomersListAsync(Guid companyId, int? page = default, int? pageSize = default, string? search = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task CustomersListAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List customers
@@ -242,13 +251,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CustomersListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? search = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> CustomersListWithHttpInfoAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update customer (overwrite)
         /// </summary>
@@ -256,7 +268,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -270,7 +282,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -493,7 +505,7 @@ namespace Emitfy.Generated.Api
         /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <returns></returns>
         public void CustomersCreate(Guid companyId, Dictionary<string, Object> requestBody)
@@ -505,7 +517,7 @@ namespace Emitfy.Generated.Api
         /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> CustomersCreateWithHttpInfo(Guid companyId, Dictionary<string, Object> requestBody)
@@ -561,7 +573,7 @@ namespace Emitfy.Generated.Api
         /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -574,7 +586,7 @@ namespace Emitfy.Generated.Api
         /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="requestBody"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -634,7 +646,7 @@ namespace Emitfy.Generated.Api
         /// Delete customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void CustomersDelete(Guid companyId, string id)
@@ -646,7 +658,7 @@ namespace Emitfy.Generated.Api
         /// Delete customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> CustomersDeleteWithHttpInfo(Guid companyId, string id)
@@ -700,7 +712,7 @@ namespace Emitfy.Generated.Api
         /// Delete customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -713,7 +725,7 @@ namespace Emitfy.Generated.Api
         /// Delete customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -771,7 +783,7 @@ namespace Emitfy.Generated.Api
         /// Get customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void CustomersGet(Guid companyId, string id)
@@ -783,7 +795,7 @@ namespace Emitfy.Generated.Api
         /// Get customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> CustomersGetWithHttpInfo(Guid companyId, string id)
@@ -837,7 +849,7 @@ namespace Emitfy.Generated.Api
         /// Get customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -850,7 +862,7 @@ namespace Emitfy.Generated.Api
         /// Get customer 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -908,26 +920,32 @@ namespace Emitfy.Generated.Api
         /// List customers 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <returns></returns>
-        public void CustomersList(Guid companyId, int? page = default, int? pageSize = default, string? search = default)
+        public void CustomersList(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default)
         {
-            CustomersListWithHttpInfo(companyId, page, pageSize, search);
+            CustomersListWithHttpInfo(companyId, limit, action, cursor, page, search, filter);
         }
 
         /// <summary>
         /// List customers 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> CustomersListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? search = default)
+        public Emitfy.Generated.Client.ApiResponse<Object> CustomersListWithHttpInfo(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -945,17 +963,29 @@ namespace Emitfy.Generated.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (action != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "action", action));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
             }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
             if (search != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             // authentication (ApiKeyAuth) required
@@ -985,28 +1015,34 @@ namespace Emitfy.Generated.Api
         /// List customers 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CustomersListAsync(Guid companyId, int? page = default, int? pageSize = default, string? search = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task CustomersListAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CustomersListWithHttpInfoAsync(companyId, page, pageSize, search, cancellationToken).ConfigureAwait(false);
+            await CustomersListWithHttpInfoAsync(companyId, limit, action, cursor, page, search, filter, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// List customers 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
         /// <param name="search"> (optional)</param>
+        /// <param name="filter"> (optional, default to all)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CustomersListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? search = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CustomersListWithHttpInfoAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? search = default, string? filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -1026,17 +1062,29 @@ namespace Emitfy.Generated.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (action != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "action", action));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
             }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
             if (search != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
             }
 
             // authentication (ApiKeyAuth) required
@@ -1067,7 +1115,7 @@ namespace Emitfy.Generated.Api
         /// Update customer (overwrite) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <returns></returns>
@@ -1080,7 +1128,7 @@ namespace Emitfy.Generated.Api
         /// Update customer (overwrite) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -1137,7 +1185,7 @@ namespace Emitfy.Generated.Api
         /// Update customer (overwrite) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1151,7 +1199,7 @@ namespace Emitfy.Generated.Api
         /// Update customer (overwrite) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

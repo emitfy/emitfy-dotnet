@@ -30,23 +30,26 @@ namespace Emitfy.Generated.Api
         /// <summary>
         /// Cancel NF-e
         /// </summary>
+        /// <remarks>
+        /// Sem corpo. Enfileira o cancelamento da NF-e autorizada.
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        void NfeCancel(Guid companyId, string id);
+        /// <returns>InvoiceCancelAccepted</returns>
+        InvoiceCancelAccepted NfeCancel(Guid companyId, string id);
 
         /// <summary>
         /// Cancel NF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeCancelWithHttpInfo(Guid companyId, string id);
+        /// <returns>ApiResponse of InvoiceCancelAccepted</returns>
+        ApiResponse<InvoiceCancelAccepted> NfeCancelWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
@@ -54,11 +57,11 @@ namespace Emitfy.Generated.Api
         /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
-        /// <returns></returns>
-        void NfeCorrection(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest);
+        /// <returns>NfeCorrection200Response</returns>
+        NfeCorrection200Response NfeCorrection(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest);
 
         /// <summary>
         /// Issue NF-e correction letter (CC-e)
@@ -67,20 +70,20 @@ namespace Emitfy.Generated.Api
         /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeCorrectionWithHttpInfo(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest);
+        /// <returns>ApiResponse of NfeCorrection200Response</returns>
+        ApiResponse<NfeCorrection200Response> NfeCorrectionWithHttpInfo(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest);
         /// <summary>
         /// Emit NF-e (shortcut)
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        void NfeCreate(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default);
+        /// <returns>InvoiceCreateAccepted</returns>
+        InvoiceCreateAccepted NfeCreate(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Emit NF-e (shortcut)
@@ -89,16 +92,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeCreateWithHttpInfo(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default);
+        /// <returns>ApiResponse of InvoiceCreateAccepted</returns>
+        ApiResponse<InvoiceCreateAccepted> NfeCreateWithHttpInfo(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default);
         /// <summary>
         /// Get NF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>NfeGet200Response</returns>
         NfeGet200Response NfeGet(Guid companyId, string id);
@@ -110,18 +113,43 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of NfeGet200Response</returns>
         ApiResponse<NfeGet200Response> NfeGetWithHttpInfo(Guid companyId, string id);
         /// <summary>
+        /// List NF-e number inutilizations
+        /// </summary>
+        /// <remarks>
+        /// Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <returns>NumberInutilizationList</returns>
+        NumberInutilizationList NfeInutilizationsList(Guid companyId, int? page = default, int? pageSize = default);
+
+        /// <summary>
+        /// List NF-e number inutilizations
+        /// </summary>
+        /// <remarks>
+        /// Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <returns>ApiResponse of NumberInutilizationList</returns>
+        ApiResponse<NumberInutilizationList> NfeInutilizationsListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default);
+        /// <summary>
         /// Inutilize NF-e number range
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="numberInutilizationRequest"></param>
-        /// <returns></returns>
-        void NfeInutilize(Guid companyId, NumberInutilizationRequest numberInutilizationRequest);
+        /// <returns>NfeInutilize200Response</returns>
+        NfeInutilize200Response NfeInutilize(Guid companyId, NumberInutilizationRequest numberInutilizationRequest);
 
         /// <summary>
         /// Inutilize NF-e number range
@@ -130,19 +158,20 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="numberInutilizationRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeInutilizeWithHttpInfo(Guid companyId, NumberInutilizationRequest numberInutilizationRequest);
+        /// <returns>ApiResponse of NfeInutilize200Response</returns>
+        ApiResponse<NfeInutilize200Response> NfeInutilizeWithHttpInfo(Guid companyId, NumberInutilizationRequest numberInutilizationRequest);
         /// <summary>
         /// List NF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns></returns>
-        void NfeList(Guid companyId, int? page = default, int? pageSize = default);
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <returns>InvoiceTypedList</returns>
+        InvoiceTypedList NfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
 
         /// <summary>
         /// List NF-e
@@ -151,36 +180,44 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default);
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <returns>ApiResponse of InvoiceTypedList</returns>
+        ApiResponse<InvoiceTypedList> NfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
         /// <summary>
-        /// Get NF-e PDF
-        /// </summary>
-        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        void NfePdf(Guid companyId, string id);
-
-        /// <summary>
-        /// Get NF-e PDF
+        /// Get NF-e PDF (DANFE)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfePdfWithHttpInfo(Guid companyId, string id);
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
+        /// <returns>FileParameter</returns>
+        FileParameter NfePdf(Guid companyId, string id, string? download = default, string? regenerate = default);
+
+        /// <summary>
+        /// Get NF-e PDF (DANFE)
+        /// </summary>
+        /// <remarks>
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        ApiResponse<FileParameter> NfePdfWithHttpInfo(Guid companyId, string id, string? download = default, string? regenerate = default);
         /// <summary>
         /// Get NF-e rejection XML
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void NfeRejectionXml(Guid companyId, string id);
@@ -192,30 +229,35 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> NfeRejectionXmlWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Get NF-e XML
         /// </summary>
+        /// <remarks>
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        void NfeXml(Guid companyId, string id);
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <returns>FileParameter</returns>
+        FileParameter NfeXml(Guid companyId, string id, string? download = default);
 
         /// <summary>
         /// Get NF-e XML
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> NfeXmlWithHttpInfo(Guid companyId, string id);
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        ApiResponse<FileParameter> NfeXmlWithHttpInfo(Guid companyId, string id, string? download = default);
         #endregion Synchronous Operations
     }
 
@@ -229,27 +271,27 @@ namespace Emitfy.Generated.Api
         /// Cancel NF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoiceCancelAccepted</returns>
+        System.Threading.Tasks.Task<InvoiceCancelAccepted> NfeCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Cancel NF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoiceCancelAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoiceCancelAccepted>> NfeCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
@@ -257,12 +299,12 @@ namespace Emitfy.Generated.Api
         /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeCorrectionAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of NfeCorrection200Response</returns>
+        System.Threading.Tasks.Task<NfeCorrection200Response> NfeCorrectionAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Issue NF-e correction letter (CC-e)
@@ -271,12 +313,12 @@ namespace Emitfy.Generated.Api
         /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeCorrectionWithHttpInfoAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (NfeCorrection200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NfeCorrection200Response>> NfeCorrectionWithHttpInfoAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Emit NF-e (shortcut)
         /// </summary>
@@ -284,12 +326,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeCreateAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoiceCreateAccepted</returns>
+        System.Threading.Tasks.Task<InvoiceCreateAccepted> NfeCreateAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Emit NF-e (shortcut)
@@ -298,12 +340,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeCreateWithHttpInfoAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoiceCreateAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoiceCreateAccepted>> NfeCreateWithHttpInfoAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get NF-e
         /// </summary>
@@ -311,7 +353,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of NfeGet200Response</returns>
@@ -324,23 +366,50 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (NfeGet200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<NfeGet200Response>> NfeGetWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// List NF-e number inutilizations
+        /// </summary>
+        /// <remarks>
+        /// Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NumberInutilizationList</returns>
+        System.Threading.Tasks.Task<NumberInutilizationList> NfeInutilizationsListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List NF-e number inutilizations
+        /// </summary>
+        /// <remarks>
+        /// Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NumberInutilizationList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NumberInutilizationList>> NfeInutilizationsListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Inutilize NF-e number range
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="numberInutilizationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeInutilizeAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of NfeInutilize200Response</returns>
+        System.Threading.Tasks.Task<NfeInutilize200Response> NfeInutilizeAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Inutilize NF-e number range
@@ -349,11 +418,11 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="numberInutilizationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeInutilizeWithHttpInfoAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (NfeInutilize200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NfeInutilize200Response>> NfeInutilizeWithHttpInfoAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List NF-e
         /// </summary>
@@ -361,12 +430,13 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoiceTypedList</returns>
+        System.Threading.Tasks.Task<InvoiceTypedList> NfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List NF-e
@@ -375,37 +445,42 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoiceTypedList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoiceTypedList>> NfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get NF-e PDF
+        /// Get NF-e PDF (DANFE)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfePdfAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> NfePdfAsync(Guid companyId, string id, string? download = default, string? regenerate = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get NF-e PDF
+        /// Get NF-e PDF (DANFE)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfePdfWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileParameter>> NfePdfWithHttpInfoAsync(Guid companyId, string id, string? download = default, string? regenerate = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get NF-e rejection XML
         /// </summary>
@@ -413,7 +488,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -426,7 +501,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -435,27 +510,29 @@ namespace Emitfy.Generated.Api
         /// Get NF-e XML
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task NfeXmlAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> NfeXmlAsync(Guid companyId, string id, string? download = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get NF-e XML
         /// </summary>
         /// <remarks>
-        /// 
+        /// Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> NfeXmlWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileParameter>> NfeXmlWithHttpInfoAsync(Guid companyId, string id, string? download = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -670,25 +747,26 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel NF-e 
+        /// Cancel NF-e Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public void NfeCancel(Guid companyId, string id)
+        /// <returns>InvoiceCancelAccepted</returns>
+        public InvoiceCancelAccepted NfeCancel(Guid companyId, string id)
         {
-            NfeCancelWithHttpInfo(companyId, id);
+            Emitfy.Generated.Client.ApiResponse<InvoiceCancelAccepted> localVarResponse = NfeCancelWithHttpInfo(companyId, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel NF-e 
+        /// Cancel NF-e Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeCancelWithHttpInfo(Guid companyId, string id)
+        /// <returns>ApiResponse of InvoiceCancelAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoiceCancelAccepted> NfeCancelWithHttpInfo(Guid companyId, string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -701,6 +779,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -724,7 +803,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/companies/{companyId}/nfe/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<InvoiceCancelAccepted>("/companies/{companyId}/nfe/{id}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -736,27 +815,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel NF-e 
+        /// Cancel NF-e Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoiceCancelAccepted</returns>
+        public async System.Threading.Tasks.Task<InvoiceCancelAccepted> NfeCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfeCancelWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoiceCancelAccepted> localVarResponse = await NfeCancelWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel NF-e 
+        /// Cancel NF-e Sem corpo. Enfileira o cancelamento da NF-e autorizada.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoiceCancelAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoiceCancelAccepted>> NfeCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -770,6 +850,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -795,7 +876,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/companies/{companyId}/nfe/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<InvoiceCancelAccepted>("/companies/{companyId}/nfe/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -810,24 +891,25 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
-        /// <returns></returns>
-        public void NfeCorrection(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest)
+        /// <returns>NfeCorrection200Response</returns>
+        public NfeCorrection200Response NfeCorrection(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest)
         {
-            NfeCorrectionWithHttpInfo(companyId, id, nfeCorrectionRequest);
+            Emitfy.Generated.Client.ApiResponse<NfeCorrection200Response> localVarResponse = NfeCorrectionWithHttpInfo(companyId, id, nfeCorrectionRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeCorrectionWithHttpInfo(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest)
+        /// <returns>ApiResponse of NfeCorrection200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<NfeCorrection200Response> NfeCorrectionWithHttpInfo(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -845,6 +927,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -869,7 +952,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/nfe/{id}/correction", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<NfeCorrection200Response>("/companies/{companyId}/nfe/{id}/correction", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -884,26 +967,27 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeCorrectionAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of NfeCorrection200Response</returns>
+        public async System.Threading.Tasks.Task<NfeCorrection200Response> NfeCorrectionAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfeCorrectionWithHttpInfoAsync(companyId, id, nfeCorrectionRequest, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<NfeCorrection200Response> localVarResponse = await NfeCorrectionWithHttpInfoAsync(companyId, id, nfeCorrectionRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="nfeCorrectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeCorrectionWithHttpInfoAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (NfeCorrection200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<NfeCorrection200Response>> NfeCorrectionWithHttpInfoAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -922,6 +1006,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -948,7 +1033,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/nfe/{id}/correction", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<NfeCorrection200Response>("/companies/{companyId}/nfe/{id}/correction", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -963,24 +1048,25 @@ namespace Emitfy.Generated.Api
         /// Emit NF-e (shortcut) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        public void NfeCreate(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default)
+        /// <returns>InvoiceCreateAccepted</returns>
+        public InvoiceCreateAccepted NfeCreate(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default)
         {
-            NfeCreateWithHttpInfo(companyId, nfeCreateRequest, idempotencyKey);
+            Emitfy.Generated.Client.ApiResponse<InvoiceCreateAccepted> localVarResponse = NfeCreateWithHttpInfo(companyId, nfeCreateRequest, idempotencyKey);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit NF-e (shortcut) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeCreateWithHttpInfo(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default)
+        /// <returns>ApiResponse of InvoiceCreateAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoiceCreateAccepted> NfeCreateWithHttpInfo(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'nfeCreateRequest' is set
             if (nfeCreateRequest == null)
@@ -994,6 +1080,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1021,7 +1108,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<InvoiceCreateAccepted>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1036,26 +1123,27 @@ namespace Emitfy.Generated.Api
         /// Emit NF-e (shortcut) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeCreateAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoiceCreateAccepted</returns>
+        public async System.Threading.Tasks.Task<InvoiceCreateAccepted> NfeCreateAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfeCreateWithHttpInfoAsync(companyId, nfeCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoiceCreateAccepted> localVarResponse = await NfeCreateWithHttpInfoAsync(companyId, nfeCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit NF-e (shortcut) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="nfeCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeCreateWithHttpInfoAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoiceCreateAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoiceCreateAccepted>> NfeCreateWithHttpInfoAsync(Guid companyId, NfeCreateRequest nfeCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'nfeCreateRequest' is set
             if (nfeCreateRequest == null)
@@ -1070,6 +1158,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1099,7 +1188,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<InvoiceCreateAccepted>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1114,7 +1203,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>NfeGet200Response</returns>
         public NfeGet200Response NfeGet(Guid companyId, string id)
@@ -1127,7 +1216,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of NfeGet200Response</returns>
         public Emitfy.Generated.Client.ApiResponse<NfeGet200Response> NfeGetWithHttpInfo(Guid companyId, string id)
@@ -1182,7 +1271,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of NfeGet200Response</returns>
@@ -1196,7 +1285,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (NfeGet200Response)</returns>
@@ -1252,166 +1341,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Inutilize NF-e number range 
+        /// List NF-e number inutilizations Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="numberInutilizationRequest"></param>
-        /// <returns></returns>
-        public void NfeInutilize(Guid companyId, NumberInutilizationRequest numberInutilizationRequest)
-        {
-            NfeInutilizeWithHttpInfo(companyId, numberInutilizationRequest);
-        }
-
-        /// <summary>
-        /// Inutilize NF-e number range 
-        /// </summary>
-        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="numberInutilizationRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeInutilizeWithHttpInfo(Guid companyId, NumberInutilizationRequest numberInutilizationRequest)
-        {
-            // verify the required parameter 'numberInutilizationRequest' is set
-            if (numberInutilizationRequest == null)
-                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'numberInutilizationRequest' when calling NfeApi->NfeInutilize");
-
-            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
-            localVarRequestOptions.Data = numberInutilizationRequest;
-
-            // authentication (ApiKeyAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
-            }
-            // authentication (ApiSecretAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("NfeInutilize", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Inutilize NF-e number range 
-        /// </summary>
-        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="numberInutilizationRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeInutilizeAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default)
-        {
-            await NfeInutilizeWithHttpInfoAsync(companyId, numberInutilizationRequest, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Inutilize NF-e number range 
-        /// </summary>
-        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="numberInutilizationRequest"></param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeInutilizeWithHttpInfoAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default)
-        {
-            // verify the required parameter 'numberInutilizationRequest' is set
-            if (numberInutilizationRequest == null)
-                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'numberInutilizationRequest' when calling NfeApi->NfeInutilize");
-
-
-            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-            };
-
-
-            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
-            localVarRequestOptions.Data = numberInutilizationRequest;
-
-            // authentication (ApiKeyAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
-            }
-            // authentication (ApiSecretAuth) required
-            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
-            }
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("NfeInutilize", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// List NF-e 
-        /// </summary>
-        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns></returns>
-        public void NfeList(Guid companyId, int? page = default, int? pageSize = default)
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <returns>NumberInutilizationList</returns>
+        public NumberInutilizationList NfeInutilizationsList(Guid companyId, int? page = default, int? pageSize = default)
         {
-            NfeListWithHttpInfo(companyId, page, pageSize);
+            Emitfy.Generated.Client.ApiResponse<NumberInutilizationList> localVarResponse = NfeInutilizationsListWithHttpInfo(companyId, page, pageSize);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List NF-e 
+        /// List NF-e number inutilizations Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default)
+        /// <param name="pageSize"> (optional, default to 30)</param>
+        /// <returns>ApiResponse of NumberInutilizationList</returns>
+        public Emitfy.Generated.Client.ApiResponse<NumberInutilizationList> NfeInutilizationsListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -1420,6 +1371,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1450,11 +1402,11 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<NumberInutilizationList>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("NfeList", localVarResponse);
+                Exception _exception = this.ExceptionFactory("NfeInutilizationsList", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -1462,29 +1414,30 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// List NF-e 
+        /// List NF-e number inutilizations Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of NumberInutilizationList</returns>
+        public async System.Threading.Tasks.Task<NumberInutilizationList> NfeInutilizationsListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfeListWithHttpInfoAsync(companyId, page, pageSize, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<NumberInutilizationList> localVarResponse = await NfeInutilizationsListWithHttpInfoAsync(companyId, page, pageSize, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List NF-e 
+        /// List NF-e number inutilizations Histórico de inutilizações de NF-e (modelo 55), mais recentes primeiro.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 30)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (NumberInutilizationList)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<NumberInutilizationList>> NfeInutilizationsListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -1494,6 +1447,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1526,7 +1480,229 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<NumberInutilizationList>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeInutilizationsList", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Inutilize NF-e number range 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="numberInutilizationRequest"></param>
+        /// <returns>NfeInutilize200Response</returns>
+        public NfeInutilize200Response NfeInutilize(Guid companyId, NumberInutilizationRequest numberInutilizationRequest)
+        {
+            Emitfy.Generated.Client.ApiResponse<NfeInutilize200Response> localVarResponse = NfeInutilizeWithHttpInfo(companyId, numberInutilizationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Inutilize NF-e number range 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="numberInutilizationRequest"></param>
+        /// <returns>ApiResponse of NfeInutilize200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<NfeInutilize200Response> NfeInutilizeWithHttpInfo(Guid companyId, NumberInutilizationRequest numberInutilizationRequest)
+        {
+            // verify the required parameter 'numberInutilizationRequest' is set
+            if (numberInutilizationRequest == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'numberInutilizationRequest' when calling NfeApi->NfeInutilize");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.Data = numberInutilizationRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<NfeInutilize200Response>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeInutilize", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Inutilize NF-e number range 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="numberInutilizationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of NfeInutilize200Response</returns>
+        public async System.Threading.Tasks.Task<NfeInutilize200Response> NfeInutilizeAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<NfeInutilize200Response> localVarResponse = await NfeInutilizeWithHttpInfoAsync(companyId, numberInutilizationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Inutilize NF-e number range 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="numberInutilizationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (NfeInutilize200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<NfeInutilize200Response>> NfeInutilizeWithHttpInfoAsync(Guid companyId, NumberInutilizationRequest numberInutilizationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'numberInutilizationRequest' is set
+            if (numberInutilizationRequest == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'numberInutilizationRequest' when calling NfeApi->NfeInutilize");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.Data = numberInutilizationRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<NfeInutilize200Response>("/companies/{companyId}/nfe/inutilizations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeInutilize", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List NF-e 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <returns>InvoiceTypedList</returns>
+        public InvoiceTypedList NfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<InvoiceTypedList> localVarResponse = NfeListWithHttpInfo(companyId, page, pageSize, status);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List NF-e 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <returns>ApiResponse of InvoiceTypedList</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoiceTypedList> NfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        {
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<InvoiceTypedList>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1538,25 +1714,114 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Get NF-e PDF 
+        /// List NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public void NfePdf(Guid companyId, string id)
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of InvoiceTypedList</returns>
+        public async System.Threading.Tasks.Task<InvoiceTypedList> NfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            NfePdfWithHttpInfo(companyId, id);
+            Emitfy.Generated.Client.ApiResponse<InvoiceTypedList> localVarResponse = await NfeListWithHttpInfoAsync(companyId, page, pageSize, status, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get NF-e PDF 
+        /// List NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="status">Filtro de status. Aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;; &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;.  (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (InvoiceTypedList)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoiceTypedList>> NfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<InvoiceTypedList>("/companies/{companyId}/nfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeList", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get NF-e PDF (DANFE) Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfePdfWithHttpInfo(Guid companyId, string id)
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
+        /// <returns>FileParameter</returns>
+        public FileParameter NfePdf(Guid companyId, string id, string? download = default, string? regenerate = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = NfePdfWithHttpInfo(companyId, id, download, regenerate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get NF-e PDF (DANFE) Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        public Emitfy.Generated.Client.ApiResponse<FileParameter> NfePdfWithHttpInfo(Guid companyId, string id, string? download = default, string? regenerate = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1569,6 +1834,8 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/pdf",
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1579,6 +1846,14 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (download != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "download", download));
+            }
+            if (regenerate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "regenerate", regenerate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1592,7 +1867,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/nfe/{id}/pdf", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<FileParameter>("/companies/{companyId}/nfe/{id}/pdf", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1604,27 +1879,32 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Get NF-e PDF 
+        /// Get NF-e PDF (DANFE) Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfePdfAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> NfePdfAsync(Guid companyId, string id, string? download = default, string? regenerate = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfePdfWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = await NfePdfWithHttpInfoAsync(companyId, id, download, regenerate, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get NF-e PDF 
+        /// Get NF-e PDF (DANFE) Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <param name="regenerate">&#x60;1&#x60;/&#x60;true&#x60; &#x3D; regenera o PDF antes de entregar. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfePdfWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<FileParameter>> NfePdfWithHttpInfoAsync(Guid companyId, string id, string? download = default, string? regenerate = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1638,6 +1918,8 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/pdf",
+                "application/json"
             };
 
 
@@ -1649,6 +1931,14 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (download != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "download", download));
+            }
+            if (regenerate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "regenerate", regenerate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1663,7 +1953,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/nfe/{id}/pdf", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<FileParameter>("/companies/{companyId}/nfe/{id}/pdf", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1678,7 +1968,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e rejection XML 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void NfeRejectionXml(Guid companyId, string id)
@@ -1690,7 +1980,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e rejection XML 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> NfeRejectionXmlWithHttpInfo(Guid companyId, string id)
@@ -1744,7 +2034,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e rejection XML 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1757,7 +2047,7 @@ namespace Emitfy.Generated.Api
         /// Get NF-e rejection XML 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1812,25 +2102,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Get NF-e XML 
+        /// Get NF-e XML Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public void NfeXml(Guid companyId, string id)
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <returns>FileParameter</returns>
+        public FileParameter NfeXml(Guid companyId, string id, string? download = default)
         {
-            NfeXmlWithHttpInfo(companyId, id);
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = NfeXmlWithHttpInfo(companyId, id, download);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get NF-e XML 
+        /// Get NF-e XML Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> NfeXmlWithHttpInfo(Guid companyId, string id)
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        public Emitfy.Generated.Client.ApiResponse<FileParameter> NfeXmlWithHttpInfo(Guid companyId, string id, string? download = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1843,6 +2136,8 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/xml",
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1853,6 +2148,10 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (download != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "download", download));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1866,7 +2165,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/nfe/{id}/xml", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<FileParameter>("/companies/{companyId}/nfe/{id}/xml", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1878,27 +2177,30 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Get NF-e XML 
+        /// Get NF-e XML Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task NfeXmlAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> NfeXmlAsync(Guid companyId, string id, string? download = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await NfeXmlWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = await NfeXmlWithHttpInfoAsync(companyId, id, download, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get NF-e XML 
+        /// Get NF-e XML Entrega o arquivo em stream (200) quando já está pronto; senão gera e entrega, ou responde 302 para o CDN. Disponível só após autorização (ou cancelamento confirmado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
+        /// <param name="download">&#x60;1&#x60; &#x3D; força download com nome &#x60;nota-&lt;número&gt;.&lt;ext&gt;&#x60; e sem cache. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeXmlWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<FileParameter>> NfeXmlWithHttpInfoAsync(Guid companyId, string id, string? download = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1912,6 +2214,8 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/xml",
+                "application/json"
             };
 
 
@@ -1923,6 +2227,10 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (download != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "download", download));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1937,7 +2245,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/nfe/{id}/xml", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<FileParameter>("/companies/{companyId}/nfe/{id}/xml", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

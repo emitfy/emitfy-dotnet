@@ -30,28 +30,31 @@ namespace Emitfy.Generated.Api
         /// <summary>
         /// Cancel CT-e
         /// </summary>
+        /// <remarks>
+        /// Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        void CteCancel(Guid companyId, string id);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted CteCancel(Guid companyId, string id);
 
         /// <summary>
         /// Cancel CT-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CteCancelWithHttpInfo(Guid companyId, string id);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> CteCancelWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Consult CT-e at SEFAZ
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void CteConsult(Guid companyId, string id);
@@ -63,7 +66,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CteConsultWithHttpInfo(Guid companyId, string id);
@@ -71,11 +74,11 @@ namespace Emitfy.Generated.Api
         /// Emit CT-e (modelo 57)
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        void CteCreate(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default);
+        /// <returns>CteEmitAccepted</returns>
+        CteEmitAccepted CteCreate(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Emit CT-e (modelo 57)
@@ -84,16 +87,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CteCreateWithHttpInfo(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default);
+        /// <returns>ApiResponse of CteEmitAccepted</returns>
+        ApiResponse<CteEmitAccepted> CteCreateWithHttpInfo(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default);
         /// <summary>
         /// Get CT-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void CteGet(Guid companyId, string id);
@@ -105,7 +108,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CteGetWithHttpInfo(Guid companyId, string id);
@@ -113,12 +116,15 @@ namespace Emitfy.Generated.Api
         /// List CT-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns></returns>
-        void CteList(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>CteList200Response</returns>
+        CteList200Response CteList(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default);
 
         /// <summary>
         /// List CT-e
@@ -127,34 +133,40 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CteListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of CteList200Response</returns>
+        ApiResponse<CteList200Response> CteListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default);
         /// <summary>
         /// Emit CT-e OS (modelo 67)
         /// </summary>
+        /// <remarks>
+        /// Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        void CteOsCreate(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default);
+        /// <returns>CteEmitAccepted</returns>
+        CteEmitAccepted CteOsCreate(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Emit CT-e OS (modelo 67)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CteOsCreateWithHttpInfo(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default);
+        /// <returns>ApiResponse of CteEmitAccepted</returns>
+        ApiResponse<CteEmitAccepted> CteOsCreateWithHttpInfo(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default);
         #endregion Synchronous Operations
     }
 
@@ -168,27 +180,27 @@ namespace Emitfy.Generated.Api
         /// Cancel CT-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CteCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> CteCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Cancel CT-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CteCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> CteCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Consult CT-e at SEFAZ
         /// </summary>
@@ -196,7 +208,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -209,7 +221,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -221,12 +233,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CteCreateAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of CteEmitAccepted</returns>
+        System.Threading.Tasks.Task<CteEmitAccepted> CteCreateAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Emit CT-e (modelo 57)
@@ -235,12 +247,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CteCreateWithHttpInfoAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (CteEmitAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CteEmitAccepted>> CteCreateWithHttpInfoAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get CT-e
         /// </summary>
@@ -248,7 +260,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -261,7 +273,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -273,13 +285,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CteListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of CteList200Response</returns>
+        System.Threading.Tasks.Task<CteList200Response> CteListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List CT-e
@@ -288,40 +303,43 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CteListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (CteList200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CteList200Response>> CteListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Emit CT-e OS (modelo 67)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CteOsCreateAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of CteEmitAccepted</returns>
+        System.Threading.Tasks.Task<CteEmitAccepted> CteOsCreateAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Emit CT-e OS (modelo 67)
         /// </summary>
         /// <remarks>
-        /// 
+        /// Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CteOsCreateWithHttpInfoAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (CteEmitAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CteEmitAccepted>> CteOsCreateWithHttpInfoAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -536,25 +554,26 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel CT-e 
+        /// Cancel CT-e Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public void CteCancel(Guid companyId, string id)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted CteCancel(Guid companyId, string id)
         {
-            CteCancelWithHttpInfo(companyId, id);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = CteCancelWithHttpInfo(companyId, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel CT-e 
+        /// Cancel CT-e Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> CteCancelWithHttpInfo(Guid companyId, string id)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> CteCancelWithHttpInfo(Guid companyId, string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -567,6 +586,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -590,7 +610,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/companies/{companyId}/cte/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<TransportDocumentAccepted>("/companies/{companyId}/cte/{id}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -602,27 +622,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel CT-e 
+        /// Cancel CT-e Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CteCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> CteCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CteCancelWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await CteCancelWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel CT-e 
+        /// Cancel CT-e Sem corpo. Cancela CT-e ou CT-e OS autorizado (enfileirado).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CteCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> CteCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -636,6 +657,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -661,7 +683,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/companies/{companyId}/cte/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<TransportDocumentAccepted>("/companies/{companyId}/cte/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -676,7 +698,7 @@ namespace Emitfy.Generated.Api
         /// Consult CT-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void CteConsult(Guid companyId, string id)
@@ -688,7 +710,7 @@ namespace Emitfy.Generated.Api
         /// Consult CT-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> CteConsultWithHttpInfo(Guid companyId, string id)
@@ -742,7 +764,7 @@ namespace Emitfy.Generated.Api
         /// Consult CT-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -755,7 +777,7 @@ namespace Emitfy.Generated.Api
         /// Consult CT-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -813,24 +835,25 @@ namespace Emitfy.Generated.Api
         /// Emit CT-e (modelo 57) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        public void CteCreate(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default)
+        /// <returns>CteEmitAccepted</returns>
+        public CteEmitAccepted CteCreate(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default)
         {
-            CteCreateWithHttpInfo(companyId, cteCreateRequest, idempotencyKey);
+            Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> localVarResponse = CteCreateWithHttpInfo(companyId, cteCreateRequest, idempotencyKey);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit CT-e (modelo 57) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> CteCreateWithHttpInfo(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default)
+        /// <returns>ApiResponse of CteEmitAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> CteCreateWithHttpInfo(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'cteCreateRequest' is set
             if (cteCreateRequest == null)
@@ -844,6 +867,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -871,7 +895,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CteEmitAccepted>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -886,26 +910,27 @@ namespace Emitfy.Generated.Api
         /// Emit CT-e (modelo 57) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CteCreateAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of CteEmitAccepted</returns>
+        public async System.Threading.Tasks.Task<CteEmitAccepted> CteCreateAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CteCreateWithHttpInfoAsync(companyId, cteCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> localVarResponse = await CteCreateWithHttpInfoAsync(companyId, cteCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit CT-e (modelo 57) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CteCreateWithHttpInfoAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (CteEmitAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<CteEmitAccepted>> CteCreateWithHttpInfoAsync(Guid companyId, CteCreateRequest cteCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'cteCreateRequest' is set
             if (cteCreateRequest == null)
@@ -920,6 +945,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -949,7 +975,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CteEmitAccepted>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -964,7 +990,7 @@ namespace Emitfy.Generated.Api
         /// Get CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void CteGet(Guid companyId, string id)
@@ -976,7 +1002,7 @@ namespace Emitfy.Generated.Api
         /// Get CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> CteGetWithHttpInfo(Guid companyId, string id)
@@ -1030,7 +1056,7 @@ namespace Emitfy.Generated.Api
         /// Get CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1043,7 +1069,7 @@ namespace Emitfy.Generated.Api
         /// Get CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1101,26 +1127,33 @@ namespace Emitfy.Generated.Api
         /// List CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns></returns>
-        public void CteList(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>CteList200Response</returns>
+        public CteList200Response CteList(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default)
         {
-            CteListWithHttpInfo(companyId, page, pageSize, status);
+            Emitfy.Generated.Client.ApiResponse<CteList200Response> localVarResponse = CteListWithHttpInfo(companyId, page, pageSize, status, model, startDate, endDate);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// List CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> CteListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of CteList200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<CteList200Response> CteListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -1129,6 +1162,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1150,6 +1184,18 @@ namespace Emitfy.Generated.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
+            if (model != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "model", model));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1163,7 +1209,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<CteList200Response>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1178,28 +1224,35 @@ namespace Emitfy.Generated.Api
         /// List CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CteListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of CteList200Response</returns>
+        public async System.Threading.Tasks.Task<CteList200Response> CteListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CteListWithHttpInfoAsync(companyId, page, pageSize, status, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<CteList200Response> localVarResponse = await CteListWithHttpInfoAsync(companyId, page, pageSize, status, model, startDate, endDate, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// List CT-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="model">&#x60;57&#x60; &#x3D; CT-e (padrão), &#x60;67&#x60; &#x3D; CT-e OS. Sem &#x60;model&#x3D;67&#x60; a lista não traz CT-e OS. (optional, default to 57)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CteListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (CteList200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<CteList200Response>> CteListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, string? model = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -1209,6 +1262,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1231,6 +1285,18 @@ namespace Emitfy.Generated.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
+            if (model != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "model", model));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1245,7 +1311,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CteList200Response>("/companies/{companyId}/cte", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1257,27 +1323,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Emit CT-e OS (modelo 67) 
+        /// Emit CT-e OS (modelo 67) Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        public void CteOsCreate(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default)
+        /// <returns>CteEmitAccepted</returns>
+        public CteEmitAccepted CteOsCreate(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default)
         {
-            CteOsCreateWithHttpInfo(companyId, cteOsCreateRequest, idempotencyKey);
+            Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> localVarResponse = CteOsCreateWithHttpInfo(companyId, cteOsCreateRequest, idempotencyKey);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Emit CT-e OS (modelo 67) 
+        /// Emit CT-e OS (modelo 67) Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> CteOsCreateWithHttpInfo(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default)
+        /// <returns>ApiResponse of CteEmitAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> CteOsCreateWithHttpInfo(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'cteOsCreateRequest' is set
             if (cteOsCreateRequest == null)
@@ -1291,6 +1358,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1318,7 +1386,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/cte-os", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CteEmitAccepted>("/companies/{companyId}/cte-os", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1330,29 +1398,30 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Emit CT-e OS (modelo 67) 
+        /// Emit CT-e OS (modelo 67) Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CteOsCreateAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of CteEmitAccepted</returns>
+        public async System.Threading.Tasks.Task<CteEmitAccepted> CteOsCreateAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await CteOsCreateWithHttpInfoAsync(companyId, cteOsCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<CteEmitAccepted> localVarResponse = await CteOsCreateWithHttpInfoAsync(companyId, cteOsCreateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Emit CT-e OS (modelo 67) 
+        /// Emit CT-e OS (modelo 67) Validação adicional: &#x60;takerParty&#x60; obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60; (excesso de bagagem); &#x60;taf&#x60; (12 dígitos) ou &#x60;stateAgencyRegistration&#x60; (25 dígitos) obrigatório. Falha → 422. Consulta, cancelamento e listagem usam as rotas &#x60;/cte&#x60; (lista com &#x60;model&#x3D;67&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="cteOsCreateRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> CteOsCreateWithHttpInfoAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (CteEmitAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<CteEmitAccepted>> CteOsCreateWithHttpInfoAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'cteOsCreateRequest' is set
             if (cteOsCreateRequest == null)
@@ -1367,6 +1436,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1396,7 +1466,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/cte-os", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CteEmitAccepted>("/companies/{companyId}/cte-os", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

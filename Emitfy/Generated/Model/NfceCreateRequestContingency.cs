@@ -34,24 +34,34 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfceCreateRequestContingency" /> class.
         /// </summary>
-        /// <param name="startedAt">startedAt.</param>
-        /// <param name="reason">reason.</param>
+        [JsonConstructorAttribute]
+        protected NfceCreateRequestContingency() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NfceCreateRequestContingency" /> class.
+        /// </summary>
+        /// <param name="startedAt">startedAt (required).</param>
+        /// <param name="reason">reason (required).</param>
         public NfceCreateRequestContingency(DateTime startedAt = default, string reason = default)
         {
             this.StartedAt = startedAt;
+            // to ensure "reason" is required (not null)
+            if (reason == null)
+            {
+                throw new ArgumentNullException("reason is a required property for NfceCreateRequestContingency and cannot be null");
+            }
             this.Reason = reason;
         }
 
         /// <summary>
         /// Gets or Sets StartedAt
         /// </summary>
-        [DataMember(Name = "startedAt", EmitDefaultValue = false)]
+        [DataMember(Name = "startedAt", IsRequired = true, EmitDefaultValue = true)]
         public DateTime StartedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Reason
         /// </summary>
-        [DataMember(Name = "reason", EmitDefaultValue = false)]
+        [DataMember(Name = "reason", IsRequired = true, EmitDefaultValue = true)]
         public string Reason { get; set; }
 
         /// <summary>

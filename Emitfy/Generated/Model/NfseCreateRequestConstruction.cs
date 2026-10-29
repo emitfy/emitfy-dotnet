@@ -36,10 +36,16 @@ namespace Emitfy.Generated.Model
         /// </summary>
         /// <param name="art">art.</param>
         /// <param name="workCode">workCode.</param>
-        public NfseCreateRequestConstruction(string art = default, string workCode = default)
+        /// <param name="cib">cib.</param>
+        /// <param name="municipalRegistration">municipalRegistration.</param>
+        /// <param name="address">address.</param>
+        public NfseCreateRequestConstruction(string art = default, string workCode = default, string cib = default, string municipalRegistration = default, DfeAddressLayout address = default)
         {
             this.Art = art;
             this.WorkCode = workCode;
+            this.Cib = cib;
+            this.MunicipalRegistration = municipalRegistration;
+            this.Address = address;
         }
 
         /// <summary>
@@ -55,6 +61,24 @@ namespace Emitfy.Generated.Model
         public string WorkCode { get; set; }
 
         /// <summary>
+        /// Gets or Sets Cib
+        /// </summary>
+        [DataMember(Name = "cib", EmitDefaultValue = false)]
+        public string Cib { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MunicipalRegistration
+        /// </summary>
+        [DataMember(Name = "municipalRegistration", EmitDefaultValue = false)]
+        public string MunicipalRegistration { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public DfeAddressLayout Address { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +88,9 @@ namespace Emitfy.Generated.Model
             sb.Append("class NfseCreateRequestConstruction {\n");
             sb.Append("  Art: ").Append(Art).Append("\n");
             sb.Append("  WorkCode: ").Append(WorkCode).Append("\n");
+            sb.Append("  Cib: ").Append(Cib).Append("\n");
+            sb.Append("  MunicipalRegistration: ").Append(MunicipalRegistration).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

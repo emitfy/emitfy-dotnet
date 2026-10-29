@@ -36,14 +36,17 @@ namespace Emitfy.Generated.Model
         /// </summary>
         /// <param name="responsibleTaxId">responsibleTaxId.</param>
         /// <param name="responsibleName">responsibleName.</param>
+        /// <param name="components">components.</param>
         /// <param name="amount">amount.</param>
         /// <param name="method">method.</param>
-        public MdfePayment(string responsibleTaxId = default, string responsibleName = default, decimal amount = default, string method = default)
+        public MdfePayment(string responsibleTaxId = default, string responsibleName = default, List<MdfePaymentComponentsInner> components = default, decimal amount = default, string method = default)
         {
             this.ResponsibleTaxId = responsibleTaxId;
             this.ResponsibleName = responsibleName;
+            this.Components = components;
             this.Amount = amount;
             this.Method = method;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -59,6 +62,12 @@ namespace Emitfy.Generated.Model
         public string ResponsibleName { get; set; }
 
         /// <summary>
+        /// Gets or Sets Components
+        /// </summary>
+        [DataMember(Name = "components", EmitDefaultValue = false)]
+        public List<MdfePaymentComponentsInner> Components { get; set; }
+
+        /// <summary>
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
@@ -71,6 +80,12 @@ namespace Emitfy.Generated.Model
         public string Method { get; set; }
 
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,8 +95,10 @@ namespace Emitfy.Generated.Model
             sb.Append("class MdfePayment {\n");
             sb.Append("  ResponsibleTaxId: ").Append(ResponsibleTaxId).Append("\n");
             sb.Append("  ResponsibleName: ").Append(ResponsibleName).Append("\n");
+            sb.Append("  Components: ").Append(Components).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Method: ").Append(Method).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

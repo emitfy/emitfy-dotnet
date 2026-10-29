@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfceCreateRequest
+    /// Com &#x60;issueMode: offlineContingency&#x60; a validação exige &#x60;contingency&#x60;, &#x60;accessKey&#x60; (44 dígitos, modelo 65, tpEmis 9), &#x60;number&#x60;, &#x60;series&#x60; e &#x60;issuedAt&#x60; (ou &#x60;issueDate&#x60;). Falha → 422 &#x60;VALIDATION_ERROR&#x60;. 
     /// </summary>
     [DataContract(Name = "nfceCreate_request")]
     public partial class NfceCreateRequest
@@ -112,8 +112,9 @@ namespace Emitfy.Generated.Model
         [DataMember(Name = "issueMode", EmitDefaultValue = false)]
         public IssueModeEnum? IssueMode { get; set; }
         /// <summary>
-        /// Defines Transmit
+        /// &#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60;
         /// </summary>
+        /// <value>&#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60;</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TransmitEnum
         {
@@ -132,8 +133,9 @@ namespace Emitfy.Generated.Model
 
 
         /// <summary>
-        /// Gets or Sets Transmit
+        /// &#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60;
         /// </summary>
+        /// <value>&#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60;</value>
         [DataMember(Name = "transmit", EmitDefaultValue = false)]
         public TransmitEnum? Transmit { get; set; }
         /// <summary>
@@ -150,14 +152,21 @@ namespace Emitfy.Generated.Model
         /// <param name="paymentMethod">paymentMethod (required).</param>
         /// <param name="items">items (required).</param>
         /// <param name="recipient">recipient.</param>
+        /// <param name="nature">nature.</param>
+        /// <param name="cfop">cfop.</param>
+        /// <param name="issueDate">issueDate.</param>
         /// <param name="additional">additional.</param>
         /// <param name="techResponsible">techResponsible.</param>
-        /// <param name="externalId">externalId.</param>
+        /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
         /// <param name="issueMode">issueMode (default to IssueModeEnum.Normal).</param>
         /// <param name="contingency">contingency.</param>
-        /// <param name="accessKey">accessKey.</param>
-        /// <param name="transmit">transmit (default to TransmitEnum.Now).</param>
-        public NfceCreateRequest(PaymentMethodEnum paymentMethod = default, List<ProductEmitItem> items = default, NfceCreateRequestRecipient recipient = default, Object additional = default, Object techResponsible = default, string externalId = default, IssueModeEnum? issueMode = IssueModeEnum.Normal, NfceCreateRequestContingency contingency = default, string accessKey = default, TransmitEnum? transmit = TransmitEnum.Now)
+        /// <param name="accessKey">Chave de 44 dígitos gerada pelo PDV (contingência offline).</param>
+        /// <param name="number">Número da NFC-e atribuído pelo PDV (contingência offline).</param>
+        /// <param name="series">Série da NFC-e atribuída pelo PDV (contingência offline).</param>
+        /// <param name="issuedAt">Data/hora de emissão (dhEmi) do cupom impresso em contingência.</param>
+        /// <param name="signedXml">XML já assinado pelo PDV (contingência offline), quando houver.</param>
+        /// <param name="transmit">&#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60; (default to TransmitEnum.Now).</param>
+        public NfceCreateRequest(PaymentMethodEnum paymentMethod = default, List<ProductEmitItem> items = default, NfceCreateRequestRecipient recipient = default, string nature = default, string cfop = default, DateTime issueDate = default, Object additional = default, DfeTechResponsible techResponsible = default, string externalId = default, IssueModeEnum? issueMode = IssueModeEnum.Normal, NfceCreateRequestContingency contingency = default, string accessKey = default, int number = default, int series = default, DateTime issuedAt = default, string signedXml = default, TransmitEnum? transmit = TransmitEnum.Now)
         {
             this.PaymentMethod = paymentMethod;
             // to ensure "items" is required (not null)
@@ -167,12 +176,19 @@ namespace Emitfy.Generated.Model
             }
             this.Items = items;
             this.Recipient = recipient;
+            this.Nature = nature;
+            this.Cfop = cfop;
+            this.IssueDate = issueDate;
             this.Additional = additional;
             this.TechResponsible = techResponsible;
             this.ExternalId = externalId;
             this.IssueMode = issueMode;
             this.Contingency = contingency;
             this.AccessKey = accessKey;
+            this.Number = number;
+            this.Series = series;
+            this.IssuedAt = issuedAt;
+            this.SignedXml = signedXml;
             this.Transmit = transmit;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
@@ -190,6 +206,24 @@ namespace Emitfy.Generated.Model
         public NfceCreateRequestRecipient Recipient { get; set; }
 
         /// <summary>
+        /// Gets or Sets Nature
+        /// </summary>
+        [DataMember(Name = "nature", EmitDefaultValue = false)]
+        public string Nature { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cfop
+        /// </summary>
+        [DataMember(Name = "cfop", EmitDefaultValue = false)]
+        public string Cfop { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IssueDate
+        /// </summary>
+        [DataMember(Name = "issueDate", EmitDefaultValue = false)]
+        public DateTime IssueDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets Additional
         /// </summary>
         [DataMember(Name = "additional", EmitDefaultValue = false)]
@@ -199,11 +233,12 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets TechResponsible
         /// </summary>
         [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
-        public Object TechResponsible { get; set; }
+        public DfeTechResponsible TechResponsible { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)
         /// </summary>
+        /// <value>Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)</value>
         [DataMember(Name = "externalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
@@ -214,10 +249,39 @@ namespace Emitfy.Generated.Model
         public NfceCreateRequestContingency Contingency { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccessKey
+        /// Chave de 44 dígitos gerada pelo PDV (contingência offline)
         /// </summary>
+        /// <value>Chave de 44 dígitos gerada pelo PDV (contingência offline)</value>
         [DataMember(Name = "accessKey", EmitDefaultValue = false)]
         public string AccessKey { get; set; }
+
+        /// <summary>
+        /// Número da NFC-e atribuído pelo PDV (contingência offline)
+        /// </summary>
+        /// <value>Número da NFC-e atribuído pelo PDV (contingência offline)</value>
+        [DataMember(Name = "number", EmitDefaultValue = false)]
+        public int Number { get; set; }
+
+        /// <summary>
+        /// Série da NFC-e atribuída pelo PDV (contingência offline)
+        /// </summary>
+        /// <value>Série da NFC-e atribuída pelo PDV (contingência offline)</value>
+        [DataMember(Name = "series", EmitDefaultValue = false)]
+        public int Series { get; set; }
+
+        /// <summary>
+        /// Data/hora de emissão (dhEmi) do cupom impresso em contingência
+        /// </summary>
+        /// <value>Data/hora de emissão (dhEmi) do cupom impresso em contingência</value>
+        [DataMember(Name = "issuedAt", EmitDefaultValue = false)]
+        public DateTime IssuedAt { get; set; }
+
+        /// <summary>
+        /// XML já assinado pelo PDV (contingência offline), quando houver
+        /// </summary>
+        /// <value>XML já assinado pelo PDV (contingência offline), quando houver</value>
+        [DataMember(Name = "signedXml", EmitDefaultValue = false)]
+        public string SignedXml { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -236,12 +300,19 @@ namespace Emitfy.Generated.Model
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
+            sb.Append("  Nature: ").Append(Nature).Append("\n");
+            sb.Append("  Cfop: ").Append(Cfop).Append("\n");
+            sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
             sb.Append("  Additional: ").Append(Additional).Append("\n");
             sb.Append("  TechResponsible: ").Append(TechResponsible).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  IssueMode: ").Append(IssueMode).Append("\n");
             sb.Append("  Contingency: ").Append(Contingency).Append("\n");
             sb.Append("  AccessKey: ").Append(AccessKey).Append("\n");
+            sb.Append("  Number: ").Append(Number).Append("\n");
+            sb.Append("  Series: ").Append(Series).Append("\n");
+            sb.Append("  IssuedAt: ").Append(IssuedAt).Append("\n");
+            sb.Append("  SignedXml: ").Append(SignedXml).Append("\n");
             sb.Append("  Transmit: ").Append(Transmit).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");

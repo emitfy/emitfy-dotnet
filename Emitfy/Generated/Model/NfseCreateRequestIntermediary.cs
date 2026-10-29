@@ -42,7 +42,8 @@ namespace Emitfy.Generated.Model
         /// <param name="taxId">taxId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="municipalRegistration">municipalRegistration.</param>
-        public NfseCreateRequestIntermediary(string taxId = default, string name = default, string municipalRegistration = default)
+        /// <param name="address">address.</param>
+        public NfseCreateRequestIntermediary(string taxId = default, string name = default, string municipalRegistration = default, DfeAddressLayout address = default)
         {
             // to ensure "taxId" is required (not null)
             if (taxId == null)
@@ -57,6 +58,7 @@ namespace Emitfy.Generated.Model
             }
             this.Name = name;
             this.MunicipalRegistration = municipalRegistration;
+            this.Address = address;
         }
 
         /// <summary>
@@ -78,6 +80,12 @@ namespace Emitfy.Generated.Model
         public string MunicipalRegistration { get; set; }
 
         /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public DfeAddressLayout Address { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -88,6 +96,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  TaxId: ").Append(TaxId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  MunicipalRegistration: ").Append(MunicipalRegistration).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

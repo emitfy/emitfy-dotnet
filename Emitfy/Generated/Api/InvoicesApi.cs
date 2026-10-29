@@ -31,32 +31,33 @@ namespace Emitfy.Generated.Api
         /// Cancel authorized invoice
         /// </summary>
         /// <remarks>
-        /// Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns></returns>
-        void InvoicesCancel(Guid companyId, string id, Dictionary<string, Object>? requestBody = default);
+        /// <returns>InvoicesCancel200Response</returns>
+        InvoicesCancel200Response InvoicesCancel(Guid companyId, string id);
 
         /// <summary>
         /// Cancel authorized invoice
         /// </summary>
         /// <remarks>
-        /// Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InvoicesCancelWithHttpInfo(Guid companyId, string id, Dictionary<string, Object>? requestBody = default);
+        /// <returns>ApiResponse of InvoicesCancel200Response</returns>
+        ApiResponse<InvoicesCancel200Response> InvoicesCancelWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Consult invoice at SEFAZ or city hall
         /// </summary>
+        /// <remarks>
+        /// Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void InvoicesConsult(Guid companyId, string id);
@@ -65,10 +66,10 @@ namespace Emitfy.Generated.Api
         /// Consult invoice at SEFAZ or city hall
         /// </summary>
         /// <remarks>
-        /// 
+        /// Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> InvoicesConsultWithHttpInfo(Guid companyId, string id);
@@ -79,7 +80,7 @@ namespace Emitfy.Generated.Api
         /// Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void InvoicesEmit(Guid companyId, string id);
@@ -91,7 +92,7 @@ namespace Emitfy.Generated.Api
         /// Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> InvoicesEmitWithHttpInfo(Guid companyId, string id);
@@ -99,7 +100,7 @@ namespace Emitfy.Generated.Api
         /// List invoice events
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void InvoicesEvents(Guid companyId, string id);
@@ -111,7 +112,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> InvoicesEventsWithHttpInfo(Guid companyId, string id);
@@ -119,7 +120,7 @@ namespace Emitfy.Generated.Api
         /// Get invoice
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>InvoicesGet200Response</returns>
         InvoicesGet200Response InvoicesGet(Guid companyId, string id);
@@ -131,7 +132,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of InvoicesGet200Response</returns>
         ApiResponse<InvoicesGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id);
@@ -142,11 +143,19 @@ namespace Emitfy.Generated.Api
         /// Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns></returns>
-        void InvoicesList(Guid companyId, int? page = default, int? pageSize = default);
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>InvoicesList200Response</returns>
+        InvoicesList200Response InvoicesList(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default);
 
         /// <summary>
         /// List invoices
@@ -155,36 +164,42 @@ namespace Emitfy.Generated.Api
         /// Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InvoicesListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default);
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of InvoicesList200Response</returns>
+        ApiResponse<InvoicesList200Response> InvoicesListWithHttpInfo(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default);
         /// <summary>
         /// Resend invoice email
         /// </summary>
         /// <remarks>
-        /// Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns></returns>
-        void InvoicesSendEmail(Guid companyId, string id, Dictionary<string, Object>? requestBody = default);
+        /// <returns>InvoicesSendEmail200Response</returns>
+        InvoicesSendEmail200Response InvoicesSendEmail(Guid companyId, string id);
 
         /// <summary>
         /// Resend invoice email
         /// </summary>
         /// <remarks>
-        /// Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> InvoicesSendEmailWithHttpInfo(Guid companyId, string id, Dictionary<string, Object>? requestBody = default);
+        /// <returns>ApiResponse of InvoicesSendEmail200Response</returns>
+        ApiResponse<InvoicesSendEmail200Response> InvoicesSendEmailWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Update invoice draft or rejected note
         /// </summary>
@@ -192,7 +207,7 @@ namespace Emitfy.Generated.Api
         /// Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <returns></returns>
@@ -205,7 +220,7 @@ namespace Emitfy.Generated.Api
         /// Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -223,37 +238,35 @@ namespace Emitfy.Generated.Api
         /// Cancel authorized invoice
         /// </summary>
         /// <remarks>
-        /// Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InvoicesCancelAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoicesCancel200Response</returns>
+        System.Threading.Tasks.Task<InvoicesCancel200Response> InvoicesCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Cancel authorized invoice
         /// </summary>
         /// <remarks>
-        /// Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InvoicesCancelWithHttpInfoAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoicesCancel200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoicesCancel200Response>> InvoicesCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Consult invoice at SEFAZ or city hall
         /// </summary>
         /// <remarks>
-        /// 
+        /// Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -263,10 +276,10 @@ namespace Emitfy.Generated.Api
         /// Consult invoice at SEFAZ or city hall
         /// </summary>
         /// <remarks>
-        /// 
+        /// Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -278,7 +291,7 @@ namespace Emitfy.Generated.Api
         /// Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -291,7 +304,7 @@ namespace Emitfy.Generated.Api
         /// Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -303,7 +316,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -316,7 +329,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -328,7 +341,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InvoicesGet200Response</returns>
@@ -341,7 +354,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InvoicesGet200Response)</returns>
@@ -353,12 +366,20 @@ namespace Emitfy.Generated.Api
         /// Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InvoicesListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoicesList200Response</returns>
+        System.Threading.Tasks.Task<InvoicesList200Response> InvoicesListAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List invoices
@@ -367,39 +388,45 @@ namespace Emitfy.Generated.Api
         /// Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InvoicesListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoicesList200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoicesList200Response>> InvoicesListWithHttpInfoAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Resend invoice email
         /// </summary>
         /// <remarks>
-        /// Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task InvoicesSendEmailAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of InvoicesSendEmail200Response</returns>
+        System.Threading.Tasks.Task<InvoicesSendEmail200Response> InvoicesSendEmailAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Resend invoice email
         /// </summary>
         /// <remarks>
-        /// Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> InvoicesSendEmailWithHttpInfoAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (InvoicesSendEmail200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InvoicesSendEmail200Response>> InvoicesSendEmailWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update invoice draft or rejected note
         /// </summary>
@@ -407,7 +434,7 @@ namespace Emitfy.Generated.Api
         /// Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -421,7 +448,7 @@ namespace Emitfy.Generated.Api
         /// Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -641,27 +668,26 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel authorized invoice Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Cancel authorized invoice Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns></returns>
-        public void InvoicesCancel(Guid companyId, string id, Dictionary<string, Object>? requestBody = default)
+        /// <returns>InvoicesCancel200Response</returns>
+        public InvoicesCancel200Response InvoicesCancel(Guid companyId, string id)
         {
-            InvoicesCancelWithHttpInfo(companyId, id, requestBody);
+            Emitfy.Generated.Client.ApiResponse<InvoicesCancel200Response> localVarResponse = InvoicesCancelWithHttpInfo(companyId, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel authorized invoice Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Cancel authorized invoice Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> InvoicesCancelWithHttpInfo(Guid companyId, string id, Dictionary<string, Object>? requestBody = default)
+        /// <returns>ApiResponse of InvoicesCancel200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoicesCancel200Response> InvoicesCancelWithHttpInfo(Guid companyId, string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -670,11 +696,11 @@ namespace Emitfy.Generated.Api
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -685,7 +711,6 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = requestBody;
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -699,7 +724,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/invoices/{id}/cancel", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<InvoicesCancel200Response>("/companies/{companyId}/invoices/{id}/cancel", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -711,29 +736,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel authorized invoice Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Cancel authorized invoice Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InvoicesCancelAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoicesCancel200Response</returns>
+        public async System.Threading.Tasks.Task<InvoicesCancel200Response> InvoicesCancelAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
-            await InvoicesCancelWithHttpInfoAsync(companyId, id, requestBody, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoicesCancel200Response> localVarResponse = await InvoicesCancelWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel authorized invoice Cancela nota autorizada. Equivale aos DELETE tipados (&#x60;/nfse/{id}&#x60;, &#x60;/nfe/{id}&#x60;, &#x60;/nfce/{id}&#x60;).
+        /// Cancel authorized invoice Sem corpo. Enfileira o cancelamento de nota autorizada (NFS-e, NF-e ou NFC-e). Mesmo efeito fiscal dos DELETE tipados, mas com contrato diferente: responde **200** (não 202) com &#x60;outcome: fiscal_cancel_enqueued&#x60;, e status inválido vira **409** (não 422). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> InvoicesCancelWithHttpInfoAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoicesCancel200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoicesCancel200Response>> InvoicesCancelWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -743,11 +767,11 @@ namespace Emitfy.Generated.Api
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -759,7 +783,6 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = requestBody;
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -774,7 +797,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/invoices/{id}/cancel", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<InvoicesCancel200Response>("/companies/{companyId}/invoices/{id}/cancel", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -786,10 +809,10 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Consult invoice at SEFAZ or city hall 
+        /// Consult invoice at SEFAZ or city hall Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void InvoicesConsult(Guid companyId, string id)
@@ -798,10 +821,10 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Consult invoice at SEFAZ or city hall 
+        /// Consult invoice at SEFAZ or city hall Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> InvoicesConsultWithHttpInfo(Guid companyId, string id)
@@ -852,10 +875,10 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Consult invoice at SEFAZ or city hall 
+        /// Consult invoice at SEFAZ or city hall Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -865,10 +888,10 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Consult invoice at SEFAZ or city hall 
+        /// Consult invoice at SEFAZ or city hall Reconsulta NFS-e ou NF-e. NFC-e não tem reconsulta remota (sempre 400 &#x60;NFCE_CONSULT_UNSUPPORTED&#x60;).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -926,7 +949,7 @@ namespace Emitfy.Generated.Api
         /// Emit or retry invoice Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void InvoicesEmit(Guid companyId, string id)
@@ -938,7 +961,7 @@ namespace Emitfy.Generated.Api
         /// Emit or retry invoice Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> InvoicesEmitWithHttpInfo(Guid companyId, string id)
@@ -992,7 +1015,7 @@ namespace Emitfy.Generated.Api
         /// Emit or retry invoice Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1005,7 +1028,7 @@ namespace Emitfy.Generated.Api
         /// Emit or retry invoice Enfileira emissão imediata (forceManual) de nota pending ou rejected. Não altera nota autorizada/cancelada. Não é carta de correção (&#x60;POST .../nfe/{id}/correction&#x60;). 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1063,7 +1086,7 @@ namespace Emitfy.Generated.Api
         /// List invoice events 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void InvoicesEvents(Guid companyId, string id)
@@ -1075,7 +1098,7 @@ namespace Emitfy.Generated.Api
         /// List invoice events 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> InvoicesEventsWithHttpInfo(Guid companyId, string id)
@@ -1129,7 +1152,7 @@ namespace Emitfy.Generated.Api
         /// List invoice events 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1142,7 +1165,7 @@ namespace Emitfy.Generated.Api
         /// List invoice events 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1200,7 +1223,7 @@ namespace Emitfy.Generated.Api
         /// Get invoice 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>InvoicesGet200Response</returns>
         public InvoicesGet200Response InvoicesGet(Guid companyId, string id)
@@ -1213,7 +1236,7 @@ namespace Emitfy.Generated.Api
         /// Get invoice 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of InvoicesGet200Response</returns>
         public Emitfy.Generated.Client.ApiResponse<InvoicesGet200Response> InvoicesGetWithHttpInfo(Guid companyId, string id)
@@ -1268,7 +1291,7 @@ namespace Emitfy.Generated.Api
         /// Get invoice 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InvoicesGet200Response</returns>
@@ -1282,7 +1305,7 @@ namespace Emitfy.Generated.Api
         /// Get invoice 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InvoicesGet200Response)</returns>
@@ -1341,24 +1364,41 @@ namespace Emitfy.Generated.Api
         /// List invoices Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns></returns>
-        public void InvoicesList(Guid companyId, int? page = default, int? pageSize = default)
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>InvoicesList200Response</returns>
+        public InvoicesList200Response InvoicesList(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default)
         {
-            InvoicesListWithHttpInfo(companyId, page, pageSize);
+            Emitfy.Generated.Client.ApiResponse<InvoicesList200Response> localVarResponse = InvoicesListWithHttpInfo(companyId, limit, action, cursor, page, status, type, search, integrationId, startDate, endDate);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// List invoices Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> InvoicesListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default)
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of InvoicesList200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoicesList200Response> InvoicesListWithHttpInfo(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -1367,6 +1407,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1376,13 +1417,45 @@ namespace Emitfy.Generated.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (action != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "action", action));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
             }
-            if (pageSize != null)
+            if (status != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (type != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            }
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (integrationId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "integrationId", integrationId));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
             }
 
             // authentication (ApiKeyAuth) required
@@ -1397,7 +1470,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/invoices", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<InvoicesList200Response>("/companies/{companyId}/invoices", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1412,26 +1485,43 @@ namespace Emitfy.Generated.Api
         /// List invoices Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InvoicesListAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoicesList200Response</returns>
+        public async System.Threading.Tasks.Task<InvoicesList200Response> InvoicesListAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await InvoicesListWithHttpInfoAsync(companyId, page, pageSize, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoicesList200Response> localVarResponse = await InvoicesListWithHttpInfoAsync(companyId, limit, action, cursor, page, status, type, search, integrationId, startDate, endDate, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// List invoices Consulta unificada das notas da empresa (todos os tipos). Criação inicial nos atalhos por tipo (&#x60;/nfse&#x60;, &#x60;/nfe&#x60;, &#x60;/nfce&#x60;, &#x60;/cte&#x60;, &#x60;/cte-os&#x60;). PATCH/emit/cancel nesta família &#x60;/invoices&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="limit"> (optional, default to 15)</param>
+        /// <param name="action">Navegação por cursor. &#x60;first&#x60; (padrão) volta para a primeira página e ignora &#x60;cursor&#x60;; &#x60;next&#x60; usa como &#x60;cursor&#x60; o &#x60;id&#x60; do último item da página atual; &#x60;prev&#x60; usa o &#x60;id&#x60; do primeiro item; &#x60;last&#x60; vai para a última página. &#x60;page&#x60; só é ecoado/ajustado em &#x60;pageInfo&#x60;.  (optional, default to first)</param>
+        /// <param name="cursor">&#x60;id&#x60; do item de referência (usado com &#x60;action&#x3D;next|prev&#x60;). (optional)</param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status">Status canônico; aliases: &#x60;canceled&#x60; → &#x60;cancelled&#x60;, &#x60;error&#x60;/&#x60;failed&#x60; → &#x60;rejected&#x60;, &#x60;queued&#x60; → &#x60;processing&#x60;. (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="integrationId"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> InvoicesListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoicesList200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoicesList200Response>> InvoicesListWithHttpInfoAsync(Guid companyId, int? limit = default, string? action = default, string? cursor = default, int? page = default, string? status = default, string? type = default, string? search = default, Guid? integrationId = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -1441,6 +1531,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1451,13 +1542,45 @@ namespace Emitfy.Generated.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (action != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "action", action));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "page", page));
             }
-            if (pageSize != null)
+            if (status != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (type != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            }
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (integrationId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "integrationId", integrationId));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
             }
 
             // authentication (ApiKeyAuth) required
@@ -1473,7 +1596,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/invoices", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<InvoicesList200Response>("/companies/{companyId}/invoices", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1485,27 +1608,26 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Resend invoice email Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Resend invoice email Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns></returns>
-        public void InvoicesSendEmail(Guid companyId, string id, Dictionary<string, Object>? requestBody = default)
+        /// <returns>InvoicesSendEmail200Response</returns>
+        public InvoicesSendEmail200Response InvoicesSendEmail(Guid companyId, string id)
         {
-            InvoicesSendEmailWithHttpInfo(companyId, id, requestBody);
+            Emitfy.Generated.Client.ApiResponse<InvoicesSendEmail200Response> localVarResponse = InvoicesSendEmailWithHttpInfo(companyId, id);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Resend invoice email Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Resend invoice email Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> InvoicesSendEmailWithHttpInfo(Guid companyId, string id, Dictionary<string, Object>? requestBody = default)
+        /// <returns>ApiResponse of InvoicesSendEmail200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<InvoicesSendEmail200Response> InvoicesSendEmailWithHttpInfo(Guid companyId, string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1514,11 +1636,11 @@ namespace Emitfy.Generated.Api
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1529,7 +1651,6 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = requestBody;
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1543,7 +1664,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/invoices/{id}/send-borrower-email", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<InvoicesSendEmail200Response>("/companies/{companyId}/invoices/{id}/send-borrower-email", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1555,29 +1676,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Resend invoice email Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Resend invoice email Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task InvoicesSendEmailAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of InvoicesSendEmail200Response</returns>
+        public async System.Threading.Tasks.Task<InvoicesSendEmail200Response> InvoicesSendEmailAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
-            await InvoicesSendEmailWithHttpInfoAsync(companyId, id, requestBody, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<InvoicesSendEmail200Response> localVarResponse = await InvoicesSendEmailWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Resend invoice email Reenvia e-mail da NFS-e autorizada ao tomador.
+        /// Resend invoice email Sem corpo. Reenvia o e-mail da nota autorizada ao tomador/destinatário (só NFS-e e NF-e).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
-        /// <param name="requestBody"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> InvoicesSendEmailWithHttpInfoAsync(Guid companyId, string id, Dictionary<string, Object>? requestBody = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (InvoicesSendEmail200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<InvoicesSendEmail200Response>> InvoicesSendEmailWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1587,11 +1707,11 @@ namespace Emitfy.Generated.Api
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1603,7 +1723,6 @@ namespace Emitfy.Generated.Api
 
             localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.Data = requestBody;
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1618,7 +1737,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/invoices/{id}/send-borrower-email", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<InvoicesSendEmail200Response>("/companies/{companyId}/invoices/{id}/send-borrower-email", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1633,7 +1752,7 @@ namespace Emitfy.Generated.Api
         /// Update invoice draft or rejected note Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <returns></returns>
@@ -1646,7 +1765,7 @@ namespace Emitfy.Generated.Api
         /// Update invoice draft or rejected note Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -1707,7 +1826,7 @@ namespace Emitfy.Generated.Api
         /// Update invoice draft or rejected note Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1721,7 +1840,7 @@ namespace Emitfy.Generated.Api
         /// Update invoice draft or rejected note Edita nota pending (draft/scheduled) ou rejected. &#x60;version&#x60; obrigatório. Tomador: &#x60;borrower&#x60; (NFS-e) ou &#x60;recipient&#x60; (NF-e/NFC-e), no mesmo formato do create. Campo desconhecido retorna 422 (não é ignorado). 409 INVOICE_NOT_EDITABLE se autorizada/cancelada; 409 INVOICE_VERSION_CONFLICT se version divergir. Não é carta de correção. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="invoiceUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

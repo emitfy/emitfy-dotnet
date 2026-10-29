@@ -40,7 +40,7 @@ namespace Emitfy.Generated.Model
         /// <param name="csll">csll.</param>
         /// <param name="ir">ir.</param>
         /// <param name="inss">inss.</param>
-        public NfseCreateRequestTaxes(NfseCreateRequestTaxesIss iss = default, Object pis = default, Object cofins = default, Object csll = default, Object ir = default, Object inss = default)
+        public NfseCreateRequestTaxes(NfseTaxEntry iss = default, NfseTaxEntry pis = default, NfseTaxEntry cofins = default, NfseTaxEntry csll = default, NfseTaxEntry ir = default, NfseTaxEntry inss = default)
         {
             this.Iss = iss;
             this.Pis = pis;
@@ -54,37 +54,37 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Iss
         /// </summary>
         [DataMember(Name = "iss", EmitDefaultValue = false)]
-        public NfseCreateRequestTaxesIss Iss { get; set; }
+        public NfseTaxEntry Iss { get; set; }
 
         /// <summary>
         /// Gets or Sets Pis
         /// </summary>
         [DataMember(Name = "pis", EmitDefaultValue = false)]
-        public Object Pis { get; set; }
+        public NfseTaxEntry Pis { get; set; }
 
         /// <summary>
         /// Gets or Sets Cofins
         /// </summary>
         [DataMember(Name = "cofins", EmitDefaultValue = false)]
-        public Object Cofins { get; set; }
+        public NfseTaxEntry Cofins { get; set; }
 
         /// <summary>
         /// Gets or Sets Csll
         /// </summary>
         [DataMember(Name = "csll", EmitDefaultValue = false)]
-        public Object Csll { get; set; }
+        public NfseTaxEntry Csll { get; set; }
 
         /// <summary>
         /// Gets or Sets Ir
         /// </summary>
         [DataMember(Name = "ir", EmitDefaultValue = false)]
-        public Object Ir { get; set; }
+        public NfseTaxEntry Ir { get; set; }
 
         /// <summary>
         /// Gets or Sets Inss
         /// </summary>
         [DataMember(Name = "inss", EmitDefaultValue = false)]
-        public Object Inss { get; set; }
+        public NfseTaxEntry Inss { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

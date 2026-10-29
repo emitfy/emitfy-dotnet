@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// Dados de transporte inline (opcional). &#x60;freightModality&#x60; é obrigatório quando &#x60;carrier&#x60; é enviado; &#x60;noShipping&#x60; com &#x60;carrier&#x60; retorna 400. 
+    /// Dados de transporte inline (opcional). &#x60;freightModality&#x60; é obrigatório quando &#x60;carrier&#x60; é enviado; &#x60;noShipping&#x60; com &#x60;carrier&#x60; retorna 422 (&#x60;VALIDATION_ERROR&#x60;). 
     /// </summary>
     [DataContract(Name = "nfeCreate_request_transport")]
     public partial class NfeCreateRequestTransport
@@ -93,6 +93,7 @@ namespace Emitfy.Generated.Model
             this.FreightModality = freightModality;
             this.Value = value;
             this.Carrier = carrier;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -109,6 +110,12 @@ namespace Emitfy.Generated.Model
         public TransportCarrier Carrier { get; set; }
 
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -119,6 +126,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  FreightModality: ").Append(FreightModality).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

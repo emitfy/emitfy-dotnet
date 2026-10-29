@@ -32,20 +32,158 @@ namespace Emitfy.Generated.Model
     public partial class NfeGet200ResponseData
     {
         /// <summary>
+        /// Defines Status
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 1,
+
+            /// <summary>
+            /// Enum Queued for value: queued
+            /// </summary>
+            [EnumMember(Value = "queued")]
+            Queued = 2,
+
+            /// <summary>
+            /// Enum Processing for value: processing
+            /// </summary>
+            [EnumMember(Value = "processing")]
+            Processing = 3,
+
+            /// <summary>
+            /// Enum Authorized for value: authorized
+            /// </summary>
+            [EnumMember(Value = "authorized")]
+            Authorized = 4,
+
+            /// <summary>
+            /// Enum Rejected for value: rejected
+            /// </summary>
+            [EnumMember(Value = "rejected")]
+            Rejected = 5,
+
+            /// <summary>
+            /// Enum Cancelled for value: cancelled
+            /// </summary>
+            [EnumMember(Value = "cancelled")]
+            Cancelled = 6
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public StatusEnum? Status { get; set; }
+        /// <summary>
+        /// Defines Type
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum Nfe for value: nfe
+            /// </summary>
+            [EnumMember(Value = "nfe")]
+            Nfe = 1
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TypeEnum? Type { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="NfeGet200ResponseData" /> class.
         /// </summary>
+        /// <param name="id">id.</param>
+        /// <param name="status">status.</param>
+        /// <param name="type">type.</param>
+        /// <param name="amount">amount.</param>
         /// <param name="transport">transport.</param>
-        public NfeGet200ResponseData(TransportDetail transport = default)
+        /// <param name="emissionDate">emissionDate.</param>
+        /// <param name="cancellationDate">cancellationDate.</param>
+        /// <param name="fiscal">Dados fiscais (número, série, chave de acesso, protocolo…).</param>
+        /// <param name="corrections">Cartas de correção registradas.</param>
+        /// <param name="createdAt">createdAt.</param>
+        /// <param name="updatedAt">updatedAt.</param>
+        public NfeGet200ResponseData(Guid id = default, StatusEnum? status = default, TypeEnum? type = default, decimal amount = default, TransportDetail transport = default, DateTime emissionDate = default, DateTime cancellationDate = default, Dictionary<string, Object> fiscal = default, List<NfeGet200ResponseDataCorrectionsInner> corrections = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
+            this.Id = id;
+            this.Status = status;
+            this.Type = type;
+            this.Amount = amount;
             this.Transport = transport;
+            this.EmissionDate = emissionDate;
+            this.CancellationDate = cancellationDate;
+            this.Fiscal = fiscal;
+            this.Corrections = corrections;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Amount
+        /// </summary>
+        [DataMember(Name = "amount", EmitDefaultValue = false)]
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets Transport
         /// </summary>
         [DataMember(Name = "transport", EmitDefaultValue = false)]
         public TransportDetail Transport { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EmissionDate
+        /// </summary>
+        [DataMember(Name = "emissionDate", EmitDefaultValue = false)]
+        public DateTime EmissionDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CancellationDate
+        /// </summary>
+        [DataMember(Name = "cancellationDate", EmitDefaultValue = false)]
+        public DateTime CancellationDate { get; set; }
+
+        /// <summary>
+        /// Dados fiscais (número, série, chave de acesso, protocolo…)
+        /// </summary>
+        /// <value>Dados fiscais (número, série, chave de acesso, protocolo…)</value>
+        [DataMember(Name = "fiscal", EmitDefaultValue = false)]
+        public Dictionary<string, Object> Fiscal { get; set; }
+
+        /// <summary>
+        /// Cartas de correção registradas
+        /// </summary>
+        /// <value>Cartas de correção registradas</value>
+        [DataMember(Name = "corrections", EmitDefaultValue = false)]
+        public List<NfeGet200ResponseDataCorrectionsInner> Corrections { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", EmitDefaultValue = false)]
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -61,7 +199,17 @@ namespace Emitfy.Generated.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfeGet200ResponseData {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Transport: ").Append(Transport).Append("\n");
+            sb.Append("  EmissionDate: ").Append(EmissionDate).Append("\n");
+            sb.Append("  CancellationDate: ").Append(CancellationDate).Append("\n");
+            sb.Append("  Fiscal: ").Append(Fiscal).Append("\n");
+            sb.Append("  Corrections: ").Append(Corrections).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -32,6 +32,39 @@ namespace Emitfy.Generated.Model
     public partial class CteOsCreateRequest
     {
         /// <summary>
+        /// &#x60;6&#x60; transporte de pessoas, &#x60;7&#x60; de valores, &#x60;8&#x60; excesso de bagagem
+        /// </summary>
+        /// <value>&#x60;6&#x60; transporte de pessoas, &#x60;7&#x60; de valores, &#x60;8&#x60; excesso de bagagem</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ServiceTypeEnum
+        {
+            /// <summary>
+            /// Enum _6 for value: 6
+            /// </summary>
+            [EnumMember(Value = "6")]
+            _6 = 1,
+
+            /// <summary>
+            /// Enum _7 for value: 7
+            /// </summary>
+            [EnumMember(Value = "7")]
+            _7 = 2,
+
+            /// <summary>
+            /// Enum _8 for value: 8
+            /// </summary>
+            [EnumMember(Value = "8")]
+            _8 = 3
+        }
+
+
+        /// <summary>
+        /// &#x60;6&#x60; transporte de pessoas, &#x60;7&#x60; de valores, &#x60;8&#x60; excesso de bagagem
+        /// </summary>
+        /// <value>&#x60;6&#x60; transporte de pessoas, &#x60;7&#x60; de valores, &#x60;8&#x60; excesso de bagagem</value>
+        [DataMember(Name = "serviceType", EmitDefaultValue = false)]
+        public ServiceTypeEnum? ServiceType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CteOsCreateRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -42,13 +75,22 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CteOsCreateRequest" /> class.
         /// </summary>
+        /// <param name="externalId">Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;)..</param>
         /// <param name="cfop">cfop (required).</param>
         /// <param name="nature">nature (required).</param>
+        /// <param name="serviceType">&#x60;6&#x60; transporte de pessoas, &#x60;7&#x60; de valores, &#x60;8&#x60; excesso de bagagem (default to ServiceTypeEnum._6).</param>
+        /// <param name="takerParty">Tomador do serviço (obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60;).</param>
+        /// <param name="municipalityStartIbge">municipalityStartIbge.</param>
+        /// <param name="municipalityEndIbge">municipalityEndIbge.</param>
+        /// <param name="routeUfs">routeUfs.</param>
         /// <param name="serviceDescription">serviceDescription (required).</param>
+        /// <param name="serviceQuantity">serviceQuantity.</param>
         /// <param name="serviceAmount">serviceAmount (required).</param>
         /// <param name="icms">icms (required).</param>
+        /// <param name="taf">Termo de Autorização de Fretamento (12 dígitos).</param>
+        /// <param name="stateAgencyRegistration">Registro estadual (25 dígitos) — alternativa ao &#x60;taf&#x60;.</param>
         /// <param name="components">components.</param>
-        public CteOsCreateRequest(string cfop = default, string nature = default, string serviceDescription = default, decimal serviceAmount = default, Object icms = default, List<Object> components = default)
+        public CteOsCreateRequest(string externalId = default, string cfop = default, string nature = default, ServiceTypeEnum? serviceType = ServiceTypeEnum._6, CteParty takerParty = default, string municipalityStartIbge = default, string municipalityEndIbge = default, List<string> routeUfs = default, string serviceDescription = default, decimal serviceQuantity = default, decimal serviceAmount = default, CteIcms icms = default, string taf = default, string stateAgencyRegistration = default, List<DfeComponent> components = default)
         {
             // to ensure "cfop" is required (not null)
             if (cfop == null)
@@ -75,9 +117,25 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("icms is a required property for CteOsCreateRequest and cannot be null");
             }
             this.Icms = icms;
+            this.ExternalId = externalId;
+            this.ServiceType = serviceType;
+            this.TakerParty = takerParty;
+            this.MunicipalityStartIbge = municipalityStartIbge;
+            this.MunicipalityEndIbge = municipalityEndIbge;
+            this.RouteUfs = routeUfs;
+            this.ServiceQuantity = serviceQuantity;
+            this.Taf = taf;
+            this.StateAgencyRegistration = stateAgencyRegistration;
             this.Components = components;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;).
+        /// </summary>
+        /// <value>Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;).</value>
+        [DataMember(Name = "externalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets Cfop
@@ -92,10 +150,41 @@ namespace Emitfy.Generated.Model
         public string Nature { get; set; }
 
         /// <summary>
+        /// Tomador do serviço (obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60;)
+        /// </summary>
+        /// <value>Tomador do serviço (obrigatório exceto &#x60;serviceType&#x60; &#x60;8&#x60;)</value>
+        [DataMember(Name = "takerParty", EmitDefaultValue = false)]
+        public CteParty TakerParty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MunicipalityStartIbge
+        /// </summary>
+        [DataMember(Name = "municipalityStartIbge", EmitDefaultValue = false)]
+        public string MunicipalityStartIbge { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MunicipalityEndIbge
+        /// </summary>
+        [DataMember(Name = "municipalityEndIbge", EmitDefaultValue = false)]
+        public string MunicipalityEndIbge { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RouteUfs
+        /// </summary>
+        [DataMember(Name = "routeUfs", EmitDefaultValue = false)]
+        public List<string> RouteUfs { get; set; }
+
+        /// <summary>
         /// Gets or Sets ServiceDescription
         /// </summary>
         [DataMember(Name = "serviceDescription", IsRequired = true, EmitDefaultValue = true)]
         public string ServiceDescription { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ServiceQuantity
+        /// </summary>
+        [DataMember(Name = "serviceQuantity", EmitDefaultValue = false)]
+        public decimal ServiceQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ServiceAmount
@@ -107,13 +196,27 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Icms
         /// </summary>
         [DataMember(Name = "icms", IsRequired = true, EmitDefaultValue = true)]
-        public Object Icms { get; set; }
+        public CteIcms Icms { get; set; }
+
+        /// <summary>
+        /// Termo de Autorização de Fretamento (12 dígitos)
+        /// </summary>
+        /// <value>Termo de Autorização de Fretamento (12 dígitos)</value>
+        [DataMember(Name = "taf", EmitDefaultValue = false)]
+        public string Taf { get; set; }
+
+        /// <summary>
+        /// Registro estadual (25 dígitos) — alternativa ao &#x60;taf&#x60;
+        /// </summary>
+        /// <value>Registro estadual (25 dígitos) — alternativa ao &#x60;taf&#x60;</value>
+        [DataMember(Name = "stateAgencyRegistration", EmitDefaultValue = false)]
+        public string StateAgencyRegistration { get; set; }
 
         /// <summary>
         /// Gets or Sets Components
         /// </summary>
         [DataMember(Name = "components", EmitDefaultValue = false)]
-        public List<Object> Components { get; set; }
+        public List<DfeComponent> Components { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -129,11 +232,20 @@ namespace Emitfy.Generated.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CteOsCreateRequest {\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Cfop: ").Append(Cfop).Append("\n");
             sb.Append("  Nature: ").Append(Nature).Append("\n");
+            sb.Append("  ServiceType: ").Append(ServiceType).Append("\n");
+            sb.Append("  TakerParty: ").Append(TakerParty).Append("\n");
+            sb.Append("  MunicipalityStartIbge: ").Append(MunicipalityStartIbge).Append("\n");
+            sb.Append("  MunicipalityEndIbge: ").Append(MunicipalityEndIbge).Append("\n");
+            sb.Append("  RouteUfs: ").Append(RouteUfs).Append("\n");
             sb.Append("  ServiceDescription: ").Append(ServiceDescription).Append("\n");
+            sb.Append("  ServiceQuantity: ").Append(ServiceQuantity).Append("\n");
             sb.Append("  ServiceAmount: ").Append(ServiceAmount).Append("\n");
             sb.Append("  Icms: ").Append(Icms).Append("\n");
+            sb.Append("  Taf: ").Append(Taf).Append("\n");
+            sb.Append("  StateAgencyRegistration: ").Append(StateAgencyRegistration).Append("\n");
             sb.Append("  Components: ").Append(Components).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");

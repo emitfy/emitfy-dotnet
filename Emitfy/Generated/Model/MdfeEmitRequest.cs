@@ -35,7 +35,10 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="MdfeEmitRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected MdfeEmitRequest() { }
+        protected MdfeEmitRequest()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="MdfeEmitRequest" /> class.
         /// </summary>
@@ -51,11 +54,14 @@ namespace Emitfy.Generated.Model
         /// <param name="modal">modal.</param>
         /// <param name="drivers">drivers.</param>
         /// <param name="insurance">insurance.</param>
+        /// <param name="predominantProduct">predominantProduct.</param>
+        /// <param name="seals">seals.</param>
+        /// <param name="autXml">autXml.</param>
         /// <param name="additional">additional.</param>
         /// <param name="techResponsible">techResponsible.</param>
         /// <param name="payments">payments.</param>
         /// <param name="issueDate">issueDate.</param>
-        public MdfeEmitRequest(string externalId = default, string ufStart = default, string ufEnd = default, string municipalityStartIbge = default, string municipalityEndIbge = default, decimal cargoTotalAmount = default, decimal cargoQuantity = default, string cargoUnit = @"KG", List<MdfeUnloadCity> documents = default, MdfeModal modal = default, List<MdfeDriver> drivers = default, List<Object> insurance = default, Object additional = default, Object techResponsible = default, List<Object> payments = default, DateTime issueDate = default)
+        public MdfeEmitRequest(string externalId = default, string ufStart = default, string ufEnd = default, string municipalityStartIbge = default, string municipalityEndIbge = default, decimal cargoTotalAmount = default, decimal cargoQuantity = default, string cargoUnit = @"KG", List<MdfeUnloadCity> documents = default, MdfeModal modal = default, List<MdfeDriver> drivers = default, List<MdfeEmitRequestInsuranceInner> insurance = default, MdfeEmitRequestPredominantProduct predominantProduct = default, List<string> seals = default, List<DfeAutXml> autXml = default, MdfeEmitRequestAdditional additional = default, DfeTechResponsible techResponsible = default, List<MdfePayment> payments = default, DateTime issueDate = default)
         {
             // to ensure "ufStart" is required (not null)
             if (ufStart == null)
@@ -95,10 +101,14 @@ namespace Emitfy.Generated.Model
             this.Modal = modal;
             this.Drivers = drivers;
             this.Insurance = insurance;
+            this.PredominantProduct = predominantProduct;
+            this.Seals = seals;
+            this.AutXml = autXml;
             this.Additional = additional;
             this.TechResponsible = techResponsible;
             this.Payments = payments;
             this.IssueDate = issueDate;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -171,31 +181,55 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Insurance
         /// </summary>
         [DataMember(Name = "insurance", EmitDefaultValue = false)]
-        public List<Object> Insurance { get; set; }
+        public List<MdfeEmitRequestInsuranceInner> Insurance { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PredominantProduct
+        /// </summary>
+        [DataMember(Name = "predominantProduct", EmitDefaultValue = false)]
+        public MdfeEmitRequestPredominantProduct PredominantProduct { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Seals
+        /// </summary>
+        [DataMember(Name = "seals", EmitDefaultValue = false)]
+        public List<string> Seals { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AutXml
+        /// </summary>
+        [DataMember(Name = "autXml", EmitDefaultValue = false)]
+        public List<DfeAutXml> AutXml { get; set; }
 
         /// <summary>
         /// Gets or Sets Additional
         /// </summary>
         [DataMember(Name = "additional", EmitDefaultValue = false)]
-        public Object Additional { get; set; }
+        public MdfeEmitRequestAdditional Additional { get; set; }
 
         /// <summary>
         /// Gets or Sets TechResponsible
         /// </summary>
         [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
-        public Object TechResponsible { get; set; }
+        public DfeTechResponsible TechResponsible { get; set; }
 
         /// <summary>
         /// Gets or Sets Payments
         /// </summary>
         [DataMember(Name = "payments", EmitDefaultValue = false)]
-        public List<Object> Payments { get; set; }
+        public List<MdfePayment> Payments { get; set; }
 
         /// <summary>
         /// Gets or Sets IssueDate
         /// </summary>
         [DataMember(Name = "issueDate", EmitDefaultValue = false)]
         public DateTime IssueDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -217,10 +251,14 @@ namespace Emitfy.Generated.Model
             sb.Append("  Modal: ").Append(Modal).Append("\n");
             sb.Append("  Drivers: ").Append(Drivers).Append("\n");
             sb.Append("  Insurance: ").Append(Insurance).Append("\n");
+            sb.Append("  PredominantProduct: ").Append(PredominantProduct).Append("\n");
+            sb.Append("  Seals: ").Append(Seals).Append("\n");
+            sb.Append("  AutXml: ").Append(AutXml).Append("\n");
             sb.Append("  Additional: ").Append(Additional).Append("\n");
             sb.Append("  TechResponsible: ").Append(TechResponsible).Append("\n");
             sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -41,9 +41,9 @@ namespace Emitfy.Generated.Model
         /// </summary>
         /// <param name="series">series (required).</param>
         /// <param name="rangeStart">rangeStart (required).</param>
-        /// <param name="rangeEnd">rangeEnd (required).</param>
+        /// <param name="rangeEnd">Deve ser maior ou igual a &#x60;rangeStart&#x60;. (required).</param>
         /// <param name="justification">justification (required).</param>
-        /// <param name="year">year.</param>
+        /// <param name="year">Ano da inutilização. Padrão &#x3D; ano corrente..</param>
         public NumberInutilizationRequest(int series = default, int rangeStart = default, int rangeEnd = default, string justification = default, int year = default)
         {
             this.Series = series;
@@ -71,8 +71,9 @@ namespace Emitfy.Generated.Model
         public int RangeStart { get; set; }
 
         /// <summary>
-        /// Gets or Sets RangeEnd
+        /// Deve ser maior ou igual a &#x60;rangeStart&#x60;.
         /// </summary>
+        /// <value>Deve ser maior ou igual a &#x60;rangeStart&#x60;.</value>
         [DataMember(Name = "rangeEnd", IsRequired = true, EmitDefaultValue = true)]
         public int RangeEnd { get; set; }
 
@@ -83,8 +84,9 @@ namespace Emitfy.Generated.Model
         public string Justification { get; set; }
 
         /// <summary>
-        /// Gets or Sets Year
+        /// Ano da inutilização. Padrão &#x3D; ano corrente.
         /// </summary>
+        /// <value>Ano da inutilização. Padrão &#x3D; ano corrente.</value>
         [DataMember(Name = "year", EmitDefaultValue = false)]
         public int Year { get; set; }
 

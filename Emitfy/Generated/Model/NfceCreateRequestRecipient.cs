@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfceCreateRequestRecipient
+    /// Opcional (padrão consumidor final); todos os campos opcionais.
     /// </summary>
     [DataContract(Name = "nfceCreate_request_recipient")]
     public partial class NfceCreateRequestRecipient
@@ -38,12 +38,15 @@ namespace Emitfy.Generated.Model
         /// <param name="name">name.</param>
         /// <param name="email">email.</param>
         /// <param name="phone">phone.</param>
-        public NfceCreateRequestRecipient(string taxId = default, string name = default, string email = default, string phone = default)
+        /// <param name="address">address.</param>
+        public NfceCreateRequestRecipient(string taxId = default, string name = default, string email = default, string phone = default, NfeAddress address = default)
         {
             this.TaxId = taxId;
             this.Name = name;
             this.Email = email;
             this.Phone = phone;
+            this.Address = address;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -71,6 +74,18 @@ namespace Emitfy.Generated.Model
         public string Phone { get; set; }
 
         /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public NfeAddress Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +97,8 @@ namespace Emitfy.Generated.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -63,6 +63,55 @@ namespace Emitfy.Generated.Model
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
+        /// Defines Status
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 1,
+
+            /// <summary>
+            /// Enum Queued for value: queued
+            /// </summary>
+            [EnumMember(Value = "queued")]
+            Queued = 2,
+
+            /// <summary>
+            /// Enum Processing for value: processing
+            /// </summary>
+            [EnumMember(Value = "processing")]
+            Processing = 3,
+
+            /// <summary>
+            /// Enum Authorized for value: authorized
+            /// </summary>
+            [EnumMember(Value = "authorized")]
+            Authorized = 4,
+
+            /// <summary>
+            /// Enum Rejected for value: rejected
+            /// </summary>
+            [EnumMember(Value = "rejected")]
+            Rejected = 5,
+
+            /// <summary>
+            /// Enum Cancelled for value: cancelled
+            /// </summary>
+            [EnumMember(Value = "cancelled")]
+            Cancelled = 6
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
+        public StatusEnum Status { get; set; }
+        /// <summary>
         /// Defines Currency
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -108,16 +157,11 @@ namespace Emitfy.Generated.Model
         /// <param name="items">items.</param>
         /// <param name="document">document.</param>
         /// <param name="assets">assets.</param>
-        public PublicInvoiceResource(Guid id = default, string externalId = default, Guid companyId = default, string taxId = default, TypeEnum type = default, string status = default, int varVersion = default, decimal amount = default, CurrencyEnum currency = default, DateTime issuedAt = default, DateTime cancelledAt = default, DateTime createdAt = default, DateTime updatedAt = default, PublicInvoiceResourceEmission emission = default, string rejectionReason = default, Dictionary<string, Object> customer = default, List<Dictionary<string, Object>> items = default, PublicInvoiceResourceDocument document = default, PublicInvoiceResourceAssets assets = default)
+        public PublicInvoiceResource(Guid id = default, string externalId = default, Guid companyId = default, string taxId = default, TypeEnum type = default, StatusEnum status = default, int varVersion = default, decimal amount = default, CurrencyEnum currency = default, DateTime issuedAt = default, DateTime cancelledAt = default, DateTime createdAt = default, DateTime updatedAt = default, PublicInvoiceResourceEmission emission = default, string rejectionReason = default, Dictionary<string, Object> customer = default, List<Dictionary<string, Object>> items = default, PublicInvoiceResourceDocument document = default, PublicInvoiceResourceAssets assets = default)
         {
             this.Id = id;
             this.CompanyId = companyId;
             this.Type = type;
-            // to ensure "status" is required (not null)
-            if (status == null)
-            {
-                throw new ArgumentNullException("status is a required property for PublicInvoiceResource and cannot be null");
-            }
             this.Status = status;
             this.VarVersion = varVersion;
             this.Amount = amount;
@@ -160,12 +204,6 @@ namespace Emitfy.Generated.Model
         /// <value>Presente em webhooks</value>
         [DataMember(Name = "taxId", EmitDefaultValue = false)]
         public string TaxId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Concorrência para PATCH

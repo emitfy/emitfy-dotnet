@@ -34,11 +34,21 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfseCreateRequestSubstitution" /> class.
         /// </summary>
-        /// <param name="replacedKey">replacedKey.</param>
+        [JsonConstructorAttribute]
+        protected NfseCreateRequestSubstitution() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NfseCreateRequestSubstitution" /> class.
+        /// </summary>
+        /// <param name="replacedKey">replacedKey (required).</param>
         /// <param name="reasonCode">reasonCode.</param>
         /// <param name="reason">reason.</param>
         public NfseCreateRequestSubstitution(string replacedKey = default, string reasonCode = default, string reason = default)
         {
+            // to ensure "replacedKey" is required (not null)
+            if (replacedKey == null)
+            {
+                throw new ArgumentNullException("replacedKey is a required property for NfseCreateRequestSubstitution and cannot be null");
+            }
             this.ReplacedKey = replacedKey;
             this.ReasonCode = reasonCode;
             this.Reason = reason;
@@ -47,7 +57,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Gets or Sets ReplacedKey
         /// </summary>
-        [DataMember(Name = "replacedKey", EmitDefaultValue = false)]
+        [DataMember(Name = "replacedKey", IsRequired = true, EmitDefaultValue = true)]
         public string ReplacedKey { get; set; }
 
         /// <summary>

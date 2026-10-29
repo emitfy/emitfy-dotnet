@@ -32,6 +32,130 @@ namespace Emitfy.Generated.Model
     public partial class NfeCreateRequest
     {
         /// <summary>
+        /// Defines OperationType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum OperationTypeEnum
+        {
+            /// <summary>
+            /// Enum Outgoing for value: outgoing
+            /// </summary>
+            [EnumMember(Value = "outgoing")]
+            Outgoing = 1,
+
+            /// <summary>
+            /// Enum Incoming for value: incoming
+            /// </summary>
+            [EnumMember(Value = "incoming")]
+            Incoming = 2
+        }
+
+
+        /// <summary>
+        /// Gets or Sets OperationType
+        /// </summary>
+        [DataMember(Name = "operationType", EmitDefaultValue = false)]
+        public OperationTypeEnum? OperationType { get; set; }
+        /// <summary>
+        /// Defines PrintType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PrintTypeEnum
+        {
+            /// <summary>
+            /// Enum NfeNormalPortrait for value: nfeNormalPortrait
+            /// </summary>
+            [EnumMember(Value = "nfeNormalPortrait")]
+            NfeNormalPortrait = 1,
+
+            /// <summary>
+            /// Enum NfeNormalLandscape for value: nfeNormalLandscape
+            /// </summary>
+            [EnumMember(Value = "nfeNormalLandscape")]
+            NfeNormalLandscape = 2,
+
+            /// <summary>
+            /// Enum NfeSimplified for value: nfeSimplified
+            /// </summary>
+            [EnumMember(Value = "nfeSimplified")]
+            NfeSimplified = 3
+        }
+
+
+        /// <summary>
+        /// Gets or Sets PrintType
+        /// </summary>
+        [DataMember(Name = "printType", EmitDefaultValue = false)]
+        public PrintTypeEnum? PrintType { get; set; }
+        /// <summary>
+        /// Defines ConsumerType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ConsumerTypeEnum
+        {
+            /// <summary>
+            /// Enum Normal for value: normal
+            /// </summary>
+            [EnumMember(Value = "normal")]
+            Normal = 1,
+
+            /// <summary>
+            /// Enum FinalConsumer for value: finalConsumer
+            /// </summary>
+            [EnumMember(Value = "finalConsumer")]
+            FinalConsumer = 2
+        }
+
+
+        /// <summary>
+        /// Gets or Sets ConsumerType
+        /// </summary>
+        [DataMember(Name = "consumerType", EmitDefaultValue = false)]
+        public ConsumerTypeEnum? ConsumerType { get; set; }
+        /// <summary>
+        /// Defines PresenceType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PresenceTypeEnum
+        {
+            /// <summary>
+            /// Enum Presential for value: presential
+            /// </summary>
+            [EnumMember(Value = "presential")]
+            Presential = 1,
+
+            /// <summary>
+            /// Enum Internet for value: internet
+            /// </summary>
+            [EnumMember(Value = "internet")]
+            Internet = 2,
+
+            /// <summary>
+            /// Enum Telephone for value: telephone
+            /// </summary>
+            [EnumMember(Value = "telephone")]
+            Telephone = 3,
+
+            /// <summary>
+            /// Enum Delivery for value: delivery
+            /// </summary>
+            [EnumMember(Value = "delivery")]
+            Delivery = 4,
+
+            /// <summary>
+            /// Enum Others for value: others
+            /// </summary>
+            [EnumMember(Value = "others")]
+            Others = 5
+        }
+
+
+        /// <summary>
+        /// Gets or Sets PresenceType
+        /// </summary>
+        [DataMember(Name = "presenceType", EmitDefaultValue = false)]
+        public PresenceTypeEnum? PresenceType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -45,22 +169,35 @@ namespace Emitfy.Generated.Model
         /// <param name="items">items (required).</param>
         /// <param name="recipient">recipient (required).</param>
         /// <param name="transport">transport.</param>
-        /// <param name="externalId">externalId.</param>
+        /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
         /// <param name="operationNature">operationNature.</param>
-        /// <param name="nature">nature.</param>
-        /// <param name="billing">billing.</param>
-        /// <param name="additional">additional.</param>
-        /// <param name="techResponsible">techResponsible.</param>
-        /// <param name="intermediary">intermediary.</param>
-        /// <param name="autXml">autXml.</param>
+        /// <param name="nature">Alias legado de operationNature.</param>
+        /// <param name="operationType">operationType.</param>
+        /// <param name="printType">printType.</param>
+        /// <param name="consumerType">consumerType.</param>
+        /// <param name="presenceType">presenceType.</param>
+        /// <param name="ibsConsumptionCityCode">ibsConsumptionCityCode.</param>
+        /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada na emissão.</param>
+        /// <param name="cfop">cfop.</param>
+        /// <param name="issueDate">issueDate.</param>
+        /// <param name="ide">Grupo ide (campos avançados).</param>
+        /// <param name="avulsa">avulsa.</param>
         /// <param name="retirada">retirada.</param>
         /// <param name="entrega">entrega.</param>
+        /// <param name="autXml">autXml.</param>
+        /// <param name="billing">billing.</param>
+        /// <param name="payments">payments.</param>
+        /// <param name="change">Troco.</param>
+        /// <param name="intermediary">intermediary.</param>
+        /// <param name="additional">additional.</param>
         /// <param name="export">export.</param>
         /// <param name="purchase">purchase.</param>
         /// <param name="sugarcane">sugarcane.</param>
-        /// <param name="farming">farming.</param>
+        /// <param name="techResponsible">techResponsible.</param>
         /// <param name="nffRequest">nffRequest.</param>
-        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, NfeCreateRequestTransport transport = default, string externalId = default, string operationNature = default, string nature = default, Object billing = default, Object additional = default, Object techResponsible = default, Object intermediary = default, List<Object> autXml = default, Object retirada = default, Object entrega = default, Object export = default, Object purchase = default, Object sugarcane = default, Object farming = default, string nffRequest = default)
+        /// <param name="farming">farming.</param>
+        /// <param name="totals">Override de totais.</param>
+        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, NfeCreateRequestTransport transport = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, Object ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, Object billing = default, List<Object> payments = default, decimal change = default, Object intermediary = default, Object additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, Object totals = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -78,18 +215,31 @@ namespace Emitfy.Generated.Model
             this.ExternalId = externalId;
             this.OperationNature = operationNature;
             this.Nature = nature;
-            this.Billing = billing;
-            this.Additional = additional;
-            this.TechResponsible = techResponsible;
-            this.Intermediary = intermediary;
-            this.AutXml = autXml;
+            this.OperationType = operationType;
+            this.PrintType = printType;
+            this.ConsumerType = consumerType;
+            this.PresenceType = presenceType;
+            this.IbsConsumptionCityCode = ibsConsumptionCityCode;
+            this.StateRegistrationId = stateRegistrationId;
+            this.Cfop = cfop;
+            this.IssueDate = issueDate;
+            this.Ide = ide;
+            this.Avulsa = avulsa;
             this.Retirada = retirada;
             this.Entrega = entrega;
+            this.AutXml = autXml;
+            this.Billing = billing;
+            this.Payments = payments;
+            this.Change = change;
+            this.Intermediary = intermediary;
+            this.Additional = additional;
             this.Export = export;
             this.Purchase = purchase;
             this.Sugarcane = sugarcane;
-            this.Farming = farming;
+            this.TechResponsible = techResponsible;
             this.NffRequest = nffRequest;
+            this.Farming = farming;
+            this.Totals = totals;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -112,8 +262,9 @@ namespace Emitfy.Generated.Model
         public NfeCreateRequestTransport Transport { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)
         /// </summary>
+        /// <value>Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)</value>
         [DataMember(Name = "externalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
@@ -124,11 +275,68 @@ namespace Emitfy.Generated.Model
         public string OperationNature { get; set; }
 
         /// <summary>
-        /// Gets or Sets Nature
+        /// Alias legado de operationNature
         /// </summary>
+        /// <value>Alias legado de operationNature</value>
         [DataMember(Name = "nature", EmitDefaultValue = false)]
         [Obsolete]
         public string Nature { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IbsConsumptionCityCode
+        /// </summary>
+        [DataMember(Name = "ibsConsumptionCityCode", EmitDefaultValue = false)]
+        public string IbsConsumptionCityCode { get; set; }
+
+        /// <summary>
+        /// Inscrição estadual da empresa (multi-IE) usada na emissão
+        /// </summary>
+        /// <value>Inscrição estadual da empresa (multi-IE) usada na emissão</value>
+        [DataMember(Name = "stateRegistrationId", EmitDefaultValue = false)]
+        public Guid StateRegistrationId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cfop
+        /// </summary>
+        [DataMember(Name = "cfop", EmitDefaultValue = false)]
+        public string Cfop { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IssueDate
+        /// </summary>
+        [DataMember(Name = "issueDate", EmitDefaultValue = false)]
+        public DateTime IssueDate { get; set; }
+
+        /// <summary>
+        /// Grupo ide (campos avançados)
+        /// </summary>
+        /// <value>Grupo ide (campos avançados)</value>
+        [DataMember(Name = "ide", EmitDefaultValue = false)]
+        public Object Ide { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Avulsa
+        /// </summary>
+        [DataMember(Name = "avulsa", EmitDefaultValue = false)]
+        public Object Avulsa { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Retirada
+        /// </summary>
+        [DataMember(Name = "retirada", EmitDefaultValue = false)]
+        public NfeCreateRequestRetirada Retirada { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Entrega
+        /// </summary>
+        [DataMember(Name = "entrega", EmitDefaultValue = false)]
+        public NfeCreateRequestEntrega Entrega { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AutXml
+        /// </summary>
+        [DataMember(Name = "autXml", EmitDefaultValue = false)]
+        public List<DfeAutXml> AutXml { get; set; }
 
         /// <summary>
         /// Gets or Sets Billing
@@ -137,16 +345,17 @@ namespace Emitfy.Generated.Model
         public Object Billing { get; set; }
 
         /// <summary>
-        /// Gets or Sets Additional
+        /// Gets or Sets Payments
         /// </summary>
-        [DataMember(Name = "additional", EmitDefaultValue = false)]
-        public Object Additional { get; set; }
+        [DataMember(Name = "payments", EmitDefaultValue = false)]
+        public List<Object> Payments { get; set; }
 
         /// <summary>
-        /// Gets or Sets TechResponsible
+        /// Troco
         /// </summary>
-        [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
-        public Object TechResponsible { get; set; }
+        /// <value>Troco</value>
+        [DataMember(Name = "change", EmitDefaultValue = false)]
+        public decimal Change { get; set; }
 
         /// <summary>
         /// Gets or Sets Intermediary
@@ -155,22 +364,10 @@ namespace Emitfy.Generated.Model
         public Object Intermediary { get; set; }
 
         /// <summary>
-        /// Gets or Sets AutXml
+        /// Gets or Sets Additional
         /// </summary>
-        [DataMember(Name = "autXml", EmitDefaultValue = false)]
-        public List<Object> AutXml { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Retirada
-        /// </summary>
-        [DataMember(Name = "retirada", EmitDefaultValue = false)]
-        public Object Retirada { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Entrega
-        /// </summary>
-        [DataMember(Name = "entrega", EmitDefaultValue = false)]
-        public Object Entrega { get; set; }
+        [DataMember(Name = "additional", EmitDefaultValue = false)]
+        public Object Additional { get; set; }
 
         /// <summary>
         /// Gets or Sets Export
@@ -191,16 +388,29 @@ namespace Emitfy.Generated.Model
         public Object Sugarcane { get; set; }
 
         /// <summary>
-        /// Gets or Sets Farming
+        /// Gets or Sets TechResponsible
         /// </summary>
-        [DataMember(Name = "farming", EmitDefaultValue = false)]
-        public Object Farming { get; set; }
+        [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
+        public DfeTechResponsible TechResponsible { get; set; }
 
         /// <summary>
         /// Gets or Sets NffRequest
         /// </summary>
         [DataMember(Name = "nffRequest", EmitDefaultValue = false)]
         public string NffRequest { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Farming
+        /// </summary>
+        [DataMember(Name = "farming", EmitDefaultValue = false)]
+        public Object Farming { get; set; }
+
+        /// <summary>
+        /// Override de totais
+        /// </summary>
+        /// <value>Override de totais</value>
+        [DataMember(Name = "totals", EmitDefaultValue = false)]
+        public Object Totals { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -222,18 +432,31 @@ namespace Emitfy.Generated.Model
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  OperationNature: ").Append(OperationNature).Append("\n");
             sb.Append("  Nature: ").Append(Nature).Append("\n");
-            sb.Append("  Billing: ").Append(Billing).Append("\n");
-            sb.Append("  Additional: ").Append(Additional).Append("\n");
-            sb.Append("  TechResponsible: ").Append(TechResponsible).Append("\n");
-            sb.Append("  Intermediary: ").Append(Intermediary).Append("\n");
-            sb.Append("  AutXml: ").Append(AutXml).Append("\n");
+            sb.Append("  OperationType: ").Append(OperationType).Append("\n");
+            sb.Append("  PrintType: ").Append(PrintType).Append("\n");
+            sb.Append("  ConsumerType: ").Append(ConsumerType).Append("\n");
+            sb.Append("  PresenceType: ").Append(PresenceType).Append("\n");
+            sb.Append("  IbsConsumptionCityCode: ").Append(IbsConsumptionCityCode).Append("\n");
+            sb.Append("  StateRegistrationId: ").Append(StateRegistrationId).Append("\n");
+            sb.Append("  Cfop: ").Append(Cfop).Append("\n");
+            sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
+            sb.Append("  Ide: ").Append(Ide).Append("\n");
+            sb.Append("  Avulsa: ").Append(Avulsa).Append("\n");
             sb.Append("  Retirada: ").Append(Retirada).Append("\n");
             sb.Append("  Entrega: ").Append(Entrega).Append("\n");
+            sb.Append("  AutXml: ").Append(AutXml).Append("\n");
+            sb.Append("  Billing: ").Append(Billing).Append("\n");
+            sb.Append("  Payments: ").Append(Payments).Append("\n");
+            sb.Append("  Change: ").Append(Change).Append("\n");
+            sb.Append("  Intermediary: ").Append(Intermediary).Append("\n");
+            sb.Append("  Additional: ").Append(Additional).Append("\n");
             sb.Append("  Export: ").Append(Export).Append("\n");
             sb.Append("  Purchase: ").Append(Purchase).Append("\n");
             sb.Append("  Sugarcane: ").Append(Sugarcane).Append("\n");
-            sb.Append("  Farming: ").Append(Farming).Append("\n");
+            sb.Append("  TechResponsible: ").Append(TechResponsible).Append("\n");
             sb.Append("  NffRequest: ").Append(NffRequest).Append("\n");
+            sb.Append("  Farming: ").Append(Farming).Append("\n");
+            sb.Append("  Totals: ").Append(Totals).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

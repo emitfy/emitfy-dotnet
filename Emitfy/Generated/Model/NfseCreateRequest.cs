@@ -26,11 +26,287 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequest
+    /// Além dos campos &#x60;required&#x60;, a validação exige: &#x60;cityServiceCode&#x60; (ou o alias &#x60;serviceCode&#x60;), &#x60;federalServiceCode&#x60; (ou &#x60;serviceItemCode&#x60;) e &#x60;iss.rate&#x60; (ou &#x60;taxes.iss.rate&#x60;; 0 é válido). Com &#x60;serviceLocation&#x60; &#x60;3&#x60;, &#x60;cityIbge&#x60; (IBGE de 7 dígitos) é obrigatório. Falha → 422 &#x60;VALIDATION_ERROR&#x60;. Campo desconhecido também → 422. 
     /// </summary>
     [DataContract(Name = "NfseCreateRequest")]
     public partial class NfseCreateRequest
     {
+        /// <summary>
+        /// Default other_service
+        /// </summary>
+        /// <value>Default other_service</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum CategoryEnum
+        {
+            /// <summary>
+            /// Enum OnlineCourse for value: online_course
+            /// </summary>
+            [EnumMember(Value = "online_course")]
+            OnlineCourse = 1,
+
+            /// <summary>
+            /// Enum Consulting for value: consulting
+            /// </summary>
+            [EnumMember(Value = "consulting")]
+            Consulting = 2,
+
+            /// <summary>
+            /// Enum Subscription for value: subscription
+            /// </summary>
+            [EnumMember(Value = "subscription")]
+            Subscription = 3,
+
+            /// <summary>
+            /// Enum Saas for value: saas
+            /// </summary>
+            [EnumMember(Value = "saas")]
+            Saas = 4,
+
+            /// <summary>
+            /// Enum OnlineEvent for value: online_event
+            /// </summary>
+            [EnumMember(Value = "online_event")]
+            OnlineEvent = 5,
+
+            /// <summary>
+            /// Enum ProfessionalService for value: professional_service
+            /// </summary>
+            [EnumMember(Value = "professional_service")]
+            ProfessionalService = 6,
+
+            /// <summary>
+            /// Enum OtherService for value: other_service
+            /// </summary>
+            [EnumMember(Value = "other_service")]
+            OtherService = 7,
+
+            /// <summary>
+            /// Enum AffiliateInfoproducts for value: affiliate_infoproducts
+            /// </summary>
+            [EnumMember(Value = "affiliate_infoproducts")]
+            AffiliateInfoproducts = 8,
+
+            /// <summary>
+            /// Enum AffiliateBetting for value: affiliate_betting
+            /// </summary>
+            [EnumMember(Value = "affiliate_betting")]
+            AffiliateBetting = 9,
+
+            /// <summary>
+            /// Enum MarketingAgency for value: marketing_agency
+            /// </summary>
+            [EnumMember(Value = "marketing_agency")]
+            MarketingAgency = 10,
+
+            /// <summary>
+            /// Enum Copywriter for value: copywriter
+            /// </summary>
+            [EnumMember(Value = "copywriter")]
+            Copywriter = 11,
+
+            /// <summary>
+            /// Enum SystemsDevelopment for value: systems_development
+            /// </summary>
+            [EnumMember(Value = "systems_development")]
+            SystemsDevelopment = 12,
+
+            /// <summary>
+            /// Enum GraphicDesigner for value: graphic_designer
+            /// </summary>
+            [EnumMember(Value = "graphic_designer")]
+            GraphicDesigner = 13,
+
+            /// <summary>
+            /// Enum DropshippingSupplier for value: dropshipping_supplier
+            /// </summary>
+            [EnumMember(Value = "dropshipping_supplier")]
+            DropshippingSupplier = 14,
+
+            /// <summary>
+            /// Enum DropshippingConsumer for value: dropshipping_consumer
+            /// </summary>
+            [EnumMember(Value = "dropshipping_consumer")]
+            DropshippingConsumer = 15,
+
+            /// <summary>
+            /// Enum TrafficManager for value: traffic_manager
+            /// </summary>
+            [EnumMember(Value = "traffic_manager")]
+            TrafficManager = 16,
+
+            /// <summary>
+            /// Enum DigitalInfluencer for value: digital_influencer
+            /// </summary>
+            [EnumMember(Value = "digital_influencer")]
+            DigitalInfluencer = 17,
+
+            /// <summary>
+            /// Enum Infoproducer for value: infoproducer
+            /// </summary>
+            [EnumMember(Value = "infoproducer")]
+            Infoproducer = 18,
+
+            /// <summary>
+            /// Enum PhysicalProduct for value: physical_product
+            /// </summary>
+            [EnumMember(Value = "physical_product")]
+            PhysicalProduct = 19,
+
+            /// <summary>
+            /// Enum DigitalBook for value: digital_book
+            /// </summary>
+            [EnumMember(Value = "digital_book")]
+            DigitalBook = 20,
+
+            /// <summary>
+            /// Enum DigitalContent for value: digital_content
+            /// </summary>
+            [EnumMember(Value = "digital_content")]
+            DigitalContent = 21,
+
+            /// <summary>
+            /// Enum Membership for value: membership
+            /// </summary>
+            [EnumMember(Value = "membership")]
+            Membership = 22,
+
+            /// <summary>
+            /// Enum Software for value: software
+            /// </summary>
+            [EnumMember(Value = "software")]
+            Software = 23,
+
+            /// <summary>
+            /// Enum OtherProduct for value: other_product
+            /// </summary>
+            [EnumMember(Value = "other_product")]
+            OtherProduct = 24
+        }
+
+
+        /// <summary>
+        /// Default other_service
+        /// </summary>
+        /// <value>Default other_service</value>
+        [DataMember(Name = "category", EmitDefaultValue = false)]
+        public CategoryEnum? Category { get; set; }
+        /// <summary>
+        /// Natureza da operação. Default 1.
+        /// </summary>
+        /// <value>Natureza da operação. Default 1.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum NatureOfOperationEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 4,
+
+            /// <summary>
+            /// Enum _5 for value: 5
+            /// </summary>
+            [EnumMember(Value = "5")]
+            _5 = 5,
+
+            /// <summary>
+            /// Enum _6 for value: 6
+            /// </summary>
+            [EnumMember(Value = "6")]
+            _6 = 6
+        }
+
+
+        /// <summary>
+        /// Natureza da operação. Default 1.
+        /// </summary>
+        /// <value>Natureza da operação. Default 1.</value>
+        [DataMember(Name = "natureOfOperation", EmitDefaultValue = false)]
+        public NatureOfOperationEnum? NatureOfOperation { get; set; }
+        /// <summary>
+        /// Local de prestação. &#x60;1&#x60; município da empresa (default), &#x60;2&#x60; município do tomador, &#x60;3&#x60; outro município (exige &#x60;cityIbge&#x60;). 
+        /// </summary>
+        /// <value>Local de prestação. &#x60;1&#x60; município da empresa (default), &#x60;2&#x60; município do tomador, &#x60;3&#x60; outro município (exige &#x60;cityIbge&#x60;). </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ServiceLocationEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3
+        }
+
+
+        /// <summary>
+        /// Local de prestação. &#x60;1&#x60; município da empresa (default), &#x60;2&#x60; município do tomador, &#x60;3&#x60; outro município (exige &#x60;cityIbge&#x60;). 
+        /// </summary>
+        /// <value>Local de prestação. &#x60;1&#x60; município da empresa (default), &#x60;2&#x60; município do tomador, &#x60;3&#x60; outro município (exige &#x60;cityIbge&#x60;). </value>
+        [DataMember(Name = "serviceLocation", EmitDefaultValue = false)]
+        public ServiceLocationEnum? ServiceLocation { get; set; }
+        /// <summary>
+        /// Município de incidência do ISS. Default 0.
+        /// </summary>
+        /// <value>Município de incidência do ISS. Default 0.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum MunicipalityOfIncidenceEnum
+        {
+            /// <summary>
+            /// Enum _0 for value: 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            _0 = 1,
+
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 2,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 3
+        }
+
+
+        /// <summary>
+        /// Município de incidência do ISS. Default 0.
+        /// </summary>
+        /// <value>Município de incidência do ISS. Default 0.</value>
+        [DataMember(Name = "municipalityOfIncidence", EmitDefaultValue = false)]
+        public MunicipalityOfIncidenceEnum? MunicipalityOfIncidence { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="NfseCreateRequest" /> class.
         /// </summary>
@@ -47,19 +323,24 @@ namespace Emitfy.Generated.Model
         /// <param name="sku">Default direct-api-nfse.</param>
         /// <param name="category">Default other_service.</param>
         /// <param name="guarantee">guarantee.</param>
-        /// <param name="cityServiceCode">Código municipal do serviço (required).</param>
-        /// <param name="federalServiceCode">Item LC 116 (cTribNac) (required).</param>
+        /// <param name="cityServiceCode">Código municipal do serviço (obrigatório, ou o alias &#x60;serviceCode&#x60;).</param>
+        /// <param name="federalServiceCode">Item LC 116 (cTribNac) — obrigatório, ou o alias &#x60;serviceItemCode&#x60;.</param>
         /// <param name="nbs">Código NBS (reforma).</param>
         /// <param name="cnaeCode">cnaeCode.</param>
-        /// <param name="iss">iss (required).</param>
+        /// <param name="iss">iss.</param>
         /// <param name="ibsCbs">ibsCbs.</param>
-        /// <param name="natureOfOperation">natureOfOperation.</param>
-        /// <param name="serviceLocation">serviceLocation.</param>
-        /// <param name="municipalityOfIncidence">municipalityOfIncidence.</param>
+        /// <param name="natureOfOperation">Natureza da operação. Default 1..</param>
+        /// <param name="serviceLocation">Local de prestação. &#x60;1&#x60; município da empresa (default), &#x60;2&#x60; município do tomador, &#x60;3&#x60; outro município (exige &#x60;cityIbge&#x60;). .</param>
+        /// <param name="municipalityOfIncidence">Município de incidência do ISS. Default 0..</param>
+        /// <param name="cityIbge">IBGE (7 dígitos) do local de prestação. Obrigatório com &#x60;serviceLocation&#x60; &#x60;3&#x60;..</param>
+        /// <param name="competenceDate">Data de competência (ISO 8601 com offset)..</param>
+        /// <param name="deductions">Deduções da base de cálculo. Default 0..</param>
+        /// <param name="exigibility">exigibility.</param>
+        /// <param name="additionalInfo">additionalInfo.</param>
         /// <param name="taxes">taxes.</param>
         /// <param name="amount">amount (required).</param>
         /// <param name="issueDate">issueDate.</param>
-        /// <param name="externalId">externalId.</param>
+        /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
         /// <param name="borrower">borrower (required).</param>
         /// <param name="intermediary">intermediary.</param>
         /// <param name="construction">construction.</param>
@@ -70,7 +351,7 @@ namespace Emitfy.Generated.Model
         /// <param name="taxClassification">Alias legado de ibsCbs.taxClassCode.</param>
         /// <param name="ibsCst">Alias legado de ibsCbs.cst.</param>
         /// <param name="ibsOperationIndicator">Alias legado de ibsCbs.operationIndicator.</param>
-        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, string category = default, int guarantee = default, string cityServiceCode = default, string federalServiceCode = default, string nbs = default, string cnaeCode = default, NfseCreateRequestIss iss = default, NfseCreateRequestIbsCbs ibsCbs = default, string natureOfOperation = default, string serviceLocation = default, string municipalityOfIncidence = default, NfseCreateRequestTaxes taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default, NfseCreateRequestIntermediary intermediary = default, NfseCreateRequestConstruction construction = default, NfseCreateRequestSubstitution substitution = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default)
+        public NfseCreateRequest(string serviceDescription = default, string name = default, string sku = default, CategoryEnum? category = default, int guarantee = default, string cityServiceCode = default, string federalServiceCode = default, string nbs = default, string cnaeCode = default, NfseCreateRequestIss iss = default, NfseCreateRequestIbsCbs ibsCbs = default, NatureOfOperationEnum? natureOfOperation = default, ServiceLocationEnum? serviceLocation = default, MunicipalityOfIncidenceEnum? municipalityOfIncidence = default, string cityIbge = default, DateTime competenceDate = default, decimal deductions = default, string exigibility = default, string additionalInfo = default, NfseCreateRequestTaxes taxes = default, decimal amount = default, DateTime issueDate = default, string externalId = default, NfseCreateRequestBorrower borrower = default, NfseCreateRequestIntermediary intermediary = default, NfseCreateRequestConstruction construction = default, NfseCreateRequestSubstitution substitution = default, string serviceCode = default, string serviceItemCode = default, string nbsCode = default, string taxClassification = default, string ibsCst = default, string ibsOperationIndicator = default)
         {
             // to ensure "serviceDescription" is required (not null)
             if (serviceDescription == null)
@@ -78,24 +359,6 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("serviceDescription is a required property for NfseCreateRequest and cannot be null");
             }
             this.ServiceDescription = serviceDescription;
-            // to ensure "cityServiceCode" is required (not null)
-            if (cityServiceCode == null)
-            {
-                throw new ArgumentNullException("cityServiceCode is a required property for NfseCreateRequest and cannot be null");
-            }
-            this.CityServiceCode = cityServiceCode;
-            // to ensure "federalServiceCode" is required (not null)
-            if (federalServiceCode == null)
-            {
-                throw new ArgumentNullException("federalServiceCode is a required property for NfseCreateRequest and cannot be null");
-            }
-            this.FederalServiceCode = federalServiceCode;
-            // to ensure "iss" is required (not null)
-            if (iss == null)
-            {
-                throw new ArgumentNullException("iss is a required property for NfseCreateRequest and cannot be null");
-            }
-            this.Iss = iss;
             this.Amount = amount;
             // to ensure "borrower" is required (not null)
             if (borrower == null)
@@ -107,12 +370,20 @@ namespace Emitfy.Generated.Model
             this.Sku = sku;
             this.Category = category;
             this.Guarantee = guarantee;
+            this.CityServiceCode = cityServiceCode;
+            this.FederalServiceCode = federalServiceCode;
             this.Nbs = nbs;
             this.CnaeCode = cnaeCode;
+            this.Iss = iss;
             this.IbsCbs = ibsCbs;
             this.NatureOfOperation = natureOfOperation;
             this.ServiceLocation = serviceLocation;
             this.MunicipalityOfIncidence = municipalityOfIncidence;
+            this.CityIbge = cityIbge;
+            this.CompetenceDate = competenceDate;
+            this.Deductions = deductions;
+            this.Exigibility = exigibility;
+            this.AdditionalInfo = additionalInfo;
             this.Taxes = taxes;
             this.IssueDate = issueDate;
             this.ExternalId = externalId;
@@ -150,30 +421,23 @@ namespace Emitfy.Generated.Model
         public string Sku { get; set; }
 
         /// <summary>
-        /// Default other_service
-        /// </summary>
-        /// <value>Default other_service</value>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
-        public string Category { get; set; }
-
-        /// <summary>
         /// Gets or Sets Guarantee
         /// </summary>
         [DataMember(Name = "guarantee", EmitDefaultValue = false)]
         public int Guarantee { get; set; }
 
         /// <summary>
-        /// Código municipal do serviço
+        /// Código municipal do serviço (obrigatório, ou o alias &#x60;serviceCode&#x60;)
         /// </summary>
-        /// <value>Código municipal do serviço</value>
-        [DataMember(Name = "cityServiceCode", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>Código municipal do serviço (obrigatório, ou o alias &#x60;serviceCode&#x60;)</value>
+        [DataMember(Name = "cityServiceCode", EmitDefaultValue = false)]
         public string CityServiceCode { get; set; }
 
         /// <summary>
-        /// Item LC 116 (cTribNac)
+        /// Item LC 116 (cTribNac) — obrigatório, ou o alias &#x60;serviceItemCode&#x60;
         /// </summary>
-        /// <value>Item LC 116 (cTribNac)</value>
-        [DataMember(Name = "federalServiceCode", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>Item LC 116 (cTribNac) — obrigatório, ou o alias &#x60;serviceItemCode&#x60;</value>
+        [DataMember(Name = "federalServiceCode", EmitDefaultValue = false)]
         public string FederalServiceCode { get; set; }
 
         /// <summary>
@@ -192,7 +456,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Gets or Sets Iss
         /// </summary>
-        [DataMember(Name = "iss", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "iss", EmitDefaultValue = false)]
         public NfseCreateRequestIss Iss { get; set; }
 
         /// <summary>
@@ -202,22 +466,37 @@ namespace Emitfy.Generated.Model
         public NfseCreateRequestIbsCbs IbsCbs { get; set; }
 
         /// <summary>
-        /// Gets or Sets NatureOfOperation
+        /// IBGE (7 dígitos) do local de prestação. Obrigatório com &#x60;serviceLocation&#x60; &#x60;3&#x60;.
         /// </summary>
-        [DataMember(Name = "natureOfOperation", EmitDefaultValue = false)]
-        public string NatureOfOperation { get; set; }
+        /// <value>IBGE (7 dígitos) do local de prestação. Obrigatório com &#x60;serviceLocation&#x60; &#x60;3&#x60;.</value>
+        [DataMember(Name = "cityIbge", EmitDefaultValue = false)]
+        public string CityIbge { get; set; }
 
         /// <summary>
-        /// Gets or Sets ServiceLocation
+        /// Data de competência (ISO 8601 com offset).
         /// </summary>
-        [DataMember(Name = "serviceLocation", EmitDefaultValue = false)]
-        public string ServiceLocation { get; set; }
+        /// <value>Data de competência (ISO 8601 com offset).</value>
+        [DataMember(Name = "competenceDate", EmitDefaultValue = false)]
+        public DateTime CompetenceDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets MunicipalityOfIncidence
+        /// Deduções da base de cálculo. Default 0.
         /// </summary>
-        [DataMember(Name = "municipalityOfIncidence", EmitDefaultValue = false)]
-        public string MunicipalityOfIncidence { get; set; }
+        /// <value>Deduções da base de cálculo. Default 0.</value>
+        [DataMember(Name = "deductions", EmitDefaultValue = false)]
+        public decimal Deductions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Exigibility
+        /// </summary>
+        [DataMember(Name = "exigibility", EmitDefaultValue = false)]
+        public string Exigibility { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AdditionalInfo
+        /// </summary>
+        [DataMember(Name = "additionalInfo", EmitDefaultValue = false)]
+        public string AdditionalInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets Taxes
@@ -238,8 +517,9 @@ namespace Emitfy.Generated.Model
         public DateTime IssueDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)
         /// </summary>
+        /// <value>Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade)</value>
         [DataMember(Name = "externalId", EmitDefaultValue = false)]
         public string ExternalId { get; set; }
 
@@ -343,6 +623,11 @@ namespace Emitfy.Generated.Model
             sb.Append("  NatureOfOperation: ").Append(NatureOfOperation).Append("\n");
             sb.Append("  ServiceLocation: ").Append(ServiceLocation).Append("\n");
             sb.Append("  MunicipalityOfIncidence: ").Append(MunicipalityOfIncidence).Append("\n");
+            sb.Append("  CityIbge: ").Append(CityIbge).Append("\n");
+            sb.Append("  CompetenceDate: ").Append(CompetenceDate).Append("\n");
+            sb.Append("  Deductions: ").Append(Deductions).Append("\n");
+            sb.Append("  Exigibility: ").Append(Exigibility).Append("\n");
+            sb.Append("  AdditionalInfo: ").Append(AdditionalInfo).Append("\n");
             sb.Append("  Taxes: ").Append(Taxes).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");

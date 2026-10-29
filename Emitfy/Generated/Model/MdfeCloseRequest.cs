@@ -39,7 +39,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MdfeCloseRequest" /> class.
         /// </summary>
-        /// <param name="cityCode">cityCode (required).</param>
+        /// <param name="cityCode">IBGE do município de encerramento (required).</param>
         /// <param name="state">state (required).</param>
         /// <param name="closedAt">closedAt.</param>
         public MdfeCloseRequest(string cityCode = default, string state = default, DateTime closedAt = default)
@@ -60,8 +60,9 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
-        /// Gets or Sets CityCode
+        /// IBGE do município de encerramento
         /// </summary>
+        /// <value>IBGE do município de encerramento</value>
         [DataMember(Name = "cityCode", IsRequired = true, EmitDefaultValue = true)]
         public string CityCode { get; set; }
 

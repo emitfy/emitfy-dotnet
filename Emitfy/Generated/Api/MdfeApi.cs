@@ -31,11 +31,11 @@ namespace Emitfy.Generated.Api
         /// Add document to MDF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
-        /// <returns></returns>
-        void MdfeAddDocument(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted MdfeAddDocument(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity);
 
         /// <summary>
         /// Add document to MDF-e
@@ -44,20 +44,20 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeAddDocumentWithHttpInfo(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> MdfeAddDocumentWithHttpInfo(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity);
         /// <summary>
         /// Add driver to MDF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
-        /// <returns></returns>
-        void MdfeAddDriver(Guid companyId, string id, MdfeDriver mdfeDriver);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted MdfeAddDriver(Guid companyId, string id, MdfeDriver mdfeDriver);
 
         /// <summary>
         /// Add driver to MDF-e
@@ -66,20 +66,20 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeAddDriverWithHttpInfo(Guid companyId, string id, MdfeDriver mdfeDriver);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> MdfeAddDriverWithHttpInfo(Guid companyId, string id, MdfeDriver mdfeDriver);
         /// <summary>
         /// Add payment to MDF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
-        /// <returns></returns>
-        void MdfeAddPayment(Guid companyId, string id, MdfePayment mdfePayment);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted MdfeAddPayment(Guid companyId, string id, MdfePayment mdfePayment);
 
         /// <summary>
         /// Add payment to MDF-e
@@ -88,42 +88,45 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeAddPaymentWithHttpInfo(Guid companyId, string id, MdfePayment mdfePayment);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> MdfeAddPaymentWithHttpInfo(Guid companyId, string id, MdfePayment mdfePayment);
         /// <summary>
         /// Cancel MDF-e
         /// </summary>
+        /// <remarks>
+        /// DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
-        /// <returns></returns>
-        void MdfeCancel(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted MdfeCancel(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest);
 
         /// <summary>
         /// Cancel MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeCancelWithHttpInfo(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> MdfeCancelWithHttpInfo(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest);
         /// <summary>
         /// Close MDF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
-        /// <returns></returns>
-        void MdfeClose(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest);
+        /// <returns>TransportDocumentAccepted</returns>
+        TransportDocumentAccepted MdfeClose(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest);
 
         /// <summary>
         /// Close MDF-e
@@ -132,16 +135,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeCloseWithHttpInfo(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest);
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        ApiResponse<TransportDocumentAccepted> MdfeCloseWithHttpInfo(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest);
         /// <summary>
         /// Consult MDF-e at SEFAZ
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void MdfeConsult(Guid companyId, string id);
@@ -153,7 +156,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> MdfeConsultWithHttpInfo(Guid companyId, string id);
@@ -161,11 +164,11 @@ namespace Emitfy.Generated.Api
         /// Emit MDF-e (modelo 58)
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        void MdfeCreate(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default);
+        /// <returns>MdfeCreate200Response</returns>
+        MdfeCreate200Response MdfeCreate(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Emit MDF-e (modelo 58)
@@ -174,16 +177,16 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeCreateWithHttpInfo(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default);
+        /// <returns>ApiResponse of MdfeCreate200Response</returns>
+        ApiResponse<MdfeCreate200Response> MdfeCreateWithHttpInfo(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default);
         /// <summary>
         /// Get MDF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         void MdfeGet(Guid companyId, string id);
@@ -195,34 +198,41 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> MdfeGetWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// List MDF-e
         /// </summary>
+        /// <remarks>
+        /// Query estrita — parâmetro desconhecido retorna 422.
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns></returns>
-        void MdfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>MdfeList200Response</returns>
+        MdfeList200Response MdfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default);
 
         /// <summary>
         /// List MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Query estrita — parâmetro desconhecido retorna 422.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> MdfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default);
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of MdfeList200Response</returns>
+        ApiResponse<MdfeList200Response> MdfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default);
         #endregion Synchronous Operations
     }
 
@@ -239,12 +249,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeAddDocumentAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddDocumentAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Add document to MDF-e
@@ -253,12 +263,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeAddDocumentWithHttpInfoAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> MdfeAddDocumentWithHttpInfoAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Add driver to MDF-e
         /// </summary>
@@ -266,12 +276,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeAddDriverAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddDriverAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Add driver to MDF-e
@@ -280,12 +290,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeAddDriverWithHttpInfoAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> MdfeAddDriverWithHttpInfoAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Add payment to MDF-e
         /// </summary>
@@ -293,12 +303,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeAddPaymentAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddPaymentAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Add payment to MDF-e
@@ -307,39 +317,39 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeAddPaymentWithHttpInfoAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> MdfeAddPaymentWithHttpInfoAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Cancel MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeCancelAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeCancelAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Cancel MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeCancelWithHttpInfoAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> MdfeCancelWithHttpInfoAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Close MDF-e
         /// </summary>
@@ -347,12 +357,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeCloseAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeCloseAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Close MDF-e
@@ -361,12 +371,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeCloseWithHttpInfoAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransportDocumentAccepted>> MdfeCloseWithHttpInfoAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Consult MDF-e at SEFAZ
         /// </summary>
@@ -374,7 +384,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -387,7 +397,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -399,12 +409,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeCreateAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of MdfeCreate200Response</returns>
+        System.Threading.Tasks.Task<MdfeCreate200Response> MdfeCreateAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Emit MDF-e (modelo 58)
@@ -413,12 +423,12 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeCreateWithHttpInfoAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (MdfeCreate200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MdfeCreate200Response>> MdfeCreateWithHttpInfoAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get MDF-e
         /// </summary>
@@ -426,7 +436,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -439,7 +449,7 @@ namespace Emitfy.Generated.Api
         /// 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -448,31 +458,35 @@ namespace Emitfy.Generated.Api
         /// List MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Query estrita — parâmetro desconhecido retorna 422.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task MdfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of MdfeList200Response</returns>
+        System.Threading.Tasks.Task<MdfeList200Response> MdfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List MDF-e
         /// </summary>
         /// <remarks>
-        /// 
+        /// Query estrita — parâmetro desconhecido retorna 422.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> MdfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse (MdfeList200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MdfeList200Response>> MdfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -690,24 +704,25 @@ namespace Emitfy.Generated.Api
         /// Add document to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
-        /// <returns></returns>
-        public void MdfeAddDocument(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted MdfeAddDocument(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity)
         {
-            MdfeAddDocumentWithHttpInfo(companyId, id, mdfeUnloadCity);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = MdfeAddDocumentWithHttpInfo(companyId, id, mdfeUnloadCity);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add document to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeAddDocumentWithHttpInfo(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> MdfeAddDocumentWithHttpInfo(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -725,6 +740,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -749,7 +765,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/mdfe/{id}/documents", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/documents", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -764,26 +780,27 @@ namespace Emitfy.Generated.Api
         /// Add document to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeAddDocumentAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddDocumentAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeAddDocumentWithHttpInfoAsync(companyId, id, mdfeUnloadCity, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await MdfeAddDocumentWithHttpInfoAsync(companyId, id, mdfeUnloadCity, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add document to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeUnloadCity"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeAddDocumentWithHttpInfoAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> MdfeAddDocumentWithHttpInfoAsync(Guid companyId, string id, MdfeUnloadCity mdfeUnloadCity, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -802,6 +819,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -828,7 +846,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/mdfe/{id}/documents", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/documents", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -843,24 +861,25 @@ namespace Emitfy.Generated.Api
         /// Add driver to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
-        /// <returns></returns>
-        public void MdfeAddDriver(Guid companyId, string id, MdfeDriver mdfeDriver)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted MdfeAddDriver(Guid companyId, string id, MdfeDriver mdfeDriver)
         {
-            MdfeAddDriverWithHttpInfo(companyId, id, mdfeDriver);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = MdfeAddDriverWithHttpInfo(companyId, id, mdfeDriver);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add driver to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeAddDriverWithHttpInfo(Guid companyId, string id, MdfeDriver mdfeDriver)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> MdfeAddDriverWithHttpInfo(Guid companyId, string id, MdfeDriver mdfeDriver)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -878,6 +897,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -902,7 +922,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/mdfe/{id}/drivers", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/drivers", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -917,26 +937,27 @@ namespace Emitfy.Generated.Api
         /// Add driver to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeAddDriverAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddDriverAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeAddDriverWithHttpInfoAsync(companyId, id, mdfeDriver, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await MdfeAddDriverWithHttpInfoAsync(companyId, id, mdfeDriver, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add driver to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeDriver"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeAddDriverWithHttpInfoAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> MdfeAddDriverWithHttpInfoAsync(Guid companyId, string id, MdfeDriver mdfeDriver, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -955,6 +976,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -981,7 +1003,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/mdfe/{id}/drivers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/drivers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -996,24 +1018,25 @@ namespace Emitfy.Generated.Api
         /// Add payment to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
-        /// <returns></returns>
-        public void MdfeAddPayment(Guid companyId, string id, MdfePayment mdfePayment)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted MdfeAddPayment(Guid companyId, string id, MdfePayment mdfePayment)
         {
-            MdfeAddPaymentWithHttpInfo(companyId, id, mdfePayment);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = MdfeAddPaymentWithHttpInfo(companyId, id, mdfePayment);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add payment to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeAddPaymentWithHttpInfo(Guid companyId, string id, MdfePayment mdfePayment)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> MdfeAddPaymentWithHttpInfo(Guid companyId, string id, MdfePayment mdfePayment)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1031,6 +1054,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1055,7 +1079,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/mdfe/{id}/payments", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/payments", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1070,26 +1094,27 @@ namespace Emitfy.Generated.Api
         /// Add payment to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeAddPaymentAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeAddPaymentAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeAddPaymentWithHttpInfoAsync(companyId, id, mdfePayment, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await MdfeAddPaymentWithHttpInfoAsync(companyId, id, mdfePayment, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add payment to MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfePayment"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeAddPaymentWithHttpInfoAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> MdfeAddPaymentWithHttpInfoAsync(Guid companyId, string id, MdfePayment mdfePayment, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1108,6 +1133,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1134,7 +1160,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/mdfe/{id}/payments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/payments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1146,27 +1172,28 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel MDF-e 
+        /// Cancel MDF-e DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
-        /// <returns></returns>
-        public void MdfeCancel(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted MdfeCancel(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest)
         {
-            MdfeCancelWithHttpInfo(companyId, id, mdfeCancelRequest);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = MdfeCancelWithHttpInfo(companyId, id, mdfeCancelRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel MDF-e 
+        /// Cancel MDF-e DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeCancelWithHttpInfo(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> MdfeCancelWithHttpInfo(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1184,6 +1211,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1208,7 +1236,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/companies/{companyId}/mdfe/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1220,29 +1248,30 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Cancel MDF-e 
+        /// Cancel MDF-e DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeCancelAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeCancelAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeCancelWithHttpInfoAsync(companyId, id, mdfeCancelRequest, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await MdfeCancelWithHttpInfoAsync(companyId, id, mdfeCancelRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel MDF-e 
+        /// Cancel MDF-e DELETE com corpo JSON obrigatório (&#x60;justification&#x60; 15–255 caracteres).
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCancelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeCancelWithHttpInfoAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> MdfeCancelWithHttpInfoAsync(Guid companyId, string id, MdfeCancelRequest mdfeCancelRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1261,6 +1290,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1287,7 +1317,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/companies/{companyId}/mdfe/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1302,24 +1332,25 @@ namespace Emitfy.Generated.Api
         /// Close MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
-        /// <returns></returns>
-        public void MdfeClose(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest)
+        /// <returns>TransportDocumentAccepted</returns>
+        public TransportDocumentAccepted MdfeClose(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest)
         {
-            MdfeCloseWithHttpInfo(companyId, id, mdfeCloseRequest);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = MdfeCloseWithHttpInfo(companyId, id, mdfeCloseRequest);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Close MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeCloseWithHttpInfo(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest)
+        /// <returns>ApiResponse of TransportDocumentAccepted</returns>
+        public Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> MdfeCloseWithHttpInfo(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1337,6 +1368,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1361,7 +1393,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/mdfe/{id}/close", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/close", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1376,26 +1408,27 @@ namespace Emitfy.Generated.Api
         /// Close MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeCloseAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of TransportDocumentAccepted</returns>
+        public async System.Threading.Tasks.Task<TransportDocumentAccepted> MdfeCloseAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeCloseWithHttpInfoAsync(companyId, id, mdfeCloseRequest, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted> localVarResponse = await MdfeCloseWithHttpInfoAsync(companyId, id, mdfeCloseRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Close MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="mdfeCloseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeCloseWithHttpInfoAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (TransportDocumentAccepted)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<TransportDocumentAccepted>> MdfeCloseWithHttpInfoAsync(Guid companyId, string id, MdfeCloseRequest mdfeCloseRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1414,6 +1447,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1440,7 +1474,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/mdfe/{id}/close", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransportDocumentAccepted>("/companies/{companyId}/mdfe/{id}/close", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1455,7 +1489,7 @@ namespace Emitfy.Generated.Api
         /// Consult MDF-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void MdfeConsult(Guid companyId, string id)
@@ -1467,7 +1501,7 @@ namespace Emitfy.Generated.Api
         /// Consult MDF-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> MdfeConsultWithHttpInfo(Guid companyId, string id)
@@ -1521,7 +1555,7 @@ namespace Emitfy.Generated.Api
         /// Consult MDF-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1534,7 +1568,7 @@ namespace Emitfy.Generated.Api
         /// Consult MDF-e at SEFAZ 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1592,24 +1626,25 @@ namespace Emitfy.Generated.Api
         /// Emit MDF-e (modelo 58) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns></returns>
-        public void MdfeCreate(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default)
+        /// <returns>MdfeCreate200Response</returns>
+        public MdfeCreate200Response MdfeCreate(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default)
         {
-            MdfeCreateWithHttpInfo(companyId, mdfeEmitRequest, idempotencyKey);
+            Emitfy.Generated.Client.ApiResponse<MdfeCreate200Response> localVarResponse = MdfeCreateWithHttpInfo(companyId, mdfeEmitRequest, idempotencyKey);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit MDF-e (modelo 58) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeCreateWithHttpInfo(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default)
+        /// <returns>ApiResponse of MdfeCreate200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<MdfeCreate200Response> MdfeCreateWithHttpInfo(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'mdfeEmitRequest' is set
             if (mdfeEmitRequest == null)
@@ -1623,6 +1658,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1650,7 +1686,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<MdfeCreate200Response>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1665,26 +1701,27 @@ namespace Emitfy.Generated.Api
         /// Emit MDF-e (modelo 58) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeCreateAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of MdfeCreate200Response</returns>
+        public async System.Threading.Tasks.Task<MdfeCreate200Response> MdfeCreateAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeCreateWithHttpInfoAsync(companyId, mdfeEmitRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<MdfeCreate200Response> localVarResponse = await MdfeCreateWithHttpInfoAsync(companyId, mdfeEmitRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Emit MDF-e (modelo 58) 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="mdfeEmitRequest"></param>
         /// <param name="idempotencyKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeCreateWithHttpInfoAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (MdfeCreate200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<MdfeCreate200Response>> MdfeCreateWithHttpInfoAsync(Guid companyId, MdfeEmitRequest mdfeEmitRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'mdfeEmitRequest' is set
             if (mdfeEmitRequest == null)
@@ -1699,6 +1736,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -1728,7 +1766,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<MdfeCreate200Response>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1743,7 +1781,7 @@ namespace Emitfy.Generated.Api
         /// Get MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns></returns>
         public void MdfeGet(Guid companyId, string id)
@@ -1755,7 +1793,7 @@ namespace Emitfy.Generated.Api
         /// Get MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         public Emitfy.Generated.Client.ApiResponse<Object> MdfeGetWithHttpInfo(Guid companyId, string id)
@@ -1809,7 +1847,7 @@ namespace Emitfy.Generated.Api
         /// Get MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
@@ -1822,7 +1860,7 @@ namespace Emitfy.Generated.Api
         /// Get MDF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
@@ -1877,29 +1915,34 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// List MDF-e 
+        /// List MDF-e Query estrita — parâmetro desconhecido retorna 422.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns></returns>
-        public void MdfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>MdfeList200Response</returns>
+        public MdfeList200Response MdfeList(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default)
         {
-            MdfeListWithHttpInfo(companyId, page, pageSize, status);
+            Emitfy.Generated.Client.ApiResponse<MdfeList200Response> localVarResponse = MdfeListWithHttpInfo(companyId, page, pageSize, status, startDate, endDate);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List MDF-e 
+        /// List MDF-e Query estrita — parâmetro desconhecido retorna 422.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> MdfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default)
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
+        /// <returns>ApiResponse of MdfeList200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<MdfeList200Response> MdfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -1908,6 +1951,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
             var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1929,6 +1973,14 @@ namespace Emitfy.Generated.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -1942,7 +1994,7 @@ namespace Emitfy.Generated.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<MdfeList200Response>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1954,31 +2006,36 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// List MDF-e 
+        /// List MDF-e Query estrita — parâmetro desconhecido retorna 422.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task MdfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of MdfeList200Response</returns>
+        public async System.Threading.Tasks.Task<MdfeList200Response> MdfeListAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await MdfeListWithHttpInfoAsync(companyId, page, pageSize, status, cancellationToken).ConfigureAwait(false);
+            Emitfy.Generated.Client.ApiResponse<MdfeList200Response> localVarResponse = await MdfeListWithHttpInfoAsync(companyId, page, pageSize, status, startDate, endDate, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List MDF-e 
+        /// List MDF-e Query estrita — parâmetro desconhecido retorna 422.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="companyId">ID da empresa (CNPJ operacional) no path</param>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="pageSize"> (optional)</param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;endDate&#x60;. (optional)</param>
+        /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> MdfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse (MdfeList200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<MdfeList200Response>> MdfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -1988,6 +2045,7 @@ namespace Emitfy.Generated.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "application/json"
             };
 
 
@@ -2010,6 +2068,14 @@ namespace Emitfy.Generated.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
 
             // authentication (ApiKeyAuth) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
@@ -2024,7 +2090,7 @@ namespace Emitfy.Generated.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<MdfeList200Response>("/companies/{companyId}/mdfe", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

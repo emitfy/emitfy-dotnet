@@ -43,26 +43,42 @@ namespace Emitfy.Generated.Model
         /// <param name="name">name.</param>
         /// <param name="category">category.</param>
         /// <param name="description">description (required).</param>
-        /// <param name="fiscalDescription">fiscalDescription.</param>
+        /// <param name="fiscalDescription">Descrição na nota (xProd). Default &#x3D; description.</param>
         /// <param name="guarantee">guarantee.</param>
         /// <param name="ncm">ncm.</param>
         /// <param name="cfop">cfop.</param>
         /// <param name="cfopInternal">cfopInternal.</param>
         /// <param name="cfopExternal">cfopExternal.</param>
+        /// <param name="cfopExternalNonTaxpayer">cfopExternalNonTaxpayer.</param>
         /// <param name="cfopInternational">cfopInternational.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="unitValue">unitValue (required).</param>
-        /// <param name="unit">unit.</param>
+        /// <param name="unit">Alias legado de commercialUnit.</param>
         /// <param name="commercialUnit">commercialUnit.</param>
         /// <param name="taxableUnit">taxableUnit.</param>
         /// <param name="gtin">gtin.</param>
         /// <param name="icmsOrigin">icmsOrigin.</param>
         /// <param name="icmsCst">icmsCst.</param>
         /// <param name="icmsTaxRate">icmsTaxRate.</param>
+        /// <param name="icmsModBc">icmsModBc.</param>
+        /// <param name="icmsTaxBenefitCode">icmsTaxBenefitCode.</param>
         /// <param name="pisCst">pisCst.</param>
         /// <param name="pisTaxRate">pisTaxRate.</param>
         /// <param name="cofinsCst">cofinsCst.</param>
         /// <param name="cofinsTaxRate">cofinsTaxRate.</param>
+        /// <param name="ipiCst">ipiCst.</param>
+        /// <param name="ipiTaxRate">ipiTaxRate.</param>
+        /// <param name="ipiLegalCode">ipiLegalCode.</param>
+        /// <param name="cest">cest.</param>
+        /// <param name="fci">fci.</param>
+        /// <param name="nve">nve.</param>
+        /// <param name="extipi">extipi.</param>
+        /// <param name="orderNumber">orderNumber.</param>
+        /// <param name="orderItem">orderItem.</param>
+        /// <param name="freight">freight.</param>
+        /// <param name="insurance">insurance.</param>
+        /// <param name="discount">discount.</param>
+        /// <param name="other">other.</param>
         /// <param name="taxClassification">taxClassification.</param>
         /// <param name="ibsCst">ibsCst.</param>
         /// <param name="cbsCst">cbsCst.</param>
@@ -75,7 +91,7 @@ namespace Emitfy.Generated.Model
         /// <param name="fuel">fuel.</param>
         /// <param name="taxReturn">taxReturn.</param>
         /// <param name="additionalInfo">additionalInfo.</param>
-        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<Object> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
+        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<Object> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -94,6 +110,7 @@ namespace Emitfy.Generated.Model
             this.Cfop = cfop;
             this.CfopInternal = cfopInternal;
             this.CfopExternal = cfopExternal;
+            this.CfopExternalNonTaxpayer = cfopExternalNonTaxpayer;
             this.CfopInternational = cfopInternational;
             this.Unit = unit;
             this.CommercialUnit = commercialUnit;
@@ -102,10 +119,25 @@ namespace Emitfy.Generated.Model
             this.IcmsOrigin = icmsOrigin;
             this.IcmsCst = icmsCst;
             this.IcmsTaxRate = icmsTaxRate;
+            this.IcmsModBc = icmsModBc;
+            this.IcmsTaxBenefitCode = icmsTaxBenefitCode;
             this.PisCst = pisCst;
             this.PisTaxRate = pisTaxRate;
             this.CofinsCst = cofinsCst;
             this.CofinsTaxRate = cofinsTaxRate;
+            this.IpiCst = ipiCst;
+            this.IpiTaxRate = ipiTaxRate;
+            this.IpiLegalCode = ipiLegalCode;
+            this.Cest = cest;
+            this.Fci = fci;
+            this.Nve = nve;
+            this.Extipi = extipi;
+            this.OrderNumber = orderNumber;
+            this.OrderItem = orderItem;
+            this.Freight = freight;
+            this.Insurance = insurance;
+            this.Discount = discount;
+            this.Other = other;
             this.TaxClassification = taxClassification;
             this.IbsCst = ibsCst;
             this.CbsCst = cbsCst;
@@ -145,8 +177,9 @@ namespace Emitfy.Generated.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets FiscalDescription
+        /// Descrição na nota (xProd). Default &#x3D; description
         /// </summary>
+        /// <value>Descrição na nota (xProd). Default &#x3D; description</value>
         [DataMember(Name = "fiscalDescription", EmitDefaultValue = false)]
         public string FiscalDescription { get; set; }
 
@@ -181,6 +214,12 @@ namespace Emitfy.Generated.Model
         public string CfopExternal { get; set; }
 
         /// <summary>
+        /// Gets or Sets CfopExternalNonTaxpayer
+        /// </summary>
+        [DataMember(Name = "cfopExternalNonTaxpayer", EmitDefaultValue = false)]
+        public string CfopExternalNonTaxpayer { get; set; }
+
+        /// <summary>
         /// Gets or Sets CfopInternational
         /// </summary>
         [DataMember(Name = "cfopInternational", EmitDefaultValue = false)]
@@ -199,8 +238,9 @@ namespace Emitfy.Generated.Model
         public decimal UnitValue { get; set; }
 
         /// <summary>
-        /// Gets or Sets Unit
+        /// Alias legado de commercialUnit
         /// </summary>
+        /// <value>Alias legado de commercialUnit</value>
         [DataMember(Name = "unit", EmitDefaultValue = false)]
         public string Unit { get; set; }
 
@@ -241,6 +281,18 @@ namespace Emitfy.Generated.Model
         public decimal IcmsTaxRate { get; set; }
 
         /// <summary>
+        /// Gets or Sets IcmsModBc
+        /// </summary>
+        [DataMember(Name = "icmsModBc", EmitDefaultValue = false)]
+        public string IcmsModBc { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IcmsTaxBenefitCode
+        /// </summary>
+        [DataMember(Name = "icmsTaxBenefitCode", EmitDefaultValue = false)]
+        public string IcmsTaxBenefitCode { get; set; }
+
+        /// <summary>
         /// Gets or Sets PisCst
         /// </summary>
         [DataMember(Name = "pisCst", EmitDefaultValue = false)]
@@ -263,6 +315,84 @@ namespace Emitfy.Generated.Model
         /// </summary>
         [DataMember(Name = "cofinsTaxRate", EmitDefaultValue = false)]
         public decimal CofinsTaxRate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IpiCst
+        /// </summary>
+        [DataMember(Name = "ipiCst", EmitDefaultValue = false)]
+        public string IpiCst { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IpiTaxRate
+        /// </summary>
+        [DataMember(Name = "ipiTaxRate", EmitDefaultValue = false)]
+        public decimal IpiTaxRate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IpiLegalCode
+        /// </summary>
+        [DataMember(Name = "ipiLegalCode", EmitDefaultValue = false)]
+        public string IpiLegalCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cest
+        /// </summary>
+        [DataMember(Name = "cest", EmitDefaultValue = false)]
+        public string Cest { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Fci
+        /// </summary>
+        [DataMember(Name = "fci", EmitDefaultValue = false)]
+        public string Fci { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Nve
+        /// </summary>
+        [DataMember(Name = "nve", EmitDefaultValue = false)]
+        public List<string> Nve { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Extipi
+        /// </summary>
+        [DataMember(Name = "extipi", EmitDefaultValue = false)]
+        public string Extipi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderNumber
+        /// </summary>
+        [DataMember(Name = "orderNumber", EmitDefaultValue = false)]
+        public string OrderNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderItem
+        /// </summary>
+        [DataMember(Name = "orderItem", EmitDefaultValue = false)]
+        public int OrderItem { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Freight
+        /// </summary>
+        [DataMember(Name = "freight", EmitDefaultValue = false)]
+        public decimal Freight { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Insurance
+        /// </summary>
+        [DataMember(Name = "insurance", EmitDefaultValue = false)]
+        public decimal Insurance { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Discount
+        /// </summary>
+        [DataMember(Name = "discount", EmitDefaultValue = false)]
+        public decimal Discount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Other
+        /// </summary>
+        [DataMember(Name = "other", EmitDefaultValue = false)]
+        public decimal Other { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxClassification
@@ -354,6 +484,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Cfop: ").Append(Cfop).Append("\n");
             sb.Append("  CfopInternal: ").Append(CfopInternal).Append("\n");
             sb.Append("  CfopExternal: ").Append(CfopExternal).Append("\n");
+            sb.Append("  CfopExternalNonTaxpayer: ").Append(CfopExternalNonTaxpayer).Append("\n");
             sb.Append("  CfopInternational: ").Append(CfopInternational).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  UnitValue: ").Append(UnitValue).Append("\n");
@@ -364,10 +495,25 @@ namespace Emitfy.Generated.Model
             sb.Append("  IcmsOrigin: ").Append(IcmsOrigin).Append("\n");
             sb.Append("  IcmsCst: ").Append(IcmsCst).Append("\n");
             sb.Append("  IcmsTaxRate: ").Append(IcmsTaxRate).Append("\n");
+            sb.Append("  IcmsModBc: ").Append(IcmsModBc).Append("\n");
+            sb.Append("  IcmsTaxBenefitCode: ").Append(IcmsTaxBenefitCode).Append("\n");
             sb.Append("  PisCst: ").Append(PisCst).Append("\n");
             sb.Append("  PisTaxRate: ").Append(PisTaxRate).Append("\n");
             sb.Append("  CofinsCst: ").Append(CofinsCst).Append("\n");
             sb.Append("  CofinsTaxRate: ").Append(CofinsTaxRate).Append("\n");
+            sb.Append("  IpiCst: ").Append(IpiCst).Append("\n");
+            sb.Append("  IpiTaxRate: ").Append(IpiTaxRate).Append("\n");
+            sb.Append("  IpiLegalCode: ").Append(IpiLegalCode).Append("\n");
+            sb.Append("  Cest: ").Append(Cest).Append("\n");
+            sb.Append("  Fci: ").Append(Fci).Append("\n");
+            sb.Append("  Nve: ").Append(Nve).Append("\n");
+            sb.Append("  Extipi: ").Append(Extipi).Append("\n");
+            sb.Append("  OrderNumber: ").Append(OrderNumber).Append("\n");
+            sb.Append("  OrderItem: ").Append(OrderItem).Append("\n");
+            sb.Append("  Freight: ").Append(Freight).Append("\n");
+            sb.Append("  Insurance: ").Append(Insurance).Append("\n");
+            sb.Append("  Discount: ").Append(Discount).Append("\n");
+            sb.Append("  Other: ").Append(Other).Append("\n");
             sb.Append("  TaxClassification: ").Append(TaxClassification).Append("\n");
             sb.Append("  IbsCst: ").Append(IbsCst).Append("\n");
             sb.Append("  CbsCst: ").Append(CbsCst).Append("\n");

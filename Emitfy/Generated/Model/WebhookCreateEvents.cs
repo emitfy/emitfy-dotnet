@@ -26,18 +26,117 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// WebhookCreateEvents
+    /// Informe ao menos um evento (422 se todas as listas vierem vazias).
     /// </summary>
     [DataContract(Name = "WebhookCreate_events")]
     public partial class WebhookCreateEvents
     {
+        /// <summary>
+        /// Defines Invoice
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum InvoiceEnum
+        {
+            /// <summary>
+            /// Enum NfseAuthorized for value: nfse.authorized
+            /// </summary>
+            [EnumMember(Value = "nfse.authorized")]
+            NfseAuthorized = 1,
+
+            /// <summary>
+            /// Enum NfseCancelled for value: nfse.cancelled
+            /// </summary>
+            [EnumMember(Value = "nfse.cancelled")]
+            NfseCancelled = 2,
+
+            /// <summary>
+            /// Enum NfseRejected for value: nfse.rejected
+            /// </summary>
+            [EnumMember(Value = "nfse.rejected")]
+            NfseRejected = 3,
+
+            /// <summary>
+            /// Enum NfeAuthorized for value: nfe.authorized
+            /// </summary>
+            [EnumMember(Value = "nfe.authorized")]
+            NfeAuthorized = 4,
+
+            /// <summary>
+            /// Enum NfeCancelled for value: nfe.cancelled
+            /// </summary>
+            [EnumMember(Value = "nfe.cancelled")]
+            NfeCancelled = 5,
+
+            /// <summary>
+            /// Enum NfeRejected for value: nfe.rejected
+            /// </summary>
+            [EnumMember(Value = "nfe.rejected")]
+            NfeRejected = 6
+        }
+
+        /// <summary>
+        /// Defines Cte
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum CteEnum
+        {
+            /// <summary>
+            /// Enum CteAuthorized for value: cte.authorized
+            /// </summary>
+            [EnumMember(Value = "cte.authorized")]
+            CteAuthorized = 1,
+
+            /// <summary>
+            /// Enum CteCancelled for value: cte.cancelled
+            /// </summary>
+            [EnumMember(Value = "cte.cancelled")]
+            CteCancelled = 2,
+
+            /// <summary>
+            /// Enum CteRejected for value: cte.rejected
+            /// </summary>
+            [EnumMember(Value = "cte.rejected")]
+            CteRejected = 3
+        }
+
+        /// <summary>
+        /// Defines Mdfe
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum MdfeEnum
+        {
+            /// <summary>
+            /// Enum MdfeAuthorized for value: mdfe.authorized
+            /// </summary>
+            [EnumMember(Value = "mdfe.authorized")]
+            MdfeAuthorized = 1,
+
+            /// <summary>
+            /// Enum MdfeCancelled for value: mdfe.cancelled
+            /// </summary>
+            [EnumMember(Value = "mdfe.cancelled")]
+            MdfeCancelled = 2,
+
+            /// <summary>
+            /// Enum MdfeRejected for value: mdfe.rejected
+            /// </summary>
+            [EnumMember(Value = "mdfe.rejected")]
+            MdfeRejected = 3,
+
+            /// <summary>
+            /// Enum MdfeClosed for value: mdfe.closed
+            /// </summary>
+            [EnumMember(Value = "mdfe.closed")]
+            MdfeClosed = 4
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookCreateEvents" /> class.
         /// </summary>
         /// <param name="invoice">invoice.</param>
         /// <param name="cte">cte.</param>
         /// <param name="mdfe">mdfe.</param>
-        public WebhookCreateEvents(List<string> invoice = default, List<string> cte = default, List<string> mdfe = default)
+        public WebhookCreateEvents(List<InvoiceEnum> invoice = default, List<CteEnum> cte = default, List<MdfeEnum> mdfe = default)
         {
             this.Invoice = invoice;
             this.Cte = cte;
@@ -48,19 +147,19 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Invoice
         /// </summary>
         [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public List<string> Invoice { get; set; }
+        public List<WebhookCreateEvents.InvoiceEnum> Invoice { get; set; }
 
         /// <summary>
         /// Gets or Sets Cte
         /// </summary>
         [DataMember(Name = "cte", EmitDefaultValue = false)]
-        public List<string> Cte { get; set; }
+        public List<WebhookCreateEvents.CteEnum> Cte { get; set; }
 
         /// <summary>
         /// Gets or Sets Mdfe
         /// </summary>
         [DataMember(Name = "mdfe", EmitDefaultValue = false)]
-        public List<string> Mdfe { get; set; }
+        public List<WebhookCreateEvents.MdfeEnum> Mdfe { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

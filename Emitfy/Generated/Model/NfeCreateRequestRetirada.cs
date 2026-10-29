@@ -26,33 +26,56 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequestTaxesIss
+    /// NfeCreateRequestRetirada
     /// </summary>
-    [DataContract(Name = "NfseCreateRequest_taxes_iss")]
-    public partial class NfseCreateRequestTaxesIss
+    [DataContract(Name = "nfeCreate_request_retirada")]
+    public partial class NfeCreateRequestRetirada
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NfseCreateRequestTaxesIss" /> class.
+        /// Initializes a new instance of the <see cref="NfeCreateRequestRetirada" /> class.
         /// </summary>
-        /// <param name="rate">rate.</param>
-        /// <param name="isWithheld">isWithheld.</param>
-        public NfseCreateRequestTaxesIss(decimal rate = default, bool isWithheld = default)
+        /// <param name="taxId">taxId.</param>
+        /// <param name="name">name.</param>
+        /// <param name="stateRegistration">stateRegistration.</param>
+        /// <param name="address">address.</param>
+        public NfeCreateRequestRetirada(string taxId = default, string name = default, string stateRegistration = default, DfeAddressLayout address = default)
         {
-            this.Rate = rate;
-            this.IsWithheld = isWithheld;
+            this.TaxId = taxId;
+            this.Name = name;
+            this.StateRegistration = stateRegistration;
+            this.Address = address;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets Rate
+        /// Gets or Sets TaxId
         /// </summary>
-        [DataMember(Name = "rate", EmitDefaultValue = false)]
-        public decimal Rate { get; set; }
+        [DataMember(Name = "taxId", EmitDefaultValue = false)]
+        public string TaxId { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsWithheld
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "isWithheld", EmitDefaultValue = true)]
-        public bool IsWithheld { get; set; }
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StateRegistration
+        /// </summary>
+        [DataMember(Name = "stateRegistration", EmitDefaultValue = false)]
+        public string StateRegistration { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public DfeAddressLayout Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +84,12 @@ namespace Emitfy.Generated.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class NfseCreateRequestTaxesIss {\n");
-            sb.Append("  Rate: ").Append(Rate).Append("\n");
-            sb.Append("  IsWithheld: ").Append(IsWithheld).Append("\n");
+            sb.Append("class NfeCreateRequestRetirada {\n");
+            sb.Append("  TaxId: ").Append(TaxId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  StateRegistration: ").Append(StateRegistration).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

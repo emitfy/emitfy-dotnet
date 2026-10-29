@@ -35,7 +35,10 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="NfeCreateRequestRecipient" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected NfeCreateRequestRecipient() { }
+        protected NfeCreateRequestRecipient()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequestRecipient" /> class.
         /// </summary>
@@ -61,6 +64,7 @@ namespace Emitfy.Generated.Model
             this.Email = email;
             this.Phone = phone;
             this.Address = address;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -94,6 +98,12 @@ namespace Emitfy.Generated.Model
         public NfeAddress Address { get; set; }
 
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -106,6 +116,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

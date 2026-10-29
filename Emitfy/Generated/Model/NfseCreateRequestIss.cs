@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfseCreateRequestIss
+    /// ISS canônico. &#x60;rate&#x60; obrigatório (0 permitido), salvo se enviado em &#x60;taxes.iss&#x60;.
     /// </summary>
     [DataContract(Name = "NfseCreateRequest_iss")]
     public partial class NfseCreateRequestIss

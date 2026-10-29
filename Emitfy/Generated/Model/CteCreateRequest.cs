@@ -32,6 +32,51 @@ namespace Emitfy.Generated.Model
     public partial class CteCreateRequest
     {
         /// <summary>
+        /// Tomador (toma). &#x60;4&#x60; &#x3D; outro — informe &#x60;takerParty&#x60;.
+        /// </summary>
+        /// <value>Tomador (toma). &#x60;4&#x60; &#x3D; outro — informe &#x60;takerParty&#x60;.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TakerEnum
+        {
+            /// <summary>
+            /// Enum _0 for value: 0
+            /// </summary>
+            [EnumMember(Value = "0")]
+            _0 = 1,
+
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 2,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 3,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 4,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 5
+        }
+
+
+        /// <summary>
+        /// Tomador (toma). &#x60;4&#x60; &#x3D; outro — informe &#x60;takerParty&#x60;.
+        /// </summary>
+        /// <value>Tomador (toma). &#x60;4&#x60; &#x3D; outro — informe &#x60;takerParty&#x60;.</value>
+        [DataMember(Name = "taker", EmitDefaultValue = false)]
+        public TakerEnum? Taker { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CteCreateRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -42,22 +87,31 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CteCreateRequest" /> class.
         /// </summary>
+        /// <param name="externalId">Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;)..</param>
         /// <param name="cfop">cfop (required).</param>
         /// <param name="nature">nature (required).</param>
+        /// <param name="serviceType">Tipo do serviço (tpServ). Default 0. (default to &quot;0&quot;).</param>
+        /// <param name="taker">Tomador (toma). &#x60;4&#x60; &#x3D; outro — informe &#x60;takerParty&#x60;. (default to TakerEnum._3).</param>
         /// <param name="shipper">shipper (required).</param>
         /// <param name="recipient">recipient (required).</param>
+        /// <param name="dispatcher">dispatcher.</param>
+        /// <param name="receiver">receiver.</param>
+        /// <param name="takerParty">takerParty.</param>
         /// <param name="municipalityStartIbge">municipalityStartIbge (required).</param>
         /// <param name="municipalityEndIbge">municipalityEndIbge (required).</param>
         /// <param name="cargoValue">cargoValue (required).</param>
         /// <param name="cargoProduct">cargoProduct (required).</param>
         /// <param name="cargoQuantities">cargoQuantities (required).</param>
+        /// <param name="linkedNfeAccessKeys">linkedNfeAccessKeys.</param>
         /// <param name="serviceAmount">serviceAmount (required).</param>
         /// <param name="icms">icms (required).</param>
-        /// <param name="components">components.</param>
+        /// <param name="rntrc">rntrc.</param>
         /// <param name="complement">complement.</param>
+        /// <param name="components">components.</param>
         /// <param name="autXml">autXml.</param>
         /// <param name="techResponsible">techResponsible.</param>
-        public CteCreateRequest(string cfop = default, string nature = default, Object shipper = default, Object recipient = default, string municipalityStartIbge = default, string municipalityEndIbge = default, decimal cargoValue = default, string cargoProduct = default, List<Object> cargoQuantities = default, decimal serviceAmount = default, Object icms = default, List<Object> components = default, Object complement = default, List<Object> autXml = default, Object techResponsible = default)
+        /// <param name="modal">modal.</param>
+        public CteCreateRequest(string externalId = default, string cfop = default, string nature = default, string serviceType = @"0", TakerEnum? taker = TakerEnum._3, CteParty shipper = default, CteParty recipient = default, CteParty dispatcher = default, CteParty receiver = default, CteParty takerParty = default, string municipalityStartIbge = default, string municipalityEndIbge = default, decimal cargoValue = default, string cargoProduct = default, List<CteCargoQuantity> cargoQuantities = default, List<string> linkedNfeAccessKeys = default, decimal serviceAmount = default, CteIcms icms = default, string rntrc = default, CteCreateRequestComplement complement = default, List<DfeComponent> components = default, List<DfeAutXml> autXml = default, DfeTechResponsible techResponsible = default, string modal = default)
         {
             // to ensure "cfop" is required (not null)
             if (cfop == null)
@@ -115,12 +169,29 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("icms is a required property for CteCreateRequest and cannot be null");
             }
             this.Icms = icms;
-            this.Components = components;
+            this.ExternalId = externalId;
+            // use default value if no "serviceType" provided
+            this.ServiceType = serviceType ?? @"0";
+            this.Taker = taker;
+            this.Dispatcher = dispatcher;
+            this.Receiver = receiver;
+            this.TakerParty = takerParty;
+            this.LinkedNfeAccessKeys = linkedNfeAccessKeys;
+            this.Rntrc = rntrc;
             this.Complement = complement;
+            this.Components = components;
             this.AutXml = autXml;
             this.TechResponsible = techResponsible;
+            this.Modal = modal;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;).
+        /// </summary>
+        /// <value>Idempotência. Obrigatório se não enviar o header &#x60;Idempotency-Key&#x60; (400 &#x60;CTE_EXTERNAL_ID_REQUIRED&#x60;).</value>
+        [DataMember(Name = "externalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets Cfop
@@ -135,16 +206,41 @@ namespace Emitfy.Generated.Model
         public string Nature { get; set; }
 
         /// <summary>
+        /// Tipo do serviço (tpServ). Default 0.
+        /// </summary>
+        /// <value>Tipo do serviço (tpServ). Default 0.</value>
+        [DataMember(Name = "serviceType", EmitDefaultValue = false)]
+        public string ServiceType { get; set; }
+
+        /// <summary>
         /// Gets or Sets Shipper
         /// </summary>
         [DataMember(Name = "shipper", IsRequired = true, EmitDefaultValue = true)]
-        public Object Shipper { get; set; }
+        public CteParty Shipper { get; set; }
 
         /// <summary>
         /// Gets or Sets Recipient
         /// </summary>
         [DataMember(Name = "recipient", IsRequired = true, EmitDefaultValue = true)]
-        public Object Recipient { get; set; }
+        public CteParty Recipient { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Dispatcher
+        /// </summary>
+        [DataMember(Name = "dispatcher", EmitDefaultValue = false)]
+        public CteParty Dispatcher { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Receiver
+        /// </summary>
+        [DataMember(Name = "receiver", EmitDefaultValue = false)]
+        public CteParty Receiver { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TakerParty
+        /// </summary>
+        [DataMember(Name = "takerParty", EmitDefaultValue = false)]
+        public CteParty TakerParty { get; set; }
 
         /// <summary>
         /// Gets or Sets MunicipalityStartIbge
@@ -174,7 +270,13 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets CargoQuantities
         /// </summary>
         [DataMember(Name = "cargoQuantities", IsRequired = true, EmitDefaultValue = true)]
-        public List<Object> CargoQuantities { get; set; }
+        public List<CteCargoQuantity> CargoQuantities { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LinkedNfeAccessKeys
+        /// </summary>
+        [DataMember(Name = "linkedNfeAccessKeys", EmitDefaultValue = false)]
+        public List<string> LinkedNfeAccessKeys { get; set; }
 
         /// <summary>
         /// Gets or Sets ServiceAmount
@@ -186,31 +288,43 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Icms
         /// </summary>
         [DataMember(Name = "icms", IsRequired = true, EmitDefaultValue = true)]
-        public Object Icms { get; set; }
+        public CteIcms Icms { get; set; }
 
         /// <summary>
-        /// Gets or Sets Components
+        /// Gets or Sets Rntrc
         /// </summary>
-        [DataMember(Name = "components", EmitDefaultValue = false)]
-        public List<Object> Components { get; set; }
+        [DataMember(Name = "rntrc", EmitDefaultValue = false)]
+        public string Rntrc { get; set; }
 
         /// <summary>
         /// Gets or Sets Complement
         /// </summary>
         [DataMember(Name = "complement", EmitDefaultValue = false)]
-        public Object Complement { get; set; }
+        public CteCreateRequestComplement Complement { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Components
+        /// </summary>
+        [DataMember(Name = "components", EmitDefaultValue = false)]
+        public List<DfeComponent> Components { get; set; }
 
         /// <summary>
         /// Gets or Sets AutXml
         /// </summary>
         [DataMember(Name = "autXml", EmitDefaultValue = false)]
-        public List<Object> AutXml { get; set; }
+        public List<DfeAutXml> AutXml { get; set; }
 
         /// <summary>
         /// Gets or Sets TechResponsible
         /// </summary>
         [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
-        public Object TechResponsible { get; set; }
+        public DfeTechResponsible TechResponsible { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Modal
+        /// </summary>
+        [DataMember(Name = "modal", EmitDefaultValue = false)]
+        public string Modal { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -226,21 +340,30 @@ namespace Emitfy.Generated.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CteCreateRequest {\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Cfop: ").Append(Cfop).Append("\n");
             sb.Append("  Nature: ").Append(Nature).Append("\n");
+            sb.Append("  ServiceType: ").Append(ServiceType).Append("\n");
+            sb.Append("  Taker: ").Append(Taker).Append("\n");
             sb.Append("  Shipper: ").Append(Shipper).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
+            sb.Append("  Dispatcher: ").Append(Dispatcher).Append("\n");
+            sb.Append("  Receiver: ").Append(Receiver).Append("\n");
+            sb.Append("  TakerParty: ").Append(TakerParty).Append("\n");
             sb.Append("  MunicipalityStartIbge: ").Append(MunicipalityStartIbge).Append("\n");
             sb.Append("  MunicipalityEndIbge: ").Append(MunicipalityEndIbge).Append("\n");
             sb.Append("  CargoValue: ").Append(CargoValue).Append("\n");
             sb.Append("  CargoProduct: ").Append(CargoProduct).Append("\n");
             sb.Append("  CargoQuantities: ").Append(CargoQuantities).Append("\n");
+            sb.Append("  LinkedNfeAccessKeys: ").Append(LinkedNfeAccessKeys).Append("\n");
             sb.Append("  ServiceAmount: ").Append(ServiceAmount).Append("\n");
             sb.Append("  Icms: ").Append(Icms).Append("\n");
-            sb.Append("  Components: ").Append(Components).Append("\n");
+            sb.Append("  Rntrc: ").Append(Rntrc).Append("\n");
             sb.Append("  Complement: ").Append(Complement).Append("\n");
+            sb.Append("  Components: ").Append(Components).Append("\n");
             sb.Append("  AutXml: ").Append(AutXml).Append("\n");
             sb.Append("  TechResponsible: ").Append(TechResponsible).Append("\n");
+            sb.Append("  Modal: ").Append(Modal).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
