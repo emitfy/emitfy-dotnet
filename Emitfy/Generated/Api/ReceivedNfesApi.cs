@@ -28,6 +28,29 @@ namespace Emitfy.Generated.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe)
+        /// </summary>
+        /// <remarks>
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <returns></returns>
+        void ReceivedNfesFetchByKey(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest);
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe)
+        /// </summary>
+        /// <remarks>
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ReceivedNfesFetchByKeyWithHttpInfo(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest);
+        /// <summary>
         /// Get received NF-e
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
@@ -56,8 +79,10 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <returns></returns>
-        void ReceivedNfesList(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default);
+        void ReceivedNfesList(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default);
 
         /// <summary>
         /// List received NF-e
@@ -71,8 +96,10 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ReceivedNfesListWithHttpInfo(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default);
+        ApiResponse<Object> ReceivedNfesListWithHttpInfo(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default);
         /// <summary>
         /// Manifest recipient event
         /// </summary>
@@ -143,6 +170,31 @@ namespace Emitfy.Generated.Api
     {
         #region Asynchronous Operations
         /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe)
+        /// </summary>
+        /// <remarks>
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ReceivedNfesFetchByKeyAsync(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe)
+        /// </summary>
+        /// <remarks>
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ReceivedNfesFetchByKeyWithHttpInfoAsync(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Get received NF-e
         /// </summary>
         /// <remarks>
@@ -179,9 +231,11 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ReceivedNfesListAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task ReceivedNfesListAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List received NF-e
@@ -195,9 +249,11 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ReceivedNfesListWithHttpInfoAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> ReceivedNfesListWithHttpInfoAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Manifest recipient event
         /// </summary>
@@ -487,6 +543,145 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <returns></returns>
+        public void ReceivedNfesFetchByKey(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest)
+        {
+            ReceivedNfesFetchByKeyWithHttpInfo(companyId, receivedNfesFetchByKeyRequest);
+        }
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Emitfy.Generated.Client.ApiResponse<Object> ReceivedNfesFetchByKeyWithHttpInfo(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest)
+        {
+            // verify the required parameter 'receivedNfesFetchByKeyRequest' is set
+            if (receivedNfesFetchByKeyRequest == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'receivedNfesFetchByKeyRequest' when calling ReceivedNfesApi->ReceivedNfesFetchByKey");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.Data = receivedNfesFetchByKeyRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/companies/{companyId}/received-nfes/fetch-by-key", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesFetchByKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ReceivedNfesFetchByKeyAsync(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await ReceivedNfesFetchByKeyWithHttpInfoAsync(companyId, receivedNfesFetchByKeyRequest, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="receivedNfesFetchByKeyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> ReceivedNfesFetchByKeyWithHttpInfoAsync(Guid companyId, ReceivedNfesFetchByKeyRequest receivedNfesFetchByKeyRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'receivedNfesFetchByKeyRequest' is set
+            if (receivedNfesFetchByKeyRequest == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'receivedNfesFetchByKeyRequest' when calling ReceivedNfesApi->ReceivedNfesFetchByKey");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.Data = receivedNfesFetchByKeyRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/companies/{companyId}/received-nfes/fetch-by-key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesFetchByKey", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get received NF-e 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
@@ -632,10 +827,12 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <returns></returns>
-        public void ReceivedNfesList(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default)
+        public void ReceivedNfesList(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default)
         {
-            ReceivedNfesListWithHttpInfo(companyId, page, limit, search, status);
+            ReceivedNfesListWithHttpInfo(companyId, page, limit, search, status, startDate, endDate);
         }
 
         /// <summary>
@@ -647,8 +844,10 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Emitfy.Generated.Client.ApiResponse<Object> ReceivedNfesListWithHttpInfo(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default)
+        public Emitfy.Generated.Client.ApiResponse<Object> ReceivedNfesListWithHttpInfo(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default)
         {
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
 
@@ -681,6 +880,14 @@ namespace Emitfy.Generated.Api
             if (status != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
             }
 
             // authentication (ApiKeyAuth) required
@@ -715,11 +922,13 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ReceivedNfesListAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task ReceivedNfesListAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await ReceivedNfesListWithHttpInfoAsync(companyId, page, limit, search, status, cancellationToken).ConfigureAwait(false);
+            await ReceivedNfesListWithHttpInfoAsync(companyId, page, limit, search, status, startDate, endDate, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -731,9 +940,11 @@ namespace Emitfy.Generated.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
+        /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
+        /// <param name="endDate">Fim do período de emissão, inclusivo (23:59:59.999 BRT do dia informado). (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> ReceivedNfesListWithHttpInfoAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> ReceivedNfesListWithHttpInfoAsync(Guid companyId, int? page = default, int? limit = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
@@ -768,6 +979,14 @@ namespace Emitfy.Generated.Api
             if (status != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
             }
 
             // authentication (ApiKeyAuth) required
