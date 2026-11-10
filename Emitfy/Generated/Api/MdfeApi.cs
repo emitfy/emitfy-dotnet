@@ -233,6 +233,52 @@ namespace Emitfy.Generated.Api
         /// <param name="endDate">Fim do período (epoch em ms; dia inclusivo em America/Sao_Paulo). Só filtra com &#x60;startDate&#x60;. (optional)</param>
         /// <returns>ApiResponse of MdfeList200Response</returns>
         ApiResponse<MdfeList200Response> MdfeListWithHttpInfo(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default);
+        /// <summary>
+        /// Get MDF-e settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>MdfeSettingsGet200Response</returns>
+        MdfeSettingsGet200Response MdfeSettingsGet(Guid companyId);
+
+        /// <summary>
+        /// Get MDF-e settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>ApiResponse of MdfeSettingsGet200Response</returns>
+        ApiResponse<MdfeSettingsGet200Response> MdfeSettingsGetWithHttpInfo(Guid companyId);
+        /// <summary>
+        /// Enable, disable or configure MDF-e
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>MdfeSettingsGet200Response</returns>
+        MdfeSettingsGet200Response MdfeSettingsUpdate(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default);
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>ApiResponse of MdfeSettingsGet200Response</returns>
+        ApiResponse<MdfeSettingsGet200Response> MdfeSettingsUpdateWithHttpInfo(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default);
         #endregion Synchronous Operations
     }
 
@@ -487,6 +533,56 @@ namespace Emitfy.Generated.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MdfeList200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<MdfeList200Response>> MdfeListWithHttpInfoAsync(Guid companyId, int? page = default, int? pageSize = default, string? status = default, int? startDate = default, int? endDate = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get MDF-e settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MdfeSettingsGet200Response</returns>
+        System.Threading.Tasks.Task<MdfeSettingsGet200Response> MdfeSettingsGetAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get MDF-e settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MdfeSettingsGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MdfeSettingsGet200Response>> MdfeSettingsGetWithHttpInfoAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Enable, disable or configure MDF-e
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MdfeSettingsGet200Response</returns>
+        System.Threading.Tasks.Task<MdfeSettingsGet200Response> MdfeSettingsUpdateAsync(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MdfeSettingsGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MdfeSettingsGet200Response>> MdfeSettingsUpdateWithHttpInfoAsync(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -2095,6 +2191,288 @@ namespace Emitfy.Generated.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("MdfeList", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get MDF-e settings Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>MdfeSettingsGet200Response</returns>
+        public MdfeSettingsGet200Response MdfeSettingsGet(Guid companyId)
+        {
+            Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> localVarResponse = MdfeSettingsGetWithHttpInfo(companyId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get MDF-e settings Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>ApiResponse of MdfeSettingsGet200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> MdfeSettingsGetWithHttpInfo(Guid companyId)
+        {
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<MdfeSettingsGet200Response>("/companies/{companyId}/mdfe/settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MdfeSettingsGet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get MDF-e settings Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MdfeSettingsGet200Response</returns>
+        public async System.Threading.Tasks.Task<MdfeSettingsGet200Response> MdfeSettingsGetAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> localVarResponse = await MdfeSettingsGetWithHttpInfoAsync(companyId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get MDF-e settings Configuração de MDF-e da empresa. MDF-e não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MdfeSettingsGet200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response>> MdfeSettingsGetWithHttpInfoAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<MdfeSettingsGet200Response>("/companies/{companyId}/mdfe/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MdfeSettingsGet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>MdfeSettingsGet200Response</returns>
+        public MdfeSettingsGet200Response MdfeSettingsUpdate(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> localVarResponse = MdfeSettingsUpdateWithHttpInfo(companyId, mdfeSettingsPatch, confirmNumber);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>ApiResponse of MdfeSettingsGet200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> MdfeSettingsUpdateWithHttpInfo(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default)
+        {
+            // verify the required parameter 'mdfeSettingsPatch' is set
+            if (mdfeSettingsPatch == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'mdfeSettingsPatch' when calling MdfeApi->MdfeSettingsUpdate");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (confirmNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "confirmNumber", confirmNumber));
+            }
+            localVarRequestOptions.Data = mdfeSettingsPatch;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<MdfeSettingsGet200Response>("/companies/{companyId}/mdfe/settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MdfeSettingsUpdate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MdfeSettingsGet200Response</returns>
+        public async System.Threading.Tasks.Task<MdfeSettingsGet200Response> MdfeSettingsUpdateAsync(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response> localVarResponse = await MdfeSettingsUpdateWithHttpInfoAsync(companyId, mdfeSettingsPatch, confirmNumber, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure MDF-e Liga/desliga a emissão e ajusta a numeração. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="mdfeSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MdfeSettingsGet200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<MdfeSettingsGet200Response>> MdfeSettingsUpdateWithHttpInfoAsync(Guid companyId, MdfeSettingsPatch mdfeSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'mdfeSettingsPatch' is set
+            if (mdfeSettingsPatch == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'mdfeSettingsPatch' when calling MdfeApi->MdfeSettingsUpdate");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (confirmNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "confirmNumber", confirmNumber));
+            }
+            localVarRequestOptions.Data = mdfeSettingsPatch;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<MdfeSettingsGet200Response>("/companies/{companyId}/mdfe/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("MdfeSettingsUpdate", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

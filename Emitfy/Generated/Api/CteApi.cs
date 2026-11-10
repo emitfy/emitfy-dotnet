@@ -167,6 +167,52 @@ namespace Emitfy.Generated.Api
         /// <param name="idempotencyKey"> (optional)</param>
         /// <returns>ApiResponse of CteEmitAccepted</returns>
         ApiResponse<CteEmitAccepted> CteOsCreateWithHttpInfo(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default);
+        /// <summary>
+        /// Get CT-e e CT-e OS settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>CteSettingsGet200Response</returns>
+        CteSettingsGet200Response CteSettingsGet(Guid companyId);
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>ApiResponse of CteSettingsGet200Response</returns>
+        ApiResponse<CteSettingsGet200Response> CteSettingsGetWithHttpInfo(Guid companyId);
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>CteSettingsGet200Response</returns>
+        CteSettingsGet200Response CteSettingsUpdate(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default);
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>ApiResponse of CteSettingsGet200Response</returns>
+        ApiResponse<CteSettingsGet200Response> CteSettingsUpdateWithHttpInfo(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default);
         #endregion Synchronous Operations
     }
 
@@ -340,6 +386,56 @@ namespace Emitfy.Generated.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CteEmitAccepted)</returns>
         System.Threading.Tasks.Task<ApiResponse<CteEmitAccepted>> CteOsCreateWithHttpInfoAsync(Guid companyId, CteOsCreateRequest cteOsCreateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get CT-e e CT-e OS settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CteSettingsGet200Response</returns>
+        System.Threading.Tasks.Task<CteSettingsGet200Response> CteSettingsGetAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings
+        /// </summary>
+        /// <remarks>
+        /// Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CteSettingsGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CteSettingsGet200Response>> CteSettingsGetWithHttpInfoAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CteSettingsGet200Response</returns>
+        System.Threading.Tasks.Task<CteSettingsGet200Response> CteSettingsUpdateAsync(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS
+        /// </summary>
+        /// <remarks>
+        /// Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CteSettingsGet200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CteSettingsGet200Response>> CteSettingsUpdateWithHttpInfoAsync(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -1471,6 +1567,288 @@ namespace Emitfy.Generated.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CteOsCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>CteSettingsGet200Response</returns>
+        public CteSettingsGet200Response CteSettingsGet(Guid companyId)
+        {
+            Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> localVarResponse = CteSettingsGetWithHttpInfo(companyId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <returns>ApiResponse of CteSettingsGet200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> CteSettingsGetWithHttpInfo(Guid companyId)
+        {
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CteSettingsGet200Response>("/companies/{companyId}/cte/settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CteSettingsGet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CteSettingsGet200Response</returns>
+        public async System.Threading.Tasks.Task<CteSettingsGet200Response> CteSettingsGetAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> localVarResponse = await CteSettingsGetWithHttpInfoAsync(companyId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get CT-e e CT-e OS settings Configuração de CT-e e CT-e OS da empresa. CT-e e CT-e OS não aparece no painel: ativação e configuração são só por esta rota. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CteSettingsGet200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response>> CteSettingsGetWithHttpInfoAsync(Guid companyId, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CteSettingsGet200Response>("/companies/{companyId}/cte/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CteSettingsGet", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>CteSettingsGet200Response</returns>
+        public CteSettingsGet200Response CteSettingsUpdate(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> localVarResponse = CteSettingsUpdateWithHttpInfo(companyId, cteSettingsPatch, confirmNumber);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <returns>ApiResponse of CteSettingsGet200Response</returns>
+        public Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> CteSettingsUpdateWithHttpInfo(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default)
+        {
+            // verify the required parameter 'cteSettingsPatch' is set
+            if (cteSettingsPatch == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'cteSettingsPatch' when calling CteApi->CteSettingsUpdate");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (confirmNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "confirmNumber", confirmNumber));
+            }
+            localVarRequestOptions.Data = cteSettingsPatch;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CteSettingsGet200Response>("/companies/{companyId}/cte/settings", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CteSettingsUpdate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CteSettingsGet200Response</returns>
+        public async System.Threading.Tasks.Task<CteSettingsGet200Response> CteSettingsUpdateAsync(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response> localVarResponse = await CteSettingsUpdateWithHttpInfoAsync(companyId, cteSettingsPatch, confirmNumber, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Enable, disable or configure CT-e e CT-e OS Liga/desliga a emissão e ajusta a numeração e o RNTRC. Só o titular ou um administrador da empresa. O próximo número só sobe; número menor na mesma série responde 409, salvo &#x60;?confirmNumber&#x3D;1&#x60;. Série nova grava o número informado. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="cteSettingsPatch"></param>
+        /// <param name="confirmNumber">&#x60;1&#x60; aceita voltar o próximo número na mesma série. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CteSettingsGet200Response)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<CteSettingsGet200Response>> CteSettingsUpdateWithHttpInfoAsync(Guid companyId, CteSettingsPatch cteSettingsPatch, string? confirmNumber = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'cteSettingsPatch' is set
+            if (cteSettingsPatch == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'cteSettingsPatch' when calling CteApi->CteSettingsUpdate");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (confirmNumber != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "confirmNumber", confirmNumber));
+            }
+            localVarRequestOptions.Data = cteSettingsPatch;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CteSettingsGet200Response>("/companies/{companyId}/cte/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CteSettingsUpdate", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
