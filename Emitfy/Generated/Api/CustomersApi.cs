@@ -31,7 +31,7 @@ namespace Emitfy.Generated.Api
         /// Create customer
         /// </summary>
         /// <remarks>
-        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -43,7 +43,7 @@ namespace Emitfy.Generated.Api
         /// Create customer
         /// </summary>
         /// <remarks>
-        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -155,7 +155,7 @@ namespace Emitfy.Generated.Api
         /// Create customer
         /// </summary>
         /// <remarks>
-        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -168,7 +168,7 @@ namespace Emitfy.Generated.Api
         /// Create customer
         /// </summary>
         /// <remarks>
-        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -502,7 +502,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -514,7 +514,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -570,7 +570,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -583,7 +583,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60; / &#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se já existir cliente com o mesmo documento ou e-mail. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
+        /// Create customer Cria um novo cliente. Retorna 409 (&#x60;CUSTOMER_DOCUMENT_EXISTS&#x60;) se já existir cliente com o mesmo CPF/CNPJ, ou 409 (&#x60;CUSTOMER_EMAIL_EXISTS&#x60;) se o e-mail já existir e os documentos não forem distintos. O mesmo e-mail pode ser usado em clientes com CPF/CNPJ diferentes. Para atualizar, use &#x60;PUT /companies/{companyId}/customers/{id}&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
