@@ -28,10 +28,43 @@ namespace Emitfy.Generated.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Download received NF-e as .zip
+        /// </summary>
+        /// <remarks>
+        /// Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>FileParameter</returns>
+        FileParameter ReceivedNfesDownload(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default);
+
+        /// <summary>
+        /// Download received NF-e as .zip
+        /// </summary>
+        /// <remarks>
+        /// Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        ApiResponse<FileParameter> ReceivedNfesDownloadWithHttpInfo(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default);
+        /// <summary>
         /// Fetch received NF-e by access key (DistDFe consChNFe)
         /// </summary>
         /// <remarks>
-        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -43,7 +76,7 @@ namespace Emitfy.Generated.Api
         /// Fetch received NF-e by access key (DistDFe consChNFe)
         /// </summary>
         /// <remarks>
-        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -76,7 +109,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -93,7 +126,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -123,8 +156,58 @@ namespace Emitfy.Generated.Api
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ReceivedNfesManifestWithHttpInfo(Guid companyId, string id, ReceivedNfesManifestRequest receivedNfesManifestRequest);
         /// <summary>
+        /// Get received NF-e DANFE (PDF)
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>FileParameter</returns>
+        FileParameter ReceivedNfesPdf(Guid companyId, string id);
+
+        /// <summary>
+        /// Get received NF-e DANFE (PDF)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        ApiResponse<FileParameter> ReceivedNfesPdfWithHttpInfo(Guid companyId, string id);
+        /// <summary>
+        /// Received NF-e totals
+        /// </summary>
+        /// <remarks>
+        /// Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns></returns>
+        void ReceivedNfesSummary(Guid companyId, string? search = default, string? startDate = default, string? endDate = default);
+
+        /// <summary>
+        /// Received NF-e totals
+        /// </summary>
+        /// <remarks>
+        /// Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ReceivedNfesSummaryWithHttpInfo(Guid companyId, string? search = default, string? startDate = default, string? endDate = default);
+        /// <summary>
         /// Enqueue DistDFe sync
         /// </summary>
+        /// <remarks>
+        /// Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
+        /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <returns></returns>
@@ -134,7 +217,7 @@ namespace Emitfy.Generated.Api
         /// Enqueue DistDFe sync
         /// </summary>
         /// <remarks>
-        /// 
+        /// Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -170,10 +253,45 @@ namespace Emitfy.Generated.Api
     {
         #region Asynchronous Operations
         /// <summary>
+        /// Download received NF-e as .zip
+        /// </summary>
+        /// <remarks>
+        /// Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> ReceivedNfesDownloadAsync(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Download received NF-e as .zip
+        /// </summary>
+        /// <remarks>
+        /// Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileParameter>> ReceivedNfesDownloadWithHttpInfoAsync(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Fetch received NF-e by access key (DistDFe consChNFe)
         /// </summary>
         /// <remarks>
-        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -186,7 +304,7 @@ namespace Emitfy.Generated.Api
         /// Fetch received NF-e by access key (DistDFe consChNFe)
         /// </summary>
         /// <remarks>
-        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -228,7 +346,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -246,7 +364,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -282,10 +400,64 @@ namespace Emitfy.Generated.Api
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> ReceivedNfesManifestWithHttpInfoAsync(Guid companyId, string id, ReceivedNfesManifestRequest receivedNfesManifestRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Enqueue DistDFe sync
+        /// Get received NF-e DANFE (PDF)
         /// </summary>
         /// <remarks>
         /// 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of FileParameter</returns>
+        System.Threading.Tasks.Task<FileParameter> ReceivedNfesPdfAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get received NF-e DANFE (PDF)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FileParameter>> ReceivedNfesPdfWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Received NF-e totals
+        /// </summary>
+        /// <remarks>
+        /// Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ReceivedNfesSummaryAsync(Guid companyId, string? search = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Received NF-e totals
+        /// </summary>
+        /// <remarks>
+        /// Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ReceivedNfesSummaryWithHttpInfoAsync(Guid companyId, string? search = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Enqueue DistDFe sync
+        /// </summary>
+        /// <remarks>
+        /// Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -297,7 +469,7 @@ namespace Emitfy.Generated.Api
         /// Enqueue DistDFe sync
         /// </summary>
         /// <remarks>
-        /// 
+        /// Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -543,7 +715,206 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Download received NF-e as .zip Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>FileParameter</returns>
+        public FileParameter ReceivedNfesDownload(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = ReceivedNfesDownloadWithHttpInfo(companyId, format, ids, search, status, startDate, endDate);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Download received NF-e as .zip Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        public Emitfy.Generated.Client.ApiResponse<FileParameter> ReceivedNfesDownloadWithHttpInfo(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default)
+        {
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/zip"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (ids != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            }
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<FileParameter>("/companies/{companyId}/received-nfes/download", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesDownload", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Download received NF-e as .zip Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> ReceivedNfesDownloadAsync(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = await ReceivedNfesDownloadWithHttpInfoAsync(companyId, format, ids, search, status, startDate, endDate, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Download received NF-e as .zip Gera um .zip com XML (&#x60;NFe_{chave}.xml&#x60;), DANFE (&#x60;DANFE_{chave}.pdf&#x60;) ou ambos. Use &#x60;ids&#x60; (até 500, separados por vírgula) ou os mesmos filtros da listagem. Cada chave de acesso entra uma vez. Limite: 1000 notas em XML, 300 com PDF. Notas só com resumo vão listadas em &#x60;notas-sem-xml.txt&#x60;.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="format"> (optional, default to xml)</param>
+        /// <param name="ids"> (optional)</param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<FileParameter>> ReceivedNfesDownloadWithHttpInfoAsync(Guid companyId, string? format = default, string? ids = default, string? search = default, string? status = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/zip"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (ids != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            }
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<FileParameter>("/companies/{companyId}/received-nfes/download", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesDownload", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -555,7 +926,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -610,7 +981,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -623,7 +994,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), a ciência da operação (&#x60;210210&#x60;) é enviada automaticamente; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
+        /// Fetch received NF-e by access key (DistDFe consChNFe) Consulta síncrona de uma NF-e pela chave de acesso (uma chamada SEFAZ). Não altera o cursor NSU do sync. Valida só formato/DV da chave. Se a SEFAZ devolver apenas o resumo (&#x60;resNFe&#x60;), o Emitfy registra a ciência da operação (&#x60;210210&#x60;) na mesma chamada; o XML completo fica disponível numa próxima busca/sincronização. Conta no limite de consultas da SEFAZ.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -824,7 +1195,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -841,7 +1212,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -919,7 +1290,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -937,7 +1308,7 @@ namespace Emitfy.Generated.Api
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
         /// <param name="page"> (optional, default to 1)</param>
-        /// <param name="limit"> (optional)</param>
+        /// <param name="limit">Itens por página (1–100). Padrão 20. (optional, default to 20)</param>
         /// <param name="search"> (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="startDate">Início do período de emissão (&#x60;issuedOn&#x60;). &#x60;YYYY-MM-DD&#x60; &#x3D; dia civil de Brasília (00:00 BRT); também aceita ISO 8601 ou epoch ms (recortado ao dia em BRT). (optional)</param>
@@ -1167,7 +1538,307 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Enqueue DistDFe sync 
+        /// Get received NF-e DANFE (PDF) 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>FileParameter</returns>
+        public FileParameter ReceivedNfesPdf(Guid companyId, string id)
+        {
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = ReceivedNfesPdfWithHttpInfo(companyId, id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get received NF-e DANFE (PDF) 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of FileParameter</returns>
+        public Emitfy.Generated.Client.ApiResponse<FileParameter> ReceivedNfesPdfWithHttpInfo(Guid companyId, string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling ReceivedNfesApi->ReceivedNfesPdf");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/pdf"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<FileParameter>("/companies/{companyId}/received-nfes/{id}/pdf", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesPdf", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get received NF-e DANFE (PDF) 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of FileParameter</returns>
+        public async System.Threading.Tasks.Task<FileParameter> ReceivedNfesPdfAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<FileParameter> localVarResponse = await ReceivedNfesPdfWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get received NF-e DANFE (PDF) 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (FileParameter)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<FileParameter>> ReceivedNfesPdfWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling ReceivedNfesApi->ReceivedNfesPdf");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/pdf"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<FileParameter>("/companies/{companyId}/received-nfes/{id}/pdf", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesPdf", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Received NF-e totals Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns></returns>
+        public void ReceivedNfesSummary(Guid companyId, string? search = default, string? startDate = default, string? endDate = default)
+        {
+            ReceivedNfesSummaryWithHttpInfo(companyId, search, startDate, endDate);
+        }
+
+        /// <summary>
+        /// Received NF-e totals Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Emitfy.Generated.Client.ApiResponse<Object> ReceivedNfesSummaryWithHttpInfo(Guid companyId, string? search = default, string? startDate = default, string? endDate = default)
+        {
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/received-nfes/summary", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesSummary", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Received NF-e totals Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ReceivedNfesSummaryAsync(Guid companyId, string? search = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await ReceivedNfesSummaryWithHttpInfoAsync(companyId, search, startDate, endDate, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Received NF-e totals Totais das NF-e recebidas no filtro (&#x60;search&#x60;, &#x60;startDate&#x60;, &#x60;endDate&#x60;). Ignora &#x60;status&#x60;: devolve a contagem por manifestação.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="search"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> ReceivedNfesSummaryWithHttpInfoAsync(Guid companyId, string? search = default, string? startDate = default, string? endDate = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            if (search != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "search", search));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Emitfy.Generated.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/received-nfes/summary", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReceivedNfesSummary", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Enqueue DistDFe sync Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -1178,7 +1849,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Enqueue DistDFe sync 
+        /// Enqueue DistDFe sync Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -1226,7 +1897,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Enqueue DistDFe sync 
+        /// Enqueue DistDFe sync Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -1238,7 +1909,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Enqueue DistDFe sync 
+        /// Enqueue DistDFe sync Enfileira a consulta DistDFe na SEFAZ (com ciência da operação para resumos). Intervalo mínimo de 10 minutos entre sincronizações; dentro dele responde 200 com &#x60;skipped: true&#x60;, &#x60;skipReason: min_interval&#x60; e &#x60;availableAt&#x60;.
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
