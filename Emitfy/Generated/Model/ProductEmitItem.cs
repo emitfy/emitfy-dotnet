@@ -69,16 +69,16 @@ namespace Emitfy.Generated.Model
         /// <param name="ipiCst">ipiCst.</param>
         /// <param name="ipiTaxRate">ipiTaxRate.</param>
         /// <param name="ipiLegalCode">ipiLegalCode.</param>
-        /// <param name="cest">cest.</param>
+        /// <param name="cest">CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro.</param>
         /// <param name="fci">fci.</param>
-        /// <param name="nve">nve.</param>
-        /// <param name="extipi">extipi.</param>
+        /// <param name="nve">NF-e — Nomenclatura de Valor Aduaneiro (NVE, ex. AA0001), até 8 por item.</param>
+        /// <param name="extipi">NF-e — código EX da TIPI (EXTIPI), 2 ou 3 dígitos.</param>
         /// <param name="orderNumber">orderNumber.</param>
         /// <param name="orderItem">orderItem.</param>
-        /// <param name="freight">freight.</param>
-        /// <param name="insurance">insurance.</param>
-        /// <param name="discount">discount.</param>
-        /// <param name="other">other.</param>
+        /// <param name="freight">vFrete do item (prevalece sobre o rateio).</param>
+        /// <param name="insurance">NF-e — vSeg do item; soma em ICMSTot/vSeg e no vNF.</param>
+        /// <param name="discount">NF-e — vDesc do item (não pode passar do valor do item); soma em ICMSTot/vDesc.</param>
+        /// <param name="other">NF-e — vOutro (outras despesas acessórias) do item; soma em ICMSTot/vOutro e no vNF.</param>
         /// <param name="taxClassification">taxClassification.</param>
         /// <param name="ibsCst">ibsCst.</param>
         /// <param name="cbsCst">cbsCst.</param>
@@ -335,8 +335,9 @@ namespace Emitfy.Generated.Model
         public string IpiLegalCode { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cest
+        /// CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro
         /// </summary>
+        /// <value>CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro</value>
         [DataMember(Name = "cest", EmitDefaultValue = false)]
         public string Cest { get; set; }
 
@@ -347,14 +348,16 @@ namespace Emitfy.Generated.Model
         public string Fci { get; set; }
 
         /// <summary>
-        /// Gets or Sets Nve
+        /// NF-e — Nomenclatura de Valor Aduaneiro (NVE, ex. AA0001), até 8 por item
         /// </summary>
+        /// <value>NF-e — Nomenclatura de Valor Aduaneiro (NVE, ex. AA0001), até 8 por item</value>
         [DataMember(Name = "nve", EmitDefaultValue = false)]
         public List<string> Nve { get; set; }
 
         /// <summary>
-        /// Gets or Sets Extipi
+        /// NF-e — código EX da TIPI (EXTIPI), 2 ou 3 dígitos
         /// </summary>
+        /// <value>NF-e — código EX da TIPI (EXTIPI), 2 ou 3 dígitos</value>
         [DataMember(Name = "extipi", EmitDefaultValue = false)]
         public string Extipi { get; set; }
 
@@ -371,26 +374,30 @@ namespace Emitfy.Generated.Model
         public int OrderItem { get; set; }
 
         /// <summary>
-        /// Gets or Sets Freight
+        /// vFrete do item (prevalece sobre o rateio)
         /// </summary>
+        /// <value>vFrete do item (prevalece sobre o rateio)</value>
         [DataMember(Name = "freight", EmitDefaultValue = false)]
         public decimal Freight { get; set; }
 
         /// <summary>
-        /// Gets or Sets Insurance
+        /// NF-e — vSeg do item; soma em ICMSTot/vSeg e no vNF
         /// </summary>
+        /// <value>NF-e — vSeg do item; soma em ICMSTot/vSeg e no vNF</value>
         [DataMember(Name = "insurance", EmitDefaultValue = false)]
         public decimal Insurance { get; set; }
 
         /// <summary>
-        /// Gets or Sets Discount
+        /// NF-e — vDesc do item (não pode passar do valor do item); soma em ICMSTot/vDesc
         /// </summary>
+        /// <value>NF-e — vDesc do item (não pode passar do valor do item); soma em ICMSTot/vDesc</value>
         [DataMember(Name = "discount", EmitDefaultValue = false)]
         public decimal Discount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Other
+        /// NF-e — vOutro (outras despesas acessórias) do item; soma em ICMSTot/vOutro e no vNF
         /// </summary>
+        /// <value>NF-e — vOutro (outras despesas acessórias) do item; soma em ICMSTot/vOutro e no vNF</value>
         [DataMember(Name = "other", EmitDefaultValue = false)]
         public decimal Other { get; set; }
 

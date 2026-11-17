@@ -86,20 +86,22 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="NfeCreateRequestTransport" /> class.
         /// </summary>
         /// <param name="freightModality">Também aceita os códigos SEFAZ 0/1/2/3/4/9 como alias.</param>
-        /// <param name="value">Valor do frete; compõe o total quando por conta do emitente.</param>
+        /// <param name="value">Valor do frete; compõe o total quando por conta do emitente. Sem &#x60;freightModality&#x60;, um valor maior que zero assume frete por conta do remetente (CIF, modFrete 0). .</param>
         /// <param name="carrier">carrier.</param>
-        public NfeCreateRequestTransport(FreightModalityEnum? freightModality = default, decimal value = default, TransportCarrier carrier = default)
+        /// <param name="volumes">Volumes (&#x60;transp/vol&#x60;); exige &#x60;freightModality&#x60;. Aceita também os nomes do leiaute (qVol, esp, marca, nVol, pesoL, pesoB).</param>
+        public NfeCreateRequestTransport(FreightModalityEnum? freightModality = default, decimal value = default, TransportCarrier carrier = default, List<NfeCreateRequestTransportVolumesInner> volumes = default)
         {
             this.FreightModality = freightModality;
             this.Value = value;
             this.Carrier = carrier;
+            this.Volumes = volumes;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Valor do frete; compõe o total quando por conta do emitente
+        /// Valor do frete; compõe o total quando por conta do emitente. Sem &#x60;freightModality&#x60;, um valor maior que zero assume frete por conta do remetente (CIF, modFrete 0). 
         /// </summary>
-        /// <value>Valor do frete; compõe o total quando por conta do emitente</value>
+        /// <value>Valor do frete; compõe o total quando por conta do emitente. Sem &#x60;freightModality&#x60;, um valor maior que zero assume frete por conta do remetente (CIF, modFrete 0). </value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
         public decimal Value { get; set; }
 
@@ -108,6 +110,13 @@ namespace Emitfy.Generated.Model
         /// </summary>
         [DataMember(Name = "carrier", EmitDefaultValue = false)]
         public TransportCarrier Carrier { get; set; }
+
+        /// <summary>
+        /// Volumes (&#x60;transp/vol&#x60;); exige &#x60;freightModality&#x60;. Aceita também os nomes do leiaute (qVol, esp, marca, nVol, pesoL, pesoB)
+        /// </summary>
+        /// <value>Volumes (&#x60;transp/vol&#x60;); exige &#x60;freightModality&#x60;. Aceita também os nomes do leiaute (qVol, esp, marca, nVol, pesoL, pesoB)</value>
+        [DataMember(Name = "volumes", EmitDefaultValue = false)]
+        public List<NfeCreateRequestTransportVolumesInner> Volumes { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -126,6 +135,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  FreightModality: ").Append(FreightModality).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
+            sb.Append("  Volumes: ").Append(Volumes).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

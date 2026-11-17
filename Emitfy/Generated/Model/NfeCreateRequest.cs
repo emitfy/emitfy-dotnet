@@ -32,6 +32,69 @@ namespace Emitfy.Generated.Model
     public partial class NfeCreateRequest
     {
         /// <summary>
+        /// Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. 
+        /// </summary>
+        /// <value>Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PaymentMethodEnum
+        {
+            /// <summary>
+            /// Enum CreditCard for value: credit_card
+            /// </summary>
+            [EnumMember(Value = "credit_card")]
+            CreditCard = 1,
+
+            /// <summary>
+            /// Enum DebitCard for value: debit_card
+            /// </summary>
+            [EnumMember(Value = "debit_card")]
+            DebitCard = 2,
+
+            /// <summary>
+            /// Enum Pix for value: pix
+            /// </summary>
+            [EnumMember(Value = "pix")]
+            Pix = 3,
+
+            /// <summary>
+            /// Enum BankTransfer for value: bank_transfer
+            /// </summary>
+            [EnumMember(Value = "bank_transfer")]
+            BankTransfer = 4,
+
+            /// <summary>
+            /// Enum Cash for value: cash
+            /// </summary>
+            [EnumMember(Value = "cash")]
+            Cash = 5,
+
+            /// <summary>
+            /// Enum BankSlip for value: bank_slip
+            /// </summary>
+            [EnumMember(Value = "bank_slip")]
+            BankSlip = 6,
+
+            /// <summary>
+            /// Enum Other for value: other
+            /// </summary>
+            [EnumMember(Value = "other")]
+            Other = 7,
+
+            /// <summary>
+            /// Enum NoPayment for value: no_payment
+            /// </summary>
+            [EnumMember(Value = "no_payment")]
+            NoPayment = 8
+        }
+
+
+        /// <summary>
+        /// Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. 
+        /// </summary>
+        /// <value>Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. </value>
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
+        public PaymentMethodEnum? PaymentMethod { get; set; }
+        /// <summary>
         /// Defines OperationType
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -57,8 +120,9 @@ namespace Emitfy.Generated.Model
         [DataMember(Name = "operationType", EmitDefaultValue = false)]
         public OperationTypeEnum? OperationType { get; set; }
         /// <summary>
-        /// Defines PrintType
+        /// tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. 
         /// </summary>
+        /// <value>tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum PrintTypeEnum
         {
@@ -83,13 +147,15 @@ namespace Emitfy.Generated.Model
 
 
         /// <summary>
-        /// Gets or Sets PrintType
+        /// tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. 
         /// </summary>
+        /// <value>tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. </value>
         [DataMember(Name = "printType", EmitDefaultValue = false)]
         public PrintTypeEnum? PrintType { get; set; }
         /// <summary>
-        /// Defines ConsumerType
+        /// indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. 
         /// </summary>
+        /// <value>indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ConsumerTypeEnum
         {
@@ -108,8 +174,9 @@ namespace Emitfy.Generated.Model
 
 
         /// <summary>
-        /// Gets or Sets ConsumerType
+        /// indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. 
         /// </summary>
+        /// <value>indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. </value>
         [DataMember(Name = "consumerType", EmitDefaultValue = false)]
         public ConsumerTypeEnum? ConsumerType { get; set; }
         /// <summary>
@@ -169,35 +236,36 @@ namespace Emitfy.Generated.Model
         /// <param name="items">items (required).</param>
         /// <param name="recipient">recipient (required).</param>
         /// <param name="transport">transport.</param>
+        /// <param name="paymentMethod">Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. .</param>
         /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
         /// <param name="operationNature">operationNature.</param>
         /// <param name="nature">Alias legado de operationNature.</param>
         /// <param name="operationType">operationType.</param>
-        /// <param name="printType">printType.</param>
-        /// <param name="consumerType">consumerType.</param>
+        /// <param name="printType">tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. .</param>
+        /// <param name="consumerType">indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. .</param>
         /// <param name="presenceType">presenceType.</param>
-        /// <param name="ibsConsumptionCityCode">ibsConsumptionCityCode.</param>
-        /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada na emissão.</param>
+        /// <param name="ibsConsumptionCityCode">Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422.</param>
+        /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. .</param>
         /// <param name="cfop">cfop.</param>
         /// <param name="issueDate">issueDate.</param>
-        /// <param name="ide">Grupo ide (campos avançados).</param>
+        /// <param name="ide">ide.</param>
         /// <param name="avulsa">avulsa.</param>
         /// <param name="retirada">retirada.</param>
         /// <param name="entrega">entrega.</param>
         /// <param name="autXml">autXml.</param>
         /// <param name="billing">billing.</param>
-        /// <param name="payments">payments.</param>
-        /// <param name="change">Troco.</param>
+        /// <param name="payments">Pagamentos detalhados (&#x60;pag/detPag&#x60;, um por item). A soma (exceto method 90) não pode ser menor que o vNF (422). Excedente vira troco (&#x60;vTroco&#x60;) automaticamente. Cartão (03/04) e PIX (17) levam o grupo &#x60;card&#x60; (tpIntegra 2). .</param>
+        /// <param name="change">Troco (vTroco). Opcional; quando enviado precisa ser soma(payments) − vNF. Só com &#x60;payments&#x60;.</param>
         /// <param name="intermediary">intermediary.</param>
         /// <param name="additional">additional.</param>
         /// <param name="export">export.</param>
         /// <param name="purchase">purchase.</param>
         /// <param name="sugarcane">sugarcane.</param>
-        /// <param name="techResponsible">techResponsible.</param>
+        /// <param name="techResponsible">Na NF-e, csrtId/csrtHash ainda não são suportados → 422.</param>
         /// <param name="nffRequest">nffRequest.</param>
         /// <param name="farming">farming.</param>
-        /// <param name="totals">Override de totais.</param>
-        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, NfeCreateRequestTransport transport = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, Object ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, Object billing = default, List<Object> payments = default, decimal change = default, Object intermediary = default, Object additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, Object totals = default)
+        /// <param name="totals">totals.</param>
+        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -212,6 +280,7 @@ namespace Emitfy.Generated.Model
             }
             this.Recipient = recipient;
             this.Transport = transport;
+            this.PaymentMethod = paymentMethod;
             this.ExternalId = externalId;
             this.OperationNature = operationNature;
             this.Nature = nature;
@@ -283,15 +352,16 @@ namespace Emitfy.Generated.Model
         public string Nature { get; set; }
 
         /// <summary>
-        /// Gets or Sets IbsConsumptionCityCode
+        /// Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422
         /// </summary>
+        /// <value>Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422</value>
         [DataMember(Name = "ibsConsumptionCityCode", EmitDefaultValue = false)]
         public string IbsConsumptionCityCode { get; set; }
 
         /// <summary>
-        /// Inscrição estadual da empresa (multi-IE) usada na emissão
+        /// Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. 
         /// </summary>
-        /// <value>Inscrição estadual da empresa (multi-IE) usada na emissão</value>
+        /// <value>Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. </value>
         [DataMember(Name = "stateRegistrationId", EmitDefaultValue = false)]
         public Guid StateRegistrationId { get; set; }
 
@@ -308,11 +378,10 @@ namespace Emitfy.Generated.Model
         public DateTime IssueDate { get; set; }
 
         /// <summary>
-        /// Grupo ide (campos avançados)
+        /// Gets or Sets Ide
         /// </summary>
-        /// <value>Grupo ide (campos avançados)</value>
         [DataMember(Name = "ide", EmitDefaultValue = false)]
-        public Object Ide { get; set; }
+        public NfeCreateRequestIde Ide { get; set; }
 
         /// <summary>
         /// Gets or Sets Avulsa
@@ -342,18 +411,19 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Billing
         /// </summary>
         [DataMember(Name = "billing", EmitDefaultValue = false)]
-        public Object Billing { get; set; }
+        public NfeCreateRequestBilling Billing { get; set; }
 
         /// <summary>
-        /// Gets or Sets Payments
+        /// Pagamentos detalhados (&#x60;pag/detPag&#x60;, um por item). A soma (exceto method 90) não pode ser menor que o vNF (422). Excedente vira troco (&#x60;vTroco&#x60;) automaticamente. Cartão (03/04) e PIX (17) levam o grupo &#x60;card&#x60; (tpIntegra 2). 
         /// </summary>
+        /// <value>Pagamentos detalhados (&#x60;pag/detPag&#x60;, um por item). A soma (exceto method 90) não pode ser menor que o vNF (422). Excedente vira troco (&#x60;vTroco&#x60;) automaticamente. Cartão (03/04) e PIX (17) levam o grupo &#x60;card&#x60; (tpIntegra 2). </value>
         [DataMember(Name = "payments", EmitDefaultValue = false)]
-        public List<Object> Payments { get; set; }
+        public List<NfeCreateRequestPaymentsInner> Payments { get; set; }
 
         /// <summary>
-        /// Troco
+        /// Troco (vTroco). Opcional; quando enviado precisa ser soma(payments) − vNF. Só com &#x60;payments&#x60;
         /// </summary>
-        /// <value>Troco</value>
+        /// <value>Troco (vTroco). Opcional; quando enviado precisa ser soma(payments) − vNF. Só com &#x60;payments&#x60;</value>
         [DataMember(Name = "change", EmitDefaultValue = false)]
         public decimal Change { get; set; }
 
@@ -367,7 +437,7 @@ namespace Emitfy.Generated.Model
         /// Gets or Sets Additional
         /// </summary>
         [DataMember(Name = "additional", EmitDefaultValue = false)]
-        public Object Additional { get; set; }
+        public NfeCreateRequestAdditional Additional { get; set; }
 
         /// <summary>
         /// Gets or Sets Export
@@ -388,8 +458,9 @@ namespace Emitfy.Generated.Model
         public Object Sugarcane { get; set; }
 
         /// <summary>
-        /// Gets or Sets TechResponsible
+        /// Na NF-e, csrtId/csrtHash ainda não são suportados → 422
         /// </summary>
+        /// <value>Na NF-e, csrtId/csrtHash ainda não são suportados → 422</value>
         [DataMember(Name = "techResponsible", EmitDefaultValue = false)]
         public DfeTechResponsible TechResponsible { get; set; }
 
@@ -406,11 +477,10 @@ namespace Emitfy.Generated.Model
         public Object Farming { get; set; }
 
         /// <summary>
-        /// Override de totais
+        /// Gets or Sets Totals
         /// </summary>
-        /// <value>Override de totais</value>
         [DataMember(Name = "totals", EmitDefaultValue = false)]
-        public Object Totals { get; set; }
+        public NfeCreateRequestTotals Totals { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -429,6 +499,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
             sb.Append("  Transport: ").Append(Transport).Append("\n");
+            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  OperationNature: ").Append(OperationNature).Append("\n");
             sb.Append("  Nature: ").Append(Nature).Append("\n");
