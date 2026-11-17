@@ -246,7 +246,8 @@ namespace Emitfy.Generated.Model
         /// <param name="consumerType">indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. .</param>
         /// <param name="presenceType">presenceType.</param>
         /// <param name="ibsConsumptionCityCode">Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422.</param>
-        /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. .</param>
+        /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF → 422 (use &#x60;stStateRegistrationId&#x60; para o IEST). .</param>
+        /// <param name="stStateRegistrationId">IEST — inscrição de substituto tributário da empresa na UF de destino (cadastrada em inscrições estaduais). Sai em emit/IEST, logo após a IE. Precisa ser da UF do destinatário e diferente da UF do emitente → senão 422. .</param>
         /// <param name="cfop">cfop.</param>
         /// <param name="issueDate">issueDate.</param>
         /// <param name="ide">ide.</param>
@@ -266,7 +267,7 @@ namespace Emitfy.Generated.Model
         /// <param name="nffRequest">nffRequest.</param>
         /// <param name="farming">farming.</param>
         /// <param name="totals">totals.</param>
-        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
+        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, Guid stStateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -292,6 +293,7 @@ namespace Emitfy.Generated.Model
             this.PresenceType = presenceType;
             this.IbsConsumptionCityCode = ibsConsumptionCityCode;
             this.StateRegistrationId = stateRegistrationId;
+            this.StStateRegistrationId = stStateRegistrationId;
             this.Cfop = cfop;
             this.IssueDate = issueDate;
             this.Ide = ide;
@@ -368,11 +370,18 @@ namespace Emitfy.Generated.Model
         public string IbsConsumptionCityCode { get; set; }
 
         /// <summary>
-        /// Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. 
+        /// Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF → 422 (use &#x60;stStateRegistrationId&#x60; para o IEST). 
         /// </summary>
-        /// <value>Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF (IEST) ainda não é suportada → 422. </value>
+        /// <value>Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF → 422 (use &#x60;stStateRegistrationId&#x60; para o IEST). </value>
         [DataMember(Name = "stateRegistrationId", EmitDefaultValue = false)]
         public Guid StateRegistrationId { get; set; }
+
+        /// <summary>
+        /// IEST — inscrição de substituto tributário da empresa na UF de destino (cadastrada em inscrições estaduais). Sai em emit/IEST, logo após a IE. Precisa ser da UF do destinatário e diferente da UF do emitente → senão 422. 
+        /// </summary>
+        /// <value>IEST — inscrição de substituto tributário da empresa na UF de destino (cadastrada em inscrições estaduais). Sai em emit/IEST, logo após a IE. Precisa ser da UF do destinatário e diferente da UF do emitente → senão 422. </value>
+        [DataMember(Name = "stStateRegistrationId", EmitDefaultValue = false)]
+        public Guid StStateRegistrationId { get; set; }
 
         /// <summary>
         /// Gets or Sets Cfop
@@ -519,6 +528,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  PresenceType: ").Append(PresenceType).Append("\n");
             sb.Append("  IbsConsumptionCityCode: ").Append(IbsConsumptionCityCode).Append("\n");
             sb.Append("  StateRegistrationId: ").Append(StateRegistrationId).Append("\n");
+            sb.Append("  StStateRegistrationId: ").Append(StStateRegistrationId).Append("\n");
             sb.Append("  Cfop: ").Append(Cfop).Append("\n");
             sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
             sb.Append("  Ide: ").Append(Ide).Append("\n");

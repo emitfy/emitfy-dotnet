@@ -66,9 +66,12 @@ namespace Emitfy.Generated.Model
         /// <param name="pisTaxRate">pisTaxRate.</param>
         /// <param name="cofinsCst">cofinsCst.</param>
         /// <param name="cofinsTaxRate">cofinsTaxRate.</param>
-        /// <param name="ipiCst">ipiCst.</param>
+        /// <param name="ipiCst">NF-e — CST do IPI nesta nota (atalho de &#x60;ipi.cst&#x60;; com &#x60;ipiTaxRate&#x60; → pIPI e &#x60;ipiLegalCode&#x60; → cEnq). Só destaca IPI quando vem na requisição (o cadastro nunca destaca sozinho). Divergir de &#x60;ipi.cst&#x60; → 422. .</param>
         /// <param name="ipiTaxRate">ipiTaxRate.</param>
         /// <param name="ipiLegalCode">ipiLegalCode.</param>
+        /// <param name="icms">icms.</param>
+        /// <param name="ipi">ipi.</param>
+        /// <param name="importTax">importTax.</param>
         /// <param name="cest">CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro.</param>
         /// <param name="fci">fci.</param>
         /// <param name="nve">NF-e — Nomenclatura de Valor Aduaneiro (NVE, ex. AA0001), até 8 por item.</param>
@@ -82,7 +85,7 @@ namespace Emitfy.Generated.Model
         /// <param name="taxClassification">taxClassification.</param>
         /// <param name="ibsCst">ibsCst.</param>
         /// <param name="cbsCst">cbsCst.</param>
-        /// <param name="importDeclarations">importDeclarations.</param>
+        /// <param name="importDeclarations">NF-e — DI/DSI/DA/DUIMP do item (grupo DI, logo após indTot).</param>
         /// <param name="traces">traces.</param>
         /// <param name="exports">exports.</param>
         /// <param name="vehicle">vehicle.</param>
@@ -91,7 +94,7 @@ namespace Emitfy.Generated.Model
         /// <param name="fuel">fuel.</param>
         /// <param name="taxReturn">taxReturn.</param>
         /// <param name="additionalInfo">additionalInfo.</param>
-        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<Object> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
+        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, NfeItemIcms icms = default, NfeItemIpi ipi = default, NfeItemImportTax importTax = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<NfeImportDeclaration> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -128,6 +131,9 @@ namespace Emitfy.Generated.Model
             this.IpiCst = ipiCst;
             this.IpiTaxRate = ipiTaxRate;
             this.IpiLegalCode = ipiLegalCode;
+            this.Icms = icms;
+            this.Ipi = ipi;
+            this.ImportTax = importTax;
             this.Cest = cest;
             this.Fci = fci;
             this.Nve = nve;
@@ -318,8 +324,9 @@ namespace Emitfy.Generated.Model
         public decimal CofinsTaxRate { get; set; }
 
         /// <summary>
-        /// Gets or Sets IpiCst
+        /// NF-e — CST do IPI nesta nota (atalho de &#x60;ipi.cst&#x60;; com &#x60;ipiTaxRate&#x60; → pIPI e &#x60;ipiLegalCode&#x60; → cEnq). Só destaca IPI quando vem na requisição (o cadastro nunca destaca sozinho). Divergir de &#x60;ipi.cst&#x60; → 422. 
         /// </summary>
+        /// <value>NF-e — CST do IPI nesta nota (atalho de &#x60;ipi.cst&#x60;; com &#x60;ipiTaxRate&#x60; → pIPI e &#x60;ipiLegalCode&#x60; → cEnq). Só destaca IPI quando vem na requisição (o cadastro nunca destaca sozinho). Divergir de &#x60;ipi.cst&#x60; → 422. </value>
         [DataMember(Name = "ipiCst", EmitDefaultValue = false)]
         public string IpiCst { get; set; }
 
@@ -334,6 +341,24 @@ namespace Emitfy.Generated.Model
         /// </summary>
         [DataMember(Name = "ipiLegalCode", EmitDefaultValue = false)]
         public string IpiLegalCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Icms
+        /// </summary>
+        [DataMember(Name = "icms", EmitDefaultValue = false)]
+        public NfeItemIcms Icms { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Ipi
+        /// </summary>
+        [DataMember(Name = "ipi", EmitDefaultValue = false)]
+        public NfeItemIpi Ipi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ImportTax
+        /// </summary>
+        [DataMember(Name = "importTax", EmitDefaultValue = false)]
+        public NfeItemImportTax ImportTax { get; set; }
 
         /// <summary>
         /// CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro
@@ -421,10 +446,11 @@ namespace Emitfy.Generated.Model
         public string CbsCst { get; set; }
 
         /// <summary>
-        /// Gets or Sets ImportDeclarations
+        /// NF-e — DI/DSI/DA/DUIMP do item (grupo DI, logo após indTot)
         /// </summary>
+        /// <value>NF-e — DI/DSI/DA/DUIMP do item (grupo DI, logo após indTot)</value>
         [DataMember(Name = "importDeclarations", EmitDefaultValue = false)]
-        public List<Object> ImportDeclarations { get; set; }
+        public List<NfeImportDeclaration> ImportDeclarations { get; set; }
 
         /// <summary>
         /// Gets or Sets Traces
@@ -512,6 +538,9 @@ namespace Emitfy.Generated.Model
             sb.Append("  IpiCst: ").Append(IpiCst).Append("\n");
             sb.Append("  IpiTaxRate: ").Append(IpiTaxRate).Append("\n");
             sb.Append("  IpiLegalCode: ").Append(IpiLegalCode).Append("\n");
+            sb.Append("  Icms: ").Append(Icms).Append("\n");
+            sb.Append("  Ipi: ").Append(Ipi).Append("\n");
+            sb.Append("  ImportTax: ").Append(ImportTax).Append("\n");
             sb.Append("  Cest: ").Append(Cest).Append("\n");
             sb.Append("  Fci: ").Append(Fci).Append("\n");
             sb.Append("  Nve: ").Append(Nve).Append("\n");

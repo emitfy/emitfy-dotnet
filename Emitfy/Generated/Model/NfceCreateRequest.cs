@@ -150,7 +150,7 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="NfceCreateRequest" /> class.
         /// </summary>
         /// <param name="paymentMethod">paymentMethod (required).</param>
-        /// <param name="items">Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;) retornam 422 — emita uma NF-e (modelo 55).  (required).</param>
+        /// <param name="items">Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;) retornam 422 — emita uma NF-e (modelo 55).  (required).</param>
         /// <param name="recipient">recipient.</param>
         /// <param name="nature">nature.</param>
         /// <param name="cfop">cfop.</param>
@@ -194,9 +194,9 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
-        /// Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;) retornam 422 — emita uma NF-e (modelo 55). 
+        /// Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;) retornam 422 — emita uma NF-e (modelo 55). 
         /// </summary>
-        /// <value>Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;) retornam 422 — emita uma NF-e (modelo 55). </value>
+        /// <value>Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;) retornam 422 — emita uma NF-e (modelo 55). </value>
         [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
         public List<ProductEmitItem> Items { get; set; }
 
