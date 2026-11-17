@@ -235,6 +235,7 @@ namespace Emitfy.Generated.Model
         /// </summary>
         /// <param name="items">items (required).</param>
         /// <param name="recipient">recipient (required).</param>
+        /// <param name="discount">Desconto da nota (venda), rateado pelos itens em vDesc sobre o valor líquido e somado ao &#x60;items[].discount&#x60;. Não pode passar do total dos itens menos os descontos dos itens, nem ser usado junto com &#x60;totals.discount&#x60; (422). .</param>
         /// <param name="transport">transport.</param>
         /// <param name="paymentMethod">Atalho de forma de pagamento (um &#x60;detPag&#x60; com o valor total da nota). pix&#x3D;17, credit_card&#x3D;03, debit_card&#x3D;04, cash&#x3D;01, bank_slip&#x3D;15, bank_transfer&#x3D;18, no_payment&#x3D;90, other&#x3D;99. Com &#x60;payments[]&#x60;, os pagamentos detalhados prevalecem. .</param>
         /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
@@ -265,7 +266,7 @@ namespace Emitfy.Generated.Model
         /// <param name="nffRequest">nffRequest.</param>
         /// <param name="farming">farming.</param>
         /// <param name="totals">totals.</param>
-        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
+        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -279,6 +280,7 @@ namespace Emitfy.Generated.Model
                 throw new ArgumentNullException("recipient is a required property for NfeCreateRequest and cannot be null");
             }
             this.Recipient = recipient;
+            this.Discount = discount;
             this.Transport = transport;
             this.PaymentMethod = paymentMethod;
             this.ExternalId = externalId;
@@ -323,6 +325,13 @@ namespace Emitfy.Generated.Model
         /// </summary>
         [DataMember(Name = "recipient", IsRequired = true, EmitDefaultValue = true)]
         public NfeCreateRequestRecipient Recipient { get; set; }
+
+        /// <summary>
+        /// Desconto da nota (venda), rateado pelos itens em vDesc sobre o valor líquido e somado ao &#x60;items[].discount&#x60;. Não pode passar do total dos itens menos os descontos dos itens, nem ser usado junto com &#x60;totals.discount&#x60; (422). 
+        /// </summary>
+        /// <value>Desconto da nota (venda), rateado pelos itens em vDesc sobre o valor líquido e somado ao &#x60;items[].discount&#x60;. Não pode passar do total dos itens menos os descontos dos itens, nem ser usado junto com &#x60;totals.discount&#x60; (422). </value>
+        [DataMember(Name = "discount", EmitDefaultValue = false)]
+        public decimal Discount { get; set; }
 
         /// <summary>
         /// Gets or Sets Transport
@@ -498,6 +507,7 @@ namespace Emitfy.Generated.Model
             sb.Append("class NfeCreateRequest {\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
+            sb.Append("  Discount: ").Append(Discount).Append("\n");
             sb.Append("  Transport: ").Append(Transport).Append("\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");

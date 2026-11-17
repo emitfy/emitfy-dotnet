@@ -61,7 +61,7 @@ namespace Emitfy.Generated.Model
         /// <param name="icmsCst">icmsCst.</param>
         /// <param name="icmsTaxRate">icmsTaxRate.</param>
         /// <param name="icmsModBc">icmsModBc.</param>
-        /// <param name="icmsTaxBenefitCode">icmsTaxBenefitCode.</param>
+        /// <param name="icmsTaxBenefitCode">cBenef (código de benefício fiscal da UF do emitente). Pré-validado por UF antes de emitir (422 &#x60;VALIDATION_ERROR&#x60; na rota / &#x60;NFE_BENEFIT_CODE_INVALID&#x60; na emissão, com &#x60;items.N.icmsTaxBenefitCode&#x60;): código de outra UF (rejeição 946); PR exige nos CST 20, 30, 40, 41, 50, 51, 53 e 70 (aceita \&quot;SEM CBENEF\&quot;); RJ exige nos CST 20, 40, 51, 53 e 70 (não aceita \&quot;SEM CBENEF\&quot;); RS exige em todos os CST exceto 00 e 02 (\&quot;SEM CBENEF\&quot; só fora do 20/70); DF e SC não aceitam \&quot;SEM CBENEF\&quot;. Simples Nacional (CSOSN) só passa pela checagem de UF. .</param>
         /// <param name="pisCst">pisCst.</param>
         /// <param name="pisTaxRate">pisTaxRate.</param>
         /// <param name="cofinsCst">cofinsCst.</param>
@@ -287,8 +287,9 @@ namespace Emitfy.Generated.Model
         public string IcmsModBc { get; set; }
 
         /// <summary>
-        /// Gets or Sets IcmsTaxBenefitCode
+        /// cBenef (código de benefício fiscal da UF do emitente). Pré-validado por UF antes de emitir (422 &#x60;VALIDATION_ERROR&#x60; na rota / &#x60;NFE_BENEFIT_CODE_INVALID&#x60; na emissão, com &#x60;items.N.icmsTaxBenefitCode&#x60;): código de outra UF (rejeição 946); PR exige nos CST 20, 30, 40, 41, 50, 51, 53 e 70 (aceita \&quot;SEM CBENEF\&quot;); RJ exige nos CST 20, 40, 51, 53 e 70 (não aceita \&quot;SEM CBENEF\&quot;); RS exige em todos os CST exceto 00 e 02 (\&quot;SEM CBENEF\&quot; só fora do 20/70); DF e SC não aceitam \&quot;SEM CBENEF\&quot;. Simples Nacional (CSOSN) só passa pela checagem de UF. 
         /// </summary>
+        /// <value>cBenef (código de benefício fiscal da UF do emitente). Pré-validado por UF antes de emitir (422 &#x60;VALIDATION_ERROR&#x60; na rota / &#x60;NFE_BENEFIT_CODE_INVALID&#x60; na emissão, com &#x60;items.N.icmsTaxBenefitCode&#x60;): código de outra UF (rejeição 946); PR exige nos CST 20, 30, 40, 41, 50, 51, 53 e 70 (aceita \&quot;SEM CBENEF\&quot;); RJ exige nos CST 20, 40, 51, 53 e 70 (não aceita \&quot;SEM CBENEF\&quot;); RS exige em todos os CST exceto 00 e 02 (\&quot;SEM CBENEF\&quot; só fora do 20/70); DF e SC não aceitam \&quot;SEM CBENEF\&quot;. Simples Nacional (CSOSN) só passa pela checagem de UF. </value>
         [DataMember(Name = "icmsTaxBenefitCode", EmitDefaultValue = false)]
         public string IcmsTaxBenefitCode { get; set; }
 

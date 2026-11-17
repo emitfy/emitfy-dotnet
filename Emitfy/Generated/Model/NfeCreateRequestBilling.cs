@@ -39,13 +39,15 @@ namespace Emitfy.Generated.Model
         /// <param name="discount">vDesc da fatura (netAmount &#x3D; originalAmount − discount).</param>
         /// <param name="netAmount">vLiq.</param>
         /// <param name="duplicates">duplicates.</param>
-        public NfeCreateRequestBilling(string invoiceNumber = default, decimal originalAmount = default, decimal discount = default, decimal netAmount = default, List<NfeCreateRequestBillingDuplicatesInner> duplicates = default)
+        /// <param name="installments">Atalho das parcelas: gera &#x60;dup&#x60; numeradas 001, 002… e a fatura (nFat/vOrig/vLiq pelo vNF). Não combina com &#x60;duplicates&#x60;; a soma não pode passar do vNF (422). .</param>
+        public NfeCreateRequestBilling(string invoiceNumber = default, decimal originalAmount = default, decimal discount = default, decimal netAmount = default, List<NfeCreateRequestBillingDuplicatesInner> duplicates = default, List<NfeCreateRequestBillingInstallmentsInner> installments = default)
         {
             this.InvoiceNumber = invoiceNumber;
             this.OriginalAmount = originalAmount;
             this.Discount = discount;
             this.NetAmount = netAmount;
             this.Duplicates = duplicates;
+            this.Installments = installments;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -84,6 +86,13 @@ namespace Emitfy.Generated.Model
         public List<NfeCreateRequestBillingDuplicatesInner> Duplicates { get; set; }
 
         /// <summary>
+        /// Atalho das parcelas: gera &#x60;dup&#x60; numeradas 001, 002… e a fatura (nFat/vOrig/vLiq pelo vNF). Não combina com &#x60;duplicates&#x60;; a soma não pode passar do vNF (422). 
+        /// </summary>
+        /// <value>Atalho das parcelas: gera &#x60;dup&#x60; numeradas 001, 002… e a fatura (nFat/vOrig/vLiq pelo vNF). Não combina com &#x60;duplicates&#x60;; a soma não pode passar do vNF (422). </value>
+        [DataMember(Name = "installments", EmitDefaultValue = false)]
+        public List<NfeCreateRequestBillingInstallmentsInner> Installments { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -102,6 +111,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Discount: ").Append(Discount).Append("\n");
             sb.Append("  NetAmount: ").Append(NetAmount).Append("\n");
             sb.Append("  Duplicates: ").Append(Duplicates).Append("\n");
+            sb.Append("  Installments: ").Append(Installments).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

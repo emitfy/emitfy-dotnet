@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfeCreateRequestRecipient
+    /// Destinatário (dest). Informe &#x60;taxId&#x60; (CPF/CNPJ) ou, no exterior, &#x60;foreignId&#x60; (idEstrangeiro) com &#x60;address.country&#x60; fora do Brasil — nunca os dois. Os campos fiscais valem só para esta nota e prevalecem sobre o cadastro do cliente (IE informada, ISENTO ou não contribuinte). 
     /// </summary>
     [DataContract(Name = "nfeCreate_request_recipient")]
     public partial class NfeCreateRequestRecipient
@@ -42,36 +42,49 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequestRecipient" /> class.
         /// </summary>
-        /// <param name="taxId">taxId (required).</param>
+        /// <param name="taxId">CPF ou CNPJ (obrigatório sem foreignId).</param>
+        /// <param name="foreignId">idEstrangeiro (passaporte/ID fiscal estrangeiro). Exige address.country ≠ Brasil; sem IE/SUFRAMA/IM (indIEDest 9).</param>
         /// <param name="name">name (required).</param>
         /// <param name="email">email.</param>
-        /// <param name="phone">phone.</param>
+        /// <param name="phone">enderDest/fone (6 a 14 dígitos; máscara é removida).</param>
+        /// <param name="stateRegistration">IE do destinatário (2 a 14 dígitos; máscara é removida) ou \&quot;ISENTO\&quot; (equivale a ieIndicator 2).</param>
+        /// <param name="ieIndicator">ieIndicator.</param>
+        /// <param name="suframa">dest/ISUF — inscrição SUFRAMA (8 ou 9 dígitos).</param>
+        /// <param name="municipalRegistration">dest/IM (NF-e conjugada).</param>
         /// <param name="address">address.</param>
-        public NfeCreateRequestRecipient(string taxId = default, string name = default, string email = default, string phone = default, NfeAddress address = default)
+        public NfeCreateRequestRecipient(string taxId = default, string foreignId = default, string name = default, string email = default, string phone = default, string stateRegistration = default, NfeCreateRequestRecipientIeIndicator ieIndicator = default, string suframa = default, string municipalRegistration = default, NfeAddress address = default)
         {
-            // to ensure "taxId" is required (not null)
-            if (taxId == null)
-            {
-                throw new ArgumentNullException("taxId is a required property for NfeCreateRequestRecipient and cannot be null");
-            }
-            this.TaxId = taxId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new ArgumentNullException("name is a required property for NfeCreateRequestRecipient and cannot be null");
             }
             this.Name = name;
+            this.TaxId = taxId;
+            this.ForeignId = foreignId;
             this.Email = email;
             this.Phone = phone;
+            this.StateRegistration = stateRegistration;
+            this.IeIndicator = ieIndicator;
+            this.Suframa = suframa;
+            this.MunicipalRegistration = municipalRegistration;
             this.Address = address;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets TaxId
+        /// CPF ou CNPJ (obrigatório sem foreignId)
         /// </summary>
-        [DataMember(Name = "taxId", IsRequired = true, EmitDefaultValue = true)]
+        /// <value>CPF ou CNPJ (obrigatório sem foreignId)</value>
+        [DataMember(Name = "taxId", EmitDefaultValue = false)]
         public string TaxId { get; set; }
+
+        /// <summary>
+        /// idEstrangeiro (passaporte/ID fiscal estrangeiro). Exige address.country ≠ Brasil; sem IE/SUFRAMA/IM (indIEDest 9)
+        /// </summary>
+        /// <value>idEstrangeiro (passaporte/ID fiscal estrangeiro). Exige address.country ≠ Brasil; sem IE/SUFRAMA/IM (indIEDest 9)</value>
+        [DataMember(Name = "foreignId", EmitDefaultValue = false)]
+        public string ForeignId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -86,10 +99,38 @@ namespace Emitfy.Generated.Model
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or Sets Phone
+        /// enderDest/fone (6 a 14 dígitos; máscara é removida)
         /// </summary>
+        /// <value>enderDest/fone (6 a 14 dígitos; máscara é removida)</value>
         [DataMember(Name = "phone", EmitDefaultValue = false)]
         public string Phone { get; set; }
+
+        /// <summary>
+        /// IE do destinatário (2 a 14 dígitos; máscara é removida) ou \&quot;ISENTO\&quot; (equivale a ieIndicator 2)
+        /// </summary>
+        /// <value>IE do destinatário (2 a 14 dígitos; máscara é removida) ou \&quot;ISENTO\&quot; (equivale a ieIndicator 2)</value>
+        [DataMember(Name = "stateRegistration", EmitDefaultValue = false)]
+        public string StateRegistration { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IeIndicator
+        /// </summary>
+        [DataMember(Name = "ieIndicator", EmitDefaultValue = false)]
+        public NfeCreateRequestRecipientIeIndicator IeIndicator { get; set; }
+
+        /// <summary>
+        /// dest/ISUF — inscrição SUFRAMA (8 ou 9 dígitos)
+        /// </summary>
+        /// <value>dest/ISUF — inscrição SUFRAMA (8 ou 9 dígitos)</value>
+        [DataMember(Name = "suframa", EmitDefaultValue = false)]
+        public string Suframa { get; set; }
+
+        /// <summary>
+        /// dest/IM (NF-e conjugada)
+        /// </summary>
+        /// <value>dest/IM (NF-e conjugada)</value>
+        [DataMember(Name = "municipalRegistration", EmitDefaultValue = false)]
+        public string MunicipalRegistration { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
@@ -112,9 +153,14 @@ namespace Emitfy.Generated.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfeCreateRequestRecipient {\n");
             sb.Append("  TaxId: ").Append(TaxId).Append("\n");
+            sb.Append("  ForeignId: ").Append(ForeignId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  StateRegistration: ").Append(StateRegistration).Append("\n");
+            sb.Append("  IeIndicator: ").Append(IeIndicator).Append("\n");
+            sb.Append("  Suframa: ").Append(Suframa).Append("\n");
+            sb.Append("  MunicipalRegistration: ").Append(MunicipalRegistration).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");

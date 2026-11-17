@@ -42,7 +42,8 @@ namespace Emitfy.Generated.Model
         /// <param name="state">state.</param>
         /// <param name="zipcode">zipcode.</param>
         /// <param name="cityCode">cityCode.</param>
-        public NfeAddress(string street = default, string number = default, string complement = default, string district = default, string city = default, string state = default, string zipcode = default, string cityCode = default)
+        /// <param name="country">País do endereço (ISO 3166 alfa-2/alfa-3, nome ou código BACEN). Fora do Brasil exige &#x60;recipient.foreignId&#x60; (NF-e para o exterior: cPais/xPais do país, cMun 9999999, UF EX). .</param>
+        public NfeAddress(string street = default, string number = default, string complement = default, string district = default, string city = default, string state = default, string zipcode = default, string cityCode = default, string country = default)
         {
             this.Street = street;
             this.Number = number;
@@ -52,6 +53,7 @@ namespace Emitfy.Generated.Model
             this.State = state;
             this.Zipcode = zipcode;
             this.CityCode = cityCode;
+            this.Country = country;
         }
 
         /// <summary>
@@ -103,6 +105,13 @@ namespace Emitfy.Generated.Model
         public string CityCode { get; set; }
 
         /// <summary>
+        /// País do endereço (ISO 3166 alfa-2/alfa-3, nome ou código BACEN). Fora do Brasil exige &#x60;recipient.foreignId&#x60; (NF-e para o exterior: cPais/xPais do país, cMun 9999999, UF EX). 
+        /// </summary>
+        /// <value>País do endereço (ISO 3166 alfa-2/alfa-3, nome ou código BACEN). Fora do Brasil exige &#x60;recipient.foreignId&#x60; (NF-e para o exterior: cPais/xPais do país, cMun 9999999, UF EX). </value>
+        [DataMember(Name = "country", EmitDefaultValue = false)]
+        public string Country { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,6 +127,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Zipcode: ").Append(Zipcode).Append("\n");
             sb.Append("  CityCode: ").Append(CityCode).Append("\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

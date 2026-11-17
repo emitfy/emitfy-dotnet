@@ -107,7 +107,8 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="NfeCreateRequestIde" /> class.
         /// </summary>
         /// <param name="purpose">finNFe 1–4.</param>
-        /// <param name="referencedKeys">Chaves referenciadas (NFref/refNFe); obrigatório quando purpose ≠ normal.</param>
+        /// <param name="referencedKeys">Chaves de NF-e referenciadas (NFref/refNFe). Com purpose ≠ normal, informe referencedKeys ou references.</param>
+        /// <param name="references">Documentos referenciados (NFref) de qualquer tipo, discriminados por &#x60;type&#x60;: &#x60;nfe&#x60; (refNFe) e &#x60;cte&#x60; (refCTe) com &#x60;key&#x60; de 44 dígitos; &#x60;nf&#x60; (refNF, modelo 01/02) e &#x60;producer&#x60; (refNFP, nota de produtor modelo 01/04, com &#x60;stateRegistration&#x60;) com state (UF ou código IBGE), yearMonth (AAMM, AAAAMM ou AAAA-MM), taxId, model, series (0–999) e number; &#x60;ecf&#x60; (refECF, cupom fiscal modelo 2B/2C/2D) com ecfNumber (1–3 dígitos) e cooNumber (1–6 dígitos). .</param>
         /// <param name="departureAt">dhSaiEnt (data/hora de saída ou entrada).</param>
         /// <param name="randomCode">cNF (8 dígitos.</param>
         /// <param name="destinationType">idDest é calculado pelas UFs; valor divergente ou &#x60;international&#x60; → 422.</param>
@@ -116,10 +117,11 @@ namespace Emitfy.Generated.Model
         /// <param name="versionProcess">Não configurável → 422.</param>
         /// <param name="contingencyStartedAt">Contingência ainda não suportada → 422.</param>
         /// <param name="contingencyReason">Contingência ainda não suportada → 422.</param>
-        public NfeCreateRequestIde(PurposeEnum? purpose = default, List<string> referencedKeys = default, DateTime departureAt = default, string randomCode = default, DestinationTypeEnum? destinationType = default, string emissionType = default, string process = default, string versionProcess = default, DateTime contingencyStartedAt = default, string contingencyReason = default)
+        public NfeCreateRequestIde(PurposeEnum? purpose = default, List<string> referencedKeys = default, List<NfeCreateRequestIdeReferencesInner> references = default, DateTime departureAt = default, string randomCode = default, DestinationTypeEnum? destinationType = default, string emissionType = default, string process = default, string versionProcess = default, DateTime contingencyStartedAt = default, string contingencyReason = default)
         {
             this.Purpose = purpose;
             this.ReferencedKeys = referencedKeys;
+            this.References = references;
             this.DepartureAt = departureAt;
             this.RandomCode = randomCode;
             this.DestinationType = destinationType;
@@ -132,11 +134,18 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
-        /// Chaves referenciadas (NFref/refNFe); obrigatório quando purpose ≠ normal
+        /// Chaves de NF-e referenciadas (NFref/refNFe). Com purpose ≠ normal, informe referencedKeys ou references
         /// </summary>
-        /// <value>Chaves referenciadas (NFref/refNFe); obrigatório quando purpose ≠ normal</value>
+        /// <value>Chaves de NF-e referenciadas (NFref/refNFe). Com purpose ≠ normal, informe referencedKeys ou references</value>
         [DataMember(Name = "referencedKeys", EmitDefaultValue = false)]
         public List<string> ReferencedKeys { get; set; }
+
+        /// <summary>
+        /// Documentos referenciados (NFref) de qualquer tipo, discriminados por &#x60;type&#x60;: &#x60;nfe&#x60; (refNFe) e &#x60;cte&#x60; (refCTe) com &#x60;key&#x60; de 44 dígitos; &#x60;nf&#x60; (refNF, modelo 01/02) e &#x60;producer&#x60; (refNFP, nota de produtor modelo 01/04, com &#x60;stateRegistration&#x60;) com state (UF ou código IBGE), yearMonth (AAMM, AAAAMM ou AAAA-MM), taxId, model, series (0–999) e number; &#x60;ecf&#x60; (refECF, cupom fiscal modelo 2B/2C/2D) com ecfNumber (1–3 dígitos) e cooNumber (1–6 dígitos). 
+        /// </summary>
+        /// <value>Documentos referenciados (NFref) de qualquer tipo, discriminados por &#x60;type&#x60;: &#x60;nfe&#x60; (refNFe) e &#x60;cte&#x60; (refCTe) com &#x60;key&#x60; de 44 dígitos; &#x60;nf&#x60; (refNF, modelo 01/02) e &#x60;producer&#x60; (refNFP, nota de produtor modelo 01/04, com &#x60;stateRegistration&#x60;) com state (UF ou código IBGE), yearMonth (AAMM, AAAAMM ou AAAA-MM), taxId, model, series (0–999) e number; &#x60;ecf&#x60; (refECF, cupom fiscal modelo 2B/2C/2D) com ecfNumber (1–3 dígitos) e cooNumber (1–6 dígitos). </value>
+        [DataMember(Name = "references", EmitDefaultValue = false)]
+        public List<NfeCreateRequestIdeReferencesInner> References { get; set; }
 
         /// <summary>
         /// dhSaiEnt (data/hora de saída ou entrada)
@@ -203,6 +212,7 @@ namespace Emitfy.Generated.Model
             sb.Append("class NfeCreateRequestIde {\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
             sb.Append("  ReferencedKeys: ").Append(ReferencedKeys).Append("\n");
+            sb.Append("  References: ").Append(References).Append("\n");
             sb.Append("  DepartureAt: ").Append(DepartureAt).Append("\n");
             sb.Append("  RandomCode: ").Append(RandomCode).Append("\n");
             sb.Append("  DestinationType: ").Append(DestinationType).Append("\n");

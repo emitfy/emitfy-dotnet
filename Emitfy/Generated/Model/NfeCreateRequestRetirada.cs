@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// NfeCreateRequestRetirada
+    /// Local de retirada (TLocal). IE é obrigatória pela NT 2026.007 para contribuinte (aceita \&quot;ISENTO\&quot;); address exige street, number, district, city, state e cityCode (IBGE, 7 dígitos). Sem address.country, sai Brasil (1058). 
     /// </summary>
     [DataContract(Name = "nfeCreate_request_retirada")]
     public partial class NfeCreateRequestRetirada
@@ -34,22 +34,27 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequestRetirada" /> class.
         /// </summary>
-        /// <param name="taxId">taxId.</param>
+        /// <param name="taxId">CPF ou CNPJ.</param>
         /// <param name="name">name.</param>
-        /// <param name="stateRegistration">stateRegistration.</param>
+        /// <param name="stateRegistration">IE do local (2 a 14 dígitos) ou ISENTO.</param>
+        /// <param name="phone">fone (6 a 14 dígitos).</param>
+        /// <param name="email">email.</param>
         /// <param name="address">address.</param>
-        public NfeCreateRequestRetirada(string taxId = default, string name = default, string stateRegistration = default, DfeAddressLayout address = default)
+        public NfeCreateRequestRetirada(string taxId = default, string name = default, string stateRegistration = default, string phone = default, string email = default, DfeAddressLayout address = default)
         {
             this.TaxId = taxId;
             this.Name = name;
             this.StateRegistration = stateRegistration;
+            this.Phone = phone;
+            this.Email = email;
             this.Address = address;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
-        /// Gets or Sets TaxId
+        /// CPF ou CNPJ
         /// </summary>
+        /// <value>CPF ou CNPJ</value>
         [DataMember(Name = "taxId", EmitDefaultValue = false)]
         public string TaxId { get; set; }
 
@@ -60,10 +65,24 @@ namespace Emitfy.Generated.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets StateRegistration
+        /// IE do local (2 a 14 dígitos) ou ISENTO
         /// </summary>
+        /// <value>IE do local (2 a 14 dígitos) ou ISENTO</value>
         [DataMember(Name = "stateRegistration", EmitDefaultValue = false)]
         public string StateRegistration { get; set; }
+
+        /// <summary>
+        /// fone (6 a 14 dígitos)
+        /// </summary>
+        /// <value>fone (6 a 14 dígitos)</value>
+        [DataMember(Name = "phone", EmitDefaultValue = false)]
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Email
+        /// </summary>
+        [DataMember(Name = "email", EmitDefaultValue = false)]
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
@@ -88,6 +107,8 @@ namespace Emitfy.Generated.Model
             sb.Append("  TaxId: ").Append(TaxId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  StateRegistration: ").Append(StateRegistration).Append("\n");
+            sb.Append("  Phone: ").Append(Phone).Append("\n");
+            sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
