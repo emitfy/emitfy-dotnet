@@ -32,9 +32,9 @@ namespace Emitfy.Generated.Model
     public partial class NfeCreateRequestIde
     {
         /// <summary>
-        /// finNFe 1–4
+        /// finNFe 1–6. &#x60;credit&#x60; (5, nota de crédito): operationType incoming, &#x60;creditType&#x60; 01–06 e, nos tipos 01/03/04, exatamente uma referência. &#x60;debit&#x60; (6, nota de débito): saída, &#x60;debitType&#x60; 01–08. Nessas notas o Emitfy omite ICMS/IPI/II/PIS/COFINS (B25-80; exceções crédito 03/04/06 e débito 07; débito 06 mantém IPI e, até 2026, PIS/COFINS), exige &#x60;items[].ibsCbs&#x60; e recusa os grupos detalhados &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60; e &#x60;icmsUfDest&#x60;. 
         /// </summary>
-        /// <value>finNFe 1–4</value>
+        /// <value>finNFe 1–6. &#x60;credit&#x60; (5, nota de crédito): operationType incoming, &#x60;creditType&#x60; 01–06 e, nos tipos 01/03/04, exatamente uma referência. &#x60;debit&#x60; (6, nota de débito): saída, &#x60;debitType&#x60; 01–08. Nessas notas o Emitfy omite ICMS/IPI/II/PIS/COFINS (B25-80; exceções crédito 03/04/06 e débito 07; débito 06 mantém IPI e, até 2026, PIS/COFINS), exige &#x60;items[].ibsCbs&#x60; e recusa os grupos detalhados &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60; e &#x60;icmsUfDest&#x60;. </value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum PurposeEnum
         {
@@ -60,14 +60,26 @@ namespace Emitfy.Generated.Model
             /// Enum Return for value: return
             /// </summary>
             [EnumMember(Value = "return")]
-            Return = 4
+            Return = 4,
+
+            /// <summary>
+            /// Enum Credit for value: credit
+            /// </summary>
+            [EnumMember(Value = "credit")]
+            Credit = 5,
+
+            /// <summary>
+            /// Enum Debit for value: debit
+            /// </summary>
+            [EnumMember(Value = "debit")]
+            Debit = 6
         }
 
 
         /// <summary>
-        /// finNFe 1–4
+        /// finNFe 1–6. &#x60;credit&#x60; (5, nota de crédito): operationType incoming, &#x60;creditType&#x60; 01–06 e, nos tipos 01/03/04, exatamente uma referência. &#x60;debit&#x60; (6, nota de débito): saída, &#x60;debitType&#x60; 01–08. Nessas notas o Emitfy omite ICMS/IPI/II/PIS/COFINS (B25-80; exceções crédito 03/04/06 e débito 07; débito 06 mantém IPI e, até 2026, PIS/COFINS), exige &#x60;items[].ibsCbs&#x60; e recusa os grupos detalhados &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60; e &#x60;icmsUfDest&#x60;. 
         /// </summary>
-        /// <value>finNFe 1–4</value>
+        /// <value>finNFe 1–6. &#x60;credit&#x60; (5, nota de crédito): operationType incoming, &#x60;creditType&#x60; 01–06 e, nos tipos 01/03/04, exatamente uma referência. &#x60;debit&#x60; (6, nota de débito): saída, &#x60;debitType&#x60; 01–08. Nessas notas o Emitfy omite ICMS/IPI/II/PIS/COFINS (B25-80; exceções crédito 03/04/06 e débito 07; débito 06 mantém IPI e, até 2026, PIS/COFINS), exige &#x60;items[].ibsCbs&#x60; e recusa os grupos detalhados &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60; e &#x60;icmsUfDest&#x60;. </value>
         [DataMember(Name = "purpose", EmitDefaultValue = false)]
         public PurposeEnum? Purpose { get; set; }
         /// <summary>
@@ -106,7 +118,9 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequestIde" /> class.
         /// </summary>
-        /// <param name="purpose">finNFe 1–4.</param>
+        /// <param name="purpose">finNFe 1–6. &#x60;credit&#x60; (5, nota de crédito): operationType incoming, &#x60;creditType&#x60; 01–06 e, nos tipos 01/03/04, exatamente uma referência. &#x60;debit&#x60; (6, nota de débito): saída, &#x60;debitType&#x60; 01–08. Nessas notas o Emitfy omite ICMS/IPI/II/PIS/COFINS (B25-80; exceções crédito 03/04/06 e débito 07; débito 06 mantém IPI e, até 2026, PIS/COFINS), exige &#x60;items[].ibsCbs&#x60; e recusa os grupos detalhados &#x60;icms&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60; e &#x60;icmsUfDest&#x60;. .</param>
+        /// <param name="creditType">tpNFCredito (alias SEFAZ tpNFCredito).</param>
+        /// <param name="debitType">tpNFDebito (alias SEFAZ tpNFDebito).</param>
         /// <param name="referencedKeys">Chaves de NF-e referenciadas (NFref/refNFe). Com purpose ≠ normal, informe referencedKeys ou references.</param>
         /// <param name="references">Documentos referenciados (NFref) de qualquer tipo, discriminados por &#x60;type&#x60;: &#x60;nfe&#x60; (refNFe) e &#x60;cte&#x60; (refCTe) com &#x60;key&#x60; de 44 dígitos; &#x60;nf&#x60; (refNF, modelo 01/02) e &#x60;producer&#x60; (refNFP, nota de produtor modelo 01/04, com &#x60;stateRegistration&#x60;) com state (UF ou código IBGE), yearMonth (AAMM, AAAAMM ou AAAA-MM), taxId, model, series (0–999) e number; &#x60;ecf&#x60; (refECF, cupom fiscal modelo 2B/2C/2D) com ecfNumber (1–3 dígitos) e cooNumber (1–6 dígitos). .</param>
         /// <param name="departureAt">dhSaiEnt (data/hora de saída ou entrada).</param>
@@ -117,9 +131,11 @@ namespace Emitfy.Generated.Model
         /// <param name="versionProcess">Não configurável → 422.</param>
         /// <param name="contingencyStartedAt">Contingência ainda não suportada → 422.</param>
         /// <param name="contingencyReason">Contingência ainda não suportada → 422.</param>
-        public NfeCreateRequestIde(PurposeEnum? purpose = default, List<string> referencedKeys = default, List<NfeCreateRequestIdeReferencesInner> references = default, DateTime departureAt = default, string randomCode = default, DestinationTypeEnum? destinationType = default, string emissionType = default, string process = default, string versionProcess = default, DateTime contingencyStartedAt = default, string contingencyReason = default)
+        public NfeCreateRequestIde(PurposeEnum? purpose = default, string creditType = default, string debitType = default, List<string> referencedKeys = default, List<NfeCreateRequestIdeReferencesInner> references = default, DateTime departureAt = default, string randomCode = default, DestinationTypeEnum? destinationType = default, string emissionType = default, string process = default, string versionProcess = default, DateTime contingencyStartedAt = default, string contingencyReason = default)
         {
             this.Purpose = purpose;
+            this.CreditType = creditType;
+            this.DebitType = debitType;
             this.ReferencedKeys = referencedKeys;
             this.References = references;
             this.DepartureAt = departureAt;
@@ -132,6 +148,20 @@ namespace Emitfy.Generated.Model
             this.ContingencyReason = contingencyReason;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// tpNFCredito (alias SEFAZ tpNFCredito)
+        /// </summary>
+        /// <value>tpNFCredito (alias SEFAZ tpNFCredito)</value>
+        [DataMember(Name = "creditType", EmitDefaultValue = false)]
+        public string CreditType { get; set; }
+
+        /// <summary>
+        /// tpNFDebito (alias SEFAZ tpNFDebito)
+        /// </summary>
+        /// <value>tpNFDebito (alias SEFAZ tpNFDebito)</value>
+        [DataMember(Name = "debitType", EmitDefaultValue = false)]
+        public string DebitType { get; set; }
 
         /// <summary>
         /// Chaves de NF-e referenciadas (NFref/refNFe). Com purpose ≠ normal, informe referencedKeys ou references
@@ -211,6 +241,8 @@ namespace Emitfy.Generated.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfeCreateRequestIde {\n");
             sb.Append("  Purpose: ").Append(Purpose).Append("\n");
+            sb.Append("  CreditType: ").Append(CreditType).Append("\n");
+            sb.Append("  DebitType: ").Append(DebitType).Append("\n");
             sb.Append("  ReferencedKeys: ").Append(ReferencedKeys).Append("\n");
             sb.Append("  References: ").Append(References).Append("\n");
             sb.Append("  DepartureAt: ").Append(DepartureAt).Append("\n");

@@ -180,8 +180,9 @@ namespace Emitfy.Generated.Model
         [DataMember(Name = "consumerType", EmitDefaultValue = false)]
         public ConsumerTypeEnum? ConsumerType { get; set; }
         /// <summary>
-        /// Defines PresenceType
+        /// indPres (&#x60;outsideEstablishment&#x60; &#x3D; 5, operação presencial fora do estabelecimento)
         /// </summary>
+        /// <value>indPres (&#x60;outsideEstablishment&#x60; &#x3D; 5, operação presencial fora do estabelecimento)</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum PresenceTypeEnum
         {
@@ -210,18 +211,64 @@ namespace Emitfy.Generated.Model
             Delivery = 4,
 
             /// <summary>
+            /// Enum OutsideEstablishment for value: outsideEstablishment
+            /// </summary>
+            [EnumMember(Value = "outsideEstablishment")]
+            OutsideEstablishment = 5,
+
+            /// <summary>
             /// Enum Others for value: others
             /// </summary>
             [EnumMember(Value = "others")]
-            Others = 5
+            Others = 6
         }
 
 
         /// <summary>
-        /// Gets or Sets PresenceType
+        /// indPres (&#x60;outsideEstablishment&#x60; &#x3D; 5, operação presencial fora do estabelecimento)
         /// </summary>
+        /// <value>indPres (&#x60;outsideEstablishment&#x60; &#x3D; 5, operação presencial fora do estabelecimento)</value>
         [DataMember(Name = "presenceType", EmitDefaultValue = false)]
         public PresenceTypeEnum? PresenceType { get; set; }
+        /// <summary>
+        /// tpRegimeIBSCBS (NT 2026.005 — produção em 14/12/2026). Antes da data → 422
+        /// </summary>
+        /// <value>tpRegimeIBSCBS (NT 2026.005 — produção em 14/12/2026). Antes da data → 422</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum IbsCbsRegimeEnum
+        {
+            /// <summary>
+            /// Enum _1 for value: 1
+            /// </summary>
+            [EnumMember(Value = "1")]
+            _1 = 1,
+
+            /// <summary>
+            /// Enum _2 for value: 2
+            /// </summary>
+            [EnumMember(Value = "2")]
+            _2 = 2,
+
+            /// <summary>
+            /// Enum _3 for value: 3
+            /// </summary>
+            [EnumMember(Value = "3")]
+            _3 = 3,
+
+            /// <summary>
+            /// Enum _4 for value: 4
+            /// </summary>
+            [EnumMember(Value = "4")]
+            _4 = 4
+        }
+
+
+        /// <summary>
+        /// tpRegimeIBSCBS (NT 2026.005 — produção em 14/12/2026). Antes da data → 422
+        /// </summary>
+        /// <value>tpRegimeIBSCBS (NT 2026.005 — produção em 14/12/2026). Antes da data → 422</value>
+        [DataMember(Name = "ibsCbsRegime", EmitDefaultValue = false)]
+        public IbsCbsRegimeEnum? IbsCbsRegime { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCreateRequest" /> class.
         /// </summary>
@@ -244,8 +291,11 @@ namespace Emitfy.Generated.Model
         /// <param name="operationType">operationType.</param>
         /// <param name="printType">tpImp do XML e orientação do DANFE (1 retrato, 2 paisagem). Omitido: orientação das configurações. &#x60;nfeSimplified&#x60; (tpImp 3) ainda não é suportado → 422. .</param>
         /// <param name="consumerType">indFinal. Omitido: 0 quando o destinatário tem IE (indIEDest 1) e 1 para isento (2) ou não contribuinte (9). Não contribuinte (indIEDest 9) sempre sai com indFinal 1 (rejeição 696), mesmo com &#x60;normal&#x60;. .</param>
-        /// <param name="presenceType">presenceType.</param>
-        /// <param name="ibsConsumptionCityCode">Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422.</param>
+        /// <param name="presenceType">indPres (&#x60;outsideEstablishment&#x60; &#x3D; 5, operação presencial fora do estabelecimento).</param>
+        /// <param name="ibsConsumptionCityCode">cMunFGIBS (município de consumo do IBS, código IBGE). Só com presenceType outsideEstablishment (indPres 5).</param>
+        /// <param name="governmentPurchase">governmentPurchase.</param>
+        /// <param name="advancePaymentKeys">gPagAntecipado — chaves das NF-e de pagamento antecipado (só NF-e).</param>
+        /// <param name="ibsCbsRegime">tpRegimeIBSCBS (NT 2026.005 — produção em 14/12/2026). Antes da data → 422.</param>
         /// <param name="stateRegistrationId">Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF → 422 (use &#x60;stStateRegistrationId&#x60; para o IEST). .</param>
         /// <param name="stStateRegistrationId">IEST — inscrição de substituto tributário da empresa na UF de destino (cadastrada em inscrições estaduais). Sai em emit/IEST, logo após a IE. Precisa ser da UF do destinatário e diferente da UF do emitente → senão 422. .</param>
         /// <param name="cfop">cfop.</param>
@@ -267,7 +317,7 @@ namespace Emitfy.Generated.Model
         /// <param name="nffRequest">nffRequest.</param>
         /// <param name="farming">farming.</param>
         /// <param name="totals">totals.</param>
-        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, Guid stateRegistrationId = default, Guid stStateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
+        public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, NfeCreateRequestGovernmentPurchase governmentPurchase = default, List<string> advancePaymentKeys = default, IbsCbsRegimeEnum? ibsCbsRegime = default, Guid stateRegistrationId = default, Guid stStateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -292,6 +342,9 @@ namespace Emitfy.Generated.Model
             this.ConsumerType = consumerType;
             this.PresenceType = presenceType;
             this.IbsConsumptionCityCode = ibsConsumptionCityCode;
+            this.GovernmentPurchase = governmentPurchase;
+            this.AdvancePaymentKeys = advancePaymentKeys;
+            this.IbsCbsRegime = ibsCbsRegime;
             this.StateRegistrationId = stateRegistrationId;
             this.StStateRegistrationId = stStateRegistrationId;
             this.Cfop = cfop;
@@ -363,11 +416,24 @@ namespace Emitfy.Generated.Model
         public string Nature { get; set; }
 
         /// <summary>
-        /// Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422
+        /// cMunFGIBS (município de consumo do IBS, código IBGE). Só com presenceType outsideEstablishment (indPres 5)
         /// </summary>
-        /// <value>Reservado (cMunFGIBS, reforma tributária). Ainda não suportado → 422</value>
+        /// <value>cMunFGIBS (município de consumo do IBS, código IBGE). Só com presenceType outsideEstablishment (indPres 5)</value>
         [DataMember(Name = "ibsConsumptionCityCode", EmitDefaultValue = false)]
         public string IbsConsumptionCityCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GovernmentPurchase
+        /// </summary>
+        [DataMember(Name = "governmentPurchase", EmitDefaultValue = false)]
+        public NfeCreateRequestGovernmentPurchase GovernmentPurchase { get; set; }
+
+        /// <summary>
+        /// gPagAntecipado — chaves das NF-e de pagamento antecipado (só NF-e)
+        /// </summary>
+        /// <value>gPagAntecipado — chaves das NF-e de pagamento antecipado (só NF-e)</value>
+        [DataMember(Name = "advancePaymentKeys", EmitDefaultValue = false)]
+        public List<string> AdvancePaymentKeys { get; set; }
 
         /// <summary>
         /// Inscrição estadual da empresa (multi-IE) usada como emit/IE. Precisa existir no cadastro e ser da UF do emitente; IE de outra UF → 422 (use &#x60;stStateRegistrationId&#x60; para o IEST). 
@@ -527,6 +593,9 @@ namespace Emitfy.Generated.Model
             sb.Append("  ConsumerType: ").Append(ConsumerType).Append("\n");
             sb.Append("  PresenceType: ").Append(PresenceType).Append("\n");
             sb.Append("  IbsConsumptionCityCode: ").Append(IbsConsumptionCityCode).Append("\n");
+            sb.Append("  GovernmentPurchase: ").Append(GovernmentPurchase).Append("\n");
+            sb.Append("  AdvancePaymentKeys: ").Append(AdvancePaymentKeys).Append("\n");
+            sb.Append("  IbsCbsRegime: ").Append(IbsCbsRegime).Append("\n");
             sb.Append("  StateRegistrationId: ").Append(StateRegistrationId).Append("\n");
             sb.Append("  StStateRegistrationId: ").Append(StStateRegistrationId).Append("\n");
             sb.Append("  Cfop: ").Append(Cfop).Append("\n");

@@ -32,10 +32,58 @@ namespace Emitfy.Generated.Model
     public partial class ProductEmitItem
     {
         /// <summary>
+        /// cAtivSN (NT 2026.005 — produção em 14/12/2026), só CRT 1/2/4
+        /// </summary>
+        /// <value>cAtivSN (NT 2026.005 — produção em 14/12/2026), só CRT 1/2/4</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SimplesActivityEnum
+        {
+            /// <summary>
+            /// Enum _01 for value: 01
+            /// </summary>
+            [EnumMember(Value = "01")]
+            _01 = 1,
+
+            /// <summary>
+            /// Enum _02 for value: 02
+            /// </summary>
+            [EnumMember(Value = "02")]
+            _02 = 2,
+
+            /// <summary>
+            /// Enum _03 for value: 03
+            /// </summary>
+            [EnumMember(Value = "03")]
+            _03 = 3,
+
+            /// <summary>
+            /// Enum _04 for value: 04
+            /// </summary>
+            [EnumMember(Value = "04")]
+            _04 = 4,
+
+            /// <summary>
+            /// Enum _90 for value: 90
+            /// </summary>
+            [EnumMember(Value = "90")]
+            _90 = 5
+        }
+
+
+        /// <summary>
+        /// cAtivSN (NT 2026.005 — produção em 14/12/2026), só CRT 1/2/4
+        /// </summary>
+        /// <value>cAtivSN (NT 2026.005 — produção em 14/12/2026), só CRT 1/2/4</value>
+        [DataMember(Name = "simplesActivity", EmitDefaultValue = false)]
+        public SimplesActivityEnum? SimplesActivity { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ProductEmitItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ProductEmitItem() { }
+        protected ProductEmitItem()
+        {
+            this.AdditionalProperties = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductEmitItem" /> class.
         /// </summary>
@@ -72,6 +120,16 @@ namespace Emitfy.Generated.Model
         /// <param name="icms">icms.</param>
         /// <param name="ipi">ipi.</param>
         /// <param name="importTax">importTax.</param>
+        /// <param name="ibsCbs">ibsCbs.</param>
+        /// <param name="selectiveTax">selectiveTax.</param>
+        /// <param name="netUnitValue">vUnComLiq (NT 2026.008 — produção em 14/12/2026). Sai com vProdLiq &#x3D; netUnitValue × quantity (ou &#x60;netAmount&#x60;) e soma em vProdLiqTot. Se um item informar, todos informam. Antes da data de produção → 422. .</param>
+        /// <param name="netAmount">vProdLiq informado (default netUnitValue × quantity).</param>
+        /// <param name="simplesActivity">cAtivSN (NT 2026.005 — produção em 14/12/2026), só CRT 1/2/4.</param>
+        /// <param name="usedMovableGood">indBemMovelUsado (bem móvel usado).</param>
+        /// <param name="zfmPresumedCreditType">tpCredPresIBSZFM.</param>
+        /// <param name="referencedDocument">referencedDocument.</param>
+        /// <param name="itemTotal">vItem (valor total do item com IBS/CBS/IS). Se um item informar, todos informam; vNFTot &#x3D; soma..</param>
+        /// <param name="icmsForecast">icmsForecast.</param>
         /// <param name="cest">CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro.</param>
         /// <param name="fci">fci.</param>
         /// <param name="nve">NF-e — Nomenclatura de Valor Aduaneiro (NVE, ex. AA0001), até 8 por item.</param>
@@ -94,7 +152,7 @@ namespace Emitfy.Generated.Model
         /// <param name="fuel">fuel.</param>
         /// <param name="taxReturn">taxReturn.</param>
         /// <param name="additionalInfo">additionalInfo.</param>
-        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, NfeItemIcms icms = default, NfeItemIpi ipi = default, NfeItemImportTax importTax = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<NfeImportDeclaration> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
+        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, NfeItemIcms icms = default, NfeItemIpi ipi = default, NfeItemImportTax importTax = default, NfeItemIbsCbs ibsCbs = default, NfeItemSelectiveTax selectiveTax = default, decimal netUnitValue = default, decimal netAmount = default, SimplesActivityEnum? simplesActivity = default, bool usedMovableGood = default, string zfmPresumedCreditType = default, ProductEmitItemReferencedDocument referencedDocument = default, decimal itemTotal = default, ProductEmitItemIcmsForecast icmsForecast = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<NfeImportDeclaration> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -134,6 +192,16 @@ namespace Emitfy.Generated.Model
             this.Icms = icms;
             this.Ipi = ipi;
             this.ImportTax = importTax;
+            this.IbsCbs = ibsCbs;
+            this.SelectiveTax = selectiveTax;
+            this.NetUnitValue = netUnitValue;
+            this.NetAmount = netAmount;
+            this.SimplesActivity = simplesActivity;
+            this.UsedMovableGood = usedMovableGood;
+            this.ZfmPresumedCreditType = zfmPresumedCreditType;
+            this.ReferencedDocument = referencedDocument;
+            this.ItemTotal = itemTotal;
+            this.IcmsForecast = icmsForecast;
             this.Cest = cest;
             this.Fci = fci;
             this.Nve = nve;
@@ -156,6 +224,7 @@ namespace Emitfy.Generated.Model
             this.Fuel = fuel;
             this.TaxReturn = taxReturn;
             this.AdditionalInfo = additionalInfo;
+            this.AdditionalProperties = new Dictionary<string, object>();
         }
 
         /// <summary>
@@ -361,6 +430,65 @@ namespace Emitfy.Generated.Model
         public NfeItemImportTax ImportTax { get; set; }
 
         /// <summary>
+        /// Gets or Sets IbsCbs
+        /// </summary>
+        [DataMember(Name = "ibsCbs", EmitDefaultValue = false)]
+        public NfeItemIbsCbs IbsCbs { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SelectiveTax
+        /// </summary>
+        [DataMember(Name = "selectiveTax", EmitDefaultValue = false)]
+        public NfeItemSelectiveTax SelectiveTax { get; set; }
+
+        /// <summary>
+        /// vUnComLiq (NT 2026.008 — produção em 14/12/2026). Sai com vProdLiq &#x3D; netUnitValue × quantity (ou &#x60;netAmount&#x60;) e soma em vProdLiqTot. Se um item informar, todos informam. Antes da data de produção → 422. 
+        /// </summary>
+        /// <value>vUnComLiq (NT 2026.008 — produção em 14/12/2026). Sai com vProdLiq &#x3D; netUnitValue × quantity (ou &#x60;netAmount&#x60;) e soma em vProdLiqTot. Se um item informar, todos informam. Antes da data de produção → 422. </value>
+        [DataMember(Name = "netUnitValue", EmitDefaultValue = false)]
+        public decimal NetUnitValue { get; set; }
+
+        /// <summary>
+        /// vProdLiq informado (default netUnitValue × quantity)
+        /// </summary>
+        /// <value>vProdLiq informado (default netUnitValue × quantity)</value>
+        [DataMember(Name = "netAmount", EmitDefaultValue = false)]
+        public decimal NetAmount { get; set; }
+
+        /// <summary>
+        /// indBemMovelUsado (bem móvel usado)
+        /// </summary>
+        /// <value>indBemMovelUsado (bem móvel usado)</value>
+        [DataMember(Name = "usedMovableGood", EmitDefaultValue = true)]
+        public bool UsedMovableGood { get; set; }
+
+        /// <summary>
+        /// tpCredPresIBSZFM
+        /// </summary>
+        /// <value>tpCredPresIBSZFM</value>
+        [DataMember(Name = "zfmPresumedCreditType", EmitDefaultValue = false)]
+        public string ZfmPresumedCreditType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReferencedDocument
+        /// </summary>
+        [DataMember(Name = "referencedDocument", EmitDefaultValue = false)]
+        public ProductEmitItemReferencedDocument ReferencedDocument { get; set; }
+
+        /// <summary>
+        /// vItem (valor total do item com IBS/CBS/IS). Se um item informar, todos informam; vNFTot &#x3D; soma.
+        /// </summary>
+        /// <value>vItem (valor total do item com IBS/CBS/IS). Se um item informar, todos informam; vNFTot &#x3D; soma.</value>
+        [DataMember(Name = "itemTotal", EmitDefaultValue = false)]
+        public decimal ItemTotal { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IcmsForecast
+        /// </summary>
+        [DataMember(Name = "icmsForecast", EmitDefaultValue = false)]
+        public ProductEmitItemIcmsForecast IcmsForecast { get; set; }
+
+        /// <summary>
         /// CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro
         /// </summary>
         /// <value>CEST (7 dígitos). Sai uma única vez no &#x60;prod&#x60;; prevalece sobre o do cadastro</value>
@@ -501,6 +629,12 @@ namespace Emitfy.Generated.Model
         public string AdditionalInfo { get; set; }
 
         /// <summary>
+        /// Gets or Sets additional properties
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -541,6 +675,16 @@ namespace Emitfy.Generated.Model
             sb.Append("  Icms: ").Append(Icms).Append("\n");
             sb.Append("  Ipi: ").Append(Ipi).Append("\n");
             sb.Append("  ImportTax: ").Append(ImportTax).Append("\n");
+            sb.Append("  IbsCbs: ").Append(IbsCbs).Append("\n");
+            sb.Append("  SelectiveTax: ").Append(SelectiveTax).Append("\n");
+            sb.Append("  NetUnitValue: ").Append(NetUnitValue).Append("\n");
+            sb.Append("  NetAmount: ").Append(NetAmount).Append("\n");
+            sb.Append("  SimplesActivity: ").Append(SimplesActivity).Append("\n");
+            sb.Append("  UsedMovableGood: ").Append(UsedMovableGood).Append("\n");
+            sb.Append("  ZfmPresumedCreditType: ").Append(ZfmPresumedCreditType).Append("\n");
+            sb.Append("  ReferencedDocument: ").Append(ReferencedDocument).Append("\n");
+            sb.Append("  ItemTotal: ").Append(ItemTotal).Append("\n");
+            sb.Append("  IcmsForecast: ").Append(IcmsForecast).Append("\n");
             sb.Append("  Cest: ").Append(Cest).Append("\n");
             sb.Append("  Fci: ").Append(Fci).Append("\n");
             sb.Append("  Nve: ").Append(Nve).Append("\n");
@@ -563,6 +707,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Fuel: ").Append(Fuel).Append("\n");
             sb.Append("  TaxReturn: ").Append(TaxReturn).Append("\n");
             sb.Append("  AdditionalInfo: ").Append(AdditionalInfo).Append("\n");
+            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
