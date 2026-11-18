@@ -315,7 +315,7 @@ namespace Emitfy.Generated.Model
         /// <param name="sugarcane">sugarcane.</param>
         /// <param name="techResponsible">Na NF-e, csrtId/csrtHash ainda não são suportados → 422.</param>
         /// <param name="nffRequest">nffRequest.</param>
-        /// <param name="farming">farming.</param>
+        /// <param name="farming">agropecuario (PL_010h) — &#x60;defensives&#x60; (até 20: number &#x3D; nReceituario, taxId &#x3D; CPF do responsável técnico) OU &#x60;transitGuide&#x60; (type 1–7, state, series?, number até 9 dígitos), nunca os dois. &#x60;amount&#x60; (qApl) não existe no leiaute → 422 .</param>
         /// <param name="totals">totals.</param>
         public NfeCreateRequest(List<ProductEmitItem> items = default, NfeCreateRequestRecipient recipient = default, decimal discount = default, NfeCreateRequestTransport transport = default, PaymentMethodEnum? paymentMethod = default, string externalId = default, string operationNature = default, string nature = default, OperationTypeEnum? operationType = default, PrintTypeEnum? printType = default, ConsumerTypeEnum? consumerType = default, PresenceTypeEnum? presenceType = default, string ibsConsumptionCityCode = default, NfeCreateRequestGovernmentPurchase governmentPurchase = default, List<string> advancePaymentKeys = default, IbsCbsRegimeEnum? ibsCbsRegime = default, Guid stateRegistrationId = default, Guid stStateRegistrationId = default, string cfop = default, DateTime issueDate = default, NfeCreateRequestIde ide = default, Object avulsa = default, NfeCreateRequestRetirada retirada = default, NfeCreateRequestEntrega entrega = default, List<DfeAutXml> autXml = default, NfeCreateRequestBilling billing = default, List<NfeCreateRequestPaymentsInner> payments = default, decimal change = default, Object intermediary = default, NfeCreateRequestAdditional additional = default, Object export = default, Object purchase = default, Object sugarcane = default, DfeTechResponsible techResponsible = default, string nffRequest = default, Object farming = default, NfeCreateRequestTotals totals = default)
         {
@@ -555,8 +555,9 @@ namespace Emitfy.Generated.Model
         public string NffRequest { get; set; }
 
         /// <summary>
-        /// Gets or Sets Farming
+        /// agropecuario (PL_010h) — &#x60;defensives&#x60; (até 20: number &#x3D; nReceituario, taxId &#x3D; CPF do responsável técnico) OU &#x60;transitGuide&#x60; (type 1–7, state, series?, number até 9 dígitos), nunca os dois. &#x60;amount&#x60; (qApl) não existe no leiaute → 422 
         /// </summary>
+        /// <value>agropecuario (PL_010h) — &#x60;defensives&#x60; (até 20: number &#x3D; nReceituario, taxId &#x3D; CPF do responsável técnico) OU &#x60;transitGuide&#x60; (type 1–7, state, series?, number até 9 dígitos), nunca os dois. &#x60;amount&#x60; (qApl) não existe no leiaute → 422 </value>
         [DataMember(Name = "farming", EmitDefaultValue = false)]
         public Object Farming { get; set; }
 

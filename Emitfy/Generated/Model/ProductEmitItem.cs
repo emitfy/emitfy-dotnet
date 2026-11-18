@@ -146,13 +146,16 @@ namespace Emitfy.Generated.Model
         /// <param name="importDeclarations">NF-e — DI/DSI/DA/DUIMP do item (grupo DI, logo após indTot).</param>
         /// <param name="traces">traces.</param>
         /// <param name="exports">exports.</param>
-        /// <param name="vehicle">vehicle.</param>
-        /// <param name="medicine">medicine.</param>
-        /// <param name="weapons">weapons.</param>
-        /// <param name="fuel">fuel.</param>
+        /// <param name="vehicle">NF-e — veicProd. Os 24 campos são obrigatórios (chassi 17 caracteres). Exclusivo com medicine/weapons/fuel/recopi.</param>
+        /// <param name="medicine">med — anvisaCode (11 ou 13 dígitos ou &#x60;ISENTO&#x60; + reasonExemption) e maxConsumerPrice (vPMC) obrigatórios.</param>
+        /// <param name="weapons">arma — kind (0 uso permitido, 1 uso restrito), serial, barrelSerial e description obrigatórios.</param>
+        /// <param name="fuel">comb — anpCode (9 dígitos), description e consumptionState obrigatórios; codif (até 21 dígitos), quantityTemp, CIDE (cideBase/cideRate/cideAmount juntos), &#x60;pump&#x60; (encerrante: nozzle, pump?, tank, startReading, endReading), &#x60;biodieselPercent&#x60; (pBio, &gt;0 a 100) e &#x60;origins&#x60; (origComb, até 30: imported, stateCode IBGE, percent). NFC-e aceita. .</param>
+        /// <param name="recopi">NF-e — nRECOPI (papel imune). Exclusivo com vehicle/medicine/weapons/fuel. NFC-e → 422.</param>
+        /// <param name="packaging">packaging.</param>
+        /// <param name="itemNotes">itemNotes.</param>
         /// <param name="taxReturn">taxReturn.</param>
         /// <param name="additionalInfo">additionalInfo.</param>
-        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, NfeItemIcms icms = default, NfeItemIpi ipi = default, NfeItemImportTax importTax = default, NfeItemIbsCbs ibsCbs = default, NfeItemSelectiveTax selectiveTax = default, decimal netUnitValue = default, decimal netAmount = default, SimplesActivityEnum? simplesActivity = default, bool usedMovableGood = default, string zfmPresumedCreditType = default, ProductEmitItemReferencedDocument referencedDocument = default, decimal itemTotal = default, ProductEmitItemIcmsForecast icmsForecast = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<NfeImportDeclaration> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, Object taxReturn = default, string additionalInfo = default)
+        public ProductEmitItem(string sku = default, string name = default, string category = default, string description = default, string fiscalDescription = default, int guarantee = default, string ncm = default, string cfop = default, string cfopInternal = default, string cfopExternal = default, string cfopExternalNonTaxpayer = default, string cfopInternational = default, decimal quantity = default, decimal unitValue = default, string unit = default, string commercialUnit = default, string taxableUnit = default, string gtin = default, string icmsOrigin = default, string icmsCst = default, decimal icmsTaxRate = default, string icmsModBc = default, string icmsTaxBenefitCode = default, string pisCst = default, decimal pisTaxRate = default, string cofinsCst = default, decimal cofinsTaxRate = default, string ipiCst = default, decimal ipiTaxRate = default, string ipiLegalCode = default, NfeItemIcms icms = default, NfeItemIpi ipi = default, NfeItemImportTax importTax = default, NfeItemIbsCbs ibsCbs = default, NfeItemSelectiveTax selectiveTax = default, decimal netUnitValue = default, decimal netAmount = default, SimplesActivityEnum? simplesActivity = default, bool usedMovableGood = default, string zfmPresumedCreditType = default, ProductEmitItemReferencedDocument referencedDocument = default, decimal itemTotal = default, ProductEmitItemIcmsForecast icmsForecast = default, string cest = default, string fci = default, List<string> nve = default, string extipi = default, string orderNumber = default, int orderItem = default, decimal freight = default, decimal insurance = default, decimal discount = default, decimal other = default, string taxClassification = default, string ibsCst = default, string cbsCst = default, List<NfeImportDeclaration> importDeclarations = default, List<Object> traces = default, List<Object> exports = default, Object vehicle = default, Object medicine = default, List<Object> weapons = default, Object fuel = default, string recopi = default, ProductEmitItemPackaging packaging = default, ProductEmitItemItemNotes itemNotes = default, Object taxReturn = default, string additionalInfo = default)
         {
             // to ensure "description" is required (not null)
             if (description == null)
@@ -222,6 +225,9 @@ namespace Emitfy.Generated.Model
             this.Medicine = medicine;
             this.Weapons = weapons;
             this.Fuel = fuel;
+            this.Recopi = recopi;
+            this.Packaging = packaging;
+            this.ItemNotes = itemNotes;
             this.TaxReturn = taxReturn;
             this.AdditionalInfo = additionalInfo;
             this.AdditionalProperties = new Dictionary<string, object>();
@@ -593,28 +599,51 @@ namespace Emitfy.Generated.Model
         public List<Object> Exports { get; set; }
 
         /// <summary>
-        /// Gets or Sets Vehicle
+        /// NF-e — veicProd. Os 24 campos são obrigatórios (chassi 17 caracteres). Exclusivo com medicine/weapons/fuel/recopi
         /// </summary>
+        /// <value>NF-e — veicProd. Os 24 campos são obrigatórios (chassi 17 caracteres). Exclusivo com medicine/weapons/fuel/recopi</value>
         [DataMember(Name = "vehicle", EmitDefaultValue = false)]
         public Object Vehicle { get; set; }
 
         /// <summary>
-        /// Gets or Sets Medicine
+        /// med — anvisaCode (11 ou 13 dígitos ou &#x60;ISENTO&#x60; + reasonExemption) e maxConsumerPrice (vPMC) obrigatórios
         /// </summary>
+        /// <value>med — anvisaCode (11 ou 13 dígitos ou &#x60;ISENTO&#x60; + reasonExemption) e maxConsumerPrice (vPMC) obrigatórios</value>
         [DataMember(Name = "medicine", EmitDefaultValue = false)]
         public Object Medicine { get; set; }
 
         /// <summary>
-        /// Gets or Sets Weapons
+        /// arma — kind (0 uso permitido, 1 uso restrito), serial, barrelSerial e description obrigatórios
         /// </summary>
+        /// <value>arma — kind (0 uso permitido, 1 uso restrito), serial, barrelSerial e description obrigatórios</value>
         [DataMember(Name = "weapons", EmitDefaultValue = false)]
         public List<Object> Weapons { get; set; }
 
         /// <summary>
-        /// Gets or Sets Fuel
+        /// comb — anpCode (9 dígitos), description e consumptionState obrigatórios; codif (até 21 dígitos), quantityTemp, CIDE (cideBase/cideRate/cideAmount juntos), &#x60;pump&#x60; (encerrante: nozzle, pump?, tank, startReading, endReading), &#x60;biodieselPercent&#x60; (pBio, &gt;0 a 100) e &#x60;origins&#x60; (origComb, até 30: imported, stateCode IBGE, percent). NFC-e aceita. 
         /// </summary>
+        /// <value>comb — anpCode (9 dígitos), description e consumptionState obrigatórios; codif (até 21 dígitos), quantityTemp, CIDE (cideBase/cideRate/cideAmount juntos), &#x60;pump&#x60; (encerrante: nozzle, pump?, tank, startReading, endReading), &#x60;biodieselPercent&#x60; (pBio, &gt;0 a 100) e &#x60;origins&#x60; (origComb, até 30: imported, stateCode IBGE, percent). NFC-e aceita. </value>
         [DataMember(Name = "fuel", EmitDefaultValue = false)]
         public Object Fuel { get; set; }
+
+        /// <summary>
+        /// NF-e — nRECOPI (papel imune). Exclusivo com vehicle/medicine/weapons/fuel. NFC-e → 422
+        /// </summary>
+        /// <value>NF-e — nRECOPI (papel imune). Exclusivo com vehicle/medicine/weapons/fuel. NFC-e → 422</value>
+        [DataMember(Name = "recopi", EmitDefaultValue = false)]
+        public string Recopi { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Packaging
+        /// </summary>
+        [DataMember(Name = "packaging", EmitDefaultValue = false)]
+        public ProductEmitItemPackaging Packaging { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ItemNotes
+        /// </summary>
+        [DataMember(Name = "itemNotes", EmitDefaultValue = false)]
+        public ProductEmitItemItemNotes ItemNotes { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxReturn
@@ -705,6 +734,9 @@ namespace Emitfy.Generated.Model
             sb.Append("  Medicine: ").Append(Medicine).Append("\n");
             sb.Append("  Weapons: ").Append(Weapons).Append("\n");
             sb.Append("  Fuel: ").Append(Fuel).Append("\n");
+            sb.Append("  Recopi: ").Append(Recopi).Append("\n");
+            sb.Append("  Packaging: ").Append(Packaging).Append("\n");
+            sb.Append("  ItemNotes: ").Append(ItemNotes).Append("\n");
             sb.Append("  TaxReturn: ").Append(TaxReturn).Append("\n");
             sb.Append("  AdditionalInfo: ").Append(AdditionalInfo).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");

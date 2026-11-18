@@ -38,12 +38,14 @@ namespace Emitfy.Generated.Model
         /// <param name="fisco">infAdFisco.</param>
         /// <param name="taxpayerNotes">obsCont.</param>
         /// <param name="fiscoNotes">obsFisco.</param>
-        public NfeCreateRequestAdditional(string complement = default, string fisco = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> taxpayerNotes = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> fiscoNotes = default)
+        /// <param name="processReferences">procRef — processo referenciado (só NF-e; NFC-e → 422).</param>
+        public NfeCreateRequestAdditional(string complement = default, string fisco = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> taxpayerNotes = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> fiscoNotes = default, List<NfeCreateRequestAdditionalProcessReferencesInner> processReferences = default)
         {
             this.Complement = complement;
             this.Fisco = fisco;
             this.TaxpayerNotes = taxpayerNotes;
             this.FiscoNotes = fiscoNotes;
+            this.ProcessReferences = processReferences;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -76,6 +78,13 @@ namespace Emitfy.Generated.Model
         public List<NfeCreateRequestAdditionalTaxpayerNotesInner> FiscoNotes { get; set; }
 
         /// <summary>
+        /// procRef — processo referenciado (só NF-e; NFC-e → 422)
+        /// </summary>
+        /// <value>procRef — processo referenciado (só NF-e; NFC-e → 422)</value>
+        [DataMember(Name = "processReferences", EmitDefaultValue = false)]
+        public List<NfeCreateRequestAdditionalProcessReferencesInner> ProcessReferences { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -93,6 +102,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Fisco: ").Append(Fisco).Append("\n");
             sb.Append("  TaxpayerNotes: ").Append(TaxpayerNotes).Append("\n");
             sb.Append("  FiscoNotes: ").Append(FiscoNotes).Append("\n");
+            sb.Append("  ProcessReferences: ").Append(ProcessReferences).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

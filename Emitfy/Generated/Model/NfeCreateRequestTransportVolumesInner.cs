@@ -40,7 +40,8 @@ namespace Emitfy.Generated.Model
         /// <param name="numbering">nVol.</param>
         /// <param name="netWeight">pesoL (kg).</param>
         /// <param name="grossWeight">pesoB (kg).</param>
-        public NfeCreateRequestTransportVolumesInner(int quantity = default, string species = default, string brand = default, string numbering = default, decimal netWeight = default, decimal grossWeight = default)
+        /// <param name="seals">lacres/nLacre. Alias &#x60;lacres&#x60; (lista de textos ou de &#x60;{ nLacre }&#x60;).</param>
+        public NfeCreateRequestTransportVolumesInner(int quantity = default, string species = default, string brand = default, string numbering = default, decimal netWeight = default, decimal grossWeight = default, List<string> seals = default)
         {
             this.Quantity = quantity;
             this.Species = species;
@@ -48,6 +49,7 @@ namespace Emitfy.Generated.Model
             this.Numbering = numbering;
             this.NetWeight = netWeight;
             this.GrossWeight = grossWeight;
+            this.Seals = seals;
         }
 
         /// <summary>
@@ -93,6 +95,13 @@ namespace Emitfy.Generated.Model
         public decimal GrossWeight { get; set; }
 
         /// <summary>
+        /// lacres/nLacre. Alias &#x60;lacres&#x60; (lista de textos ou de &#x60;{ nLacre }&#x60;)
+        /// </summary>
+        /// <value>lacres/nLacre. Alias &#x60;lacres&#x60; (lista de textos ou de &#x60;{ nLacre }&#x60;)</value>
+        [DataMember(Name = "seals", EmitDefaultValue = false)]
+        public List<string> Seals { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -106,6 +115,7 @@ namespace Emitfy.Generated.Model
             sb.Append("  Numbering: ").Append(Numbering).Append("\n");
             sb.Append("  NetWeight: ").Append(NetWeight).Append("\n");
             sb.Append("  GrossWeight: ").Append(GrossWeight).Append("\n");
+            sb.Append("  Seals: ").Append(Seals).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -89,12 +89,20 @@ namespace Emitfy.Generated.Model
         /// <param name="value">Valor do frete; compõe o total quando por conta do emitente. Sem &#x60;freightModality&#x60;, um valor maior que zero assume frete por conta do remetente (CIF, modFrete 0). .</param>
         /// <param name="carrier">carrier.</param>
         /// <param name="volumes">Volumes (&#x60;transp/vol&#x60;); exige &#x60;freightModality&#x60;. Aceita também os nomes do leiaute (qVol, esp, marca, nVol, pesoL, pesoB).</param>
-        public NfeCreateRequestTransport(FreightModalityEnum? freightModality = default, decimal value = default, TransportCarrier carrier = default, List<NfeCreateRequestTransportVolumesInner> volumes = default)
+        /// <param name="withholding">withholding.</param>
+        /// <param name="trailers">reboque — { plate, state?, rntc? }. Exclusivo com wagon/ferry.</param>
+        /// <param name="wagon">vagao (ferroviário). Exclusivo com veículo/reboque/balsa.</param>
+        /// <param name="ferry">balsa (aquaviário). Exclusivo com veículo/reboque/vagão.</param>
+        public NfeCreateRequestTransport(FreightModalityEnum? freightModality = default, decimal value = default, TransportCarrier carrier = default, List<NfeCreateRequestTransportVolumesInner> volumes = default, NfeCreateRequestTransportWithholding withholding = default, List<Object> trailers = default, string wagon = default, string ferry = default)
         {
             this.FreightModality = freightModality;
             this.Value = value;
             this.Carrier = carrier;
             this.Volumes = volumes;
+            this.Withholding = withholding;
+            this.Trailers = trailers;
+            this.Wagon = wagon;
+            this.Ferry = ferry;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -119,6 +127,33 @@ namespace Emitfy.Generated.Model
         public List<NfeCreateRequestTransportVolumesInner> Volumes { get; set; }
 
         /// <summary>
+        /// Gets or Sets Withholding
+        /// </summary>
+        [DataMember(Name = "withholding", EmitDefaultValue = false)]
+        public NfeCreateRequestTransportWithholding Withholding { get; set; }
+
+        /// <summary>
+        /// reboque — { plate, state?, rntc? }. Exclusivo com wagon/ferry
+        /// </summary>
+        /// <value>reboque — { plate, state?, rntc? }. Exclusivo com wagon/ferry</value>
+        [DataMember(Name = "trailers", EmitDefaultValue = false)]
+        public List<Object> Trailers { get; set; }
+
+        /// <summary>
+        /// vagao (ferroviário). Exclusivo com veículo/reboque/balsa
+        /// </summary>
+        /// <value>vagao (ferroviário). Exclusivo com veículo/reboque/balsa</value>
+        [DataMember(Name = "wagon", EmitDefaultValue = false)]
+        public string Wagon { get; set; }
+
+        /// <summary>
+        /// balsa (aquaviário). Exclusivo com veículo/reboque/vagão
+        /// </summary>
+        /// <value>balsa (aquaviário). Exclusivo com veículo/reboque/vagão</value>
+        [DataMember(Name = "ferry", EmitDefaultValue = false)]
+        public string Ferry { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -136,6 +171,10 @@ namespace Emitfy.Generated.Model
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  Volumes: ").Append(Volumes).Append("\n");
+            sb.Append("  Withholding: ").Append(Withholding).Append("\n");
+            sb.Append("  Trailers: ").Append(Trailers).Append("\n");
+            sb.Append("  Wagon: ").Append(Wagon).Append("\n");
+            sb.Append("  Ferry: ").Append(Ferry).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

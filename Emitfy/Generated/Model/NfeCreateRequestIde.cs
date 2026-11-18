@@ -126,11 +126,11 @@ namespace Emitfy.Generated.Model
         /// <param name="departureAt">dhSaiEnt (data/hora de saída ou entrada).</param>
         /// <param name="randomCode">cNF (8 dígitos.</param>
         /// <param name="destinationType">idDest é calculado pelas UFs; valor divergente ou &#x60;international&#x60; → 422.</param>
-        /// <param name="emissionType">Só &#x60;1&#x60;/&#x60;normal&#x60;. Contingência ainda não suportada → 422.</param>
+        /// <param name="emissionType">&#x60;1&#x60;/&#x60;normal&#x60;. &#x60;6&#x60;/&#x60;svcAn&#x60; (SVC-AN) e &#x60;7&#x60;/&#x60;svcRs&#x60; (SVC-RS) só com a flag &#x60;NFE_SVC_CONTINGENCY_ENABLED&#x60; (senão 422); a UF do emitente precisa usar aquele SVC. O XML sai com tpEmis/dhCont/xJust, mas a transmissão ao autorizador de contingência ainda não existe — a nota fica com erro de validação. .</param>
         /// <param name="process">Não configurável → 422.</param>
         /// <param name="versionProcess">Não configurável → 422.</param>
-        /// <param name="contingencyStartedAt">Contingência ainda não suportada → 422.</param>
-        /// <param name="contingencyReason">Contingência ainda não suportada → 422.</param>
+        /// <param name="contingencyStartedAt">dhCont — obrigatório com emissionType 6/7; não pode estar no futuro.</param>
+        /// <param name="contingencyReason">xJust — obrigatório com emissionType 6/7.</param>
         public NfeCreateRequestIde(PurposeEnum? purpose = default, string creditType = default, string debitType = default, List<string> referencedKeys = default, List<NfeCreateRequestIdeReferencesInner> references = default, DateTime departureAt = default, string randomCode = default, DestinationTypeEnum? destinationType = default, string emissionType = default, string process = default, string versionProcess = default, DateTime contingencyStartedAt = default, string contingencyReason = default)
         {
             this.Purpose = purpose;
@@ -192,9 +192,9 @@ namespace Emitfy.Generated.Model
         public string RandomCode { get; set; }
 
         /// <summary>
-        /// Só &#x60;1&#x60;/&#x60;normal&#x60;. Contingência ainda não suportada → 422
+        /// &#x60;1&#x60;/&#x60;normal&#x60;. &#x60;6&#x60;/&#x60;svcAn&#x60; (SVC-AN) e &#x60;7&#x60;/&#x60;svcRs&#x60; (SVC-RS) só com a flag &#x60;NFE_SVC_CONTINGENCY_ENABLED&#x60; (senão 422); a UF do emitente precisa usar aquele SVC. O XML sai com tpEmis/dhCont/xJust, mas a transmissão ao autorizador de contingência ainda não existe — a nota fica com erro de validação. 
         /// </summary>
-        /// <value>Só &#x60;1&#x60;/&#x60;normal&#x60;. Contingência ainda não suportada → 422</value>
+        /// <value>&#x60;1&#x60;/&#x60;normal&#x60;. &#x60;6&#x60;/&#x60;svcAn&#x60; (SVC-AN) e &#x60;7&#x60;/&#x60;svcRs&#x60; (SVC-RS) só com a flag &#x60;NFE_SVC_CONTINGENCY_ENABLED&#x60; (senão 422); a UF do emitente precisa usar aquele SVC. O XML sai com tpEmis/dhCont/xJust, mas a transmissão ao autorizador de contingência ainda não existe — a nota fica com erro de validação. </value>
         [DataMember(Name = "emissionType", EmitDefaultValue = false)]
         public string EmissionType { get; set; }
 
@@ -213,16 +213,16 @@ namespace Emitfy.Generated.Model
         public string VersionProcess { get; set; }
 
         /// <summary>
-        /// Contingência ainda não suportada → 422
+        /// dhCont — obrigatório com emissionType 6/7; não pode estar no futuro
         /// </summary>
-        /// <value>Contingência ainda não suportada → 422</value>
+        /// <value>dhCont — obrigatório com emissionType 6/7; não pode estar no futuro</value>
         [DataMember(Name = "contingencyStartedAt", EmitDefaultValue = false)]
         public DateTime ContingencyStartedAt { get; set; }
 
         /// <summary>
-        /// Contingência ainda não suportada → 422
+        /// xJust — obrigatório com emissionType 6/7
         /// </summary>
-        /// <value>Contingência ainda não suportada → 422</value>
+        /// <value>xJust — obrigatório com emissionType 6/7</value>
         [DataMember(Name = "contingencyReason", EmitDefaultValue = false)]
         public string ContingencyReason { get; set; }
 
