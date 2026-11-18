@@ -76,7 +76,13 @@ namespace Emitfy.Generated.Model
         /// <param name="cardBrand">tBand: visa, mastercard, amex, elo, hipercard… ou o código de 2 dígitos.</param>
         /// <param name="authorization">cAut.</param>
         /// <param name="cardTaxId">CNPJ da credenciadora (14 dígitos).</param>
-        public NfeCreateRequestPaymentsInner(string method = default, decimal amount = default, IndicatorEnum? indicator = default, string description = default, string cardBrand = default, string authorization = default, string cardTaxId = default)
+        /// <param name="integration">tpIntegra: 1/integrated/tef (TEF ou Pix dinâmico integrado) ou 2/notIntegrated/pos (padrão).</param>
+        /// <param name="receiverTaxId">CNPJReceb — CNPJ do beneficiário do pagamento (14 dígitos).</param>
+        /// <param name="terminalId">idTermPag — identificador do terminal/POS.</param>
+        /// <param name="paidOn">dPag (AAAA-MM-DD).</param>
+        /// <param name="payerTaxId">CNPJPag — CNPJ do pagador/transacional (14 dígitos.</param>
+        /// <param name="payerState">UFPag (junto com payerTaxId).</param>
+        public NfeCreateRequestPaymentsInner(string method = default, decimal amount = default, IndicatorEnum? indicator = default, string description = default, string cardBrand = default, string authorization = default, string cardTaxId = default, string integration = default, string receiverTaxId = default, string terminalId = default, DateOnly paidOn = default, string payerTaxId = default, string payerState = default)
         {
             this.Amount = amount;
             this.Method = method;
@@ -85,6 +91,12 @@ namespace Emitfy.Generated.Model
             this.CardBrand = cardBrand;
             this.Authorization = authorization;
             this.CardTaxId = cardTaxId;
+            this.Integration = integration;
+            this.ReceiverTaxId = receiverTaxId;
+            this.TerminalId = terminalId;
+            this.PaidOn = paidOn;
+            this.PayerTaxId = payerTaxId;
+            this.PayerState = payerState;
             this.AdditionalProperties = new Dictionary<string, object>();
         }
 
@@ -131,6 +143,48 @@ namespace Emitfy.Generated.Model
         public string CardTaxId { get; set; }
 
         /// <summary>
+        /// tpIntegra: 1/integrated/tef (TEF ou Pix dinâmico integrado) ou 2/notIntegrated/pos (padrão)
+        /// </summary>
+        /// <value>tpIntegra: 1/integrated/tef (TEF ou Pix dinâmico integrado) ou 2/notIntegrated/pos (padrão)</value>
+        [DataMember(Name = "integration", EmitDefaultValue = false)]
+        public string Integration { get; set; }
+
+        /// <summary>
+        /// CNPJReceb — CNPJ do beneficiário do pagamento (14 dígitos)
+        /// </summary>
+        /// <value>CNPJReceb — CNPJ do beneficiário do pagamento (14 dígitos)</value>
+        [DataMember(Name = "receiverTaxId", EmitDefaultValue = false)]
+        public string ReceiverTaxId { get; set; }
+
+        /// <summary>
+        /// idTermPag — identificador do terminal/POS
+        /// </summary>
+        /// <value>idTermPag — identificador do terminal/POS</value>
+        [DataMember(Name = "terminalId", EmitDefaultValue = false)]
+        public string TerminalId { get; set; }
+
+        /// <summary>
+        /// dPag (AAAA-MM-DD)
+        /// </summary>
+        /// <value>dPag (AAAA-MM-DD)</value>
+        [DataMember(Name = "paidOn", EmitDefaultValue = false)]
+        public DateOnly PaidOn { get; set; }
+
+        /// <summary>
+        /// CNPJPag — CNPJ do pagador/transacional (14 dígitos
+        /// </summary>
+        /// <value>CNPJPag — CNPJ do pagador/transacional (14 dígitos</value>
+        [DataMember(Name = "payerTaxId", EmitDefaultValue = false)]
+        public string PayerTaxId { get; set; }
+
+        /// <summary>
+        /// UFPag (junto com payerTaxId)
+        /// </summary>
+        /// <value>UFPag (junto com payerTaxId)</value>
+        [DataMember(Name = "payerState", EmitDefaultValue = false)]
+        public string PayerState { get; set; }
+
+        /// <summary>
         /// Gets or Sets additional properties
         /// </summary>
         [JsonExtensionData]
@@ -151,6 +205,12 @@ namespace Emitfy.Generated.Model
             sb.Append("  CardBrand: ").Append(CardBrand).Append("\n");
             sb.Append("  Authorization: ").Append(Authorization).Append("\n");
             sb.Append("  CardTaxId: ").Append(CardTaxId).Append("\n");
+            sb.Append("  Integration: ").Append(Integration).Append("\n");
+            sb.Append("  ReceiverTaxId: ").Append(ReceiverTaxId).Append("\n");
+            sb.Append("  TerminalId: ").Append(TerminalId).Append("\n");
+            sb.Append("  PaidOn: ").Append(PaidOn).Append("\n");
+            sb.Append("  PayerTaxId: ").Append(PayerTaxId).Append("\n");
+            sb.Append("  PayerState: ").Append(PayerState).Append("\n");
             sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

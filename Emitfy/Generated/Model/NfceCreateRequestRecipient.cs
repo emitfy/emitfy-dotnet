@@ -26,7 +26,7 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// Opcional (padrão consumidor final); todos os campos opcionais.
+    /// Opcional (padrão consumidor final). CPF/CNPJ (&#x60;taxId&#x60;) ou estrangeiro (&#x60;foreignId&#x60;, idEstrangeiro; a operação continua interna). &#x60;address&#x60; é obrigatório na entrega a domicílio e precisa ser da UF do emitente. &#x60;stateRegistration&#x60;/&#x60;ieIndicator&#x60;/&#x60;suframa&#x60; → 422 (rejeições 729/730). 
     /// </summary>
     [DataContract(Name = "nfceCreate_request_recipient")]
     public partial class NfceCreateRequestRecipient
@@ -35,13 +35,15 @@ namespace Emitfy.Generated.Model
         /// Initializes a new instance of the <see cref="NfceCreateRequestRecipient" /> class.
         /// </summary>
         /// <param name="taxId">taxId.</param>
+        /// <param name="foreignId">foreignId.</param>
         /// <param name="name">name.</param>
         /// <param name="email">email.</param>
         /// <param name="phone">phone.</param>
         /// <param name="address">address.</param>
-        public NfceCreateRequestRecipient(string taxId = default, string name = default, string email = default, string phone = default, NfeAddress address = default)
+        public NfceCreateRequestRecipient(string taxId = default, string foreignId = default, string name = default, string email = default, string phone = default, NfeAddress address = default)
         {
             this.TaxId = taxId;
+            this.ForeignId = foreignId;
             this.Name = name;
             this.Email = email;
             this.Phone = phone;
@@ -54,6 +56,12 @@ namespace Emitfy.Generated.Model
         /// </summary>
         [DataMember(Name = "taxId", EmitDefaultValue = false)]
         public string TaxId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ForeignId
+        /// </summary>
+        [DataMember(Name = "foreignId", EmitDefaultValue = false)]
+        public string ForeignId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -94,6 +102,7 @@ namespace Emitfy.Generated.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfceCreateRequestRecipient {\n");
             sb.Append("  TaxId: ").Append(TaxId).Append("\n");
+            sb.Append("  ForeignId: ").Append(ForeignId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");

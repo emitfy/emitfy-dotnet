@@ -38,7 +38,7 @@ namespace Emitfy.Generated.Model
         /// <param name="fisco">infAdFisco.</param>
         /// <param name="taxpayerNotes">obsCont.</param>
         /// <param name="fiscoNotes">obsFisco.</param>
-        /// <param name="processReferences">procRef — processo referenciado (só NF-e; NFC-e → 422).</param>
+        /// <param name="processReferences">procRef — processo referenciado (NF-e e NFC-e).</param>
         public NfeCreateRequestAdditional(string complement = default, string fisco = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> taxpayerNotes = default, List<NfeCreateRequestAdditionalTaxpayerNotesInner> fiscoNotes = default, List<NfeCreateRequestAdditionalProcessReferencesInner> processReferences = default)
         {
             this.Complement = complement;
@@ -78,9 +78,9 @@ namespace Emitfy.Generated.Model
         public List<NfeCreateRequestAdditionalTaxpayerNotesInner> FiscoNotes { get; set; }
 
         /// <summary>
-        /// procRef — processo referenciado (só NF-e; NFC-e → 422)
+        /// procRef — processo referenciado (NF-e e NFC-e)
         /// </summary>
-        /// <value>procRef — processo referenciado (só NF-e; NFC-e → 422)</value>
+        /// <value>procRef — processo referenciado (NF-e e NFC-e)</value>
         [DataMember(Name = "processReferences", EmitDefaultValue = false)]
         public List<NfeCreateRequestAdditionalProcessReferencesInner> ProcessReferences { get; set; }
 

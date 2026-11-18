@@ -26,14 +26,15 @@ using OpenAPIDateConverter = Emitfy.Generated.Client.OpenAPIDateConverter;
 namespace Emitfy.Generated.Model
 {
     /// <summary>
-    /// Com &#x60;issueMode: offlineContingency&#x60; a validação exige &#x60;contingency&#x60;, &#x60;accessKey&#x60; (44 dígitos, modelo 65, tpEmis 9), &#x60;number&#x60;, &#x60;series&#x60; e &#x60;issuedAt&#x60; (ou &#x60;issueDate&#x60;). Falha → 422 &#x60;VALIDATION_ERROR&#x60;. 
+    /// Com &#x60;issueMode: offlineContingency&#x60; a validação exige &#x60;contingency&#x60;, &#x60;accessKey&#x60; (44 dígitos, modelo 65, tpEmis 9), &#x60;number&#x60;, &#x60;series&#x60; e &#x60;issuedAt&#x60; (ou &#x60;issueDate&#x60;). Falha → 422 &#x60;VALIDATION_ERROR&#x60;. Leiaute NFC-e (fase 5): 422 só para o que o leiaute do modelo 65 não admite — indPres ≠ 1/4/5 (717), tPag 90 (899), frete/transportadora sem entrega a domicílio (753/754), retTransp/veículo/reboque/vagão/balsa (755–759), IE/SUFRAMA do consumidor (729/730) e endereço do consumidor em outra UF (707). 
     /// </summary>
     [DataContract(Name = "nfceCreate_request")]
     public partial class NfceCreateRequest
     {
         /// <summary>
-        /// Defines PaymentMethod
+        /// Pagamento único com o total. Obrigatório quando não há &#x60;payments&#x60;
         /// </summary>
+        /// <value>Pagamento único com o total. Obrigatório quando não há &#x60;payments&#x60;</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum PaymentMethodEnum
         {
@@ -82,10 +83,44 @@ namespace Emitfy.Generated.Model
 
 
         /// <summary>
-        /// Gets or Sets PaymentMethod
+        /// Pagamento único com o total. Obrigatório quando não há &#x60;payments&#x60;
         /// </summary>
-        [DataMember(Name = "paymentMethod", IsRequired = true, EmitDefaultValue = true)]
-        public PaymentMethodEnum PaymentMethod { get; set; }
+        /// <value>Pagamento único com o total. Obrigatório quando não há &#x60;payments&#x60;</value>
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
+        public PaymentMethodEnum? PaymentMethod { get; set; }
+        /// <summary>
+        /// indPres na NFC-e: 1 presencial, 4 entrega a domicílio, 5 fora do estabelecimento (MOC B25b-20). internet/telephone/others (2/3/9) → 422 (rejeição 717): emita NF-e. 
+        /// </summary>
+        /// <value>indPres na NFC-e: 1 presencial, 4 entrega a domicílio, 5 fora do estabelecimento (MOC B25b-20). internet/telephone/others (2/3/9) → 422 (rejeição 717): emita NF-e. </value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PresenceTypeEnum
+        {
+            /// <summary>
+            /// Enum Presential for value: presential
+            /// </summary>
+            [EnumMember(Value = "presential")]
+            Presential = 1,
+
+            /// <summary>
+            /// Enum Delivery for value: delivery
+            /// </summary>
+            [EnumMember(Value = "delivery")]
+            Delivery = 2,
+
+            /// <summary>
+            /// Enum OutsideEstablishment for value: outsideEstablishment
+            /// </summary>
+            [EnumMember(Value = "outsideEstablishment")]
+            OutsideEstablishment = 3
+        }
+
+
+        /// <summary>
+        /// indPres na NFC-e: 1 presencial, 4 entrega a domicílio, 5 fora do estabelecimento (MOC B25b-20). internet/telephone/others (2/3/9) → 422 (rejeição 717): emita NF-e. 
+        /// </summary>
+        /// <value>indPres na NFC-e: 1 presencial, 4 entrega a domicílio, 5 fora do estabelecimento (MOC B25b-20). internet/telephone/others (2/3/9) → 422 (rejeição 717): emita NF-e. </value>
+        [DataMember(Name = "presenceType", EmitDefaultValue = false)]
+        public PresenceTypeEnum? PresenceType { get; set; }
         /// <summary>
         /// Defines IssueMode
         /// </summary>
@@ -149,13 +184,22 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfceCreateRequest" /> class.
         /// </summary>
-        /// <param name="paymentMethod">paymentMethod (required).</param>
+        /// <param name="paymentMethod">Pagamento único com o total. Obrigatório quando não há &#x60;payments&#x60;.</param>
+        /// <param name="payments">Pagamentos detalhados (&#x60;pag/detPag&#x60;), mesmo formato da NF-e: vários meios, troco, cartão/TEF/POS (&#x60;integration&#x60; tpIntegra, &#x60;cardTaxId&#x60; CNPJ da credenciadora, &#x60;cardBrand&#x60; tBand, &#x60;authorization&#x60; cAut, &#x60;receiverTaxId&#x60; CNPJReceb, &#x60;terminalId&#x60; idTermPag), &#x60;paidOn&#x60;, &#x60;payerTaxId&#x60;/&#x60;payerState&#x60;. Pix dinâmico: method 17 + integration 1 + cardTaxId (CNPJ do PSP) + authorization (E2E/txid); Pix estático: method 20. Sem pagamento (90) → 422 (rejeição 899). .</param>
+        /// <param name="change">Troco (vTroco) &#x3D; soma(payments) − vNF. Sem troco sai &#x60;&lt;vTroco&gt;0.00&lt;/vTroco&gt;&#x60;.</param>
+        /// <param name="presenceType">indPres na NFC-e: 1 presencial, 4 entrega a domicílio, 5 fora do estabelecimento (MOC B25b-20). internet/telephone/others (2/3/9) → 422 (rejeição 717): emita NF-e.  (default to PresenceTypeEnum.Presential).</param>
+        /// <param name="operationNature">natOp (alias &#x60;nature&#x60;).</param>
+        /// <param name="discount">Desconto da nota (rateado em vDesc).</param>
+        /// <param name="totals">totals.</param>
+        /// <param name="transport">transport.</param>
+        /// <param name="intermediary">intermediary.</param>
+        /// <param name="autXml">autXml.</param>
         /// <param name="items">Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;, &#x60;referencedDocument&#x60;, &#x60;icmsForecast&#x60;) retornam 422 — emita uma NF-e (modelo 55). &#x60;icms&#x60; é aceito para ICMS próprio e ST retido (CST 60 / CSOSN 500); ST de substituto (CST 10/30/70, CSOSN 201/202/203), partilha e repasse → 422. &#x60;ibsCbs&#x60; e &#x60;selectiveTax&#x60; seguem a tabela oficial (cClassTrib de NFC-e).  (required).</param>
         /// <param name="recipient">recipient.</param>
-        /// <param name="nature">nature.</param>
-        /// <param name="cfop">cfop.</param>
+        /// <param name="nature">Alias de operationNature (natOp).</param>
+        /// <param name="cfop">CFOP padrão dos itens sem CFOP próprio.</param>
         /// <param name="issueDate">issueDate.</param>
-        /// <param name="additional">additional.</param>
+        /// <param name="additional">complement (infCpl), fisco (infAdFisco), taxpayerNotes (obsCont), fiscoNotes (obsFisco), processReferences (procRef).</param>
         /// <param name="techResponsible">techResponsible.</param>
         /// <param name="externalId">Idempotência (o header &#x60;Idempotency-Key&#x60; tem prioridade).</param>
         /// <param name="issueMode">issueMode (default to IssueModeEnum.Normal).</param>
@@ -166,15 +210,24 @@ namespace Emitfy.Generated.Model
         /// <param name="issuedAt">Data/hora de emissão (dhEmi) do cupom impresso em contingência.</param>
         /// <param name="signedXml">XML já assinado pelo PDV (contingência offline), quando houver.</param>
         /// <param name="transmit">&#x60;later&#x60; &#x3D; cria sem transmitir; envie depois com &#x60;POST .../nfce/{id}/transmit&#x60; (default to TransmitEnum.Now).</param>
-        public NfceCreateRequest(PaymentMethodEnum paymentMethod = default, List<ProductEmitItem> items = default, NfceCreateRequestRecipient recipient = default, string nature = default, string cfop = default, DateTime issueDate = default, Object additional = default, DfeTechResponsible techResponsible = default, string externalId = default, IssueModeEnum? issueMode = IssueModeEnum.Normal, NfceCreateRequestContingency contingency = default, string accessKey = default, int number = default, int series = default, DateTime issuedAt = default, string signedXml = default, TransmitEnum? transmit = TransmitEnum.Now)
+        public NfceCreateRequest(PaymentMethodEnum? paymentMethod = default, List<NfceCreateRequestPaymentsInner> payments = default, decimal change = default, PresenceTypeEnum? presenceType = PresenceTypeEnum.Presential, string operationNature = default, decimal discount = default, NfceCreateRequestTotals totals = default, NfceCreateRequestTransport transport = default, NfceCreateRequestIntermediary intermediary = default, List<DfeAutXml> autXml = default, List<ProductEmitItem> items = default, NfceCreateRequestRecipient recipient = default, string nature = default, string cfop = default, DateTime issueDate = default, Object additional = default, DfeTechResponsible techResponsible = default, string externalId = default, IssueModeEnum? issueMode = IssueModeEnum.Normal, NfceCreateRequestContingency contingency = default, string accessKey = default, int number = default, int series = default, DateTime issuedAt = default, string signedXml = default, TransmitEnum? transmit = TransmitEnum.Now)
         {
-            this.PaymentMethod = paymentMethod;
             // to ensure "items" is required (not null)
             if (items == null)
             {
                 throw new ArgumentNullException("items is a required property for NfceCreateRequest and cannot be null");
             }
             this.Items = items;
+            this.PaymentMethod = paymentMethod;
+            this.Payments = payments;
+            this.Change = change;
+            this.PresenceType = presenceType;
+            this.OperationNature = operationNature;
+            this.Discount = discount;
+            this.Totals = totals;
+            this.Transport = transport;
+            this.Intermediary = intermediary;
+            this.AutXml = autXml;
             this.Recipient = recipient;
             this.Nature = nature;
             this.Cfop = cfop;
@@ -194,6 +247,58 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
+        /// Pagamentos detalhados (&#x60;pag/detPag&#x60;), mesmo formato da NF-e: vários meios, troco, cartão/TEF/POS (&#x60;integration&#x60; tpIntegra, &#x60;cardTaxId&#x60; CNPJ da credenciadora, &#x60;cardBrand&#x60; tBand, &#x60;authorization&#x60; cAut, &#x60;receiverTaxId&#x60; CNPJReceb, &#x60;terminalId&#x60; idTermPag), &#x60;paidOn&#x60;, &#x60;payerTaxId&#x60;/&#x60;payerState&#x60;. Pix dinâmico: method 17 + integration 1 + cardTaxId (CNPJ do PSP) + authorization (E2E/txid); Pix estático: method 20. Sem pagamento (90) → 422 (rejeição 899). 
+        /// </summary>
+        /// <value>Pagamentos detalhados (&#x60;pag/detPag&#x60;), mesmo formato da NF-e: vários meios, troco, cartão/TEF/POS (&#x60;integration&#x60; tpIntegra, &#x60;cardTaxId&#x60; CNPJ da credenciadora, &#x60;cardBrand&#x60; tBand, &#x60;authorization&#x60; cAut, &#x60;receiverTaxId&#x60; CNPJReceb, &#x60;terminalId&#x60; idTermPag), &#x60;paidOn&#x60;, &#x60;payerTaxId&#x60;/&#x60;payerState&#x60;. Pix dinâmico: method 17 + integration 1 + cardTaxId (CNPJ do PSP) + authorization (E2E/txid); Pix estático: method 20. Sem pagamento (90) → 422 (rejeição 899). </value>
+        [DataMember(Name = "payments", EmitDefaultValue = false)]
+        public List<NfceCreateRequestPaymentsInner> Payments { get; set; }
+
+        /// <summary>
+        /// Troco (vTroco) &#x3D; soma(payments) − vNF. Sem troco sai &#x60;&lt;vTroco&gt;0.00&lt;/vTroco&gt;&#x60;
+        /// </summary>
+        /// <value>Troco (vTroco) &#x3D; soma(payments) − vNF. Sem troco sai &#x60;&lt;vTroco&gt;0.00&lt;/vTroco&gt;&#x60;</value>
+        [DataMember(Name = "change", EmitDefaultValue = false)]
+        public decimal Change { get; set; }
+
+        /// <summary>
+        /// natOp (alias &#x60;nature&#x60;)
+        /// </summary>
+        /// <value>natOp (alias &#x60;nature&#x60;)</value>
+        [DataMember(Name = "operationNature", EmitDefaultValue = false)]
+        public string OperationNature { get; set; }
+
+        /// <summary>
+        /// Desconto da nota (rateado em vDesc)
+        /// </summary>
+        /// <value>Desconto da nota (rateado em vDesc)</value>
+        [DataMember(Name = "discount", EmitDefaultValue = false)]
+        public decimal Discount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Totals
+        /// </summary>
+        [DataMember(Name = "totals", EmitDefaultValue = false)]
+        public NfceCreateRequestTotals Totals { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Transport
+        /// </summary>
+        [DataMember(Name = "transport", EmitDefaultValue = false)]
+        public NfceCreateRequestTransport Transport { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Intermediary
+        /// </summary>
+        [DataMember(Name = "intermediary", EmitDefaultValue = false)]
+        public NfceCreateRequestIntermediary Intermediary { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AutXml
+        /// </summary>
+        [DataMember(Name = "autXml", EmitDefaultValue = false)]
+        public List<DfeAutXml> AutXml { get; set; }
+
+        /// <summary>
         /// Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;, &#x60;referencedDocument&#x60;, &#x60;icmsForecast&#x60;) retornam 422 — emita uma NF-e (modelo 55). &#x60;icms&#x60; é aceito para ICMS próprio e ST retido (CST 60 / CSOSN 500); ST de substituto (CST 10/30/70, CSOSN 201/202/203), partilha e repasse → 422. &#x60;ibsCbs&#x60; e &#x60;selectiveTax&#x60; seguem a tabela oficial (cClassTrib de NFC-e). 
         /// </summary>
         /// <value>Mesmo item da NF-e: &#x60;cest&#x60; (uma vez, antes do CFOP), &#x60;nve&#x60;, &#x60;extipi&#x60;, &#x60;discount&#x60;, &#x60;insurance&#x60;, &#x60;other&#x60;, &#x60;orderNumber&#x60;/&#x60;orderItem&#x60; e &#x60;additionalInfo&#x60; saem no prod/det e entram nos totais (vSeg/vDesc/vOutro). Grupos exclusivos da NF-e (&#x60;importDeclarations&#x60;, &#x60;exports&#x60;, &#x60;vehicle&#x60;, &#x60;weapons&#x60;, &#x60;taxReturn&#x60;, &#x60;icmsUfDest&#x60;, &#x60;ipi&#x60;, &#x60;importTax&#x60;, &#x60;referencedDocument&#x60;, &#x60;icmsForecast&#x60;) retornam 422 — emita uma NF-e (modelo 55). &#x60;icms&#x60; é aceito para ICMS próprio e ST retido (CST 60 / CSOSN 500); ST de substituto (CST 10/30/70, CSOSN 201/202/203), partilha e repasse → 422. &#x60;ibsCbs&#x60; e &#x60;selectiveTax&#x60; seguem a tabela oficial (cClassTrib de NFC-e). </value>
@@ -207,14 +312,16 @@ namespace Emitfy.Generated.Model
         public NfceCreateRequestRecipient Recipient { get; set; }
 
         /// <summary>
-        /// Gets or Sets Nature
+        /// Alias de operationNature (natOp)
         /// </summary>
+        /// <value>Alias de operationNature (natOp)</value>
         [DataMember(Name = "nature", EmitDefaultValue = false)]
         public string Nature { get; set; }
 
         /// <summary>
-        /// Gets or Sets Cfop
+        /// CFOP padrão dos itens sem CFOP próprio
         /// </summary>
+        /// <value>CFOP padrão dos itens sem CFOP próprio</value>
         [DataMember(Name = "cfop", EmitDefaultValue = false)]
         public string Cfop { get; set; }
 
@@ -225,8 +332,9 @@ namespace Emitfy.Generated.Model
         public DateTime IssueDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Additional
+        /// complement (infCpl), fisco (infAdFisco), taxpayerNotes (obsCont), fiscoNotes (obsFisco), processReferences (procRef)
         /// </summary>
+        /// <value>complement (infCpl), fisco (infAdFisco), taxpayerNotes (obsCont), fiscoNotes (obsFisco), processReferences (procRef)</value>
         [DataMember(Name = "additional", EmitDefaultValue = false)]
         public Object Additional { get; set; }
 
@@ -299,6 +407,15 @@ namespace Emitfy.Generated.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfceCreateRequest {\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
+            sb.Append("  Payments: ").Append(Payments).Append("\n");
+            sb.Append("  Change: ").Append(Change).Append("\n");
+            sb.Append("  PresenceType: ").Append(PresenceType).Append("\n");
+            sb.Append("  OperationNature: ").Append(OperationNature).Append("\n");
+            sb.Append("  Discount: ").Append(Discount).Append("\n");
+            sb.Append("  Totals: ").Append(Totals).Append("\n");
+            sb.Append("  Transport: ").Append(Transport).Append("\n");
+            sb.Append("  Intermediary: ").Append(Intermediary).Append("\n");
+            sb.Append("  AutXml: ").Append(AutXml).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
             sb.Append("  Nature: ").Append(Nature).Append("\n");
