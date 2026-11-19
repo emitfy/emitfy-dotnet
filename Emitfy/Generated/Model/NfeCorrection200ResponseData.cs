@@ -50,21 +50,54 @@ namespace Emitfy.Generated.Model
         [DataMember(Name = "confirmed", EmitDefaultValue = true)]
         public ConfirmedEnum? Confirmed { get; set; }
         /// <summary>
+        /// Defines Status
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum Registered for value: registered
+            /// </summary>
+            [EnumMember(Value = "registered")]
+            Registered = 1
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public StatusEnum? Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="NfeCorrection200ResponseData" /> class.
         /// </summary>
         /// <param name="confirmed">confirmed.</param>
+        /// <param name="status">status.</param>
+        /// <param name="nSeqEvento">nSeqEvento.</param>
         /// <param name="sequence">sequence.</param>
         /// <param name="protocol">protocol.</param>
         /// <param name="message">message.</param>
         /// <param name="cumulativeText">Texto acumulado enviado (correções anteriores + esta).</param>
-        public NfeCorrection200ResponseData(ConfirmedEnum? confirmed = default, int sequence = default, string protocol = default, string message = default, string cumulativeText = default)
+        /// <param name="xmlUrl">Caminho autenticado do XML do evento.</param>
+        /// <param name="pdfUrl">Sempre null — a CC-e não tem DANFE/PDF próprio.</param>
+        public NfeCorrection200ResponseData(ConfirmedEnum? confirmed = default, StatusEnum? status = default, int nSeqEvento = default, int sequence = default, string protocol = default, string message = default, string cumulativeText = default, string xmlUrl = default, string pdfUrl = default)
         {
             this.Confirmed = confirmed;
+            this.Status = status;
+            this.NSeqEvento = nSeqEvento;
             this.Sequence = sequence;
             this.Protocol = protocol;
             this.Message = message;
             this.CumulativeText = cumulativeText;
+            this.XmlUrl = xmlUrl;
+            this.PdfUrl = pdfUrl;
         }
+
+        /// <summary>
+        /// Gets or Sets NSeqEvento
+        /// </summary>
+        [DataMember(Name = "nSeqEvento", EmitDefaultValue = false)]
+        public int NSeqEvento { get; set; }
 
         /// <summary>
         /// Gets or Sets Sequence
@@ -92,6 +125,20 @@ namespace Emitfy.Generated.Model
         public string CumulativeText { get; set; }
 
         /// <summary>
+        /// Caminho autenticado do XML do evento
+        /// </summary>
+        /// <value>Caminho autenticado do XML do evento</value>
+        [DataMember(Name = "xmlUrl", EmitDefaultValue = false)]
+        public string XmlUrl { get; set; }
+
+        /// <summary>
+        /// Sempre null — a CC-e não tem DANFE/PDF próprio
+        /// </summary>
+        /// <value>Sempre null — a CC-e não tem DANFE/PDF próprio</value>
+        [DataMember(Name = "pdfUrl", EmitDefaultValue = false)]
+        public string PdfUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,10 +147,14 @@ namespace Emitfy.Generated.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class NfeCorrection200ResponseData {\n");
             sb.Append("  Confirmed: ").Append(Confirmed).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  NSeqEvento: ").Append(NSeqEvento).Append("\n");
             sb.Append("  Sequence: ").Append(Sequence).Append("\n");
             sb.Append("  Protocol: ").Append(Protocol).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  CumulativeText: ").Append(CumulativeText).Append("\n");
+            sb.Append("  XmlUrl: ").Append(XmlUrl).Append("\n");
+            sb.Append("  PdfUrl: ").Append(PdfUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

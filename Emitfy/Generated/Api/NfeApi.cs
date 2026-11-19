@@ -54,7 +54,7 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
         /// <remarks>
-        /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -67,7 +67,7 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
         /// <remarks>
-        /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -75,6 +75,54 @@ namespace Emitfy.Generated.Api
         /// <param name="nfeCorrectionRequest"></param>
         /// <returns>ApiResponse of NfeCorrection200Response</returns>
         ApiResponse<NfeCorrection200Response> NfeCorrectionWithHttpInfo(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest);
+        /// <summary>
+        /// Download CC-e event XML
+        /// </summary>
+        /// <remarks>
+        /// XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <returns>string</returns>
+        string NfeCorrectionXml(Guid companyId, string id, int sequence);
+
+        /// <summary>
+        /// Download CC-e event XML
+        /// </summary>
+        /// <remarks>
+        /// XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> NfeCorrectionXmlWithHttpInfo(Guid companyId, string id, int sequence);
+        /// <summary>
+        /// List NF-e correction letters (CC-e)
+        /// </summary>
+        /// <remarks>
+        /// Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        void NfeCorrectionsList(Guid companyId, string id);
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e)
+        /// </summary>
+        /// <remarks>
+        /// Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> NfeCorrectionsListWithHttpInfo(Guid companyId, string id);
         /// <summary>
         /// Emit NF-e (shortcut)
         /// </summary>
@@ -296,7 +344,7 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
         /// <remarks>
-        /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -310,7 +358,7 @@ namespace Emitfy.Generated.Api
         /// Issue NF-e correction letter (CC-e)
         /// </summary>
         /// <remarks>
-        /// Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </remarks>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -319,6 +367,58 @@ namespace Emitfy.Generated.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (NfeCorrection200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<NfeCorrection200Response>> NfeCorrectionWithHttpInfoAsync(Guid companyId, string id, NfeCorrectionRequest nfeCorrectionRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Download CC-e event XML
+        /// </summary>
+        /// <remarks>
+        /// XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> NfeCorrectionXmlAsync(Guid companyId, string id, int sequence, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Download CC-e event XML
+        /// </summary>
+        /// <remarks>
+        /// XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> NfeCorrectionXmlWithHttpInfoAsync(Guid companyId, string id, int sequence, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List NF-e correction letters (CC-e)
+        /// </summary>
+        /// <remarks>
+        /// Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task NfeCorrectionsListAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e)
+        /// </summary>
+        /// <remarks>
+        /// Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </remarks>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> NfeCorrectionsListWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Emit NF-e (shortcut)
         /// </summary>
@@ -888,7 +988,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -902,7 +1002,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -964,7 +1064,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -979,7 +1079,7 @@ namespace Emitfy.Generated.Api
         }
 
         /// <summary>
-        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica de NF-e autorizada. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. 
+        /// Issue NF-e correction letter (CC-e) Carta de correção eletrônica (evento 110110) de NF-e autorizada. Pode ser enviada a qualquer momento após a autorização, no prazo legal de 30 dias (720 horas), no máximo 20 vezes. O texto é cumulativo e substitui a CC-e anterior. NFC-e e NFS-e não admitem CC-e. Depois de uma CC-e, o cancelamento da nota não é mais permitido. Não reprocessa nota rejected — para retry use &#x60;POST .../invoices/{id}/emit&#x60;. Aliases: &#x60;POST /v1/invoices/{id}/correction&#x60; e &#x60;POST /v1/companies/{companyId}/invoices/{id}/correction&#x60;. 
         /// </summary>
         /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
@@ -1038,6 +1138,290 @@ namespace Emitfy.Generated.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("NfeCorrection", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Download CC-e event XML XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <returns>string</returns>
+        public string NfeCorrectionXml(Guid companyId, string id, int sequence)
+        {
+            Emitfy.Generated.Client.ApiResponse<string> localVarResponse = NfeCorrectionXmlWithHttpInfo(companyId, id, sequence);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Download CC-e event XML XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <returns>ApiResponse of string</returns>
+        public Emitfy.Generated.Client.ApiResponse<string> NfeCorrectionXmlWithHttpInfo(Guid companyId, string id, int sequence)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling NfeApi->NfeCorrectionXml");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/xml"
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("sequence", Emitfy.Generated.Client.ClientUtils.ParameterToString(sequence)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<string>("/companies/{companyId}/nfe/{id}/corrections/{sequence}/xml", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeCorrectionXml", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Download CC-e event XML XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> NfeCorrectionXmlAsync(Guid companyId, string id, int sequence, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Emitfy.Generated.Client.ApiResponse<string> localVarResponse = await NfeCorrectionXmlWithHttpInfoAsync(companyId, id, sequence, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Download CC-e event XML XML do evento 110110 armazenado após o registro na SEFAZ.
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="sequence"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<string>> NfeCorrectionXmlWithHttpInfoAsync(Guid companyId, string id, int sequence, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling NfeApi->NfeCorrectionXml");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/xml"
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("sequence", Emitfy.Generated.Client.ClientUtils.ParameterToString(sequence)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<string>("/companies/{companyId}/nfe/{id}/corrections/{sequence}/xml", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeCorrectionXml", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e) Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public void NfeCorrectionsList(Guid companyId, string id)
+        {
+            NfeCorrectionsListWithHttpInfo(companyId, id);
+        }
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e) Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Emitfy.Generated.Client.ApiResponse<Object> NfeCorrectionsListWithHttpInfo(Guid companyId, string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling NfeApi->NfeCorrectionsList");
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<Object>("/companies/{companyId}/nfe/{id}/corrections", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeCorrectionsList", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e) Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task NfeCorrectionsListAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            await NfeCorrectionsListWithHttpInfoAsync(companyId, id, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// List NF-e correction letters (CC-e) Histórico de CC-e da NF-e, com nSeqEvento, protocolo, texto cumulativo e &#x60;xmlUrl&#x60; do evento. &#x60;pdfUrl&#x60; é sempre null. Aliases: &#x60;GET /v1/invoices/{id}/corrections&#x60; e &#x60;GET /v1/companies/{companyId}/invoices/{id}/corrections&#x60;. 
+        /// </summary>
+        /// <exception cref="Emitfy.Generated.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="companyId">UUID da empresa na Emitfy (campo &#x60;id&#x60; de &#x60;GET /companies&#x60;). Não é o CNPJ — CNPJ no path retorna 400 &#x60;INVALID_COMPANY_ID&#x60;. </param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Emitfy.Generated.Client.ApiResponse<Object>> NfeCorrectionsListWithHttpInfoAsync(Guid companyId, string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new Emitfy.Generated.Client.ApiException(400, "Missing required parameter 'id' when calling NfeApi->NfeCorrectionsList");
+
+
+            Emitfy.Generated.Client.RequestOptions localVarRequestOptions = new Emitfy.Generated.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+
+            var localVarContentType = Emitfy.Generated.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Emitfy.Generated.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("companyId", Emitfy.Generated.Client.ClientUtils.ParameterToString(companyId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("id", Emitfy.Generated.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Key", this.Configuration.GetApiKeyWithPrefix("X-Api-Key"));
+            }
+            // authentication (ApiSecretAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Api-Secret")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Api-Secret", this.Configuration.GetApiKeyWithPrefix("X-Api-Secret"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/companies/{companyId}/nfe/{id}/corrections", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("NfeCorrectionsList", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

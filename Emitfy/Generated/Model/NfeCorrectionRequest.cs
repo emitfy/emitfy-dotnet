@@ -39,7 +39,7 @@ namespace Emitfy.Generated.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="NfeCorrectionRequest" /> class.
         /// </summary>
-        /// <param name="correction">Texto da CC-e (NF-e autorizada). Não reprocessa rejeição. (required).</param>
+        /// <param name="correction">Texto da nova correção (15–1000). É somado às CC-e anteriores (texto cumulativo, no máximo 1000 no total). Só NF-e autorizada, no prazo de 30 dias (720h), no máximo 20 por nota. Não reprocessa rejeição.  (required).</param>
         public NfeCorrectionRequest(string correction = default)
         {
             // to ensure "correction" is required (not null)
@@ -51,9 +51,9 @@ namespace Emitfy.Generated.Model
         }
 
         /// <summary>
-        /// Texto da CC-e (NF-e autorizada). Não reprocessa rejeição.
+        /// Texto da nova correção (15–1000). É somado às CC-e anteriores (texto cumulativo, no máximo 1000 no total). Só NF-e autorizada, no prazo de 30 dias (720h), no máximo 20 por nota. Não reprocessa rejeição. 
         /// </summary>
-        /// <value>Texto da CC-e (NF-e autorizada). Não reprocessa rejeição.</value>
+        /// <value>Texto da nova correção (15–1000). É somado às CC-e anteriores (texto cumulativo, no máximo 1000 no total). Só NF-e autorizada, no prazo de 30 dias (720h), no máximo 20 por nota. Não reprocessa rejeição. </value>
         [DataMember(Name = "correction", IsRequired = true, EmitDefaultValue = true)]
         public string Correction { get; set; }
 
